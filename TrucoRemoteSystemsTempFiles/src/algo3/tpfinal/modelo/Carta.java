@@ -1,3 +1,4 @@
+package algo3.tpfinal.modelo;
 
 public class Carta {
 	private Integer valor;
