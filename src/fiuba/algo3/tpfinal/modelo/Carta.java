@@ -1,7 +1,7 @@
 package fiuba.algo3.tpfinal.modelo;
 
 public class Carta {
-    private int valor;
+    private final int valor;
     private Palo palo;
 
     public enum Palo {ORO, BASTO, COPA, ESPADA}
@@ -25,6 +25,17 @@ public class Carta {
     }
     public String getPalo(){
         return this.palo.toString();
+    }
+    public boolean esFigura() {
+        return (this.getValor() >= 10);
+    }
+
+    public boolean mismoPaloQue(Carta otraCarta) {
+        return (this.getPalo().equals(otraCarta.getPalo()));
+    }
+
+    public boolean mismoPaloQue(Carta otraCarta, Carta terceraCarta) {
+        return (this.getPalo().equals(otraCarta.getPalo()) && this.getPalo().equals(terceraCarta.getPalo()));
     }
 
 }

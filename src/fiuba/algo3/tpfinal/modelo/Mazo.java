@@ -1,14 +1,15 @@
 package fiuba.algo3.tpfinal.modelo;
 
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 public class Mazo {
-    private List<Carta> cartas = new LinkedList<Carta>();
+    private Vector<Carta> cartas = new Stack<Carta>();
+    private int cartasUsadas = 0;
     private String[] palo = {"oro", "basto", "copa", "espada"};
 
-    public Mazo(){
+    // Constructor por defecto: mazo de 40 cartas (sin 8s y 9s) para jugar al truco.
+
+    public Mazo() {
         for (int j=0; j<4; j++) {
             for (int i = 1; i < 8; i++) {
                 Carta nuevaCarta = new Carta(i, palo[j]);
@@ -23,13 +24,20 @@ public class Mazo {
 
     public void mezclar() {
         Collections.shuffle(cartas);
+        cartasUsadas = 0;
     }
 
-    public List<Carta> getCartas() {
+    public Carta agarrarCarta() {
+        if (cartasUsadas == cartas.size())
+            throw new NoHayMasCartasError("No quedan mas cartas. Vuelva a mezclar.");
+        return cartas.get(cartas.size() - ++cartasUsadas);
+    }
+
+    public Vector<Carta> getCartas() {
         return cartas;
     }
 
-    public int cantidadDeCartas() {
-        return cartas.size();
+    public int cantidadDeCartasRestantes() {
+        return (cartas.size() - cartasUsadas);
     }
 }

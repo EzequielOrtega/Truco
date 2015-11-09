@@ -4,27 +4,45 @@ import fiuba.algo3.tpfinal.modelo.Carta;
 import fiuba.algo3.tpfinal.modelo.Mazo;
 import org.junit.Test;
 
-import java.util.List;
+import java.util.*;
 
 import static org.junit.Assert.assertEquals;
 
 
 public class MazoTest {
 
-    private Mazo nuevoMazo;
+    private Mazo nuevoMazo = new Mazo();
 
     @Test
     public void testCrearMazoExitoso() {
-        nuevoMazo = new Mazo();
-        assertEquals(40, nuevoMazo.cantidadDeCartas());
+        assertEquals(40, nuevoMazo.cantidadDeCartasRestantes());
     }
 
     @Test
     public void testMezclarMazoExitoso() {
-        nuevoMazo = new Mazo();
-        List<Carta> cartasOrdenadas = nuevoMazo.getCartas();
+        Vector<Carta> cartasOrdenadas = nuevoMazo.getCartas();
         nuevoMazo.mezclar();
-        List<Carta> cartasDesordenadas = nuevoMazo.getCartas();
+        Vector<Carta> cartasDesordenadas = nuevoMazo.getCartas();
         //assertFalse(cartasOrdenadas.equals(cartasDesordenadas));
     }
+
+    @Test
+    public void testAgarrarCartaDevuelveLaUltimaCartaDelMazo() {
+        // Mazo ordenado, las ultimas cartas son los valores mas altos de espada.
+        Carta carta1 = nuevoMazo.agarrarCarta();
+        Carta carta2 = nuevoMazo.agarrarCarta();
+        assertEquals(12, carta1.getValor());
+        assertEquals(11, carta2.getValor());
+        assertEquals("ESPADA", carta1.getPalo());
+        assertEquals("ESPADA", carta2.getPalo());
+    }
+
+    @Test (expected = fiuba.algo3.tpfinal.modelo.NoHayMasCartasError.class)
+    public void testAgarrarCartaDevuelveErrorSiNoQuedanCartas() {
+        for (int i=1; i<=41; i++)
+            nuevoMazo.agarrarCarta();
+    }
+
+
+
 }

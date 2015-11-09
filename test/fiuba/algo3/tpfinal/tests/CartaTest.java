@@ -1,7 +1,6 @@
 package fiuba.algo3.tpfinal.tests;
 
 import fiuba.algo3.tpfinal.modelo.Carta;
-import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -10,10 +9,6 @@ public class CartaTest {
 
     private Carta nuevaCarta;
     private Carta otraCarta;
-    @Before
-    public void SetUp() {
-
-    }
 
     @Test
     public void testCrearCartaExitoso() {
@@ -36,7 +31,13 @@ public class CartaTest {
         nuevaCarta = new Carta(7, "corazones");
     }
 
-
+    @Test
+    public void testEsFiguraExitoso() {
+        nuevaCarta = new Carta(7, "copa");
+        otraCarta = new Carta(10, "oro");
+        assertFalse(nuevaCarta.esFigura());
+        assertTrue(otraCarta.esFigura());
+    }
 
 
 }
