@@ -12,11 +12,11 @@ public class Mazo {
     public Mazo() {
         for (int j=0; j<4; j++) {
             for (int i = 1; i < 8; i++) {
-                Carta nuevaCarta = new Carta(i, palo[j]);
+                Carta nuevaCarta = new NoFigura(i, palo[j]);
                 cartas.add(nuevaCarta);
             }
             for (int i = 10; i < 13; i++) {
-                Carta nuevaCarta = new Carta(i, palo[j]);
+                Carta nuevaCarta = new Figura(i, palo[j]);
                 cartas.add(nuevaCarta);
             }
         }
