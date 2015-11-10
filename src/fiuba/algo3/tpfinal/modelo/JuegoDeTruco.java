@@ -20,6 +20,7 @@ public class JuegoDeTruco {
     private Jugador esMano;
     private Jugador turnoDe;
     private Mazo mazoDeCartas;
+    private JuezDeTruco arbitro;
     //private int enfrentamiento;
     //private int[] ronda;
 
@@ -30,6 +31,7 @@ public class JuegoDeTruco {
         turnoDe = j2;
         mazoDeCartas = new Mazo();
         this.repartir();
+        this.arbitro = new JuezDeTruco();
     }
 
     /* Para cuando haya 4 jugadores: se cambia el primer constructor por this.JuegoDeTruco(j1,j2,null,null);

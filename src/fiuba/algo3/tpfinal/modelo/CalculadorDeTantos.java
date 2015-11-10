@@ -71,14 +71,14 @@ public class CalculadorDeTantos {
 		valores[0] = valor1;
 		valores[1] = valor2;
 		valores[2] = valor3;
-		this.ordenarAscendientemente(valores);
+		this.ordenarAscendentemente(valores);
 		suma += valores[1];
 		suma += valores[2];
 		return suma;
 	}
 
 
-	private void ordenarAscendientemente(int[] valores) {
+	private void ordenarAscendentemente(int[] valores) {
 		int aux;
 		 
 	    for (int i = 0; i < valores.length - 1; i++) {
