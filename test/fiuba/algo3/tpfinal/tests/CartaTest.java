@@ -5,6 +5,8 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
+import org.junit.Assert;
+
 public class CartaTest {
 
     private Carta nuevaCarta;
@@ -37,6 +39,14 @@ public class CartaTest {
         otraCarta = new Carta(10, "oro");
         assertFalse(nuevaCarta.esFigura());
         assertTrue(otraCarta.esFigura());
+    }
+    @Test
+    public void testComparacionDeCartas(){
+    	Carta carta1 = new Carta(1, "espada");
+    	Carta carta2 = new Carta(1, "espada");
+    	Carta carta3 = new Carta(1, "basto");
+    	Assert.assertTrue(carta1.equals(carta2));
+    	Assert.assertFalse(carta1.equals(carta3));
     }
 
 

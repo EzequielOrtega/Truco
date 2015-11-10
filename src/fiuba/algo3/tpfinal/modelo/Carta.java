@@ -37,5 +37,9 @@ public class Carta {
     public boolean mismoPaloQue(Carta otraCarta, Carta terceraCarta) {
         return (this.getPalo().equals(otraCarta.getPalo()) && this.getPalo().equals(terceraCarta.getPalo()));
     }
+    
+    public boolean equals(Carta cartaAComparar){
+    	return ((this.valor == cartaAComparar.getValor()) && (this.getPalo() == cartaAComparar.getPalo()));
+    }
 
 }
