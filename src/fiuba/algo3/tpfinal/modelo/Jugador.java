@@ -8,8 +8,7 @@ public class Jugador {
 
     private final String nombre;
     private Vector<Carta> cartas;
-    @SuppressWarnings("unused")
-	private int puntaje;
+    private int puntaje;
     private CalculadorDeTantos calculador;
 
     public Jugador (String nombreJugador) {
@@ -39,6 +38,10 @@ public class Jugador {
 
     public void entregarCartas() {
         this.cartas.removeAllElements();
+    }
+    
+    public int obtenerPuntaje(){
+    	return this.puntaje;
     }
 
     //jugarCarta() acepta los valores 1, 2 o 3, que corresponden a las 3 posibles cartas de la mano del jugador
