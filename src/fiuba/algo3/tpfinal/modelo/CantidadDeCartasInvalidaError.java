@@ -1,7 +1,11 @@
 package fiuba.algo3.tpfinal.modelo;
 
 public class CantidadDeCartasInvalidaError extends RuntimeException {
-    public CantidadDeCartasInvalidaError() {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	public CantidadDeCartasInvalidaError() {
     }
     public CantidadDeCartasInvalidaError(String s) {
         System.err.print(s);

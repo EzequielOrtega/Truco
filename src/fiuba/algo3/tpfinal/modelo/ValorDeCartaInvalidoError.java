@@ -1,7 +1,11 @@
 package fiuba.algo3.tpfinal.modelo;
 
 public class ValorDeCartaInvalidoError extends RuntimeException {
-    public ValorDeCartaInvalidoError() {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	public ValorDeCartaInvalidoError() {
     }
     public ValorDeCartaInvalidoError(String s) {
         System.err.print(s);
