@@ -14,8 +14,6 @@ public class JuegoDeTruco {
     //private static final int PUNTOS_TRUCO_VALE4 = 4;
 
 
-
-
     private final LinkedList<Jugador> jugadores = new LinkedList<Jugador>();
     private Jugador esMano;
     private Jugador turnoDe;
@@ -58,7 +56,7 @@ public class JuegoDeTruco {
                 jug.agarrarCarta(mazoDeCartas.agarrarCarta());
         }
     }
-    public String ganadorEnvido() {
+    /*public String ganadorEnvido() {
         if (JuezDeTruco.ganadorEnvido(jugadores.get(0).getValorEnvido(), jugadores.get(1).getValorEnvido())) {
             jugadores.get(0).sumarPuntos(PUNTOS_ENVIDO);
             return jugadores.get(0).getNombre();
@@ -80,7 +78,7 @@ public class JuegoDeTruco {
         if (JuezDeTruco.ganadorDeLaMano(cartaJ1, cartaJ2))
             return jugadores.get(0).getNombre();
         return jugadores.get(1).getNombre();
-    }
+    }*/
 
     public void ganadorDeLaRonda() {
         // https://es.wikipedia.org/wiki/Truco_argentino

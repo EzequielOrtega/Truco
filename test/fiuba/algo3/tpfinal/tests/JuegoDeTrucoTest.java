@@ -1,8 +1,7 @@
 package fiuba.algo3.tpfinal.tests;
 
 
-import fiuba.algo3.tpfinal.modelo.JuegoDeTruco;
-import fiuba.algo3.tpfinal.modelo.Jugador;
+import fiuba.algo3.tpfinal.modelo.*;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -12,6 +11,7 @@ public class JuegoDeTrucoTest {
 
     JuegoDeTruco nuevoJuego;
     Jugador j1,j2;
+
     @Before
     public void SetUp() {
         j1 = new Jugador("Ana");

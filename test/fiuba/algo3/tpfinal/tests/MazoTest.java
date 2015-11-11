@@ -1,7 +1,6 @@
 package fiuba.algo3.tpfinal.tests;
 
-import fiuba.algo3.tpfinal.modelo.Carta;
-import fiuba.algo3.tpfinal.modelo.Mazo;
+import fiuba.algo3.tpfinal.modelo.*;
 import org.junit.Test;
 
 import java.util.*;
@@ -37,7 +36,7 @@ public class MazoTest {
         assertEquals("ESPADA", carta2.getPalo());
     }
 
-    @Test (expected = fiuba.algo3.tpfinal.modelo.NoHayMasCartasError.class)
+    @Test (expected = NoHayMasCartasError.class)
     public void testAgarrarCartaDevuelveErrorSiNoQuedanCartas() {
         for (int i=1; i<=41; i++)
             nuevoMazo.agarrarCarta();

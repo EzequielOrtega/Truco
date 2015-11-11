@@ -1,7 +1,6 @@
 package fiuba.algo3.tpfinal.tests;
 
-import fiuba.algo3.tpfinal.modelo.Carta;
-import fiuba.algo3.tpfinal.modelo.Jugador;
+import fiuba.algo3.tpfinal.modelo.*;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -40,7 +39,7 @@ public class JugadorTest {
         assertEquals(4, nuevoJugador.mostrarCartas().get(2).getValor());
     }
 
-    @Test (expected = fiuba.algo3.tpfinal.modelo.CantidadDeCartasInvalidaError.class)
+    @Test (expected = CantidadDeCartasInvalidaError.class)
     public void testAgarrarCartasDevuelveErrorSiSeAgreganMasDeTres() {
         nuevoJugador.agarrarCarta(carta1);
         nuevoJugador.agarrarCarta(carta2);
