@@ -15,8 +15,7 @@ public class JuegoDeTruco {
 
 
     private final LinkedList<Jugador> jugadores = new LinkedList<Jugador>();
-    private Jugador esMano;
-    private Jugador turnoDe;
+   
     private Mazo mazoDeCartas;
     private JuezDeTruco arbitro;
     //private int enfrentamiento;
@@ -24,27 +23,21 @@ public class JuegoDeTruco {
 
     public JuegoDeTruco(Jugador j1, Jugador j2) {
         jugadores.add(j1);
-        jugadores.add(j2);
-        esMano = j2;
-        turnoDe = j2;
+        jugadores.add(j2);       
         mazoDeCartas = new Mazo();
         this.repartir();
         this.arbitro = new JuezDeTruco();
     }
-
-    /* Para cuando haya 4 jugadores: se cambia el primer constructor por this.JuegoDeTruco(j1,j2,null,null);
+    
     public JuegoDeTruco(Jugador j1, Jugador j2, Jugador j3, Jugador j4) {
         jugadores.add(j1);
         jugadores.add(j2);
-        if (j3 != null && j4 != null) {
-            jugadores.add(j3);
-            jugadores.add(j4);
-        }
-        esMano = j2;
-        turnoDe = j2;
+        jugadores.add(j3);
+        jugadores.add(j4);
         mazoDeCartas = new Mazo();
         this.repartir();
-    } */
+        this.arbitro = new JuezDeTruco();
+    }
 
     public void repartir() {
         // Estoy repartiendo siempre arrancando por el j1, sin contemplar que reparte el que esta a la izq de esMano.
@@ -56,16 +49,36 @@ public class JuegoDeTruco {
                 jug.agarrarCarta(mazoDeCartas.agarrarCarta());
         }
     }
-    /*public String ganadorEnvido() {
-        if (JuezDeTruco.ganadorEnvido(jugadores.get(0).getValorEnvido(), jugadores.get(1).getValorEnvido())) {
-            jugadores.get(0).sumarPuntos(PUNTOS_ENVIDO);
-            return jugadores.get(0).getNombre();
+    public String envido(Integer puntos) {
+        if (jugadores.size() == 2){
+    	return this.envidoDosJugadores(puntos);
+        }else{
+        	//Para cuatro jugadores (mas adelante)
+        	//return this.envidoCuatroJugadores(puntos);
+        	return null;
         }
-        jugadores.get(1).sumarPuntos(PUNTOS_ENVIDO);
-        return jugadores.get(1).getNombre();
     }
 
-    public String ganadorFlor() {
+    private String envidoDosJugadores(Integer puntos) {
+		
+    	Resultado resultado = arbitro.ganadorEnvido(jugadores.get(0).getValorEnvido(), jugadores.get(1).getValorEnvido());
+        switch (resultado){    
+        	case GANADOR1: {
+        		jugadores.get(0).sumarPuntos(puntos);
+        	    return jugadores.get(0).getNombre();
+        	}
+        	case GANADOR2: {
+        		jugadores.get(1).sumarPuntos(puntos);
+        		return jugadores.get(1).getNombre();
+        	}
+        	default: {
+        		jugadores.get(0).sumarPuntos(puntos);
+        	    return jugadores.get(0).getNombre();
+        	}
+        }
+	}
+
+	/*public String ganadorFlor() {
         if (JuezDeTruco.ganadorFlor(jugadores.get(0).getValorFlor(), jugadores.get(1).getValorFlor())) {
             jugadores.get(0).sumarPuntos(PUNTOS_FLOR);
             return jugadores.get(0).getNombre();
@@ -80,7 +93,9 @@ public class JuegoDeTruco {
         return jugadores.get(1).getNombre();
     }*/
 
-    public void ganadorDeLaRonda() {
+  
+
+	public void ganadorDeLaRonda() {
         // https://es.wikipedia.org/wiki/Truco_argentino
         // G1       G2      G3      Ganador
         // 1        2       E           1

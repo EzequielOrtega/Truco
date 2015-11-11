@@ -2,7 +2,7 @@ package fiuba.algo3.tpfinal.modelo;
 
 public class JuezDeTruco {
 
-    public static Resultado ganadorEnvido(int envido1, int envido2) {
+    public Resultado ganadorEnvido(int envido1, int envido2) {
     	if(envido1 > envido2){
     		return Resultado.GANADOR1;
         }else if (envido1 < envido2){
@@ -11,7 +11,7 @@ public class JuezDeTruco {
         	return Resultado.EMPATE;
         }
      }
-    public static Resultado ganadorFlor(int flor1, int flor2) {
+    public Resultado ganadorFlor(int flor1, int flor2) {
     	if(flor1 > flor2){
     		return Resultado.GANADOR1;
         }else if (flor1 < flor2){
@@ -21,7 +21,7 @@ public class JuezDeTruco {
         }
     }
 
-    public static Resultado ganadorDeLaMano(Carta carta1, Carta carta2) {
+    public Resultado ganadorDeLaMano(Carta carta1, Carta carta2) {
     	if(obtenerValorCarta(carta1) > obtenerValorCarta(carta2)){
     		return Resultado.GANADOR1;
         }else if (obtenerValorCarta(carta1) < obtenerValorCarta(carta2)){
