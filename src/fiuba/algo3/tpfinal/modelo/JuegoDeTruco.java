@@ -14,8 +14,6 @@ public class JuegoDeTruco {
     //private static final int PUNTOS_TRUCO_VALE4 = 4;
 
 
-
-
     private final LinkedList<Jugador> jugadores = new LinkedList<Jugador>();
     private Jugador esMano;
     private Jugador turnoDe;

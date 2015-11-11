@@ -1,11 +1,10 @@
 package fiuba.algo3.tpfinal.tests;
 
-import fiuba.algo3.tpfinal.modelo.Carta;
+import fiuba.algo3.tpfinal.modelo.*;
+import org.junit.Assert;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
-import org.junit.Assert;
+import static org.junit.Assert.assertEquals;
 
 public class CartaTest {
 
@@ -23,30 +22,30 @@ public class CartaTest {
         assertEquals("BASTO", otraCarta.getPalo());
     }
 
-    @Test (expected = fiuba.algo3.tpfinal.modelo.ValorDeCartaInvalidoError.class)
+    @Test (expected = ValorDeCartaInvalidoError.class)
     public void testCrearCartaFallaSiValorInvalido() {
         nuevaCarta = new Carta(14, "oro");
     }
 
-    @Test (expected = fiuba.algo3.tpfinal.modelo.PaloDeCartaInvalidoError.class)
+    @Test (expected = PaloDeCartaInvalidoError.class)
     public void testCrearCartaFallaSiPaloInvalido() {
         nuevaCarta = new Carta(7, "corazones");
     }
 
-    @Test
+   /* @Test
     public void testEsFiguraExitoso() {
         nuevaCarta = new Carta(7, "copa");
         otraCarta = new Carta(10, "oro");
         assertFalse(nuevaCarta.esFigura());
         assertTrue(otraCarta.esFigura());
-    }
+    }*/
     @Test
     public void testComparacionDeCartas(){
-    	Carta carta1 = new Carta(1, "espada");
-    	Carta carta2 = new Carta(1, "espada");
+    	nuevaCarta = new Carta(1, "espada");
+    	otraCarta = new Carta(1, "espada");
     	Carta carta3 = new Carta(1, "basto");
-    	Assert.assertTrue(carta1.equals(carta2));
-    	Assert.assertFalse(carta1.equals(carta3));
+    	Assert.assertTrue(nuevaCarta.equals(otraCarta));
+    	Assert.assertFalse(nuevaCarta.equals(carta3));
     }
 
 

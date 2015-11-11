@@ -30,13 +30,13 @@ public class Carta {
         return (this.getValor() >= 10);
     }
 
-    public boolean mismoPaloQue(Carta otraCarta) {
+    /*public boolean mismoPaloQue(Carta otraCarta) {
         return (this.getPalo().equals(otraCarta.getPalo()));
     }
 
     public boolean mismoPaloQue(Carta otraCarta, Carta terceraCarta) {
         return (this.getPalo().equals(otraCarta.getPalo()) && this.getPalo().equals(terceraCarta.getPalo()));
-    }
+    }*/
     
     public boolean equals(Carta cartaAComparar){
     	return ((this.valor == cartaAComparar.getValor()) && (this.getPalo() == cartaAComparar.getPalo()));

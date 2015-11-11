@@ -8,8 +8,8 @@ public class CalculadorDeTantos {
 		if(cartas.size()<3){
 			throw new SoloSePuedeCantarEnPrimeraError();
 		}
-		Boolean tieneFlor = false;
-		for(Integer x = 0; x<2; x++){
+		boolean tieneFlor = false;
+		for(int x = 0; x<2; x++){
 			Carta cartaActual = cartas.elementAt(x);
 			Carta cartaSiguiente = cartas.elementAt(x+1);
 			if(cartaActual.getPalo()==cartaSiguiente.getPalo()){
@@ -22,9 +22,9 @@ public class CalculadorDeTantos {
 	}
 	
 	
-	public Integer obtenerTantosDeFlor(Vector<Carta> cartas){
+	public int obtenerTantosDeFlor(Vector<Carta> cartas){
 		if (this.tieneFlor(cartas)){
-			Integer tantosDeFlor = 20;
+			int tantosDeFlor = 20;
 			for (Carta carta: cartas){
 				ValorDeCartaParaEnvidoYFlor cartaActual = (ValorDeCartaParaEnvidoYFlor) carta;
 				tantosDeFlor = tantosDeFlor + cartaActual.obtenerValorParaEnvidoYFlor();
@@ -35,7 +35,7 @@ public class CalculadorDeTantos {
 		}
 	}
 	
-	public Integer obtenerTantosDeEnvido(Vector<Carta> cartas){
+	public int obtenerTantosDeEnvido(Vector<Carta> cartas){
 		if (cartas.size()<3){
 			throw new SoloSePuedeCantarEnPrimeraError();
 		}
@@ -52,21 +52,21 @@ public class CalculadorDeTantos {
 	}
 
 
-	private Integer calcularEnvidoDeTresCartas(Vector<Carta> cartas) {
-		Integer tantosDeEnvido = 20;
+	private int calcularEnvidoDeTresCartas(Vector<Carta> cartas) {
+		int tantosDeEnvido = 20;
 		ValorDeCartaParaEnvidoYFlor carta1 = (ValorDeCartaParaEnvidoYFlor) cartas.elementAt(0);
 		ValorDeCartaParaEnvidoYFlor carta2 = (ValorDeCartaParaEnvidoYFlor) cartas.elementAt(1);
 		ValorDeCartaParaEnvidoYFlor carta3 = (ValorDeCartaParaEnvidoYFlor) cartas.elementAt(2);
-		Integer valor1 = carta1.obtenerValorParaEnvidoYFlor();
-		Integer valor2 = carta2.obtenerValorParaEnvidoYFlor();
-		Integer valor3 = carta3.obtenerValorParaEnvidoYFlor();
+		int valor1 = carta1.obtenerValorParaEnvidoYFlor();
+		int valor2 = carta2.obtenerValorParaEnvidoYFlor();
+		int valor3 = carta3.obtenerValorParaEnvidoYFlor();
 		tantosDeEnvido += this.sumarLosDosValoresMasAltos(valor1, valor2, valor3);	
 		return tantosDeEnvido;
 	}
 
 
-	private Integer sumarLosDosValoresMasAltos(Integer valor1, Integer valor2, Integer valor3) {
-		Integer suma = 0;
+	private int sumarLosDosValoresMasAltos(int valor1, int valor2, int valor3) {
+		int suma = 0;
 		int[] valores = new int[3];
 		valores[0] = valor1;
 		valores[1] = valor2;
@@ -80,7 +80,6 @@ public class CalculadorDeTantos {
 
 	private void ordenarAscendentemente(int[] valores) {
 		int aux;
-		 
 	    for (int i = 0; i < valores.length - 1; i++) {
 	        for (int x = i + 1; x < valores.length; x++) {
 	            if (valores[x] < valores[i]) {
@@ -93,8 +92,8 @@ public class CalculadorDeTantos {
 	}
 
 
-	private Integer calcularEnvidoDeDosCartas(Vector<Carta> cartas) {
-		Integer tantosDeEnvido = 20;
+	private int calcularEnvidoDeDosCartas(Vector<Carta> cartas) {
+		int tantosDeEnvido = 20;
 		ValorDeCartaParaEnvidoYFlor carta1 = (ValorDeCartaParaEnvidoYFlor) cartas.elementAt(0);
 		ValorDeCartaParaEnvidoYFlor carta2 = (ValorDeCartaParaEnvidoYFlor) cartas.elementAt(1);
 		ValorDeCartaParaEnvidoYFlor carta3 = (ValorDeCartaParaEnvidoYFlor) cartas.elementAt(2);
@@ -112,13 +111,13 @@ public class CalculadorDeTantos {
 	}
 
 
-	private Integer calcularEnvidoDeUnaCarta(Vector<Carta> cartas) {
+	private int calcularEnvidoDeUnaCarta(Vector<Carta> cartas) {
 		ValorDeCartaParaEnvidoYFlor carta1 = (ValorDeCartaParaEnvidoYFlor) cartas.elementAt(0);
 		ValorDeCartaParaEnvidoYFlor carta2 = (ValorDeCartaParaEnvidoYFlor) cartas.elementAt(1);
 		ValorDeCartaParaEnvidoYFlor carta3 = (ValorDeCartaParaEnvidoYFlor) cartas.elementAt(2);
-		Integer valor1 = carta1.obtenerValorParaEnvidoYFlor();
-		Integer valor2 = carta2.obtenerValorParaEnvidoYFlor();
-		Integer valor3 = carta3.obtenerValorParaEnvidoYFlor();
+		int valor1 = carta1.obtenerValorParaEnvidoYFlor();
+		int valor2 = carta2.obtenerValorParaEnvidoYFlor();
+		int valor3 = carta3.obtenerValorParaEnvidoYFlor();
 		if((valor1 > valor2) && (valor1 > valor3)){
 			return valor1;
 		} else if ((valor2 > valor1) && (valor2 > valor3)){
@@ -130,17 +129,17 @@ public class CalculadorDeTantos {
 
 
 	private boolean esEnvidoDeDosCartas(Vector<Carta> cartas) {
-		Boolean comparacion1 = cartas.elementAt(0).getPalo() == cartas.elementAt(1).getPalo();
-		Boolean comparacion2 = cartas.elementAt(1).getPalo() == cartas.elementAt(2).getPalo();
-		Boolean esEnvidoDeDos = comparacion1 || comparacion2;
+		boolean comparacion1 = cartas.elementAt(0).getPalo() == cartas.elementAt(1).getPalo();
+		boolean comparacion2 = cartas.elementAt(1).getPalo() == cartas.elementAt(2).getPalo();
+		boolean esEnvidoDeDos = comparacion1 || comparacion2;
 		return esEnvidoDeDos;
 	}
 
 
 	private boolean esEnvidoDeTresCartas(Vector<Carta> cartas) {
-		Boolean comparacion1 = cartas.elementAt(0).getPalo() == cartas.elementAt(1).getPalo();
-		Boolean comparacion2 = cartas.elementAt(1).getPalo() == cartas.elementAt(2).getPalo();
-		Boolean esEnvidoDeTres = comparacion1 && comparacion2;
+		boolean comparacion1 = cartas.elementAt(0).getPalo() == cartas.elementAt(1).getPalo();
+		boolean comparacion2 = cartas.elementAt(1).getPalo() == cartas.elementAt(2).getPalo();
+		boolean esEnvidoDeTres = comparacion1 && comparacion2;
 		return esEnvidoDeTres;
 	}
 }

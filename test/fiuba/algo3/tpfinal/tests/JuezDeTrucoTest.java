@@ -1,8 +1,7 @@
 package fiuba.algo3.tpfinal.tests;
 
 
-import fiuba.algo3.tpfinal.modelo.Carta;
-import fiuba.algo3.tpfinal.modelo.JuezDeTruco;
+import fiuba.algo3.tpfinal.modelo.*;
 import org.junit.Test;
 
 import static org.junit.Assert.assertFalse;
