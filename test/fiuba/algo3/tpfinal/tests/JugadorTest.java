@@ -14,10 +14,10 @@ public class JugadorTest {
     @Before
     public void SetUp() {
         nuevoJugador = new Jugador("Juan");
-        carta1 = new Carta(7, "espada");
-        carta2 = new Carta(3, "espada");
-        carta3 = new Carta(4, "Basto");
-        carta4 = new Carta(11, "COPa");
+        carta1 = new Carta(7, Palo.ESPADA);
+        carta2 = new Carta(3, Palo.ESPADA);
+        carta3 = new Carta(4, Palo.BASTO);
+        carta4 = new Carta(11, Palo.COPA);
     }
 
     @Test

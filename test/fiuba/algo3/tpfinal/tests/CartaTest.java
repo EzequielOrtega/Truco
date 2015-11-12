@@ -1,10 +1,9 @@
 package fiuba.algo3.tpfinal.tests;
 
 import fiuba.algo3.tpfinal.modelo.*;
-import org.junit.Assert;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 public class CartaTest {
 
@@ -13,39 +12,27 @@ public class CartaTest {
 
     @Test
     public void testCrearCartaExitoso() {
-        nuevaCarta = new Carta(7,"ORO");
+        nuevaCarta = new Carta(7, Palo.ORO);
         assertEquals("ORO",nuevaCarta.getPalo());
         assertEquals(7,nuevaCarta.getValor());
 
         // Si introduzo el palo con mayusculas y minusculas
-        otraCarta = new Carta(4, "Basto");
+        otraCarta = new Carta(4, Palo.BASTO);
         assertEquals("BASTO", otraCarta.getPalo());
     }
 
     @Test (expected = ValorDeCartaInvalidoError.class)
     public void testCrearCartaFallaSiValorInvalido() {
-        nuevaCarta = new Carta(14, "oro");
+        nuevaCarta = new Carta(14, Palo.ORO);
     }
 
-    @Test (expected = PaloDeCartaInvalidoError.class)
-    public void testCrearCartaFallaSiPaloInvalido() {
-        nuevaCarta = new Carta(7, "corazones");
-    }
-
-   /* @Test
-    public void testEsFiguraExitoso() {
-        nuevaCarta = new Carta(7, "copa");
-        otraCarta = new Carta(10, "oro");
-        assertFalse(nuevaCarta.esFigura());
-        assertTrue(otraCarta.esFigura());
-    }*/
     @Test
     public void testComparacionDeCartas(){
-    	nuevaCarta = new Carta(1, "espada");
-    	otraCarta = new Carta(1, "espada");
-    	Carta carta3 = new Carta(1, "basto");
-    	Assert.assertTrue(nuevaCarta.equals(otraCarta));
-    	Assert.assertFalse(nuevaCarta.equals(carta3));
+    	nuevaCarta = new Carta(1, Palo.ESPADA);
+    	otraCarta = new Carta(1, Palo.ESPADA);
+    	Carta carta3 = new Carta(1, Palo.BASTO);
+    	assertTrue(nuevaCarta.equals(otraCarta));
+    	assertFalse(nuevaCarta.equals(carta3));
     }
 
 

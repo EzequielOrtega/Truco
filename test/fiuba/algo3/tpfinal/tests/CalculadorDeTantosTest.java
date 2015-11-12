@@ -5,6 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.Vector;
+
 import static org.junit.Assert.*;
 
 public class CalculadorDeTantosTest {
@@ -15,13 +16,13 @@ public class CalculadorDeTantosTest {
 	@Before
 	public void setup(){
         calculador = new CalculadorDeTantos();
-        carta1 = new NoFigura(1, "espada");
-        carta2 = new NoFigura(7, "espada");
-        carta3 = new Figura(10, "espada");
-        carta4 = new NoFigura(7, "copa");
-        carta5 = new Figura(10, "basto");
-        carta6 = new NoFigura(5, "espada");
-        carta7 = new NoFigura(1, "basto");
+        carta1 = new NoFigura(1, Palo.ESPADA);
+        carta2 = new NoFigura(7, Palo.ESPADA);
+        carta3 = new Figura(10, Palo.ESPADA);
+        carta4 = new NoFigura(7, Palo.COPA);
+        carta5 = new Figura(10, Palo.BASTO);
+        carta6 = new NoFigura(5, Palo.ESPADA);
+        carta7 = new NoFigura(1, Palo.BASTO);
 	}
 	@Test
 	public void testTieneFlor() {
@@ -85,4 +86,5 @@ public class CalculadorDeTantosTest {
 		calculador.obtenerTantosDeEnvido(cartas);
 		
 	}
+
 }

@@ -1,9 +1,9 @@
 package fiuba.algo3.tpfinal.modelo;
 
-public class Figura extends Carta implements ValorDeCartaParaEnvidoYFlor {
+public class Figura extends Carta implements CartaParaEnvidoYFlor {
 	
-	public Figura(Integer valor, String palo){
-		super(valor, palo);		
+	public Figura(Integer valor, Palo palo){
+		super(valor, palo);
 	}
 	@Override
 	public int obtenerValorParaEnvidoYFlor() {

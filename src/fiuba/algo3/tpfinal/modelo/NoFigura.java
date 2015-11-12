@@ -1,8 +1,8 @@
 package fiuba.algo3.tpfinal.modelo;
 
-public class NoFigura extends Carta implements ValorDeCartaParaEnvidoYFlor {
+public class NoFigura extends Carta implements CartaParaEnvidoYFlor {
 	
-	public NoFigura (Integer valor, String palo){
+	public NoFigura (Integer valor, Palo palo){
 		super(valor, palo);
 	}
 	@Override

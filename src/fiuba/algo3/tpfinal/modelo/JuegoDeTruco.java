@@ -22,25 +22,22 @@ public class JuegoDeTruco {
     //private int[] ronda;
 
     public JuegoDeTruco(Jugador j1, Jugador j2) {
-        jugadores.add(j1);
-        jugadores.add(j2);       
-        mazoDeCartas = new Mazo();
-        this.repartir();
-        this.arbitro = new JuezDeTruco();
+        this(j1, j2, null, null);
     }
     
     public JuegoDeTruco(Jugador j1, Jugador j2, Jugador j3, Jugador j4) {
         jugadores.add(j1);
         jugadores.add(j2);
-        jugadores.add(j3);
-        jugadores.add(j4);
+        if ((j3 != null) && (j4 != null)) {
+            jugadores.add(j3);
+            jugadores.add(j4);
+        }
         mazoDeCartas = new Mazo();
         this.repartir();
         this.arbitro = new JuezDeTruco();
     }
 
     public void repartir() {
-        // Estoy repartiendo siempre arrancando por el j1, sin contemplar que reparte el que esta a la izq de esMano.
         for (Jugador jug: jugadores)
             jug.entregarCartas();
         mazoDeCartas.mezclar();
@@ -49,48 +46,20 @@ public class JuegoDeTruco {
                 jug.agarrarCarta(mazoDeCartas.agarrarCarta());
         }
     }
-    public String envido(Integer puntos) {
-        if (jugadores.size() == 2){
-    	return this.envidoDosJugadores(puntos);
-        }else{
-        	//Para cuatro jugadores (mas adelante)
-        	//return this.envidoCuatroJugadores(puntos);
-        	return null;
-        }
+
+    public void envido() {
+        Jugador ganador = arbitro.ganadorEnvido(jugadores);
+        ganador.sumarPuntos(PUNTOS_ENVIDO);
     }
 
-    private String envidoDosJugadores(Integer puntos) {
-		
-    	Resultado resultado = arbitro.ganadorEnvido(jugadores.get(0).getValorEnvido(), jugadores.get(1).getValorEnvido());
-        switch (resultado){    
-        	case GANADOR1: {
-        		jugadores.get(0).sumarPuntos(puntos);
-        	    return jugadores.get(0).getNombre();
-        	}
-        	case GANADOR2: {
-        		jugadores.get(1).sumarPuntos(puntos);
-        		return jugadores.get(1).getNombre();
-        	}
-        	default: {
-        		jugadores.get(0).sumarPuntos(puntos);
-        	    return jugadores.get(0).getNombre();
-        	}
-        }
-	}
-
-	/*public String ganadorFlor() {
-        if (JuezDeTruco.ganadorFlor(jugadores.get(0).getValorFlor(), jugadores.get(1).getValorFlor())) {
-            jugadores.get(0).sumarPuntos(PUNTOS_FLOR);
-            return jugadores.get(0).getNombre();
-        }
-        jugadores.get(1).sumarPuntos(PUNTOS_FLOR);
-        return jugadores.get(1).getNombre();
+	public void flor() {
+        Jugador ganador = arbitro.ganadorFlor(jugadores);
+        ganador.sumarPuntos(PUNTOS_FLOR);
     }
 
-    public String ganadorDeLaMano(Carta cartaJ1, Carta cartaJ2) {
-        if (JuezDeTruco.ganadorDeLaMano(cartaJ1, cartaJ2))
-            return jugadores.get(0).getNombre();
-        return jugadores.get(1).getNombre();
+    /*
+    public void ganadorDeLaMano(Carta cartaJ1, Carta cartaJ2) {
+        Jugador ganador = arbitro.ganadorDeLaMano(jugadores);
     }*/
 
   

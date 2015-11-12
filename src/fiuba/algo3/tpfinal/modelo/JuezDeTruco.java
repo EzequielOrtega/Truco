@@ -1,24 +1,34 @@
 package fiuba.algo3.tpfinal.modelo;
 
+import java.util.LinkedList;
+
 public class JuezDeTruco {
 
-    public Resultado ganadorEnvido(int envido1, int envido2) {
-    	if(envido1 > envido2){
-    		return Resultado.GANADOR1;
-        }else if (envido1 < envido2){
-        	return Resultado.GANADOR2;
-        }else{
-        	return Resultado.EMPATE;
+    // Definir una tabla de hash
+    public Jugador ganadorEnvido(LinkedList<Jugador> jugadores) {
+    	Jugador ganadorEnvido = null;
+        int maximoValor = 0;
+        for (Jugador jug: jugadores) {
+            if(jug.getValorEnvido() > maximoValor)
+                ganadorEnvido = jug;
+            if(jug.getValorEnvido() == maximoValor)
+                ganadorEnvido = jugadores.get(0);
         }
+
+        return ganadorEnvido;
      }
-    public Resultado ganadorFlor(int flor1, int flor2) {
-    	if(flor1 > flor2){
-    		return Resultado.GANADOR1;
-        }else if (flor1 < flor2){
-        	return Resultado.GANADOR2;
-        }else{
-        	return Resultado.EMPATE;
+
+    public Jugador ganadorFlor(LinkedList<Jugador> jugadores) {
+    	Jugador ganadorFlor = null;
+        int maximoValor = 0;
+        for (Jugador jug: jugadores) {
+            if(jug.getValorFlor() > maximoValor)
+                ganadorFlor = jug;
+            if(jug.getValorFlor() == maximoValor)
+                ganadorFlor = jugadores.get(0);
         }
+
+        return ganadorFlor;
     }
 
     public Resultado ganadorDeLaMano(Carta carta1, Carta carta2) {
@@ -28,7 +38,7 @@ public class JuezDeTruco {
         	return Resultado.GANADOR2;
         }else{
         	return Resultado.EMPATE;
-        }    	
+        }
     }
 
     private static int obtenerValorCarta(Carta unaCarta) {

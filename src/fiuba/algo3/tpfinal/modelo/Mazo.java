@@ -9,14 +9,14 @@ public class Mazo {
     // Constructor por defecto: mazo de 40 cartas (sin 8s y 9s) para jugar al truco.
 
     public Mazo() {
-        String[] palo = {"oro", "basto", "copa", "espada"};
-        for (int j=0; j<4; j++) {
+
+        for (Palo palo: Palo.values()) {
             for (int i = 1; i < 8; i++) {
-                Carta nuevaCarta = new NoFigura(i, palo[j]);
+                Carta nuevaCarta = new NoFigura(i, palo);
                 cartas.add(nuevaCarta);
             }
             for (int i = 10; i < 13; i++) {
-                Carta nuevaCarta = new Figura(i, palo[j]);
+                Carta nuevaCarta = new Figura(i, palo);
                 cartas.add(nuevaCarta);
             }
         }
@@ -28,7 +28,7 @@ public class Mazo {
     }
 
     public Carta agarrarCarta() {
-        if (cartasUsadas == cartas.size())
+        if (cantidadDeCartasRestantes()==0)
             throw new NoHayMasCartasError("No quedan mas cartas. Vuelva a mezclar.");
         return cartas.get(cartas.size() - ++cartasUsadas);
     }
