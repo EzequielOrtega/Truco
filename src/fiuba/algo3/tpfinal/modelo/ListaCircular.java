@@ -38,4 +38,22 @@ public class ListaCircular<T> {
 			cantidadDeNodos++;
 		}
 	}
+	
+	public void moverAlSiguiente(){
+		raiz = raiz.obtenerSiguiente();
+	}
+	
+	//considero la posicion 0 como la posicion de la raiz
+	public T obtenerElemento(Integer posicion){
+		Nodo<T> nodoBuscado = raiz;
+		for(int x = 1; x <= posicion; x++ ){
+			nodoBuscado = nodoBuscado.obtenerSiguiente();
+		}
+		return nodoBuscado.obtenerDato();
+	}
+	
+	public void vaciar(){
+		raiz = null;
+		cantidadDeNodos = 0;
+	}
 }
