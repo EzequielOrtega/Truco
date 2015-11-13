@@ -14,7 +14,7 @@ public class JuegoDeTruco {
     //private static final int PUNTOS_TRUCO_VALE4 = 4;
 
 
-    private final LinkedList<Jugador> jugadores = new LinkedList<Jugador>();
+    private final ListaCircular<Jugador> jugadores = new ListaCircular<Jugador>();
    
     private Mazo mazoDeCartas;
     private JuezDeTruco arbitro;
@@ -22,38 +22,41 @@ public class JuegoDeTruco {
     //private int[] ronda;
 
     public JuegoDeTruco(Jugador j1, Jugador j2) {
-        this(j1, j2, null, null);
+    	jugadores.agregar(j1);
+        jugadores.agregar(j2);
+        mazoDeCartas = new Mazo();
+        this.repartir();
+        this.arbitro = new JuezDeTruco();
     }
     
     public JuegoDeTruco(Jugador j1, Jugador j2, Jugador j3, Jugador j4) {
-        jugadores.add(j1);
-        jugadores.add(j2);
-        if ((j3 != null) && (j4 != null)) {
-            jugadores.add(j3);
-            jugadores.add(j4);
-        }
+        jugadores.agregar(j1);
+        jugadores.agregar(j2);
+        jugadores.agregar(j3);
+        jugadores.agregar(j4);
         mazoDeCartas = new Mazo();
         this.repartir();
         this.arbitro = new JuezDeTruco();
     }
 
     public void repartir() {
-        for (Jugador jug: jugadores)
+        LinkedList<Jugador> jugadoresList = jugadores.obtenerElementos();
+    	for (Jugador jug: jugadoresList)
             jug.entregarCartas();
         mazoDeCartas.mezclar();
         for (int i=1; i<4; i++) {
-            for (Jugador jug : jugadores)
+            for (Jugador jug : jugadoresList)
                 jug.agarrarCarta(mazoDeCartas.agarrarCarta());
         }
     }
 
     public void envido(Integer puntos) {
-        Jugador ganador = arbitro.ganadorEnvido(jugadores);
+        Jugador ganador = arbitro.ganadorEnvido(jugadores.obtenerElementos());
         ganador.sumarPuntos(puntos);
     }
 
 	public void flor(Integer puntos) {
-        Jugador ganador = arbitro.ganadorFlor(jugadores);
+        Jugador ganador = arbitro.ganadorFlor(jugadores.obtenerElementos());
         ganador.sumarPuntos(puntos);
     }
 
