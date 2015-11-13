@@ -47,14 +47,14 @@ public class JuegoDeTruco {
         }
     }
 
-    public void envido() {
+    public void envido(Integer puntos) {
         Jugador ganador = arbitro.ganadorEnvido(jugadores);
-        ganador.sumarPuntos(PUNTOS_ENVIDO);
+        ganador.sumarPuntos(puntos);
     }
 
-	public void flor() {
+	public void flor(Integer puntos) {
         Jugador ganador = arbitro.ganadorFlor(jugadores);
-        ganador.sumarPuntos(PUNTOS_FLOR);
+        ganador.sumarPuntos(puntos);
     }
 
     /*

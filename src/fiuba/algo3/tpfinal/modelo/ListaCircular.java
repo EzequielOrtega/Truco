@@ -1,5 +1,7 @@
 package fiuba.algo3.tpfinal.modelo;
 
+import java.util.LinkedList;
+
 public class ListaCircular<T> {
 	
 	private Nodo<T> raiz;
@@ -55,5 +57,15 @@ public class ListaCircular<T> {
 	public void vaciar(){
 		raiz = null;
 		cantidadDeNodos = 0;
+	}
+	
+	public LinkedList<T> obtenerElementos(){
+		LinkedList<T> elementos = new LinkedList<T>();
+		Nodo<T> nodoActual = raiz;
+		for(Integer x = 0; x < cantidadDeNodos; x++){
+			elementos.add(nodoActual.obtenerDato());
+			nodoActual = nodoActual.obtenerSiguiente();
+		}
+		return elementos;
 	}
 }

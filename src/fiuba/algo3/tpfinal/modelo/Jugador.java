@@ -9,13 +9,15 @@ public class Jugador {
     private final String nombre;
     private Vector<Carta> cartas;
     private int puntaje;
-    private CalculadorDeTantos calculador;
+    private CalculadorDeTantos calculadorDeTantos;
+   
 
     public Jugador (String nombreJugador) {
         this.nombre = nombreJugador;
         this.puntaje = 0;
-        this.calculador = new CalculadorDeTantos();
+        this.calculadorDeTantos = new CalculadorDeTantos();
         this.cartas = new Vector<Carta>();
+        
     }
 
     public String getNombre() {
@@ -57,12 +59,12 @@ public class Jugador {
     public int getValorEnvido () {
         if (cartas.size() != 3)
             throw new CantidadDeCartasInvalidaError("El envido debe calcularse solo si se tiene 3 cartas en mano.");
-        return calculador.obtenerTantosDeEnvido(cartas);
+        return calculadorDeTantos.obtenerTantosDeEnvido(cartas);
     }
 
     public int getValorFlor () {
         if (cartas.size() != 3)
             throw new CantidadDeCartasInvalidaError("El envido debe calcularse solo si se tiene 3 cartas en mano.");
-        return calculador.obtenerTantosDeFlor(cartas);
+        return calculadorDeTantos.obtenerTantosDeFlor(cartas);
     }
 }

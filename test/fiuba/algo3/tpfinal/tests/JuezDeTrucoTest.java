@@ -39,7 +39,7 @@ public class JuezDeTrucoTest {
     @Test
     public void testEmpateEnFlor(){
     	assertEquals(Resultado.EMPATE, arbitro.ganadorFlor(32, 32));
-    }
+    }*/
 
     /*@Test
     public void testGanadorMano() {
