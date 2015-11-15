@@ -1,6 +1,7 @@
 package fiuba.algo3.tpfinal.tests;
 
 
+import fiuba.algo3.tpfinal.modelo.Equipo;
 import fiuba.algo3.tpfinal.modelo.JuezDeTruco;
 import fiuba.algo3.tpfinal.modelo.Jugador;
 import org.junit.Before;
@@ -14,8 +15,8 @@ public class JuezDeTrucoTest {
 	@Before
 	public void setup(){
 		this.arbitro = new JuezDeTruco();
-        Jugador j1 = new Jugador("Ana");
-        Jugador j2 = new Jugador("Pedro");
+        Jugador j1 = new Jugador("Ana", Equipo.EQUIPO1);
+        Jugador j2 = new Jugador("Pedro", Equipo.EQUIPO2);
         this.jugadores.add(j1);
         this.jugadores.add(j2);
 	}

@@ -21,18 +21,24 @@ public class JuegoDeTruco {
     //private int enfrentamiento;
     //private int[] ronda;
 
-    public JuegoDeTruco(Jugador j1, Jugador j2) {
+    public JuegoDeTruco(String nombreJ1, String nombreJ2) {
+    	Jugador j1 = new Jugador(nombreJ1, Equipo.EQUIPO1);
     	jugadores.agregar(j1);
-        jugadores.agregar(j2);
+    	Jugador j2 = new Jugador(nombreJ2, Equipo.EQUIPO2);
+        jugadores.agregar(j2);        
         mazoDeCartas = new Mazo();
         this.repartir();
         this.arbitro = new JuezDeTruco();
     }
     
-    public JuegoDeTruco(Jugador j1, Jugador j2, Jugador j3, Jugador j4) {
-        jugadores.agregar(j1);
+    public JuegoDeTruco(String nombreJ1, String nombreJ2, String nombreJ3, String nombreJ4) {
+    	Jugador j1 = new Jugador(nombreJ1, Equipo.EQUIPO1);
+    	jugadores.agregar(j1);
+    	Jugador j2 = new Jugador(nombreJ2, Equipo.EQUIPO2);
         jugadores.agregar(j2);
+        Jugador j3 = new Jugador(nombreJ3, Equipo.EQUIPO1);
         jugadores.agregar(j3);
+        Jugador j4 = new Jugador(nombreJ4, Equipo.EQUIPO2);
         jugadores.agregar(j4);
         mazoDeCartas = new Mazo();
         this.repartir();
@@ -77,6 +83,10 @@ public class JuegoDeTruco {
         // E        E       E           Mano
 
         return;
+    }
+	
+	public void comenzarPartida(Boolean conFlor){
+    	
     }
 
 }

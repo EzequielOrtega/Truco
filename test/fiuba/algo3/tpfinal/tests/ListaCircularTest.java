@@ -6,6 +6,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import fiuba.algo3.tpfinal.modelo.Equipo;
 import fiuba.algo3.tpfinal.modelo.Jugador;
 import fiuba.algo3.tpfinal.modelo.ListaCircular;
 
@@ -25,7 +26,7 @@ public class ListaCircularTest {
 	
 	@Test
 	public void testAumentaElTamanioAlAgregar(){
-		Jugador jugador = new Jugador("eze");
+		Jugador jugador = new Jugador("eze", Equipo.EQUIPO1);
 		Assert.assertTrue(0 == jugadores.tamanio());
 		jugadores.agregar(jugador);
 		Assert.assertTrue(1 == jugadores.tamanio());
@@ -33,8 +34,8 @@ public class ListaCircularTest {
 	
 	@Test
 	public void testLosElementosSeAgreganCorrectamente(){
-		Jugador jugador1 = new Jugador("eze");
-		Jugador jugador2 = new Jugador("matu");
+		Jugador jugador1 = new Jugador("eze", Equipo.EQUIPO1);
+		Jugador jugador2 = new Jugador("matu", Equipo.EQUIPO2);
 		jugadores.agregar(jugador1);
 		jugadores.agregar(jugador2);
 		Assert.assertTrue(jugador1 == jugadores.obtenerElemento(0));
@@ -43,8 +44,8 @@ public class ListaCircularTest {
 	
 	@Test
 	public void testMoverAlSiguiente(){
-		Jugador jugador1 = new Jugador("eze");
-		Jugador jugador2 = new Jugador("matu");
+		Jugador jugador1 = new Jugador("eze", Equipo.EQUIPO1);
+		Jugador jugador2 = new Jugador("matu", Equipo.EQUIPO2);
 		jugadores.agregar(jugador1);
 		jugadores.agregar(jugador2);
 		Assert.assertTrue(jugador1 == jugadores.obtenerElemento(0));
@@ -54,8 +55,8 @@ public class ListaCircularTest {
 	
 	@Test
 	public void testVaciarLista(){
-		Jugador jugador1 = new Jugador("eze");
-		Jugador jugador2 = new Jugador("matu");
+		Jugador jugador1 = new Jugador("eze", Equipo.EQUIPO1);
+		Jugador jugador2 = new Jugador("matu", Equipo.EQUIPO2);
 		jugadores.agregar(jugador1);
 		jugadores.agregar(jugador2);
 		Assert.assertFalse(jugadores.estaVacia());
@@ -65,8 +66,8 @@ public class ListaCircularTest {
 	
 	@Test
 	public void testObtenerElementos(){
-		Jugador jugador1 = new Jugador("eze");
-		Jugador jugador2 = new Jugador("matu");
+		Jugador jugador1 = new Jugador("eze", Equipo.EQUIPO1);
+		Jugador jugador2 = new Jugador("matu", Equipo.EQUIPO2);
 		jugadores.agregar(jugador1);
 		jugadores.agregar(jugador2);
 		LinkedList<Jugador> jugadoresList = jugadores.obtenerElementos();

@@ -11,15 +11,16 @@ public class Jugador {
     private int puntaje;
     private CalculadorDeTantos calculadorDeTantos;
     private Vector<Carta> cartasJugadas;
+    private Equipo equipo;
    
 
-    public Jugador (String nombreJugador) {
+    public Jugador (String nombreJugador, Equipo equipo) {
         this.nombre = nombreJugador;
         this.puntaje = 0;
         this.calculadorDeTantos = new CalculadorDeTantos();
         this.cartas = new Vector<Carta>();
         this.cartasJugadas = new Vector<Carta>();
-        
+        this.equipo = equipo;
     }
 
     public String getNombre() {

@@ -13,7 +13,7 @@ public class JugadorTest {
 
     @Before
     public void SetUp() {
-        nuevoJugador = new Jugador("Juan");
+        nuevoJugador = new Jugador("Juan", Equipo.EQUIPO1);
         carta1 = new Carta(7, Palo.ESPADA);
         carta2 = new Carta(3, Palo.ESPADA);
         carta3 = new Carta(4, Palo.BASTO);
