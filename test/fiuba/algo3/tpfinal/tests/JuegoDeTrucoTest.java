@@ -17,7 +17,7 @@ public class JuegoDeTrucoTest {
     	nuevoJuego = new JuegoDeTruco("Ana", "Juan");
     }
     
-    //Pedir las cartas asi rompe la encapsulacion de JuegoDeTruco
+    //Pedir las cartas asi rompe el encapsulamiento de JuegoDeTruco
     @Test
     public void testSeRepartioLaManoInicial() {
         /*// Chequeo que se le repartieron las 3 cartas a cada jugador.

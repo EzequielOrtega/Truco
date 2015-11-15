@@ -86,7 +86,40 @@ public class JuegoDeTruco {
     }
 	
 	public void comenzarPartida(Boolean conFlor){
-    	
+    	this.resetearPuntos();
+		while ((this.puntosDeEquipo(Equipo.EQUIPO1)>=30) || (this.puntosDeEquipo(Equipo.EQUIPO1)>=30)){
+    		this.ronda(conFlor);
+    	}
     }
+
+	private void resetearPuntos() {
+		LinkedList<Jugador> jugadoresList = jugadores.obtenerElementos();
+		for(Jugador jugadorActual: jugadoresList){
+			jugadorActual.resetearPuntos();
+		}
+	}
+
+	private void ronda(Boolean conFlor) {
+		mazoDeCartas.mezclar();
+		this.repartir();
+		boolean noTerminoRonda = true;
+		while (noTerminoRonda){
+			//Acciones de jugador (cantar y/ jugar)
+			//Verificar quien gano la mano
+			//Verificar si se termino la ronda (cambiar el estado de noTerminoRonda)
+			//Sumar los puntos al ganador
+		}
+	}
+
+	private int puntosDeEquipo(Equipo equipo) {
+		Integer puntos = 0;
+		LinkedList<Jugador> jugadoresList = jugadores.obtenerElementos();
+		for(Jugador jugadorActual: jugadoresList){
+			if(jugadorActual.coincideElEquipo(equipo)){
+				puntos =+ jugadorActual.obtenerPuntaje();
+			}
+		}
+		return puntos;
+	}
 
 }

@@ -82,4 +82,8 @@ public class Jugador {
         cartasTodas.addAll(cartasJugadas);
         return calculadorDeTantos.obtenerTantosDeFlor(cartasTodas);
     }
+
+	public void resetearPuntos() {
+		this.puntaje = 0;
+	}
 }
