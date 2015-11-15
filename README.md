@@ -2,6 +2,6 @@
 TP final algo 3
 
 Ezequiel Ortega
-Micaela Lean
+Micaela Lean Cole
 Marcos Pozzo
 
