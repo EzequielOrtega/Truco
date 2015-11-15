@@ -10,6 +10,7 @@ public class Jugador {
     private Vector<Carta> cartas;
     private int puntaje;
     private CalculadorDeTantos calculadorDeTantos;
+    private Vector<Carta> cartasJugadas;
    
 
     public Jugador (String nombreJugador) {
@@ -17,6 +18,7 @@ public class Jugador {
         this.puntaje = 0;
         this.calculadorDeTantos = new CalculadorDeTantos();
         this.cartas = new Vector<Carta>();
+        this.cartasJugadas = new Vector<Carta>();
         
     }
 
@@ -40,6 +42,7 @@ public class Jugador {
 
     public void entregarCartas() {
         this.cartas.removeAllElements();
+        this.cartasJugadas.removeAllElements();
     }
     
     public int obtenerPuntaje(){
@@ -51,6 +54,7 @@ public class Jugador {
     public Carta jugarCarta(int numeroDeCarta) {
         Carta carta = cartas.get(numeroDeCarta-1);
         cartas.remove(carta);
+        cartasJugadas.add(carta);
         return carta;
     }
 
@@ -59,12 +63,18 @@ public class Jugador {
     public int getValorEnvido () {
         if (cartas.size() != 3)
             throw new CantidadDeCartasInvalidaError("El envido debe calcularse solo si se tiene 3 cartas en mano.");
-        return calculadorDeTantos.obtenerTantosDeEnvido(cartas);
+        Vector<Carta> cartasTodas = new Vector<Carta>();
+        cartasTodas.addAll(cartas);
+        cartasTodas.addAll(cartasJugadas);
+        return calculadorDeTantos.obtenerTantosDeEnvido(cartasTodas);
     }
 
     public int getValorFlor () {
         if (cartas.size() != 3)
             throw new CantidadDeCartasInvalidaError("El envido debe calcularse solo si se tiene 3 cartas en mano.");
-        return calculadorDeTantos.obtenerTantosDeFlor(cartas);
+        Vector<Carta> cartasTodas = new Vector<Carta>();
+        cartasTodas.addAll(cartas);
+        cartasTodas.addAll(cartasJugadas);
+        return calculadorDeTantos.obtenerTantosDeFlor(cartasTodas);
     }
 }
