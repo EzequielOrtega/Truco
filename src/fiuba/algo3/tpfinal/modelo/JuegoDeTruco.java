@@ -107,8 +107,9 @@ public class JuegoDeTruco {
 			//Acciones de jugador (cantar y/ jugar)
 			//Verificar quien gano la mano
 			//Verificar si se termino la ronda (cambiar el estado de noTerminoRonda)
-			//Sumar los puntos al ganador
 		}
+		//Sumar los puntos al ganador
+		jugadores.moverAlSiguiente();
 	}
 
 	private int puntosDeEquipo(Equipo equipo) {
