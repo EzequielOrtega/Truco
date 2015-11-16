@@ -53,13 +53,12 @@ public class CalculadorDeTantos {
 
 	private int calcularEnvidoDeTresCartas(List<Integer> valores) {
         Collections.sort(valores);
-		int tantosDeEnvido = 20 + valores.get(1) + valores.get(2);
+		int tantosDeEnvido = 20 + valores.get(1) + valores.get(2) + valores.get(0);
 		return tantosDeEnvido;
 	}
 
 	private int calcularEnvidoDeDosCartas(Vector<Carta> cartas, List<Integer> valores) {
 		int tantosDeEnvido = 20;
-
 		if(cartas.get(0).mismoPaloQue(cartas.get(1))) {
 			tantosDeEnvido += valores.get(0) + valores.get(1);
 		}else if(cartas.get(1).mismoPaloQue(cartas.get(2))){

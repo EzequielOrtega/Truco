@@ -63,7 +63,7 @@ public class CalculadorDeTantosTest {
 		cartas.addElement(carta1);
 		cartas.addElement(carta2);
 		cartas.addElement(carta6);
-		assertEquals(32, calculador.obtenerTantosDeEnvido(cartas));
+		assertEquals(33, calculador.obtenerTantosDeEnvido(cartas));
 	}
 	@Test
 	public void testObtenerTantosDeEnvidoDeDosCartas(){
