@@ -5,8 +5,6 @@ import fiuba.algo3.tpfinal.modelo.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
-
 public class JuegoDeTrucoTest {
 
     JuegoDeTruco nuevoJuego;

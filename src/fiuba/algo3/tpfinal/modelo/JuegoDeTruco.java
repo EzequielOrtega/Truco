@@ -4,10 +4,10 @@ import java.util.LinkedList;
 
 public class JuegoDeTruco {
 
-    private static final int PUNTOS_ENVIDO = 2;
+    //private static final int PUNTOS_ENVIDO = 2;
     //private static final int PUNTOS_REAL_ENVIDO = 3;
     //private static final int PUNTOS_ENVIDO_ENVIDO = 4;
-    private static final int PUNTOS_FLOR = 3;
+    //private static final int PUNTOS_FLOR = 3;
     //private static final int PUNTOS_CONTRAFLOR = 6;
     //private static final int PUNTOS_TRUCO = 2;
     //private static final int PUNTOS_RETRUCO = 3;

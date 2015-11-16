@@ -10,6 +10,7 @@ import org.junit.Test;
 import java.util.LinkedList;
 
 public class JuezDeTrucoTest {
+	@SuppressWarnings("unused")
 	private JuezDeTruco arbitro;
     private LinkedList<Jugador> jugadores = new LinkedList<Jugador>();
 	@Before
