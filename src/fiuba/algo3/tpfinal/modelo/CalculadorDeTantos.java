@@ -1,6 +1,5 @@
 package fiuba.algo3.tpfinal.modelo;
 
-import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Vector;
@@ -16,6 +15,15 @@ public class CalculadorDeTantos {
 	
 	
 	public int obtenerTantosDeFlor(Vector<Carta> cartas){
+		
+		if (this.tieneFlor(cartas)) {
+			return obtenerTantosDeEnvido(cartas);
+		} else {
+			throw new JugadorNoTieneFlorError();
+		}
+		
+		// VERSION ANTERIOR
+		/*
 		if (this.tieneFlor(cartas)){
 			int tantosDeFlor = 20;
 			for (Carta carta: cartas){
@@ -26,6 +34,7 @@ public class CalculadorDeTantos {
 		}else{
 			throw new JugadorNoTieneFlorError();
 		}
+		*/
 	}
 	
 	public int obtenerTantosDeEnvido(Vector<Carta> cartas){
@@ -38,6 +47,21 @@ public class CalculadorDeTantos {
             CartaParaEnvidoYFlor cadaCarta = (CartaParaEnvidoYFlor) carta;
             valores.add(cadaCarta.obtenerValorParaEnvidoYFlor());
         }
+        
+        int envidoMaximo = 0;
+        
+        if (this.tieneFlor(cartas)) {
+        	envidoMaximo = 20 + (valores.get(0) + valores.get(1) + valores.get(2));
+        } else {
+        envidoMaximo = maximo (this.calcularEnvidoDeDosCartas(cartas.get(0), cartas.get(1), valores),
+        				       this.calcularEnvidoDeDosCartas(cartas.get(1), cartas.get(2), valores),
+        				       this.calcularEnvidoDeDosCartas(cartas.get(0), cartas.get(2), valores));
+        }
+        
+        return envidoMaximo;
+        
+        // VERSION ANTERIOR
+        /*
 		int tantosDeEnvido = 0;
 		if (this.esEnvidoDeTresCartas(cartas)){
 			tantosDeEnvido = this.calcularEnvidoDeTresCartas(valores);
@@ -47,10 +71,26 @@ public class CalculadorDeTantos {
 			tantosDeEnvido = this.calcularEnvidoDeUnaCarta(valores);
 		}
 		return tantosDeEnvido;
-		
+		*/
 	}
 
+	private int calcularEnvidoDeDosCartas(Carta carta1, Carta carta2, List<Integer> valores) {
+		int valorEnvidoDeDosCartas;
+		
+		if (carta1.getPalo() == carta2.getPalo()) {
+			valorEnvidoDeDosCartas = 20 + valores.get(1) + valores.get(2);
+		} else {
+			valorEnvidoDeDosCartas = maximo (valores.get(0), valores.get(1), valores.get(2));
+		}
+		return valorEnvidoDeDosCartas;
+	}
 
+	private int maximo(Integer integer1, Integer integer2, Integer integer3) {
+		return (Math.max (Math.max (integer1.intValue(), integer2.intValue()), integer3.intValue()));
+	}
+
+	// VERSION ANTERIOR
+/*
 	private int calcularEnvidoDeTresCartas(List<Integer> valores) {
         Collections.sort(valores);
 		int tantosDeEnvido = 20 + valores.get(1) + valores.get(2) + valores.get(0);
@@ -86,6 +126,7 @@ public class CalculadorDeTantos {
 		return(cartas.get(0).mismoPaloQue(cartas.get(1), cartas.get(2)));
 	}
 
+	*/
     /* public int obtenerTantosDeEnvido(Vector<Carta> cartas){
         if (cartas.size()<3){
             throw new SoloSePuedeCantarEnPrimeraError();
