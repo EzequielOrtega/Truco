@@ -1,7 +1,5 @@
 package fiuba.algo3.tpfinal.modelo;
 
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Vector;
 
 public class CalculadorDeTantos {
@@ -17,11 +15,19 @@ public class CalculadorDeTantos {
 	public int obtenerTantosDeFlor(Vector<Carta> cartas){
 		
 		if (this.tieneFlor(cartas)) {
-			return obtenerTantosDeEnvido(cartas);
-		} else {
-			throw new JugadorNoTieneFlorError();
-		}
-		
+			int envidoMaximo;
+			CartaParaEnvidoYFlor interfazCarta1 = (CartaParaEnvidoYFlor) cartas.get(0);
+			CartaParaEnvidoYFlor interfazCarta2 = (CartaParaEnvidoYFlor) cartas.get(1);
+			CartaParaEnvidoYFlor interfazCarta3 = (CartaParaEnvidoYFlor) cartas.get(2);
+	        
+	        envidoMaximo = 20 + (interfazCarta1.obtenerValorParaEnvidoYFlor() +
+	        					 interfazCarta2.obtenerValorParaEnvidoYFlor() +
+	        					 interfazCarta3.obtenerValorParaEnvidoYFlor());
+	        return envidoMaximo;
+	        }  else {
+	        		throw new JugadorNoTieneFlorError();
+	        		}
+	}
 		// VERSION ANTERIOR
 		/*
 		if (this.tieneFlor(cartas)){
@@ -35,14 +41,24 @@ public class CalculadorDeTantos {
 			throw new JugadorNoTieneFlorError();
 		}
 		*/
-	}
 	
 	public int obtenerTantosDeEnvido(Vector<Carta> cartas) {
 		
 		if (cartas.size()<3){
 			throw new SoloSePuedeCantarEnPrimeraError();
 		}
-		/*
+		
+		int envidoMaximo;
+		
+        envidoMaximo = maximo(this.calcularEnvidoDeDosCartas(cartas.get(0), cartas.get(1)),
+        				      this.calcularEnvidoDeDosCartas(cartas.get(1), cartas.get(2)),
+        				      this.calcularEnvidoDeDosCartas(cartas.get(0), cartas.get(2)));
+        
+        return envidoMaximo;
+        
+	}
+        // VERSION ANTERIOR
+        /*
         List<Integer> valores = new LinkedList<Integer>();
         
         for (Carta carta: cartas) {
@@ -50,26 +66,7 @@ public class CalculadorDeTantos {
             valores.add(cadaCarta.obtenerValorParaEnvidoYFlor());
         }
         */
-		
-		int envidoMaximo;
-		CartaParaEnvidoYFlor interfazCarta1 = (CartaParaEnvidoYFlor) cartas.get(0);
-		CartaParaEnvidoYFlor interfazCarta2 = (CartaParaEnvidoYFlor) cartas.get(1);
-		CartaParaEnvidoYFlor interfazCarta3 = (CartaParaEnvidoYFlor) cartas.get(2);
-        
-		if (this.tieneFlor(cartas)) {
-        	envidoMaximo = 20 + (interfazCarta1.obtenerValorParaEnvidoYFlor() +
-        							interfazCarta2.obtenerValorParaEnvidoYFlor() +
-        								interfazCarta3.obtenerValorParaEnvidoYFlor());
-        } else {
-        envidoMaximo = maximo(this.calcularEnvidoDeDosCartas(cartas.get(0), cartas.get(1)),
-        				      this.calcularEnvidoDeDosCartas(cartas.get(1), cartas.get(2)),
-        				      this.calcularEnvidoDeDosCartas(cartas.get(0), cartas.get(2)));
-        }
-        
-        return envidoMaximo;
-        
-        // VERSION ANTERIOR
-        /*
+		/*
 		int tantosDeEnvido = 0;
 		if (this.esEnvidoDeTresCartas(cartas)){
 			tantosDeEnvido = this.calcularEnvidoDeTresCartas(valores);
@@ -80,8 +77,7 @@ public class CalculadorDeTantos {
 		}
 		return tantosDeEnvido;
 		*/
-	}
-
+		
 	private int calcularEnvidoDeDosCartas(Carta carta1, Carta carta2) {
 		int valorEnvidoDeDosCartas;
 		CartaParaEnvidoYFlor interfazCarta1 = (CartaParaEnvidoYFlor) carta1;

@@ -53,8 +53,8 @@ public class CalculadorDeTantosTest {
 	public void testObtenerTantosDeFlor(){
 		cartas.add(unoDeEspada);
 		cartas.add(sieteDeEspada);
-		cartas.add(sotaDeEspada);
-		assertEquals(28, calculador.obtenerTantosDeFlor(cartas));
+		cartas.add(cincoDeEspada);
+		assertEquals(33, calculador.obtenerTantosDeFlor(cartas));
 	}
 	@Test (expected = JugadorNoTieneFlorError.class)
 	public void testObtenerTantosDeFlorSinFLorError(){
@@ -68,7 +68,7 @@ public class CalculadorDeTantosTest {
 		cartas.addElement(unoDeEspada);
 		cartas.addElement(sieteDeEspada);
 		cartas.addElement(cincoDeEspada);
-		assertEquals(33, calculador.obtenerTantosDeEnvido(cartas));
+		assertEquals(32, calculador.obtenerTantosDeEnvido(cartas));
 	}
 	@Test
 	public void testObtenerTantosDeEnvidoDeDosCartas(){
