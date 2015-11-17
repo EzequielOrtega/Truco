@@ -10,7 +10,9 @@ import static org.junit.Assert.*;
 
 public class CalculadorDeTantosTest {
 	private CalculadorDeTantos calculador;
-	private Carta unoDeEspada, sieteDeEspada, diezDeEspada, sieteDeCopa, diezDeBasto, cincoDeEspada, unoDeBasto;
+	private Carta unoDeEspada, sieteDeEspada, sotaDeEspada, 
+			sieteDeCopa, sotaDeBasto, cincoDeEspada, unoDeBasto,
+			caballoDeOro, reyDeCopa;
     private Vector<Carta> cartas = new Vector<Carta>();
 	
 	@Before
@@ -18,24 +20,27 @@ public class CalculadorDeTantosTest {
         calculador = new CalculadorDeTantos();
         unoDeEspada = new NoFigura(1, Palo.ESPADA);
         sieteDeEspada = new NoFigura(7, Palo.ESPADA);
-        diezDeEspada = new Figura(10, Palo.ESPADA);
+        sotaDeEspada = new Figura(10, Palo.ESPADA);
         sieteDeCopa = new NoFigura(7, Palo.COPA);
-        diezDeBasto = new Figura(10, Palo.BASTO);
+        sotaDeBasto = new Figura(10, Palo.BASTO);
         cincoDeEspada = new NoFigura(5, Palo.ESPADA);
         unoDeBasto = new NoFigura(1, Palo.BASTO);
+        caballoDeOro = new Figura(11, Palo.ORO);
+        reyDeCopa = new Figura(12, Palo.COPA);
+        
 	}
 	@Test
 	public void testTieneFlor() {
 		cartas.add(unoDeEspada);
 		cartas.add(sieteDeEspada);
-		cartas.add(diezDeEspada);
+		cartas.add(sotaDeEspada);
 		assertTrue(calculador.tieneFlor(cartas));
 	}
 	@Test
 	public void testNoTieneFlor() {
 		cartas.add(unoDeEspada);
 		cartas.add(sieteDeCopa);
-		cartas.add(diezDeBasto);
+		cartas.add(sotaDeBasto);
 		assertFalse(calculador.tieneFlor(cartas));
 	}
 	@Test (expected = SoloSePuedeCantarEnPrimeraError.class)
@@ -48,14 +53,14 @@ public class CalculadorDeTantosTest {
 	public void testObtenerTantosDeFlor(){
 		cartas.add(unoDeEspada);
 		cartas.add(sieteDeEspada);
-		cartas.add(diezDeEspada);
+		cartas.add(sotaDeEspada);
 		assertEquals(28, calculador.obtenerTantosDeFlor(cartas));
 	}
 	@Test (expected = JugadorNoTieneFlorError.class)
 	public void testObtenerTantosDeFlorSinFLorError(){
 		cartas.add(unoDeEspada);
 		cartas.add(sieteDeCopa);
-		cartas.add(diezDeBasto);
+		cartas.add(sotaDeBasto);
 		calculador.obtenerTantosDeFlor(cartas);
 	}
 	@Test
@@ -86,5 +91,11 @@ public class CalculadorDeTantosTest {
 		calculador.obtenerTantosDeEnvido(cartas);
 		
 	}
-
+	@Test
+	public void testUnJugadorTieneCeroDeEnvido() {
+		cartas.add(caballoDeOro);
+		cartas.add(reyDeCopa);
+		cartas.add(sotaDeBasto);
+		assertEquals(0, calculador.obtenerTantosDeEnvido(cartas));
+	}
 }

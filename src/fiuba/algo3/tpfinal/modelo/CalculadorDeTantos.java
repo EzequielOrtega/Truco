@@ -42,20 +42,19 @@ public class CalculadorDeTantos {
 			throw new SoloSePuedeCantarEnPrimeraError();
 		}
         List<Integer> valores = new LinkedList<Integer>();
-
+        int envidoMaximo;
+        
         for (Carta carta: cartas) {
             CartaParaEnvidoYFlor cadaCarta = (CartaParaEnvidoYFlor) carta;
             valores.add(cadaCarta.obtenerValorParaEnvidoYFlor());
         }
-        
-        int envidoMaximo = 0;
-        
+                
         if (this.tieneFlor(cartas)) {
         	envidoMaximo = 20 + (valores.get(0) + valores.get(1) + valores.get(2));
         } else {
-        envidoMaximo = maximo (this.calcularEnvidoDeDosCartas(cartas.get(0), cartas.get(1), valores),
-        				       this.calcularEnvidoDeDosCartas(cartas.get(1), cartas.get(2), valores),
-        				       this.calcularEnvidoDeDosCartas(cartas.get(0), cartas.get(2), valores));
+        envidoMaximo = maximo(this.calcularEnvidoDeDosCartas(cartas.get(0), cartas.get(1), valores.get(0), valores.get(1)),
+        				      this.calcularEnvidoDeDosCartas(cartas.get(1), cartas.get(2), valores.get(1), valores.get(2)),
+        				      this.calcularEnvidoDeDosCartas(cartas.get(0), cartas.get(2), valores.get(0), valores.get(2)));
         }
         
         return envidoMaximo;
@@ -74,13 +73,13 @@ public class CalculadorDeTantos {
 		*/
 	}
 
-	private int calcularEnvidoDeDosCartas(Carta carta1, Carta carta2, List<Integer> valores) {
+	private int calcularEnvidoDeDosCartas(Carta carta1, Carta carta2, Integer valorCarta1, Integer valorCarta2) {
 		int valorEnvidoDeDosCartas;
 		
 		if (carta1.getPalo() == carta2.getPalo()) {
-			valorEnvidoDeDosCartas = 20 + valores.get(1) + valores.get(2);
+			valorEnvidoDeDosCartas = 20 + valorCarta1 + valorCarta2;
 		} else {
-			valorEnvidoDeDosCartas = maximo (valores.get(0), valores.get(1), valores.get(2));
+			valorEnvidoDeDosCartas = Math.max (valorCarta1.intValue(), valorCarta2.intValue());
 		}
 		return valorEnvidoDeDosCartas;
 	}

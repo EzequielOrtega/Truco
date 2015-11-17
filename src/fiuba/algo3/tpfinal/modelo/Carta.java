@@ -16,10 +16,11 @@ public class Carta {
     public String getPalo(){
         return this.palo.toString();
     }
+    /*
     public boolean esFigura() {
         return (this.getValor() >= 10);
     }
-
+	*/
     public boolean mismoPaloQue(Carta otraCarta) {
         return (this.getPalo().equals(otraCarta.getPalo()));
     }
