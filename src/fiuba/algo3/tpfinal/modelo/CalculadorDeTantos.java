@@ -37,24 +37,33 @@ public class CalculadorDeTantos {
 		*/
 	}
 	
-	public int obtenerTantosDeEnvido(Vector<Carta> cartas){
+	public int obtenerTantosDeEnvido(Vector<Carta> cartas) {
+		
 		if (cartas.size()<3){
 			throw new SoloSePuedeCantarEnPrimeraError();
 		}
+		/*
         List<Integer> valores = new LinkedList<Integer>();
-        int envidoMaximo;
         
         for (Carta carta: cartas) {
             CartaParaEnvidoYFlor cadaCarta = (CartaParaEnvidoYFlor) carta;
             valores.add(cadaCarta.obtenerValorParaEnvidoYFlor());
         }
-                
-        if (this.tieneFlor(cartas)) {
-        	envidoMaximo = 20 + (valores.get(0) + valores.get(1) + valores.get(2));
+        */
+		
+		int envidoMaximo;
+		CartaParaEnvidoYFlor interfazCarta1 = (CartaParaEnvidoYFlor) cartas.get(0);
+		CartaParaEnvidoYFlor interfazCarta2 = (CartaParaEnvidoYFlor) cartas.get(1);
+		CartaParaEnvidoYFlor interfazCarta3 = (CartaParaEnvidoYFlor) cartas.get(2);
+        
+		if (this.tieneFlor(cartas)) {
+        	envidoMaximo = 20 + (interfazCarta1.obtenerValorParaEnvidoYFlor() +
+        							interfazCarta2.obtenerValorParaEnvidoYFlor() +
+        								interfazCarta3.obtenerValorParaEnvidoYFlor());
         } else {
-        envidoMaximo = maximo(this.calcularEnvidoDeDosCartas(cartas.get(0), cartas.get(1), valores.get(0), valores.get(1)),
-        				      this.calcularEnvidoDeDosCartas(cartas.get(1), cartas.get(2), valores.get(1), valores.get(2)),
-        				      this.calcularEnvidoDeDosCartas(cartas.get(0), cartas.get(2), valores.get(0), valores.get(2)));
+        envidoMaximo = maximo(this.calcularEnvidoDeDosCartas(cartas.get(0), cartas.get(1)),
+        				      this.calcularEnvidoDeDosCartas(cartas.get(1), cartas.get(2)),
+        				      this.calcularEnvidoDeDosCartas(cartas.get(0), cartas.get(2)));
         }
         
         return envidoMaximo;
@@ -73,13 +82,15 @@ public class CalculadorDeTantos {
 		*/
 	}
 
-	private int calcularEnvidoDeDosCartas(Carta carta1, Carta carta2, Integer valorCarta1, Integer valorCarta2) {
+	private int calcularEnvidoDeDosCartas(Carta carta1, Carta carta2) {
 		int valorEnvidoDeDosCartas;
+		CartaParaEnvidoYFlor interfazCarta1 = (CartaParaEnvidoYFlor) carta1;
+		CartaParaEnvidoYFlor interfazCarta2 = (CartaParaEnvidoYFlor) carta2;
 		
 		if (carta1.getPalo() == carta2.getPalo()) {
-			valorEnvidoDeDosCartas = 20 + valorCarta1 + valorCarta2;
+			valorEnvidoDeDosCartas = (20 + interfazCarta1.obtenerValorParaEnvidoYFlor() + interfazCarta2.obtenerValorParaEnvidoYFlor());
 		} else {
-			valorEnvidoDeDosCartas = Math.max (valorCarta1.intValue(), valorCarta2.intValue());
+			valorEnvidoDeDosCartas = Math.max (interfazCarta1.obtenerValorParaEnvidoYFlor(), interfazCarta2.obtenerValorParaEnvidoYFlor());
 		}
 		return valorEnvidoDeDosCartas;
 	}
