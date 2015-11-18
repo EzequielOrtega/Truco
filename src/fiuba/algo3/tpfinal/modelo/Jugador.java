@@ -66,8 +66,6 @@ public class Jugador {
 
     // ENVIDO Y FLOR:
     public int getValorEnvido () {
-        if (cartas.size() != 3)
-            throw new CantidadDeCartasInvalidaError("El envido debe calcularse solo si se tiene 3 cartas en mano.");
         Vector<Carta> cartasTodas = new Vector<Carta>();
         cartasTodas.addAll(cartas);
         cartasTodas.addAll(cartasJugadas);
@@ -75,8 +73,6 @@ public class Jugador {
     }
 
     public int getValorFlor () {
-        if (cartas.size() != 3)
-            throw new CantidadDeCartasInvalidaError("El envido debe calcularse solo si se tiene 3 cartas en mano.");
         Vector<Carta> cartasTodas = new Vector<Carta>();
         cartasTodas.addAll(cartas);
         cartasTodas.addAll(cartasJugadas);
