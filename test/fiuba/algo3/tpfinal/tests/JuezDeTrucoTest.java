@@ -1,16 +1,20 @@
 package fiuba.algo3.tpfinal.tests;
 
 
+import fiuba.algo3.tpfinal.modelo.Carta;
 import fiuba.algo3.tpfinal.modelo.Equipo;
 import fiuba.algo3.tpfinal.modelo.JuezDeTruco;
 import fiuba.algo3.tpfinal.modelo.Jugador;
+import fiuba.algo3.tpfinal.modelo.Palo;
+import fiuba.algo3.tpfinal.modelo.Resultado;
+
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.util.LinkedList;
 
 public class JuezDeTrucoTest {
-	@SuppressWarnings("unused")
 	private JuezDeTruco arbitro;
     private LinkedList<Jugador> jugadores = new LinkedList<Jugador>();
 	@Before
@@ -43,19 +47,57 @@ public class JuezDeTrucoTest {
     	assertEquals(Resultado.EMPATE, arbitro.ganadorFlor(32, 32));
     }*/
 
-    /*@Test
-    public void testGanadorMano() {
+    @Test
+    public void testGanadorManoDosJugadores() {
         Carta carta1 = new Carta(7, Palo.ORO);
         Carta carta2 = new Carta(1, Palo.ORO);
-        assertEquals(Resultado.GANADOR1, arbitro.ganadorDeLaMano(carta1, carta2));
-        assertEquals(Resultado.GANADOR2, arbitro.ganadorDeLaMano(carta2, carta1));
+        LinkedList<Carta> cartas = new LinkedList<Carta>();
+        cartas.add(carta1);
+        cartas.add(carta2);
+        Assert.assertEquals(Resultado.GANADOR1, arbitro.ganadorDeLaMano(cartas));
+        cartas.removeFirst();
+        cartas.removeFirst();
+        cartas.add(carta2);
+        cartas.add(carta1);        
+        Assert.assertEquals(Resultado.GANADOR2, arbitro.ganadorDeLaMano(cartas));
     }
     
     @Test
-    public void testEmpateMano(){
+    public void testEmpateManoDosJugadores(){
     	Carta carta1 = new Carta(3, Palo.ORO);
         Carta carta2 = new Carta(3, Palo.COPA);
-        assertEquals(Resultado.EMPATE, arbitro.ganadorDeLaMano(carta1, carta2));
-    }*/
+        LinkedList<Carta> cartas = new LinkedList<Carta>();
+        cartas.add(carta1);
+        cartas.add(carta2);
+        Assert.assertEquals(Resultado.EMPATE, arbitro.ganadorDeLaMano(cartas));
+    }
+    
+    @Test 
+    public void testGanadorDeManoCuatroJugadores(){
+    	Carta carta1 = new Carta(7, Palo.ORO);
+        Carta carta2 = new Carta(1, Palo.ORO);
+        Carta carta3 = new Carta(5, Palo.COPA);
+        Carta carta4 = new Carta(7, Palo.ESPADA);
+        LinkedList<Carta> cartas = new LinkedList<Carta>();
+        cartas.add(carta1);
+        cartas.add(carta2);
+        cartas.add(carta3);
+        cartas.add(carta4);
+        Assert.assertEquals(Resultado.GANADOR2, arbitro.ganadorDeLaMano(cartas));
+    }
+    
+    @Test 
+    public void testEmpateDeManoCuatroJugadores(){
+    	Carta carta1 = new Carta(3, Palo.ORO);
+        Carta carta2 = new Carta(1, Palo.ORO);
+        Carta carta3 = new Carta(5, Palo.COPA);
+        Carta carta4 = new Carta(3, Palo.ESPADA);
+        LinkedList<Carta> cartas = new LinkedList<Carta>();
+        cartas.add(carta1);
+        cartas.add(carta2);
+        cartas.add(carta3);
+        cartas.add(carta4);
+        Assert.assertEquals(Resultado.EMPATE, arbitro.ganadorDeLaMano(cartas));
+    }
 
 }
