@@ -1,8 +1,12 @@
 package fiuba.algo3.tpfinal.tests;
 
-public class SimulacionTest {
+import org.junit.Test;
 
+public class SimulacionTest {
+	
+	@Test
 	public void xxx() {
+		
 		/*
 		 * C1
 		 * c2
