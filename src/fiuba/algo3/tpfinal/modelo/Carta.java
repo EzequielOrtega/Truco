@@ -2,10 +2,10 @@ package fiuba.algo3.tpfinal.modelo;
 
 public class Carta {
     private final int valor;
-    private Palo palo;
+    private final Palo palo;
 
     public Carta(Integer valor, Palo p){
-        if ( valor<1 || valor > 12 )
+        if ( valor < 1 || valor > 12 )
             throw new ValorDeCartaInvalidoError("Valor invalido. La carta debe tener un valor de 1 a 12.");
         this.valor = valor;
         this.palo = p;
@@ -16,11 +16,7 @@ public class Carta {
     public String getPalo(){
         return this.palo.toString();
     }
-    /*
-    public boolean esFigura() {
-        return (this.getValor() >= 10);
-    }
-	*/
+
     public boolean mismoPaloQue(Carta otraCarta) {
         return (this.getPalo().equals(otraCarta.getPalo()));
     }

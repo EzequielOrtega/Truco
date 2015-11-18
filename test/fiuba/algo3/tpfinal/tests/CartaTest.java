@@ -22,10 +22,15 @@ public class CartaTest {
     }
 
     @Test (expected = ValorDeCartaInvalidoError.class)
-    public void testCrearCartaFallaSiValorInvalido() {
+    public void testCrearCartaFallaSiValorMayorA12() {
         nuevaCarta = new Carta(14, Palo.ORO);
     }
 
+    @Test (expected = ValorDeCartaInvalidoError.class)
+    public void testCrearCartaFallaSiValorMenorA1() {
+        nuevaCarta = new Carta(0, Palo.ORO);
+    }
+    
     @Test
     public void testComparacionDeCartas(){
     	nuevaCarta = new Carta(1, Palo.ESPADA);
