@@ -21,6 +21,10 @@ public class JuegoDeTruco {
     //private int enfrentamiento;
     //private int[] ronda;
 
+	private Jugador jugadorActual;
+
+	private EstadoEnvido estadoActualEnvido;
+
     public JuegoDeTruco(String nombreJ1, String nombreJ2) {
     	Jugador j1 = new Jugador(nombreJ1, Equipo.EQUIPO1);
     	jugadores.agregar(j1);
@@ -29,6 +33,7 @@ public class JuegoDeTruco {
         mazoDeCartas = new Mazo();
         this.repartir();
         this.arbitro = new JuezDeTruco();
+        this.estadoActualEnvido = new EstadoInicial();
     }
     
     public JuegoDeTruco(String nombreJ1, String nombreJ2, String nombreJ3, String nombreJ4) {
@@ -43,6 +48,7 @@ public class JuegoDeTruco {
         mazoDeCartas = new Mazo();
         this.repartir();
         this.arbitro = new JuezDeTruco();
+        this.estadoActualEnvido = new EstadoInicial();
     }
 
     public void repartir() {
@@ -57,8 +63,19 @@ public class JuegoDeTruco {
     }
 
     public void envido(Integer puntos) {
-        Jugador ganador = arbitro.ganadorEnvido(jugadores.obtenerElementos());
-        ganador.sumarPuntos(puntos);
+    	if (jugadorActual.mostrarCartas().size() != 3) {
+    		throw new SoloSePuedeCantarEnPrimeraError();
+    	}
+        this.estadoActualEnvido = new Envido(this.estadoActualEnvido);
+    }
+    
+    public void quieroEnvido() {
+    	Jugador ganador = arbitro.ganadorEnvido(jugadores.obtenerElementos());
+        ganador.sumarPuntos(this.estadoActualEnvido.obtenerPuntosQueridos());
+    }
+    
+    public void noQuieroEnvido() {
+    	jugadorActual.sumarPuntos(this.estadoActualEnvido.obtenerPuntosNoQueridos());
     }
 
 	public void flor(Integer puntos) {

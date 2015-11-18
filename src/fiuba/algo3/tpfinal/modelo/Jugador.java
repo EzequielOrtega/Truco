@@ -54,7 +54,7 @@ public class Jugador {
     	return (this.equipo == equipo);
     }
     
-    public Boolean estanEnELMismoEquipo(Jugador otroJugador){
+    public Boolean estanEnElMismoEquipo(Jugador otroJugador){
     	return (otroJugador.coincideElEquipo(this.equipo));
     }
 
