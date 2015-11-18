@@ -83,7 +83,7 @@ public class CalculadorDeTantos {
 		CartaParaEnvidoYFlor interfazCarta1 = (CartaParaEnvidoYFlor) carta1;
 		CartaParaEnvidoYFlor interfazCarta2 = (CartaParaEnvidoYFlor) carta2;
 		
-		if (carta1.getPalo() == carta2.getPalo()) {
+		if (carta1.mismoPaloQue(carta2)) {
 			valorEnvidoDeDosCartas = (20 + interfazCarta1.obtenerValorParaEnvidoYFlor() + interfazCarta2.obtenerValorParaEnvidoYFlor());
 		} else {
 			valorEnvidoDeDosCartas = Math.max (interfazCarta1.obtenerValorParaEnvidoYFlor(), interfazCarta2.obtenerValorParaEnvidoYFlor());
