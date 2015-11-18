@@ -53,6 +53,10 @@ public class Jugador {
     public Boolean coincideElEquipo(Equipo equipo){
     	return (this.equipo == equipo);
     }
+    
+    public Boolean estanEnELMismoEquipo(Jugador otroJugador){
+    	return (otroJugador.coincideElEquipo(this.equipo));
+    }
 
     //jugarCarta() acepta los valores 1, 2 o 3, que corresponden a las 3 posibles cartas de la mano del jugador
     // Falta ver como funciona esto para cuando ya saque una carta y me quedan dos, o una en la mano.

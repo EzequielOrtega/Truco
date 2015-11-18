@@ -9,9 +9,9 @@ public class JuezDeTruco {
     	Jugador ganadorEnvido = null;
         int maximoValor = 0;
         for (Jugador jug: jugadores) {
-            if(jug.getValorEnvido() > maximoValor)
+            if((jug.getValorEnvido() > maximoValor)||(maximoValor == 0))
                 ganadorEnvido = jug;
-            if(jug.getValorEnvido() == maximoValor)
+            if((jug.getValorEnvido() == maximoValor)&&(!ganadorEnvido.estanEnELMismoEquipo(jug)))
                 ganadorEnvido = jugadores.get(0);
         }
 
@@ -22,9 +22,9 @@ public class JuezDeTruco {
     	Jugador ganadorFlor = null;
         int maximoValor = 0;
         for (Jugador jug: jugadores) {
-            if(jug.getValorFlor() > maximoValor)
+            if((jug.getValorFlor() > maximoValor)||(maximoValor == 0))
                 ganadorFlor = jug;
-            if(jug.getValorFlor() == maximoValor)
+            if((jug.getValorFlor() == maximoValor)&&(!ganadorFlor.estanEnELMismoEquipo(jug)))
                 ganadorFlor = jugadores.get(0);
         }
 
