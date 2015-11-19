@@ -16,7 +16,7 @@ public class EstadoTrucoTest {
 	private EstadoTruco estadoAnterior;
 
 	@Before
-	public void setup() {
+	public void setUp() {
 		estadoAnterior = new EstadoInicialTruco();
 	}
 	@Test

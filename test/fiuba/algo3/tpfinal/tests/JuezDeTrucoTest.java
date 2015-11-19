@@ -16,10 +16,12 @@ import org.junit.Test;
 import java.util.LinkedList;
 
 public class JuezDeTrucoTest {
+	
 	private JuezDeTruco arbitro;
     private LinkedList<Jugador> jugadores = new LinkedList<Jugador>();
-	@Before
-	public void setup(){
+	
+    @Before
+	public void setUp(){
 		this.arbitro = new JuezDeTruco();
         Jugador j1 = new Jugador("Ana", Equipo.EQUIPO1);
         Jugador j2 = new Jugador("Pedro", Equipo.EQUIPO2);
@@ -62,7 +64,6 @@ public class JuezDeTrucoTest {
         cartas.add(carta1);        
         Assert.assertEquals(Resultado.GANADOR2, arbitro.ganadorDeLaMano(cartas));
     }
-    
     @Test
     public void testEmpateManoDosJugadores(){
     	Carta carta1 = new Carta(3, Palo.ORO);
@@ -72,7 +73,6 @@ public class JuezDeTrucoTest {
         cartas.add(carta2);
         Assert.assertEquals(Resultado.EMPATE, arbitro.ganadorDeLaMano(cartas));
     }
-    
     @Ignore
     @Test 
     public void testGanadorDeManoCuatroJugadores(){
@@ -101,5 +101,4 @@ public class JuezDeTrucoTest {
         cartas.add(carta4);
         Assert.assertEquals(Resultado.EMPATE, arbitro.ganadorDeLaMano(cartas));
     }
-
 }

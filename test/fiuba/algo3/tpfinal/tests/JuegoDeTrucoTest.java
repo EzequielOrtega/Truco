@@ -2,6 +2,8 @@ package fiuba.algo3.tpfinal.tests;
 
 
 import fiuba.algo3.tpfinal.modelo.*;
+
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -11,7 +13,7 @@ public class JuegoDeTrucoTest {
     Jugador j1,j2;
 
     @Before
-    public void SetUp() {
+    public void setUp() {
     	nuevoJuego = new JuegoDeTruco("Ana", "Juan");
     }
     
@@ -21,6 +23,28 @@ public class JuegoDeTrucoTest {
         /*// Chequeo que se le repartieron las 3 cartas a cada jugador.
         assertEquals(3, j1.mostrarCartas().size());
         assertEquals(3, j2.mostrarCartas().size());*/
+    }
+    
+    @Test
+    public void testTrucoReTrucoValeCuatroNoQuerido() {
+    	/*
+    	 *  es raro el hecho de que es dificil de seguir porque
+    	 *  el jugador que hace una accion no es visible en este codigo.
+    	 */
+    	nuevoJuego.truco();
+    	nuevoJuego.reTruco();
+    	nuevoJuego.valeCuatro();
+    	nuevoJuego.noQuieroTruco();
+    	
+    	Assert.assertEquals(3, nuevoJuego.obtenerJugadorActual().obtenerPuntaje());
+    }
+    
+    @Test
+    public void testTrucoNoQuerido() {
+    	nuevoJuego.truco();
+    	nuevoJuego.noQuieroTruco();
+    	
+    	Assert.assertEquals(1, nuevoJuego.obtenerJugadorActual().obtenerPuntaje());
     }
 
 }

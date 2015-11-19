@@ -24,6 +24,7 @@ public class JuegoDeTruco {
 	private Jugador jugadorActual;
 
 	private EstadoEnvido estadoActualEnvido;
+	private EstadoTruco estadoActualTruco;
 
     public JuegoDeTruco(String nombreJ1, String nombreJ2) {
     	Jugador j1 = new Jugador(nombreJ1, Equipo.EQUIPO1);
@@ -34,6 +35,7 @@ public class JuegoDeTruco {
         this.repartir();
         this.arbitro = new JuezDeTruco();
         this.estadoActualEnvido = new EstadoInicialEnvido();
+        jugadorActual = jugadores.obtenerElemento(1);
     }
     
     public JuegoDeTruco(String nombreJ1, String nombreJ2, String nombreJ3, String nombreJ4) {
@@ -140,4 +142,27 @@ public class JuegoDeTruco {
 		return puntos;
 	}
 
+	public void truco() {
+		this.estadoActualTruco = new Truco();
+		jugadores.moverAlSiguiente();
+	}
+
+	public void reTruco() {
+		this.estadoActualTruco = new ReTruco(estadoActualTruco);
+		jugadores.moverAlSiguiente();
+	}
+
+	public void valeCuatro() {
+		this.estadoActualTruco = new ValeCuatro(estadoActualTruco);
+		jugadores.moverAlSiguiente();
+	}
+
+	public void noQuieroTruco() {
+		jugadores.moverAlSiguiente();
+		jugadorActual.sumarPuntos(estadoActualTruco.obtenerPuntosNoQueridos());
+	}
+
+	public Jugador obtenerJugadorActual() {
+		return jugadorActual;
+	}
 }

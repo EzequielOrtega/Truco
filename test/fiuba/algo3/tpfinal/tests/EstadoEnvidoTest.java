@@ -16,7 +16,7 @@ public class EstadoEnvidoTest {
 	private EstadoEnvido estado;
 
 	@Before
-	public void setup() {
+	public void setUp() {
 		estado = new EstadoInicialEnvido();
 	}
 

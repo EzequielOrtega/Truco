@@ -9,6 +9,7 @@ import java.util.Vector;
 import static org.junit.Assert.*;
 
 public class CalculadorDeTantosTest {
+	
 	private CalculadorDeTantos calculador;
 	private Carta unoDeEspada, sieteDeEspada, sotaDeEspada, 
 			sieteDeCopa, sotaDeBasto, cincoDeEspada, unoDeBasto,
@@ -16,7 +17,7 @@ public class CalculadorDeTantosTest {
     private Vector<Carta> cartas = new Vector<Carta>();
 	
 	@Before
-	public void setup(){
+	public void setUp(){
         calculador = new CalculadorDeTantos();
         unoDeEspada = new NoFigura(1, Palo.ESPADA);
         sieteDeEspada = new NoFigura(7, Palo.ESPADA);
