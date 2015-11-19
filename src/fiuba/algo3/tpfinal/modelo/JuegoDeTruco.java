@@ -146,7 +146,7 @@ public class JuegoDeTruco {
 	}
 
 	public void truco() {
-		this.estadoActualTruco = new Truco();
+		this.estadoActualTruco = new Truco(estadoActualTruco);
 		jugadores.moverAlSiguiente();
 	}
 

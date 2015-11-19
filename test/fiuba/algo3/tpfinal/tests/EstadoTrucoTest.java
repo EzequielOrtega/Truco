@@ -21,7 +21,7 @@ public class EstadoTrucoTest {
 	}
 	@Test
 	public void testTruco() {
-		estadoAnterior = new Truco();
+		estadoAnterior = new Truco(estadoAnterior);
 		
 		Assert.assertEquals(2, estadoAnterior.obtenerPuntosQueridos());
 		Assert.assertEquals(1, estadoAnterior.obtenerPuntosNoQueridos());
@@ -29,7 +29,7 @@ public class EstadoTrucoTest {
 	
 	@Test
 	public void testTrucoReTruco() {
-		estadoAnterior = new Truco();
+		estadoAnterior = new Truco(estadoAnterior);
 		estadoAnterior = new ReTruco(estadoAnterior);
 		
 		Assert.assertEquals(3, estadoAnterior.obtenerPuntosQueridos());
@@ -38,7 +38,7 @@ public class EstadoTrucoTest {
 	
 	@Test
 	public void testTrucoReTrucoValeCuatro() {
-		estadoAnterior = new Truco();
+		estadoAnterior = new Truco(estadoAnterior);
 		estadoAnterior = new ReTruco(estadoAnterior);
 		estadoAnterior = new ValeCuatro(estadoAnterior);
 		
@@ -58,7 +58,13 @@ public class EstadoTrucoTest {
 	
 	@Test (expected = NoRespetaJerarquiaDeTrucoError.class)
 	public void testValeCuatroNoValeAntesDeReTruco() {
-		estadoAnterior = new Truco();
+		estadoAnterior = new Truco(estadoAnterior);
 		estadoAnterior = new ValeCuatro(estadoAnterior);
+	}
+	
+	@Test (expected = NoRespetaJerarquiaDeTrucoError.class)
+	public void testTrucoTrucoNoVale() {
+		estadoAnterior = new Truco(estadoAnterior);
+		estadoAnterior = new Truco(estadoAnterior);
 	}
 }
