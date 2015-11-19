@@ -1,8 +1,8 @@
 package fiuba.algo3.tpfinal.modelo;
 
-public class EstadoInicial extends EstadoEnvido {
+public class EstadoInicialEnvido extends EstadoEnvido {
 		
-	public EstadoInicial() {
+	public EstadoInicialEnvido() {
 		super(null);
 		this.puntosDeEstado = 0;
 	}
@@ -14,7 +14,7 @@ public class EstadoInicial extends EstadoEnvido {
 
 	@Override
 	public int obtenerPuntosNoQueridos() {
-		return 0;
+		return 1;
 	}
 	
 	 

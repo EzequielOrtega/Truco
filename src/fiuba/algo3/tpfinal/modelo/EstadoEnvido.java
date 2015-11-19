@@ -10,14 +10,14 @@ public abstract class EstadoEnvido {
 	}
 
 	public int obtenerPuntosQueridos() {
-		return this.puntosDeEstado + estadoAnterior.obtenerPuntosQueridos();
+		return (this.puntosDeEstado + estadoAnterior.obtenerPuntosQueridos());
 	}
 
 	public int obtenerPuntosNoQueridos() {
-		if (estadoAnterior.obtenerPuntosNoQueridos() == 0) {
-			return 1;
+		if (estadoAnterior.obtenerPuntosQueridos() == 0) {
+			return (estadoAnterior.obtenerPuntosNoQueridos());
 		} else {
-			return this.estadoAnterior.obtenerPuntosQueridos();
+			return (estadoAnterior.obtenerPuntosQueridos());
 		}
 	}
 

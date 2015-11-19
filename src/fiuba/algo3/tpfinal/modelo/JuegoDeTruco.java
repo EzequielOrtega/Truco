@@ -33,7 +33,7 @@ public class JuegoDeTruco {
         mazoDeCartas = new Mazo();
         this.repartir();
         this.arbitro = new JuezDeTruco();
-        this.estadoActualEnvido = new EstadoInicial();
+        this.estadoActualEnvido = new EstadoInicialEnvido();
     }
     
     public JuegoDeTruco(String nombreJ1, String nombreJ2, String nombreJ3, String nombreJ4) {
@@ -48,7 +48,7 @@ public class JuegoDeTruco {
         mazoDeCartas = new Mazo();
         this.repartir();
         this.arbitro = new JuezDeTruco();
-        this.estadoActualEnvido = new EstadoInicial();
+        this.estadoActualEnvido = new EstadoInicialEnvido();
     }
 
     public void repartir() {
