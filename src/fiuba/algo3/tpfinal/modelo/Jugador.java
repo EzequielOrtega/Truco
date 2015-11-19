@@ -36,8 +36,9 @@ public class Jugador {
     }
 
     public void agarrarCarta(Carta nuevaCarta) {
-        if (cartas.size() == 3)
+        if (cartas.size() == 3) {
             throw new CantidadDeCartasInvalidaError("Un jugador no debe agarrar ni mas ni menos que 3 cartas.");
+        }
         this.cartas.add(nuevaCarta);
     }
 

@@ -35,6 +35,7 @@ public class JuegoDeTruco {
         this.repartir();
         this.arbitro = new JuezDeTruco();
         this.estadoActualEnvido = new EstadoInicialEnvido();
+        this.estadoActualTruco = new EstadoInicialTruco();
         jugadorActual = jugadores.obtenerElemento(1);
     }
     
@@ -64,16 +65,18 @@ public class JuegoDeTruco {
         }
     }
 
-    public void envido(Integer puntos) {
+    public void envido() {
     	if (jugadorActual.mostrarCartas().size() != 3) {
     		throw new SoloSePuedeCantarEnPrimeraError();
     	}
         this.estadoActualEnvido = new Envido(this.estadoActualEnvido);
+        this.jugadores.moverAlSiguiente();
     }
     
     public void quieroEnvido() {
     	Jugador ganador = arbitro.ganadorEnvido(jugadores.obtenerElementos());
         ganador.sumarPuntos(this.estadoActualEnvido.obtenerPuntosQueridos());
+        this.jugadores.moverAlSiguiente();
     }
     
     public void noQuieroEnvido() {
@@ -164,5 +167,14 @@ public class JuegoDeTruco {
 
 	public Jugador obtenerJugadorActual() {
 		return jugadorActual;
+	}
+
+	public void moverAlSiguiente() {
+		this.jugadores.moverAlSiguiente();
+	}
+
+	public void realEnvido() {
+		estadoActualEnvido = new RealEnvido(estadoActualEnvido);
+		this.jugadores.moverAlSiguiente();
 	}
 }
