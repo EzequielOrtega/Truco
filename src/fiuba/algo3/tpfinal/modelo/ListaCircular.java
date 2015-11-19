@@ -47,6 +47,9 @@ public class ListaCircular<T> {
 	
 	//considero la posicion 0 como la posicion de la raiz
 	public T obtenerElemento(Integer posicion){
+		if ((posicion < 0)||(posicion > this.tamanio())){
+			throw new PosicionFueraDeLosLimitesDeLaListaError();
+		}
 		Nodo<T> nodoBuscado = raiz;
 		for(int x = 1; x <= posicion; x++ ){
 			nodoBuscado = nodoBuscado.obtenerSiguiente();
