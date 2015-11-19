@@ -10,6 +10,7 @@ import fiuba.algo3.tpfinal.modelo.ElementoNoEstaEnLaListaError;
 import fiuba.algo3.tpfinal.modelo.Equipo;
 import fiuba.algo3.tpfinal.modelo.Jugador;
 import fiuba.algo3.tpfinal.modelo.ListaCircular;
+import fiuba.algo3.tpfinal.modelo.PosicionFueraDeLosLimitesDeLaListaError;
 
 public class ListaCircularTest {
 	
@@ -98,6 +99,38 @@ public class ListaCircularTest {
 		jugadores.agregar(jugador1);
 		jugadores.agregar(jugador2);
 		jugadores.obtenerElementoSiguienteDe(jugador3);
+	}
+	
+	@Test
+	public void testObtenerElementoEnPosicionX(){
+		Jugador jugador1 = new Jugador("eze", Equipo.EQUIPO1);
+		Jugador jugador2 = new Jugador("matu", Equipo.EQUIPO2);
+		Jugador jugador3 = new Jugador("micaela", Equipo.EQUIPO1);
+		Jugador jugador4 = new Jugador("marcos", Equipo.EQUIPO2);
+		jugadores.agregar(jugador1);
+		jugadores.agregar(jugador2);
+		jugadores.agregar(jugador3);
+		jugadores.agregar(jugador4);		
+		Assert.assertTrue(jugador3 == jugadores.obtenerElemento(2));
+		Assert.assertTrue(jugador1 == jugadores.obtenerElemento(0));
+	}
+	
+	@Test (expected = PosicionFueraDeLosLimitesDeLaListaError.class)
+	public void testObtenerElementoEnPosicionXMenorACero(){
+		Jugador jugador1 = new Jugador("eze", Equipo.EQUIPO1);
+		Jugador jugador2 = new Jugador("matu", Equipo.EQUIPO2);
+		jugadores.agregar(jugador1);
+		jugadores.agregar(jugador2);
+		jugadores.obtenerElemento(-1);		
+	}
+	
+	@Test (expected = PosicionFueraDeLosLimitesDeLaListaError.class)
+	public void testObtenerElementoEnPosicionXMayorAlTamanioDeLaLista(){
+		Jugador jugador1 = new Jugador("eze", Equipo.EQUIPO1);
+		Jugador jugador2 = new Jugador("matu", Equipo.EQUIPO2);
+		jugadores.agregar(jugador1);
+		jugadores.agregar(jugador2);
+		jugadores.obtenerElemento(4);		
 	}
 
 }
