@@ -6,6 +6,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import fiuba.algo3.tpfinal.modelo.ElementoNoEstaEnLaListaError;
 import fiuba.algo3.tpfinal.modelo.Equipo;
 import fiuba.algo3.tpfinal.modelo.Jugador;
 import fiuba.algo3.tpfinal.modelo.ListaCircular;
@@ -73,6 +74,30 @@ public class ListaCircularTest {
 		LinkedList<Jugador> jugadoresList = jugadores.obtenerElementos();
 		Assert.assertTrue(jugador1 == jugadoresList.getFirst());
 		Assert.assertTrue(jugador2 == jugadoresList.getLast());
+	}
+	
+	@Test
+	public void testObtenerSiguienteDeUnJugadorParticular(){
+		Jugador jugador1 = new Jugador("eze", Equipo.EQUIPO1);
+		Jugador jugador2 = new Jugador("matu", Equipo.EQUIPO2);
+		Jugador jugador3 = new Jugador("micaela", Equipo.EQUIPO1);
+		Jugador jugador4 = new Jugador("marcos", Equipo.EQUIPO2);
+		jugadores.agregar(jugador1);
+		jugadores.agregar(jugador2);
+		jugadores.agregar(jugador3);
+		jugadores.agregar(jugador4);		
+		Assert.assertTrue(jugador3 == jugadores.obtenerElementoSiguienteDe(jugador2));
+		Assert.assertTrue(jugador1 == jugadores.obtenerElementoSiguienteDe(jugador4));
+	}
+	
+	@Test (expected = ElementoNoEstaEnLaListaError.class)
+	public void testObtenerSiguienteDeUnJugadorParticularQueNoEstaEnLaLista(){
+		Jugador jugador1 = new Jugador("eze", Equipo.EQUIPO1);
+		Jugador jugador2 = new Jugador("matu", Equipo.EQUIPO2);
+		Jugador jugador3 = new Jugador("micaela", Equipo.EQUIPO1);
+		jugadores.agregar(jugador1);
+		jugadores.agregar(jugador2);
+		jugadores.obtenerElementoSiguienteDe(jugador3);
 	}
 
 }

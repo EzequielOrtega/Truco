@@ -68,4 +68,19 @@ public class ListaCircular<T> {
 		}
 		return elementos;
 	}
+
+	public T obtenerElementoSiguienteDe(T elemento) {
+		T elementoBuscado = null;
+		Nodo<T> nodoActual = raiz;
+		for(Integer x = 0; x < this.tamanio(); x++){
+			if(nodoActual.obtenerDato() == elemento){
+				elementoBuscado = nodoActual.obtenerSiguiente().obtenerDato();
+			}
+			nodoActual = nodoActual.obtenerSiguiente();
+		}
+		if (elementoBuscado == null){
+			throw new ElementoNoEstaEnLaListaError();
+		}
+		return elementoBuscado;
+	}
 }
