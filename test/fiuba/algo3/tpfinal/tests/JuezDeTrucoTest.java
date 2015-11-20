@@ -186,7 +186,6 @@ public class JuezDeTrucoTest {
     	Assert.assertTrue(dosJugadores.get(0) == arbitro.ganadorFlor(dosJugadores));
     }
     
-    @Ignore
     @Test
     public void testGanadorManoDosJugadores() {
         Carta carta1 = new Carta(7, Palo.ORO);
@@ -210,7 +209,7 @@ public class JuezDeTrucoTest {
         cartas.add(carta2);
         Assert.assertEquals(Resultado.EMPATE, arbitro.ganadorDeLaMano(cartas));
     }
-    @Ignore
+    
     @Test 
     public void testGanadorDeManoCuatroJugadores(){
     	Carta carta1 = new Carta(7, Palo.ORO);
