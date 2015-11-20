@@ -118,12 +118,7 @@ public class JuegoDeTruco {
     	this.jugadorQueCanto = null;
     }
 
-	public void flor(Integer puntos) {
-        Jugador ganador = arbitro.ganadorFlor(jugadores.obtenerElementos());
-        ganador.sumarPuntos(puntos);
-    }  
-
-	public void ganadorDeLaRonda() {
+    public void ganadorDeLaRonda() {
         // https://es.wikipedia.org/wiki/Truco_argentino
         // G1       G2      G3      Ganador
         // 1        2       E           1
@@ -221,8 +216,9 @@ public class JuegoDeTruco {
 			throw new NoPuedeJugarSeCantoTrucoError();
 		}
 		this.manoActual.add(carta);
-		if (this.manoActual.size() == 2) {
+		if (this.manoActual.size() == this.jugadores.tamanio()) {
 			arbitro.ganadorDeLaMano(this.manoActual);
 		}
+		this.jugadorActual.moverAlSiguiente();
 	}
 }
