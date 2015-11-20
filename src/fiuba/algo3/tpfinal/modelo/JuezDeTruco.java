@@ -6,41 +6,35 @@ public class JuezDeTruco {
 	
    
     public Jugador ganadorEnvido(LinkedList<Jugador> jugadores) {
-    	Jugador ganadorEnvido = null;
-        int maximoValor = 0;
-        for (Jugador jug: jugadores) {
-            if((jug.getValorEnvido() > maximoValor)||(maximoValor == 0))
-                ganadorEnvido = jug;
-            if((jug.getValorEnvido() == maximoValor)&&(!ganadorEnvido.estanEnElMismoEquipo(jug)))
+    	Jugador ganadorEnvido = jugadores.getFirst();
+        int maximoValor = jugadores.getFirst().getValorEnvido();
+        for (Integer x = 1; x < jugadores.size(); x++) {
+            if(jugadores.get(x).getValorEnvido() > maximoValor){
+                ganadorEnvido = jugadores.get(x);
+            }
+            if((jugadores.get(x).getValorEnvido() == maximoValor)&&(!ganadorEnvido.estanEnElMismoEquipo(jugadores.get(x)))){
                 ganadorEnvido = jugadores.get(0);
+            }
         }
 
         return ganadorEnvido;
      }
 
     public Jugador ganadorFlor(LinkedList<Jugador> jugadores) {
-    	Jugador ganadorFlor = null;
-        int maximoValor = 0;
-        for (Jugador jug: jugadores) {
-            if((jug.getValorFlor() > maximoValor)||(maximoValor == 0))
-                ganadorFlor = jug;
-            if((jug.getValorFlor() == maximoValor)&&(!ganadorFlor.estanEnElMismoEquipo(jug)))
+    	Jugador ganadorFlor = jugadores.getFirst();
+        int maximoValor = jugadores.getFirst().getValorFlor();
+        for (Integer x = 1; x < jugadores.size(); x++) {
+            if(jugadores.get(x).getValorFlor() > maximoValor){
+                ganadorFlor = jugadores.get(x);
+            }
+            if((jugadores.get(x).getValorFlor() == maximoValor)&&(!ganadorFlor.estanEnElMismoEquipo(jugadores.get(x)))){
                 ganadorFlor = jugadores.get(0);
+            }
         }
 
         return ganadorFlor;
     }
 
-    public Resultado ganadorDeLaMano(Carta carta1, Carta carta2) {
-    	CalculadorDeValorRelativo calculador = new CalculadorDeValorRelativo();
-    	if(calculador.obtenerValorCarta(carta1) > calculador.obtenerValorCarta(carta2)){
-    		return Resultado.GANADOR1;
-        }else if (calculador.obtenerValorCarta(carta1) < calculador.obtenerValorCarta(carta2)){
-        	return Resultado.GANADOR2;
-        }else{
-        	return Resultado.EMPATE;
-        }
-    }
     //Devuelve: 
     //ganador1 si gana el equipo1
     //ganador2 si gana el equipo2

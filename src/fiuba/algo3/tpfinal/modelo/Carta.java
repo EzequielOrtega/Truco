@@ -13,8 +13,8 @@ public class Carta {
     public int getValor(){
         return this.valor;
     }
-    public String getPalo(){
-        return this.palo.toString();
+    public Palo getPalo(){
+        return this.palo;
     }
 
     public boolean mismoPaloQue(Carta otraCarta) {

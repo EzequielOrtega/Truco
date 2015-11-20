@@ -31,9 +31,9 @@ public class JugadorTest {
         nuevoJugador.agarrarCarta(carta2);
         nuevoJugador.agarrarCarta(carta3);
 
-        assertEquals("ESPADA", nuevoJugador.mostrarCartas().get(0).getPalo());
-        assertEquals("ESPADA", nuevoJugador.mostrarCartas().get(1).getPalo());
-        assertEquals("BASTO", nuevoJugador.mostrarCartas().get(2).getPalo());
+        assertEquals(Palo.ESPADA, nuevoJugador.mostrarCartas().get(0).getPalo());
+        assertEquals(Palo.ESPADA, nuevoJugador.mostrarCartas().get(1).getPalo());
+        assertEquals(Palo.BASTO, nuevoJugador.mostrarCartas().get(2).getPalo());
         assertEquals(7, nuevoJugador.mostrarCartas().get(0).getValor());
         assertEquals(3, nuevoJugador.mostrarCartas().get(1).getValor());
         assertEquals(4, nuevoJugador.mostrarCartas().get(2).getValor());

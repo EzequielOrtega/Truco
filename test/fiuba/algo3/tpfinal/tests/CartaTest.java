@@ -13,12 +13,12 @@ public class CartaTest {
     @Test
     public void testCrearCartaExitoso() {
         nuevaCarta = new Carta(7, Palo.ORO);
-        assertEquals("ORO",nuevaCarta.getPalo());
+        assertEquals(Palo.ORO,nuevaCarta.getPalo());
         assertEquals(7,nuevaCarta.getValor());
 
         // Si introduzo el palo con mayusculas y minusculas
         otraCarta = new Carta(4, Palo.BASTO);
-        assertEquals("BASTO", otraCarta.getPalo());
+        assertEquals(Palo.BASTO, otraCarta.getPalo());
     }
 
     @Test (expected = ValorDeCartaInvalidoError.class)
