@@ -64,7 +64,6 @@ public class JuegoDeTruco {
         this.arbitro = new JuezDeTruco();
         this.estadoActualEnvido = new EstadoInicialEnvido();
         this.estadoActualTruco = new EstadoInicialTruco();
-        this.jugadorActual = new ListaCircular<Jugador>();
         this.envidoCantado = false;
         this.conFlor = false;
         this.jugadorQueCanto = null;
@@ -87,14 +86,14 @@ public class JuegoDeTruco {
     	}
     	this.envidoCantado = true;
         this.estadoActualEnvido = new Envido(this.estadoActualEnvido);
-/*        if(this.jugadorQueCanto == null){
+        if(this.jugadorQueCanto == null){
         	this.jugadorQueCanto = jugadorActual.obtenerElemento(0);
         	this.jugadorActual.moverAlSiguiente();
         }else if(this.jugadorQueCanto == jugadorActual.obtenerElemento(0)){
         	this.jugadorActual.moverAlSiguiente();
         }else{
         	this.jugadorActual.moverAlAnterior();
-        }*/
+        }
     }
     
     public void quieroEnvido() {
@@ -116,14 +115,7 @@ public class JuegoDeTruco {
 	public void flor(Integer puntos) {
         Jugador ganador = arbitro.ganadorFlor(jugadores.obtenerElementos());
         ganador.sumarPuntos(puntos);
-    }
-
-    /*
-    public void ganadorDeLaMano(Carta cartaJ1, Carta cartaJ2) {
-        Jugador ganador = arbitro.ganadorDeLaMano(jugadores);
-    }*/
-
-  
+    }  
 
 	public void ganadorDeLaRonda() {
         // https://es.wikipedia.org/wiki/Truco_argentino
@@ -147,22 +139,9 @@ public class JuegoDeTruco {
 		for(Jugador jugadorActual: jugadoresList){
 			jugadorActual.resetearPuntos();
 		}
-	}
+	}	
 
-	private void ronda(Boolean conFlor) {
-		mazoDeCartas.mezclar();
-		this.repartir();
-		boolean noTerminoRonda = true;
-		while (noTerminoRonda){
-			//Acciones de jugador (cantar y/ jugar)
-			//Verificar quien gano la mano
-			//Verificar si se termino la ronda (cambiar el estado de noTerminoRonda)
-		}
-		//Sumar los puntos al ganador
-		jugadores.moverAlSiguiente();
-	}
-
-	private int puntosDeEquipo(Equipo equipo) {
+	public int puntosDeEquipo(Equipo equipo) {
 		Integer puntos = 0;
 		LinkedList<Jugador> jugadoresList = jugadores.obtenerElementos();
 		for(Jugador jugadorActual: jugadoresList){
@@ -183,7 +162,7 @@ public class JuegoDeTruco {
 
 	public void reTruco() {
 		this.estadoActualTruco = new ReTruco(estadoActualTruco);
-		jugadorActual.moverAlSiguiente();
+		jugadorActual.moverAlAnterior();
 	}
 
 	public void valeCuatro() {
@@ -209,14 +188,14 @@ public class JuegoDeTruco {
 	public void realEnvido() {
 		this.envidoCantado = true;
 		estadoActualEnvido = new RealEnvido(estadoActualEnvido);
-/*		if(this.jugadorQueCanto == null){
+		if(this.jugadorQueCanto == null){
         	this.jugadorQueCanto = jugadorActual.obtenerElemento(0);
         	this.jugadorActual.moverAlSiguiente();
         }else if(this.jugadorQueCanto == jugadorActual.obtenerElemento(0)){
         	this.jugadorActual.moverAlSiguiente();
         }else{
         	this.jugadorActual.moverAlAnterior();
-        }*/
+        }
 	}
 
 	// todavia esta incompleto

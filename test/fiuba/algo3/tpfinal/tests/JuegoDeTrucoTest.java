@@ -21,11 +21,6 @@ public class JuegoDeTrucoTest {
     private Carta cincoDeEspada = new NoFigura(5, Palo.ESPADA);
     private Carta unoDeBasto = new NoFigura(1, Palo.BASTO);
     
-    /*
-     * Por algun motivo, el jugador no agarra bien las cartas. porque
-     * me tira CantidadDeCartasInvalidaError cuando le agrego tres
-     * cartas a cada jugador.
-     */
     @Before
     public void setUp() {
     	unJuego = new JuegoDeTruco("Ana", "Juan");
@@ -41,12 +36,15 @@ public class JuegoDeTrucoTest {
     	unJuego.obtenerJugadorActual().agarrarCarta(unoDeBasto);
     }
     
-    //Pedir las cartas asi rompe el encapsulamiento de JuegoDeTruco
     @Test
     public void testSeRepartioLaManoInicial() {
-        /*// Chequeo que se le repartieron las 3 cartas a cada jugador.
-        assertEquals(3, j1.mostrarCartas().size());
-        assertEquals(3, j2.mostrarCartas().size());*/
+        unJuego.comenzarPartida(true);
+        unJuego.repartir();
+        Jugador jugador1 = unJuego.obtenerJugadorActual();
+        Assert.assertTrue(3 == jugador1.mostrarCartas().size());
+        unJuego.moverAlSiguiente();
+        Jugador jugador2 = unJuego.obtenerJugadorActual();
+        Assert.assertTrue(3 == jugador2.mostrarCartas().size());
     }
     
     @Test
@@ -58,10 +56,6 @@ public class JuegoDeTrucoTest {
     
     @Test
     public void testTrucoReTrucoValeCuatroNoQuerido() {
-    	/*
-    	 *  es raro el hecho de que es dificil de seguir porque
-    	 *  el jugador que hace una accion no es visible en este codigo.
-    	 */
     	unJuego.truco();
     	unJuego.reTruco();
     	unJuego.valeCuatro();
