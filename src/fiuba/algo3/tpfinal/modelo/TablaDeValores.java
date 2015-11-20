@@ -2,6 +2,8 @@ package fiuba.algo3.tpfinal.modelo;
 
 import java.util.LinkedList;
 
+import fiuba.algo3.tpfinal.modelo.error.LaCartaIngresadaNoEstaEnLaTablaError;
+
 public class TablaDeValores {
 	
 	private LinkedList<ElementoDeTabla<Carta>> elementos;

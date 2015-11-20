@@ -5,7 +5,7 @@ import org.junit.Test;
 import fiuba.algo3.tpfinal.modelo.Carta;
 import fiuba.algo3.tpfinal.modelo.Figura;
 import fiuba.algo3.tpfinal.modelo.Palo;
-import fiuba.algo3.tpfinal.modelo.ValorDeCartaInvalidoError;
+import fiuba.algo3.tpfinal.modelo.error.ValorDeCartaInvalidoError;
 
 public class FiguraTest {
 

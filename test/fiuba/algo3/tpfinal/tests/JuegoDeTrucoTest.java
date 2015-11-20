@@ -2,6 +2,8 @@ package fiuba.algo3.tpfinal.tests;
 
 
 import fiuba.algo3.tpfinal.modelo.*;
+import fiuba.algo3.tpfinal.modelo.error.NoPuedeCantarTrucoSeCantoEnvidoError;
+import fiuba.algo3.tpfinal.modelo.error.NoRespetaJerarquiaDeTrucoError;
 
 import org.junit.Assert;
 import org.junit.Before;

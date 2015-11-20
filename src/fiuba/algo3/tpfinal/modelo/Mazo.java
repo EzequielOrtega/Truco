@@ -2,6 +2,8 @@ package fiuba.algo3.tpfinal.modelo;
 
 import java.util.*;
 
+import fiuba.algo3.tpfinal.modelo.error.NoHayMasCartasError;
+
 public class Mazo {
     private Vector<Carta> cartas = new Stack<Carta>();
     private int cartasUsadas = 0;

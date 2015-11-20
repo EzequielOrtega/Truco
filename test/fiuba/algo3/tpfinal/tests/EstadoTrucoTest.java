@@ -4,12 +4,12 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import fiuba.algo3.tpfinal.modelo.EstadoInicialTruco;
-import fiuba.algo3.tpfinal.modelo.EstadoTruco;
-import fiuba.algo3.tpfinal.modelo.NoRespetaJerarquiaDeTrucoError;
-import fiuba.algo3.tpfinal.modelo.ReTruco;
-import fiuba.algo3.tpfinal.modelo.Truco;
-import fiuba.algo3.tpfinal.modelo.ValeCuatro;
+import fiuba.algo3.tpfinal.modelo.error.NoRespetaJerarquiaDeTrucoError;
+import fiuba.algo3.tpfinal.modelo.truco.EstadoInicialTruco;
+import fiuba.algo3.tpfinal.modelo.truco.EstadoTruco;
+import fiuba.algo3.tpfinal.modelo.truco.ReTruco;
+import fiuba.algo3.tpfinal.modelo.truco.Truco;
+import fiuba.algo3.tpfinal.modelo.truco.ValeCuatro;
 
 public class EstadoTrucoTest {
 	

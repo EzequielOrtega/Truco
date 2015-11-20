@@ -1,6 +1,9 @@
 package fiuba.algo3.tpfinal.tests;
 
 import fiuba.algo3.tpfinal.modelo.*;
+import fiuba.algo3.tpfinal.modelo.error.JugadorNoTieneFlorError;
+import fiuba.algo3.tpfinal.modelo.error.SoloSePuedeCantarEnvidoEnPrimeraError;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -44,7 +47,7 @@ public class CalculadorDeTantosTest {
 		cartas.add(sotaDeBasto);
 		assertFalse(calculador.tieneFlor(cartas));
 	}
-	@Test (expected = SoloSePuedeCantarEnPrimeraError.class)
+	@Test (expected = SoloSePuedeCantarEnvidoEnPrimeraError.class)
 	public void testTieneFlorFallaSiFaltanCartas(){
 		cartas.add(unoDeEspada);
 		cartas.add(sieteDeCopa);
@@ -85,7 +88,7 @@ public class CalculadorDeTantosTest {
 		cartas.add(unoDeBasto);
 		assertEquals(7, calculador.obtenerTantosDeEnvido(cartas));
 	}
-	@Test (expected = SoloSePuedeCantarEnPrimeraError.class)
+	@Test (expected = SoloSePuedeCantarEnvidoEnPrimeraError.class)
 	public void testObtenerTantosDeEnvidoConMenosDeTresCartas(){
 		cartas.add(unoDeEspada);
 		cartas.add(sieteDeEspada);

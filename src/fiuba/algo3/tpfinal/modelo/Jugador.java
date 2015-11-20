@@ -3,6 +3,8 @@ package fiuba.algo3.tpfinal.modelo;
 
 import java.util.Vector;
 
+import fiuba.algo3.tpfinal.modelo.error.CantidadDeCartasInvalidaError;
+
 public class Jugador {
     // Tal vez deberia llamarse JugadorDeTruco o crear una clase JugadorDeTruco que herede/implemente esta.
 

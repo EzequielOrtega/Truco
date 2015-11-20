@@ -1,5 +1,7 @@
 package fiuba.algo3.tpfinal.modelo;
 
+import fiuba.algo3.tpfinal.modelo.error.ValorDeCartaInvalidoError;
+
 public class Carta {
     private final int valor;
     private final Palo palo;

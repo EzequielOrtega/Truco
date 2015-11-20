@@ -2,11 +2,14 @@ package fiuba.algo3.tpfinal.modelo;
 
 import java.util.Vector;
 
+import fiuba.algo3.tpfinal.modelo.error.JugadorNoTieneFlorError;
+import fiuba.algo3.tpfinal.modelo.error.SoloSePuedeCantarEnvidoEnPrimeraError;
+
 public class CalculadorDeTantos {
 
 	public boolean tieneFlor(Vector<Carta> cartas){
 		if(cartas.size()<3){
-			throw new SoloSePuedeCantarEnPrimeraError();
+			throw new SoloSePuedeCantarEnvidoEnPrimeraError();
 		}
 		return cartas.get(0).mismoPaloQue(cartas.get(1), cartas.get(2));
 	}
@@ -29,7 +32,7 @@ public class CalculadorDeTantos {
 	public int obtenerTantosDeEnvido(Vector<Carta> cartas) {
 
 		if (cartas.size()<3){
-			throw new SoloSePuedeCantarEnPrimeraError();
+			throw new SoloSePuedeCantarEnvidoEnPrimeraError();
 		}
 
 		int envidoMaximo;

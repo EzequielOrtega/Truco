@@ -1,4 +1,4 @@
-package fiuba.algo3.tpfinal.modelo;
+package fiuba.algo3.tpfinal.modelo.envido;
 
 public class FaltaEnvido extends EstadoEnvido {
 

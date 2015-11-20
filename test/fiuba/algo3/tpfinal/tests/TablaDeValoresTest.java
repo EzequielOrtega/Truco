@@ -6,10 +6,10 @@ import org.junit.Before;
 import org.junit.Test;
 
 import fiuba.algo3.tpfinal.modelo.Carta;
-import fiuba.algo3.tpfinal.modelo.LaCartaIngresadaNoEstaEnLaTablaError;
 import fiuba.algo3.tpfinal.modelo.NoFigura;
 import fiuba.algo3.tpfinal.modelo.Palo;
 import fiuba.algo3.tpfinal.modelo.TablaDeValores;
+import fiuba.algo3.tpfinal.modelo.error.LaCartaIngresadaNoEstaEnLaTablaError;
 
 
 

@@ -1,4 +1,6 @@
-package fiuba.algo3.tpfinal.modelo;
+package fiuba.algo3.tpfinal.modelo.envido;
+
+import fiuba.algo3.tpfinal.modelo.error.NoRespetaJerarquiaDeEnvidoError;
 
 public class Envido extends EstadoEnvido {
 	

@@ -4,12 +4,12 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import fiuba.algo3.tpfinal.modelo.Envido;
-import fiuba.algo3.tpfinal.modelo.EstadoEnvido;
-import fiuba.algo3.tpfinal.modelo.EstadoInicialEnvido;
-import fiuba.algo3.tpfinal.modelo.FaltaEnvido;
-import fiuba.algo3.tpfinal.modelo.NoRespetaJerarquiaDeEnvidoError;
-import fiuba.algo3.tpfinal.modelo.RealEnvido;
+import fiuba.algo3.tpfinal.modelo.envido.Envido;
+import fiuba.algo3.tpfinal.modelo.envido.EstadoEnvido;
+import fiuba.algo3.tpfinal.modelo.envido.EstadoInicialEnvido;
+import fiuba.algo3.tpfinal.modelo.envido.FaltaEnvido;
+import fiuba.algo3.tpfinal.modelo.envido.RealEnvido;
+import fiuba.algo3.tpfinal.modelo.error.NoRespetaJerarquiaDeEnvidoError;
 
 public class EstadoEnvidoTest {
 	

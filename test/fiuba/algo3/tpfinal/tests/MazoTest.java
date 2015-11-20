@@ -1,6 +1,7 @@
 package fiuba.algo3.tpfinal.tests;
 
 import fiuba.algo3.tpfinal.modelo.*;
+import fiuba.algo3.tpfinal.modelo.error.NoHayMasCartasError;
 
 import org.junit.Assert;
 import org.junit.Before;

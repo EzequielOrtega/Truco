@@ -2,6 +2,9 @@ package fiuba.algo3.tpfinal.modelo;
 
 import java.util.LinkedList;
 
+import fiuba.algo3.tpfinal.modelo.error.ElementoNoEstaEnLaListaError;
+import fiuba.algo3.tpfinal.modelo.error.PosicionFueraDeLosLimitesDeLaListaError;
+
 public class ListaCircular<T> {
 	
 	private Nodo<T> raiz;

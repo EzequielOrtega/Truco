@@ -2,6 +2,18 @@ package fiuba.algo3.tpfinal.modelo;
 
 import java.util.LinkedList;
 
+import fiuba.algo3.tpfinal.modelo.envido.Envido;
+import fiuba.algo3.tpfinal.modelo.envido.EstadoEnvido;
+import fiuba.algo3.tpfinal.modelo.envido.EstadoInicialEnvido;
+import fiuba.algo3.tpfinal.modelo.envido.RealEnvido;
+import fiuba.algo3.tpfinal.modelo.error.NoPuedeCantarTrucoSeCantoEnvidoError;
+import fiuba.algo3.tpfinal.modelo.error.SoloSePuedeCantarEnvidoEnPrimeraError;
+import fiuba.algo3.tpfinal.modelo.truco.EstadoInicialTruco;
+import fiuba.algo3.tpfinal.modelo.truco.EstadoTruco;
+import fiuba.algo3.tpfinal.modelo.truco.ReTruco;
+import fiuba.algo3.tpfinal.modelo.truco.Truco;
+import fiuba.algo3.tpfinal.modelo.truco.ValeCuatro;
+
 public class JuegoDeTruco {
 
     
@@ -69,7 +81,7 @@ public class JuegoDeTruco {
 
     public void envido() {
     	if (jugadorActual.obtenerElemento(0).mostrarCartas().size() != 3) {
-    		throw new SoloSePuedeCantarEnPrimeraError();
+    		throw new SoloSePuedeCantarEnvidoEnPrimeraError();
     	}
     	this.envidoCantado = true;
         this.estadoActualEnvido = new Envido(this.estadoActualEnvido);

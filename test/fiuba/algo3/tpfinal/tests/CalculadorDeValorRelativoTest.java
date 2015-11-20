@@ -9,10 +9,10 @@ import org.junit.Test;
 import fiuba.algo3.tpfinal.modelo.CalculadorDeValorRelativo;
 import fiuba.algo3.tpfinal.modelo.Carta;
 import fiuba.algo3.tpfinal.modelo.Figura;
-import fiuba.algo3.tpfinal.modelo.LaCartaIngresadaNoEstaEnLaTablaError;
 import fiuba.algo3.tpfinal.modelo.Mazo;
 import fiuba.algo3.tpfinal.modelo.NoFigura;
 import fiuba.algo3.tpfinal.modelo.Palo;
+import fiuba.algo3.tpfinal.modelo.error.LaCartaIngresadaNoEstaEnLaTablaError;
 
 public class CalculadorDeValorRelativoTest {
 	

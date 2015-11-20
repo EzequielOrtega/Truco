@@ -6,11 +6,11 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import fiuba.algo3.tpfinal.modelo.ElementoNoEstaEnLaListaError;
 import fiuba.algo3.tpfinal.modelo.Equipo;
 import fiuba.algo3.tpfinal.modelo.Jugador;
 import fiuba.algo3.tpfinal.modelo.ListaCircular;
-import fiuba.algo3.tpfinal.modelo.PosicionFueraDeLosLimitesDeLaListaError;
+import fiuba.algo3.tpfinal.modelo.error.ElementoNoEstaEnLaListaError;
+import fiuba.algo3.tpfinal.modelo.error.PosicionFueraDeLosLimitesDeLaListaError;
 
 public class ListaCircularTest {
 	

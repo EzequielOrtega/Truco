@@ -1,5 +1,7 @@
 package fiuba.algo3.tpfinal.modelo;
 
+import fiuba.algo3.tpfinal.modelo.error.ValorDeCartaInvalidoError;
+
 public class Figura extends Carta implements CartaParaEnvidoYFlor {
 	
 	public Figura(Integer valor, Palo palo){
