@@ -13,8 +13,7 @@ public class JuegoDeTruco {
     //private static final int PUNTOS_RETRUCO = 3;
     //private static final int PUNTOS_TRUCO_VALE4 = 4;
 
-
-    private final ListaCircular<Jugador> jugadores = new ListaCircular<Jugador>();
+	private final ListaCircular<Jugador> jugadores = new ListaCircular<Jugador>();
    
     private Mazo mazoDeCartas;
     private JuezDeTruco arbitro;
@@ -77,10 +76,12 @@ public class JuegoDeTruco {
     	Jugador ganador = arbitro.ganadorEnvido(jugadores.obtenerElementos());
         ganador.sumarPuntos(this.estadoActualEnvido.obtenerPuntosQueridos());
         this.jugadores.moverAlSiguiente();
+        this.estadoActualEnvido = new EstadoInicialEnvido();
     }
     
     public void noQuieroEnvido() {
     	jugadorActual.sumarPuntos(this.estadoActualEnvido.obtenerPuntosNoQueridos());
+    	this.estadoActualEnvido = new EstadoInicialEnvido();
     }
 
 	public void flor(Integer puntos) {
@@ -163,6 +164,7 @@ public class JuegoDeTruco {
 	public void noQuieroTruco() {
 		jugadores.moverAlSiguiente();
 		jugadorActual.sumarPuntos(estadoActualTruco.obtenerPuntosNoQueridos());
+		this.estadoActualTruco = new EstadoInicialTruco();
 	}
 
 	public Jugador obtenerJugadorActual() {

@@ -80,4 +80,20 @@ public class JuegoDeTrucoTest {
     	
     	Assert.assertEquals(5, nuevoJuego.obtenerJugadorActual().obtenerPuntaje());
     }
+    
+    @Ignore
+    @Test
+    public void testTrucoElEnvidoEstaPrimeroValeEnPrimeraMano() {
+    	nuevoJuego.truco();
+    	nuevoJuego.envido();
+    	nuevoJuego.noQuieroEnvido();
+    	nuevoJuego.noQuieroTruco();
+    }
+    
+    @Ignore
+    @Test (expected = NoRespetaJerarquiaDeEnvidoError.class)
+    public void testEnvidoTrucoNoVale() {
+    	nuevoJuego.envido();
+    	nuevoJuego.truco();
+    }
 }
