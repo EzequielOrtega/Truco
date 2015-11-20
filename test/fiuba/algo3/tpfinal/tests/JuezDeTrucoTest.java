@@ -12,7 +12,6 @@ import fiuba.algo3.tpfinal.modelo.Resultado;
 
 import org.junit.Assert;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.LinkedList;
