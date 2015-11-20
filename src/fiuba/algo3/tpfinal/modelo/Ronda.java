@@ -2,6 +2,7 @@ package fiuba.algo3.tpfinal.modelo;
 
 import java.util.LinkedList;
 
+import fiuba.algo3.tpfinal.modelo.error.NoHayGanadorDeRondaInconclusaError;
 import fiuba.algo3.tpfinal.modelo.error.YaSeJugaronLasTresManosError;
 
 public class Ronda {
@@ -40,6 +41,16 @@ public class Ronda {
 			concluyoLaRonda = huboEmpate;
 		}
 		return concluyoLaRonda;
+	}
+	
+	//devuelve null en caso de haber empatado las tres manos
+	public Jugador ganadorDeLaRonda(LinkedList<Jugador> jugadores){
+		if(!this.concluyoLaRonda()){
+			throw new NoHayGanadorDeRondaInconclusaError();
+		}
+		Jugador ganador = null;
+		//falta resolver
+		return ganador;
 	}
 	
 	
