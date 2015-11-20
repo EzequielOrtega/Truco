@@ -8,6 +8,8 @@ import fiuba.algo3.tpfinal.modelo.envido.EstadoEnvido;
 import fiuba.algo3.tpfinal.modelo.envido.EstadoInicialEnvido;
 import fiuba.algo3.tpfinal.modelo.envido.RealEnvido;
 import fiuba.algo3.tpfinal.modelo.error.NoPuedeCantarTrucoSeCantoEnvidoError;
+import fiuba.algo3.tpfinal.modelo.error.NoPuedeJugarSeCantoEnvidoError;
+import fiuba.algo3.tpfinal.modelo.error.NoPuedeJugarSeCantoTrucoError;
 import fiuba.algo3.tpfinal.modelo.error.SoloSePuedeCantarEnvidoEnPrimeraError;
 import fiuba.algo3.tpfinal.modelo.truco.EstadoInicialTruco;
 import fiuba.algo3.tpfinal.modelo.truco.EstadoTruco;
@@ -26,6 +28,7 @@ public class JuegoDeTruco {
 	private EstadoTruco estadoActualTruco;
 	private Boolean envidoCantado;
 	private Boolean conFlor;
+	private Boolean trucoCantado;
 	private Jugador jugadorQueCanto;
 	private LinkedList<Carta> manoActual;
 
@@ -42,6 +45,7 @@ public class JuegoDeTruco {
         this.estadoActualEnvido = new EstadoInicialEnvido();
         this.estadoActualTruco = new EstadoInicialTruco();
         this.envidoCantado = false;
+        this.trucoCantado = false;
         this.conFlor = false;
         this.jugadorQueCanto = null;
     }
@@ -65,6 +69,7 @@ public class JuegoDeTruco {
         this.estadoActualEnvido = new EstadoInicialEnvido();
         this.estadoActualTruco = new EstadoInicialTruco();
         this.envidoCantado = false;
+        this.trucoCantado = false;
         this.conFlor = false;
         this.jugadorQueCanto = null;
     }
@@ -110,6 +115,7 @@ public class JuegoDeTruco {
     	jugadorActual.obtenerElemento(0).sumarPuntos(this.estadoActualEnvido.obtenerPuntosNoQueridos());
     	this.estadoActualEnvido = new EstadoInicialEnvido();
     	this.envidoCantado = false;
+    	this.jugadorQueCanto = null;
     }
 
 	public void flor(Integer puntos) {
@@ -155,7 +161,8 @@ public class JuegoDeTruco {
 	public void truco() {
 		if(this.envidoCantado){
 			throw new NoPuedeCantarTrucoSeCantoEnvidoError();
-		}		
+		}
+		this.trucoCantado = true;
 		this.estadoActualTruco = new Truco(estadoActualTruco);
 		jugadorActual.moverAlSiguiente();
 	}
@@ -173,7 +180,14 @@ public class JuegoDeTruco {
 	public void noQuieroTruco() {
 		jugadorActual.moverAlAnterior();
 		jugadorActual.obtenerElemento(0).sumarPuntos(estadoActualTruco.obtenerPuntosNoQueridos());
-		// fin mano o ronda, o como se llame
+		this.estadoActualTruco = new EstadoInicialTruco();
+		this.trucoCantado = false;
+		//this.terminarRonda();
+	}
+	
+	public void quieroTruco(){
+		jugadorActual.moverAlAnterior();
+		this.trucoCantado = false;
 	}
 
 	public Jugador obtenerJugadorActual() {
@@ -200,6 +214,12 @@ public class JuegoDeTruco {
 
 	// todavia esta incompleto
 	public void jugar(Carta carta) {
+		if(this.envidoCantado){
+			throw new NoPuedeJugarSeCantoEnvidoError();
+		}
+		if(this.trucoCantado){
+			throw new NoPuedeJugarSeCantoTrucoError();
+		}
 		this.manoActual.add(carta);
 		if (this.manoActual.size() == 2) {
 			arbitro.ganadorDeLaMano(this.manoActual);

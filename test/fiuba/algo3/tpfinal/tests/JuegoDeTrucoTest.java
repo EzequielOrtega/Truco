@@ -3,6 +3,8 @@ package fiuba.algo3.tpfinal.tests;
 
 import fiuba.algo3.tpfinal.modelo.*;
 import fiuba.algo3.tpfinal.modelo.error.NoPuedeCantarTrucoSeCantoEnvidoError;
+import fiuba.algo3.tpfinal.modelo.error.NoPuedeJugarSeCantoEnvidoError;
+import fiuba.algo3.tpfinal.modelo.error.NoPuedeJugarSeCantoTrucoError;
 import fiuba.algo3.tpfinal.modelo.error.NoRespetaJerarquiaDeTrucoError;
 
 import org.junit.Assert;
@@ -102,6 +104,24 @@ public class JuegoDeTrucoTest {
     public void testSeCantaTrucoPeroSeCantoEnvidoAntesError() {
     	unJuego.envido();
     	unJuego.truco();
+    }
+    
+    @Test (expected = NoPuedeJugarSeCantoEnvidoError.class)
+    public void testJugarSinResponderElEnvido(){
+    	unJuego.comenzarPartida(true);
+        unJuego.repartir();
+    	unJuego.envido();
+    	Jugador jugador2 = unJuego.obtenerJugadorActual();
+        unJuego.jugar(jugador2.mostrarCartas().get(0));
+    }
+    
+    @Test (expected = NoPuedeJugarSeCantoTrucoError.class)
+    public void testJugarSinResponderElTruco(){
+    	unJuego.comenzarPartida(true);
+        unJuego.repartir();
+    	unJuego.truco();
+    	Jugador jugador2 = unJuego.obtenerJugadorActual();
+        unJuego.jugar(jugador2.mostrarCartas().get(0));
     }
     
     @Ignore
