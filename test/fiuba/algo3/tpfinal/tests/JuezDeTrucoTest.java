@@ -146,16 +146,46 @@ public class JuezDeTrucoTest {
     	Assert.assertTrue(cuatroJugadores.get(0) == arbitro.ganadorEnvido(cuatroJugadores));
     }
 
-    /*@Test
+    @Test
     public void testGanadorFlor() {
-    	assertEquals(Resultado.GANADOR1, arbitro.ganadorFlor(29, 23));
-        assertEquals(Resultado.GANADOR2, arbitro.ganadorFlor(35, 36));
+    	Carta carta1 = new NoFigura(7 , Palo.ESPADA);
+    	Carta carta2 = new Figura(10 , Palo.ESPADA);
+    	Carta carta3 = new NoFigura(4 , Palo.ESPADA);
+    	dosJugadores.get(0).agarrarCarta(carta1);
+    	dosJugadores.get(0).agarrarCarta(carta2);
+    	dosJugadores.get(0).agarrarCarta(carta3);
+    	
+    	Carta carta4 = new NoFigura(6 , Palo.BASTO);
+    	Carta carta5 = new NoFigura(1 , Palo.BASTO);
+    	Carta carta6 = new Figura(12 , Palo.BASTO);
+    	dosJugadores.get(1).agarrarCarta(carta4);
+    	dosJugadores.get(1).agarrarCarta(carta5);
+    	dosJugadores.get(1).agarrarCarta(carta6);
+    	
+    	Assert.assertTrue(dosJugadores.get(0).getValorFlor() > dosJugadores.get(1).getValorFlor());
+    	Assert.assertTrue(dosJugadores.get(0) == arbitro.ganadorFlor(dosJugadores));
     }
     
     @Test
     public void testEmpateEnFlor(){
-    	assertEquals(Resultado.EMPATE, arbitro.ganadorFlor(32, 32));
-    }*/
+    	Carta carta1 = new NoFigura(3 , Palo.ESPADA);
+    	Carta carta2 = new Figura(10 , Palo.ESPADA);
+    	Carta carta3 = new NoFigura(4 , Palo.ESPADA);
+    	dosJugadores.get(0).agarrarCarta(carta1);
+    	dosJugadores.get(0).agarrarCarta(carta2);
+    	dosJugadores.get(0).agarrarCarta(carta3);
+    	
+    	Carta carta4 = new NoFigura(6 , Palo.BASTO);
+    	Carta carta5 = new NoFigura(1 , Palo.BASTO);
+    	Carta carta6 = new Figura(12 , Palo.BASTO);
+    	dosJugadores.get(1).agarrarCarta(carta4);
+    	dosJugadores.get(1).agarrarCarta(carta5);
+    	dosJugadores.get(1).agarrarCarta(carta6);
+    	
+    	Assert.assertTrue(dosJugadores.get(0).getValorFlor() == dosJugadores.get(1).getValorFlor());
+    	Assert.assertTrue(dosJugadores.get(0) == arbitro.ganadorFlor(dosJugadores));
+    }
+    
     @Ignore
     @Test
     public void testGanadorManoDosJugadores() {
