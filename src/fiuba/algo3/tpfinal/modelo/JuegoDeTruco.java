@@ -8,49 +8,54 @@ public class JuegoDeTruco {
    	private final ListaCircular<Jugador> jugadores = new ListaCircular<Jugador>();
     private Mazo mazoDeCartas;
     private JuezDeTruco arbitro;
-    private Jugador jugadorActual;
+    private ListaCircular<Jugador> jugadorActual = new ListaCircular<Jugador>();
 	private EstadoEnvido estadoActualEnvido;
 	private EstadoTruco estadoActualTruco;
 	private Boolean envidoCantado;
-	private Boolean trucoCantado;
 	private Boolean conFLor;
+	private Jugador jugadorQueCanto;
 
     public JuegoDeTruco(String nombreJ1, String nombreJ2) {
-    	Jugador j1 = new Jugador(nombreJ1, Equipo.EQUIPO1);
-    	jugadores.agregar(j1);
-    	Jugador j2 = new Jugador(nombreJ2, Equipo.EQUIPO2);
-        jugadores.agregar(j2);        
+    	Jugador jugador = new Jugador(nombreJ1, Equipo.EQUIPO1);
+    	jugadorActual.agregar(jugador);
+    	jugadores.agregar(jugador);
+    	jugador = new Jugador(nombreJ2, Equipo.EQUIPO2);
+    	jugadorActual.agregar(jugador);
+    	jugadores.agregar(jugador);
         this.mazoDeCartas = new Mazo();
         this.repartir();
         this.arbitro = new JuezDeTruco();
         this.estadoActualEnvido = new EstadoInicialEnvido();
         this.estadoActualTruco = new EstadoInicialTruco();
-        this.jugadorActual = jugadores.obtenerElemento(0);
         this.envidoCantado = false;
-        this.trucoCantado = false;
         this.conFLor = false;
+        this.jugadorQueCanto = null;
     }
     
     public JuegoDeTruco(String nombreJ1, String nombreJ2, String nombreJ3, String nombreJ4) {
-    	Jugador j1 = new Jugador(nombreJ1, Equipo.EQUIPO1);
-    	jugadores.agregar(j1);
-    	Jugador j2 = new Jugador(nombreJ2, Equipo.EQUIPO2);
-        jugadores.agregar(j2);
-        Jugador j3 = new Jugador(nombreJ3, Equipo.EQUIPO1);
-        jugadores.agregar(j3);
-        Jugador j4 = new Jugador(nombreJ4, Equipo.EQUIPO2);
-        jugadores.agregar(j4);
+    	Jugador jugador = new Jugador(nombreJ1, Equipo.EQUIPO1);
+    	jugadorActual.agregar(jugador);
+    	jugadores.agregar(jugador);
+    	jugador = new Jugador(nombreJ2, Equipo.EQUIPO2);
+    	jugadorActual.agregar(jugador);
+    	jugadores.agregar(jugador);
+    	jugador = new Jugador(nombreJ3, Equipo.EQUIPO1);
+    	jugadorActual.agregar(jugador);
+    	jugadores.agregar(jugador);
+    	jugador = new Jugador(nombreJ4, Equipo.EQUIPO2);
+    	jugadorActual.agregar(jugador);
+    	jugadores.agregar(jugador);
         this.mazoDeCartas = new Mazo();
         this.repartir();
         this.arbitro = new JuezDeTruco();
         this.estadoActualEnvido = new EstadoInicialEnvido();
         this.estadoActualTruco = new EstadoInicialTruco();
-        this.jugadorActual = jugadores.obtenerElemento(0);
+        this.jugadorActual = new ListaCircular<Jugador>();
         this.envidoCantado = false;
-        this.trucoCantado = false;
         this.conFLor = false;
+        this.jugadorQueCanto = null;
     }
-
+    
     public void repartir() {
         LinkedList<Jugador> jugadoresList = jugadores.obtenerElementos();
     	for (Jugador jug: jugadoresList)
@@ -63,24 +68,33 @@ public class JuegoDeTruco {
     }
 
     public void envido() {
-    	if (jugadorActual.mostrarCartas().size() != 3) {
+    	if (jugadorActual.obtenerElemento(0).mostrarCartas().size() != 3) {
     		throw new SoloSePuedeCantarEnPrimeraError();
     	}
     	this.envidoCantado = true;
         this.estadoActualEnvido = new Envido(this.estadoActualEnvido);
-        this.jugadores.moverAlSiguiente();
+        if(this.jugadorQueCanto == null){
+        	this.jugadorQueCanto = jugadorActual.obtenerElemento(0);
+        	this.jugadorActual.moverAlSiguiente();
+        }else if(this.jugadorQueCanto == jugadorActual.obtenerElemento(0)){
+        	this.jugadorActual.moverAlSiguiente();
+        }else{
+        	this.jugadorActual.moverAlAnterior();
+        }
     }
     
     public void quieroEnvido() {
     	Jugador ganador = arbitro.ganadorEnvido(jugadores.obtenerElementos());
         ganador.sumarPuntos(this.estadoActualEnvido.obtenerPuntosQueridos());
-        this.jugadores.moverAlSiguiente();
+        this.jugadorActual.moverAlAnterior();
         this.estadoActualEnvido = new EstadoInicialEnvido();
         this.envidoCantado = false;
+        this.jugadorQueCanto = null;
     }
     
     public void noQuieroEnvido() {
-    	jugadorActual.sumarPuntos(this.estadoActualEnvido.obtenerPuntosNoQueridos());
+    	this.jugadorActual.moverAlAnterior();
+    	jugadorActual.obtenerElemento(0).sumarPuntos(this.estadoActualEnvido.obtenerPuntosNoQueridos());
     	this.estadoActualEnvido = new EstadoInicialEnvido();
     	this.envidoCantado = false;
     }
@@ -148,40 +162,46 @@ public class JuegoDeTruco {
 	public void truco() {
 		if(this.envidoCantado){
 			throw new NoPuedeCantarTrucoSeCantoEnvidoError();
-		}
-		this.trucoCantado = true;
+		}		
 		this.estadoActualTruco = new Truco(estadoActualTruco);
-		jugadores.moverAlSiguiente();
+		jugadorActual.moverAlSiguiente();
 	}
 
 	public void reTruco() {
 		this.estadoActualTruco = new ReTruco(estadoActualTruco);
-		jugadores.moverAlSiguiente();
+		jugadorActual.moverAlAnterior();
 	}
 
 	public void valeCuatro() {
 		this.estadoActualTruco = new ValeCuatro(estadoActualTruco);
-		jugadores.moverAlSiguiente();
+		jugadorActual.moverAlSiguiente();
 	}
 
 	public void noQuieroTruco() {
-		jugadores.moverAlSiguiente();
-		jugadorActual.sumarPuntos(estadoActualTruco.obtenerPuntosNoQueridos());
+		jugadorActual.moverAlAnterior();
+		jugadorActual.obtenerElemento(0).sumarPuntos(estadoActualTruco.obtenerPuntosNoQueridos());
 		this.estadoActualTruco = new EstadoInicialTruco();
-		this.trucoCantado = false;
 	}
 
 	public Jugador obtenerJugadorActual() {
-		return jugadorActual;
+		return jugadorActual.obtenerElemento(0);
 	}
 
 	public void moverAlSiguiente() {
 		this.jugadores.moverAlSiguiente();
+		this.jugadorActual.moverAlSiguiente();
 	}
 
 	public void realEnvido() {
 		this.envidoCantado = true;
 		estadoActualEnvido = new RealEnvido(estadoActualEnvido);
-		this.jugadores.moverAlSiguiente();
+		if(this.jugadorQueCanto == null){
+        	this.jugadorQueCanto = jugadorActual.obtenerElemento(0);
+        	this.jugadorActual.moverAlSiguiente();
+        }else if(this.jugadorQueCanto == jugadorActual.obtenerElemento(0)){
+        	this.jugadorActual.moverAlSiguiente();
+        }else{
+        	this.jugadorActual.moverAlAnterior();
+        }
 	}
 }

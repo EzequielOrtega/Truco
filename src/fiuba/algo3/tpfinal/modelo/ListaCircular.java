@@ -86,4 +86,8 @@ public class ListaCircular<T> {
 		}
 		return elementoBuscado;
 	}
+
+	public void moverAlAnterior() {
+		raiz = raiz.obtenerAnterior();
+	}
 }
