@@ -12,14 +12,14 @@ import org.junit.Test;
 
 public class JuegoDeTrucoTest {
 
-    JuegoDeTruco nuevoJuego;
+    JuegoDeTruco unJuego;
     Jugador j1,j2;
-/*	private Carta unoDeEspada = new NoFigura(1, Palo.ESPADA);
+	private Carta unoDeEspada = new NoFigura(1, Palo.ESPADA);
     private Carta sieteDeEspada = new NoFigura(7, Palo.ESPADA);
     private Carta sotaDeEspada = new Figura(10, Palo.ESPADA);
     private Carta sotaDeBasto = new Figura(10, Palo.BASTO);
     private Carta cincoDeEspada = new NoFigura(5, Palo.ESPADA);
-    private Carta unoDeBasto = new NoFigura(1, Palo.BASTO);*/
+    private Carta unoDeBasto = new NoFigura(1, Palo.BASTO);
     
     /*
      * Por algun motivo, el jugador no agarra bien las cartas. porque
@@ -28,14 +28,17 @@ public class JuegoDeTrucoTest {
      */
     @Before
     public void setUp() {
-    	nuevoJuego = new JuegoDeTruco("Ana", "Juan");
-/*    	nuevoJuego.obtenerJugadorActual().agarrarCarta(unoDeEspada);
-    	nuevoJuego.obtenerJugadorActual().agarrarCarta(sieteDeEspada);
-    	nuevoJuego.obtenerJugadorActual().agarrarCarta(sotaDeEspada);
-    	nuevoJuego.moverAlSiguiente();
-    	nuevoJuego.obtenerJugadorActual().agarrarCarta(sotaDeBasto);
-    	nuevoJuego.obtenerJugadorActual().agarrarCarta(cincoDeEspada);
-    	nuevoJuego.obtenerJugadorActual().agarrarCarta(unoDeBasto);*/
+    	unJuego = new JuegoDeTruco("Ana", "Juan");
+    	unJuego.obtenerJugadorActual().entregarCartas();
+    	unJuego.moverAlSiguiente();
+    	unJuego.obtenerJugadorActual().entregarCartas();
+    	unJuego.obtenerJugadorActual().agarrarCarta(unoDeEspada);
+    	unJuego.obtenerJugadorActual().agarrarCarta(sieteDeEspada);
+    	unJuego.obtenerJugadorActual().agarrarCarta(sotaDeEspada);
+    	unJuego.moverAlSiguiente();
+    	unJuego.obtenerJugadorActual().agarrarCarta(sotaDeBasto);
+    	unJuego.obtenerJugadorActual().agarrarCarta(cincoDeEspada);
+    	unJuego.obtenerJugadorActual().agarrarCarta(unoDeBasto);
     }
     
     //Pedir las cartas asi rompe el encapsulamiento de JuegoDeTruco
@@ -47,55 +50,74 @@ public class JuegoDeTrucoTest {
     }
     
     @Test
+    public void testPartidaComienzaCeroACero() {
+       	Assert.assertEquals(0, unJuego.obtenerJugadorActual().obtenerPuntaje());
+       	unJuego.moverAlSiguiente();
+       	Assert.assertEquals(0, unJuego.obtenerJugadorActual().obtenerPuntaje());
+    }
+    
+    @Test
     public void testTrucoReTrucoValeCuatroNoQuerido() {
     	/*
     	 *  es raro el hecho de que es dificil de seguir porque
     	 *  el jugador que hace una accion no es visible en este codigo.
     	 */
-    	nuevoJuego.truco();
-    	nuevoJuego.reTruco();
-    	nuevoJuego.valeCuatro();
-    	nuevoJuego.noQuieroTruco();
+    	unJuego.truco();
+    	unJuego.reTruco();
+    	unJuego.valeCuatro();
+    	unJuego.noQuieroTruco();
     	
-    	Assert.assertEquals(3, nuevoJuego.obtenerJugadorActual().obtenerPuntaje());
+    	Assert.assertEquals(3, unJuego.obtenerJugadorActual().obtenerPuntaje());
     }
     
     @Test
     public void testTrucoNoQuerido() {
-    	nuevoJuego.truco();
-    	nuevoJuego.noQuieroTruco();
+    	unJuego.truco();
+    	unJuego.noQuieroTruco();
     	
-    	Assert.assertEquals(1, nuevoJuego.obtenerJugadorActual().obtenerPuntaje());
+    	Assert.assertEquals(1, unJuego.obtenerJugadorActual().obtenerPuntaje());
     }
 
     @Test (expected = NoRespetaJerarquiaDeTrucoError.class)
     public void testReTrucoDirectoMeObligaATenerUnEstadoInicial() {
-    	nuevoJuego.reTruco();
+    	unJuego.reTruco();
     }
-
-    @Ignore
+    
     @Test
     public void testEnvidoRealEnvidoOtorgaCincoPuntosAlGanador() {
-    	nuevoJuego.envido();
-    	nuevoJuego.realEnvido();
-    	nuevoJuego.quieroEnvido();
+    	unJuego.envido();
+    	unJuego.realEnvido();
+    	unJuego.quieroEnvido();
     	
-    	Assert.assertEquals(5, nuevoJuego.obtenerJugadorActual().obtenerPuntaje());
+    	Assert.assertEquals(5, unJuego.obtenerJugadorActual().obtenerPuntaje());
     }
     
-    @Ignore
     @Test
     public void testTrucoElEnvidoEstaPrimeroValeEnPrimeraMano() {
-    	nuevoJuego.truco();
-    	nuevoJuego.envido();
-    	nuevoJuego.noQuieroEnvido();
-    	nuevoJuego.noQuieroTruco();
+    	unJuego.truco();
+    	unJuego.envido();
+    	unJuego.noQuieroEnvido();
+    	unJuego.noQuieroTruco();
+    	
+    	Assert.assertEquals(1, unJuego.obtenerJugadorActual().obtenerPuntaje());
+    	unJuego.moverAlSiguiente();
+    	Assert.assertEquals(1, unJuego.obtenerJugadorActual().obtenerPuntaje());
     }
-    
     
     @Test (expected = NoPuedeCantarTrucoSeCantoEnvidoError.class)
     public void testSeCantaTrucoPeroSeCantoEnvidoAntesError() {
-    	nuevoJuego.envido();
-    	nuevoJuego.truco();
+    	unJuego.envido();
+    	unJuego.truco();
+    }
+    
+    @Ignore
+    @Test
+    public void testPardaLaPrimeraGanaLaSegunda() {
+    	unJuego.jugar(sotaDeBasto);
+    	unJuego.jugar(sotaDeEspada);
+    	unJuego.jugar(unoDeEspada);
+    	
+    	unJuego.moverAlSiguiente();
+    	Assert.assertEquals(1, unJuego.obtenerJugadorActual().obtenerPuntaje());
     }
 }

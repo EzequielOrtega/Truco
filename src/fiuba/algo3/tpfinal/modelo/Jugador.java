@@ -4,6 +4,7 @@ package fiuba.algo3.tpfinal.modelo;
 import java.util.Vector;
 
 import fiuba.algo3.tpfinal.modelo.error.CantidadDeCartasInvalidaError;
+import fiuba.algo3.tpfinal.modelo.error.NoTieneEsaCartaEnLaManoError;
 
 public class Jugador {
     // Tal vez deberia llamarse JugadorDeTruco o crear una clase JugadorDeTruco que herede/implemente esta.
@@ -63,8 +64,10 @@ public class Jugador {
 
     //jugarCarta() acepta los valores 1, 2 o 3, que corresponden a las 3 posibles cartas de la mano del jugador
     // Falta ver como funciona esto para cuando ya saque una carta y me quedan dos, o una en la mano.
-    public Carta jugarCarta(int numeroDeCarta) {
-        Carta carta = cartas.get(numeroDeCarta-1);
+    public Carta jugarCarta(Carta carta) {
+        if (! cartas.contains(carta)) {
+        	throw new NoTieneEsaCartaEnLaManoError();
+        }
         cartas.remove(carta);
         cartasJugadas.add(carta);
         return carta;

@@ -2,6 +2,7 @@ package fiuba.algo3.tpfinal.tests;
 
 import fiuba.algo3.tpfinal.modelo.*;
 import fiuba.algo3.tpfinal.modelo.error.CantidadDeCartasInvalidaError;
+import fiuba.algo3.tpfinal.modelo.error.NoTieneEsaCartaEnLaManoError;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -49,4 +50,8 @@ public class JugadorTest {
         nuevoJugador.agarrarCarta(carta4);
     }
 
+    @Test (expected = NoTieneEsaCartaEnLaManoError.class)
+    public void testNoSePuedeJugarUnaCartaQueNoTengaEnLaMano() {
+    	nuevoJugador.jugarCarta(carta1);
+    }
 }
