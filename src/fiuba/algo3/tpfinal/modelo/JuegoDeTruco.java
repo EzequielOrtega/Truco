@@ -4,38 +4,31 @@ import java.util.LinkedList;
 
 public class JuegoDeTruco {
 
-    //private static final int PUNTOS_ENVIDO = 2;
-    //private static final int PUNTOS_REAL_ENVIDO = 3;
-    //private static final int PUNTOS_ENVIDO_ENVIDO = 4;
-    //private static final int PUNTOS_FLOR = 3;
-    //private static final int PUNTOS_CONTRAFLOR = 6;
-    //private static final int PUNTOS_TRUCO = 2;
-    //private static final int PUNTOS_RETRUCO = 3;
-    //private static final int PUNTOS_TRUCO_VALE4 = 4;
-
-	private final ListaCircular<Jugador> jugadores = new ListaCircular<Jugador>();
-   
+    
+   	private final ListaCircular<Jugador> jugadores = new ListaCircular<Jugador>();
     private Mazo mazoDeCartas;
     private JuezDeTruco arbitro;
-    //private int enfrentamiento;
-    //private int[] ronda;
-
-	private Jugador jugadorActual;
-
+    private Jugador jugadorActual;
 	private EstadoEnvido estadoActualEnvido;
 	private EstadoTruco estadoActualTruco;
+	private Boolean envidoCantado;
+	private Boolean trucoCantado;
+	private Boolean conFLor;
 
     public JuegoDeTruco(String nombreJ1, String nombreJ2) {
     	Jugador j1 = new Jugador(nombreJ1, Equipo.EQUIPO1);
     	jugadores.agregar(j1);
     	Jugador j2 = new Jugador(nombreJ2, Equipo.EQUIPO2);
         jugadores.agregar(j2);        
-        mazoDeCartas = new Mazo();
+        this.mazoDeCartas = new Mazo();
         this.repartir();
         this.arbitro = new JuezDeTruco();
         this.estadoActualEnvido = new EstadoInicialEnvido();
         this.estadoActualTruco = new EstadoInicialTruco();
-        jugadorActual = jugadores.obtenerElemento(1);
+        this.jugadorActual = jugadores.obtenerElemento(0);
+        this.envidoCantado = false;
+        this.trucoCantado = false;
+        this.conFLor = false;
     }
     
     public JuegoDeTruco(String nombreJ1, String nombreJ2, String nombreJ3, String nombreJ4) {
@@ -47,10 +40,15 @@ public class JuegoDeTruco {
         jugadores.agregar(j3);
         Jugador j4 = new Jugador(nombreJ4, Equipo.EQUIPO2);
         jugadores.agregar(j4);
-        mazoDeCartas = new Mazo();
+        this.mazoDeCartas = new Mazo();
         this.repartir();
         this.arbitro = new JuezDeTruco();
         this.estadoActualEnvido = new EstadoInicialEnvido();
+        this.estadoActualTruco = new EstadoInicialTruco();
+        this.jugadorActual = jugadores.obtenerElemento(0);
+        this.envidoCantado = false;
+        this.trucoCantado = false;
+        this.conFLor = false;
     }
 
     public void repartir() {
@@ -68,6 +66,7 @@ public class JuegoDeTruco {
     	if (jugadorActual.mostrarCartas().size() != 3) {
     		throw new SoloSePuedeCantarEnPrimeraError();
     	}
+    	this.envidoCantado = true;
         this.estadoActualEnvido = new Envido(this.estadoActualEnvido);
         this.jugadores.moverAlSiguiente();
     }
@@ -77,11 +76,13 @@ public class JuegoDeTruco {
         ganador.sumarPuntos(this.estadoActualEnvido.obtenerPuntosQueridos());
         this.jugadores.moverAlSiguiente();
         this.estadoActualEnvido = new EstadoInicialEnvido();
+        this.envidoCantado = false;
     }
     
     public void noQuieroEnvido() {
     	jugadorActual.sumarPuntos(this.estadoActualEnvido.obtenerPuntosNoQueridos());
     	this.estadoActualEnvido = new EstadoInicialEnvido();
+    	this.envidoCantado = false;
     }
 
 	public void flor(Integer puntos) {
@@ -110,9 +111,7 @@ public class JuegoDeTruco {
 	
 	public void comenzarPartida(Boolean conFlor){
     	this.resetearPuntos();
-		while ((this.puntosDeEquipo(Equipo.EQUIPO1)>=30) || (this.puntosDeEquipo(Equipo.EQUIPO1)>=30)){
-    		this.ronda(conFlor);
-    	}
+		this.conFLor = conFlor;
     }
 
 	private void resetearPuntos() {
@@ -176,6 +175,7 @@ public class JuegoDeTruco {
 	}
 
 	public void realEnvido() {
+		this.envidoCantado = true;
 		estadoActualEnvido = new RealEnvido(estadoActualEnvido);
 		this.jugadores.moverAlSiguiente();
 	}
