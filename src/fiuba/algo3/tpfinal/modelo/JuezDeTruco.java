@@ -6,13 +6,15 @@ public class JuezDeTruco {
 	
    
     public Jugador ganadorEnvido(LinkedList<Jugador> jugadores) {
-    	Jugador ganadorEnvido = null;
-        int maximoValor = 0;
-        for (Jugador jug: jugadores) {
-            if((jug.getValorEnvido() > maximoValor)||(maximoValor == 0))
-                ganadorEnvido = jug;
-            if((jug.getValorEnvido() == maximoValor)&&(!ganadorEnvido.estanEnElMismoEquipo(jug)))
+    	Jugador ganadorEnvido = jugadores.getFirst();
+        int maximoValor = jugadores.getFirst().getValorEnvido();
+        for (Integer x = 1; x < jugadores.size(); x++) {
+            if(jugadores.get(x).getValorEnvido() > maximoValor){
+                ganadorEnvido = jugadores.get(x);
+            }
+            if((jugadores.get(x).getValorEnvido() == maximoValor)&&(!ganadorEnvido.estanEnElMismoEquipo(jugadores.get(x)))){
                 ganadorEnvido = jugadores.get(0);
+            }
         }
 
         return ganadorEnvido;
