@@ -146,6 +146,10 @@ public class JuegoDeTruco {
 	}
 
 	public void truco() {
+		if(this.envidoCantado){
+			throw new NoPuedeCantarTrucoSeCantoEnvidoError();
+		}
+		this.trucoCantado = true;
 		this.estadoActualTruco = new Truco(estadoActualTruco);
 		jugadores.moverAlSiguiente();
 	}
@@ -164,6 +168,7 @@ public class JuegoDeTruco {
 		jugadores.moverAlSiguiente();
 		jugadorActual.sumarPuntos(estadoActualTruco.obtenerPuntosNoQueridos());
 		this.estadoActualTruco = new EstadoInicialTruco();
+		this.trucoCantado = false;
 	}
 
 	public Jugador obtenerJugadorActual() {

@@ -90,9 +90,9 @@ public class JuegoDeTrucoTest {
     	nuevoJuego.noQuieroTruco();
     }
     
-    @Ignore
-    @Test (expected = NoRespetaJerarquiaDeEnvidoError.class)
-    public void testEnvidoTrucoNoVale() {
+    
+    @Test (expected = NoPuedeCantarTrucoSeCantoEnvidoError.class)
+    public void testSeCantaTrucoPeroSeCantoEnvidoAntesError() {
     	nuevoJuego.envido();
     	nuevoJuego.truco();
     }
