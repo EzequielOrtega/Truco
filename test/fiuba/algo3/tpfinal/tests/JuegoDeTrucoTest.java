@@ -78,8 +78,13 @@ public class JuegoDeTrucoTest {
     }
 
     @Test (expected = NoRespetaJerarquiaDeTrucoError.class)
-    public void testReTrucoDirectoMeObligaATenerUnEstadoInicial() {
+    public void testReTrucoDirectoNoVale() {
     	unJuego.reTruco();
+    }
+    
+    @Test (expected = NoRespetaJerarquiaDeTrucoError.class)
+    public void testValeCuatroDirectoNoVale() {
+    	unJuego.valeCuatro();
     }
     
     @Test
