@@ -1,10 +1,10 @@
 package fiuba.algo3.tpfinal.modelo;
 
 import java.util.LinkedList;
-import java.util.Vector;
 
 import fiuba.algo3.tpfinal.modelo.envido.Envido;
 import fiuba.algo3.tpfinal.modelo.envido.EstadoEnvido;
+import fiuba.algo3.tpfinal.modelo.envido.EstadoFinalEnvido;
 import fiuba.algo3.tpfinal.modelo.envido.EstadoInicialEnvido;
 import fiuba.algo3.tpfinal.modelo.envido.RealEnvido;
 import fiuba.algo3.tpfinal.modelo.error.NoPuedeCantarTrucoSeCantoEnvidoError;
@@ -23,21 +23,20 @@ public class JuegoDeTruco {
    	private final ListaCircular<Jugador> jugadores = new ListaCircular<Jugador>();
     private Mazo mazoDeCartas;
     private JuezDeTruco arbitro;
-    private ListaCircular<Jugador> jugadorActual = new ListaCircular<Jugador>();
+    private Jugador jugadorActual;
 	private EstadoEnvido estadoActualEnvido;
 	private EstadoTruco estadoActualTruco;
 	private Boolean envidoCantado;
 	private Boolean conFlor;
 	private Boolean trucoCantado;
 	private Jugador jugadorQueCanto;
-	private LinkedList<Carta> manoActual;
+	private LinkedList<Carta> cartasEnLaMesa;
+	private Ronda ronda = new Ronda();
 
     public JuegoDeTruco(String nombreJ1, String nombreJ2) {
     	Jugador jugador = new Jugador(nombreJ1, Equipo.EQUIPO1);
-    	jugadorActual.agregar(jugador);
     	jugadores.agregar(jugador);
     	jugador = new Jugador(nombreJ2, Equipo.EQUIPO2);
-    	jugadorActual.agregar(jugador);
     	jugadores.agregar(jugador);
         this.mazoDeCartas = new Mazo();
         this.repartir();
@@ -48,20 +47,17 @@ public class JuegoDeTruco {
         this.trucoCantado = false;
         this.conFlor = false;
         this.jugadorQueCanto = null;
+        this.jugadorActual = jugadores.obtenerElemento(0);
     }
     
     public JuegoDeTruco(String nombreJ1, String nombreJ2, String nombreJ3, String nombreJ4) {
     	Jugador jugador = new Jugador(nombreJ1, Equipo.EQUIPO1);
-    	jugadorActual.agregar(jugador);
     	jugadores.agregar(jugador);
     	jugador = new Jugador(nombreJ2, Equipo.EQUIPO2);
-    	jugadorActual.agregar(jugador);
     	jugadores.agregar(jugador);
     	jugador = new Jugador(nombreJ3, Equipo.EQUIPO1);
-    	jugadorActual.agregar(jugador);
     	jugadores.agregar(jugador);
     	jugador = new Jugador(nombreJ4, Equipo.EQUIPO2);
-    	jugadorActual.agregar(jugador);
     	jugadores.agregar(jugador);
         this.mazoDeCartas = new Mazo();
         this.repartir();
@@ -72,6 +68,12 @@ public class JuegoDeTruco {
         this.trucoCantado = false;
         this.conFlor = false;
         this.jugadorQueCanto = null;
+        
+        this.jugadorActual = jugadores.obtenerElemento(0);
+    }
+    
+    public void avanzarJugadorActual() {
+    	this.jugadorActual = jugadores.obtenerElementoSiguienteDe(jugadorActual);
     }
     
     public void repartir() {
@@ -86,48 +88,36 @@ public class JuegoDeTruco {
     }
 
     public void envido() {
-    	if (jugadorActual.obtenerElemento(0).mostrarCartas().size() != 3) {
+    	if (jugadorActual.mostrarCartas().size() != 3) {
     		throw new SoloSePuedeCantarEnvidoEnPrimeraError();
     	}
+    	
     	this.envidoCantado = true;
         this.estadoActualEnvido = new Envido(this.estadoActualEnvido);
-        if(this.jugadorQueCanto == null){
-        	this.jugadorQueCanto = jugadorActual.obtenerElemento(0);
-        	this.jugadorActual.moverAlSiguiente();
-        }else if(this.jugadorQueCanto == jugadorActual.obtenerElemento(0)){
-        	this.jugadorActual.moverAlSiguiente();
-        }else{
-        	this.jugadorActual.moverAlAnterior();
+        if (this.jugadorQueCanto == null) {
+        	this.jugadorQueCanto = jugadorActual;        	
         }
+        this.avanzarJugadorActual();
     }
     
     public void quieroEnvido() {
+    	
     	Jugador ganador = arbitro.ganadorEnvido(jugadores.obtenerElementos());
         ganador.sumarPuntos(this.estadoActualEnvido.obtenerPuntosQueridos());
-        this.jugadorActual.moverAlAnterior();
-        this.estadoActualEnvido = new EstadoInicialEnvido();
+
+        this.jugadorActual = jugadorQueCanto;
+        this.estadoActualEnvido = new EstadoFinalEnvido(estadoActualEnvido);
         this.envidoCantado = false;
         this.jugadorQueCanto = null;
     }
     
     public void noQuieroEnvido() {
-    	this.jugadorActual.moverAlAnterior();
-    	jugadorActual.obtenerElemento(0).sumarPuntos(this.estadoActualEnvido.obtenerPuntosNoQueridos());
-    	this.estadoActualEnvido = new EstadoInicialEnvido();
+    	this.avanzarJugadorActual();
+    	jugadorActual.sumarPuntos(this.estadoActualEnvido.obtenerPuntosNoQueridos());
+        this.jugadorActual = jugadorQueCanto;
+    	this.estadoActualEnvido = new EstadoFinalEnvido(estadoActualEnvido);
     	this.envidoCantado = false;
     	this.jugadorQueCanto = null;
-    }
-
-    public void ganadorDeLaRonda() {
-        // https://es.wikipedia.org/wiki/Truco_argentino
-        // G1       G2      G3      Ganador
-        // 1        2       E           1
-        // 1        E       -           1
-        // E        1       -           1
-        // E        E       1           1
-        // E        E       E           Mano
-
-        return;
     }
 	
 	public void comenzarPartida(Boolean conFlor){
@@ -159,52 +149,48 @@ public class JuegoDeTruco {
 		}
 		this.trucoCantado = true;
 		this.estadoActualTruco = new Truco(estadoActualTruco);
-		jugadorActual.moverAlSiguiente();
+		this.avanzarJugadorActual();
 	}
 
 	public void reTruco() {
 		this.estadoActualTruco = new ReTruco(estadoActualTruco);
-		jugadorActual.moverAlAnterior();
+		this.avanzarJugadorActual();
 	}
 
 	public void valeCuatro() {
 		this.estadoActualTruco = new ValeCuatro(estadoActualTruco);
-		jugadorActual.moverAlSiguiente();
+		this.avanzarJugadorActual();
 	}
 
 	public void noQuieroTruco() {
-		jugadorActual.moverAlAnterior();
-		jugadorActual.obtenerElemento(0).sumarPuntos(estadoActualTruco.obtenerPuntosNoQueridos());
+		this.avanzarJugadorActual();
+		jugadorActual.sumarPuntos(estadoActualTruco.obtenerPuntosNoQueridos());
 		this.estadoActualTruco = new EstadoInicialTruco();
 		this.trucoCantado = false;
 		//this.terminarRonda();
 	}
 	
 	public void quieroTruco(){
-		jugadorActual.moverAlAnterior();
+		this.avanzarJugadorActual();
 		this.trucoCantado = false;
 	}
 
 	public Jugador obtenerJugadorActual() {
-		return jugadorActual.obtenerElemento(0);
+		return jugadorActual;
 	}
 
 	public void moverAlSiguiente() {
 		this.jugadores.moverAlSiguiente();
-		this.jugadorActual.moverAlSiguiente();
+		this.avanzarJugadorActual();
 	}
 
 	public void realEnvido() {
 		this.envidoCantado = true;
 		estadoActualEnvido = new RealEnvido(estadoActualEnvido);
-		if(this.jugadorQueCanto == null){
-        	this.jugadorQueCanto = jugadorActual.obtenerElemento(0);
-        	this.jugadorActual.moverAlSiguiente();
-        }else if(this.jugadorQueCanto == jugadorActual.obtenerElemento(0)){
-        	this.jugadorActual.moverAlSiguiente();
-        }else{
-        	this.jugadorActual.moverAlAnterior();
+        if (this.jugadorQueCanto == null) {
+        	this.jugadorQueCanto = jugadorActual;        	
         }
+        this.avanzarJugadorActual();
 	}
 
 	// todavia esta incompleto
@@ -215,10 +201,10 @@ public class JuegoDeTruco {
 		if(this.trucoCantado){
 			throw new NoPuedeJugarSeCantoTrucoError();
 		}
-		this.manoActual.add(carta);
-		if (this.manoActual.size() == this.jugadores.tamanio()) {
-			arbitro.ganadorDeLaMano(this.manoActual);
+		this.cartasEnLaMesa.add(carta);
+		if ((this.cartasEnLaMesa.size() == this.jugadores.tamanio())&&(!ronda.concluyoLaRonda())) {
+			ronda.insercion(arbitro.ganadorDeLaMano(this.cartasEnLaMesa));
 		}
-		this.jugadorActual.moverAlSiguiente();
+		this.avanzarJugadorActual();
 	}
 }

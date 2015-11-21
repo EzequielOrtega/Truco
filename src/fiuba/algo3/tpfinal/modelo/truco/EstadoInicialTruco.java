@@ -4,7 +4,7 @@ public class EstadoInicialTruco extends EstadoTruco {
 
 	@Override
 	public int obtenerPuntosQueridos() {
-		return 0;
+		return 1;
 	}
 
 	@Override

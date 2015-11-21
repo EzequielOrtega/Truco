@@ -6,6 +6,7 @@ import fiuba.algo3.tpfinal.modelo.error.NoPuedeCantarTrucoSeCantoEnvidoError;
 import fiuba.algo3.tpfinal.modelo.error.NoPuedeJugarSeCantoEnvidoError;
 import fiuba.algo3.tpfinal.modelo.error.NoPuedeJugarSeCantoTrucoError;
 import fiuba.algo3.tpfinal.modelo.error.NoRespetaJerarquiaDeTrucoError;
+import fiuba.algo3.tpfinal.modelo.error.SoloSePuedeCantarEnvidoUnaVezPorRonda;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -29,10 +30,12 @@ public class JuegoDeTrucoTest {
     	unJuego.obtenerJugadorActual().entregarCartas();
     	unJuego.moverAlSiguiente();
     	unJuego.obtenerJugadorActual().entregarCartas();
+    	// cartas de Juan
     	unJuego.obtenerJugadorActual().agarrarCarta(unoDeEspada);
     	unJuego.obtenerJugadorActual().agarrarCarta(sieteDeEspada);
     	unJuego.obtenerJugadorActual().agarrarCarta(sotaDeEspada);
     	unJuego.moverAlSiguiente();
+    	// cartas de Ana
     	unJuego.obtenerJugadorActual().agarrarCarta(sotaDeBasto);
     	unJuego.obtenerJugadorActual().agarrarCarta(cincoDeEspada);
     	unJuego.obtenerJugadorActual().agarrarCarta(unoDeBasto);
@@ -85,7 +88,8 @@ public class JuegoDeTrucoTest {
     	unJuego.realEnvido();
     	unJuego.quieroEnvido();
     	
-    	Assert.assertEquals(5, unJuego.obtenerJugadorActual().obtenerPuntaje());
+    	Assert.assertEquals(5, unJuego.puntosDeEquipo(Equipo.EQUIPO2));
+    	Assert.assertEquals(0, unJuego.puntosDeEquipo(Equipo.EQUIPO1));
     }
     
     @Test
@@ -124,6 +128,12 @@ public class JuegoDeTrucoTest {
         unJuego.jugar(jugador2.mostrarCartas().get(0));
     }
     
+    @Test (expected = SoloSePuedeCantarEnvidoUnaVezPorRonda.class)
+    public void testSoloSePuedeCantarEnvidoUnaVezPorRonda() {
+    	unJuego.envido();
+    	unJuego.noQuieroEnvido();
+    	unJuego.envido();
+    }
     @Ignore
     @Test
     public void testPardaLaPrimeraGanaLaSegunda() {

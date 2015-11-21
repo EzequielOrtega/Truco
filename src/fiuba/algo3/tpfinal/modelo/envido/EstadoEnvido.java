@@ -6,6 +6,9 @@ public abstract class EstadoEnvido {
 	protected int puntosDeEstado;
 	
 	public EstadoEnvido(EstadoEnvido estadoAnterior) {
+//		if (estadoAnterior.getClass() == EstadoFinalEnvido.class) {
+//			throw new SoloSePuedeCantarEnvidoUnaVezPorRonda();
+//		}
 		this.estadoAnterior = estadoAnterior;
 	}
 
