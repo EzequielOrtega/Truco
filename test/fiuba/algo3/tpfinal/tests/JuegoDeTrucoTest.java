@@ -87,6 +87,12 @@ public class JuegoDeTrucoTest {
     	unJuego.valeCuatro();
     }
     
+    @Test (expected = NoRespetaJerarquiaDeTrucoError.class)
+    public void testValeCuatroSinReTrucoNoVale() {
+    	unJuego.truco();
+    	unJuego.valeCuatro();
+    }
+    
     @Test
     public void testEnvidoRealEnvidoOtorgaCincoPuntosAlGanador() {
     	unJuego.envido();
