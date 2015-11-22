@@ -5,6 +5,7 @@ public class NoHayMasCartasError extends RuntimeException {
 	private static final long serialVersionUID = 1L;
 
 	public NoHayMasCartasError() {
+
     }
 
     public NoHayMasCartasError(String s) {

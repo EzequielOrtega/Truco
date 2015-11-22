@@ -8,7 +8,7 @@ public class Carta {
 
     public Carta(Integer valor, Palo p){
         if ( valor < 1 || valor > 12 )
-            throw new ValorDeCartaInvalidoError("Valor invalido. La carta debe tener un valor de 1 a 12.");
+            throw new ValorDeCartaInvalidoError();
         this.valor = valor;
         this.palo = p;
     }

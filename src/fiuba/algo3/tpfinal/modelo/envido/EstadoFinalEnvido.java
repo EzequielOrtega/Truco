@@ -4,7 +4,7 @@ public class EstadoFinalEnvido extends EstadoEnvido {
 
 	public EstadoFinalEnvido(EstadoEnvido estadoAnteriorEnvido) {
 		super(estadoAnteriorEnvido);
-		this.puntosDeEstado = -1;
+		this.puntosDeEstado = 0;
 	}
 
 }

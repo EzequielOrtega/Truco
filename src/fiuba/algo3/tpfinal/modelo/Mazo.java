@@ -1,8 +1,10 @@
 package fiuba.algo3.tpfinal.modelo;
 
-import java.util.*;
-
 import fiuba.algo3.tpfinal.modelo.error.NoHayMasCartasError;
+
+import java.util.Collections;
+import java.util.Stack;
+import java.util.Vector;
 
 public class Mazo {
     private Vector<Carta> cartas = new Stack<Carta>();
@@ -31,7 +33,7 @@ public class Mazo {
 
     public Carta agarrarCarta() {
         if (cantidadDeCartasRestantes()==0)
-            throw new NoHayMasCartasError("No quedan mas cartas. Vuelva a mezclar.");
+            throw new NoHayMasCartasError();
         return cartas.get(cartas.size() - ++cartasUsadas);
     }
 

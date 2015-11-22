@@ -1,21 +1,10 @@
 package fiuba.algo3.tpfinal.modelo;
 
-import java.util.LinkedList;
+import fiuba.algo3.tpfinal.modelo.envido.*;
+import fiuba.algo3.tpfinal.modelo.error.*;
+import fiuba.algo3.tpfinal.modelo.truco.*;
 
-import fiuba.algo3.tpfinal.modelo.envido.Envido;
-import fiuba.algo3.tpfinal.modelo.envido.EstadoEnvido;
-import fiuba.algo3.tpfinal.modelo.envido.EstadoFinalEnvido;
-import fiuba.algo3.tpfinal.modelo.envido.EstadoInicialEnvido;
-import fiuba.algo3.tpfinal.modelo.envido.RealEnvido;
-import fiuba.algo3.tpfinal.modelo.error.NoPuedeCantarTrucoSeCantoEnvidoError;
-import fiuba.algo3.tpfinal.modelo.error.NoPuedeJugarSeCantoEnvidoError;
-import fiuba.algo3.tpfinal.modelo.error.NoPuedeJugarSeCantoTrucoError;
-import fiuba.algo3.tpfinal.modelo.error.SoloSePuedeCantarEnvidoEnPrimeraError;
-import fiuba.algo3.tpfinal.modelo.truco.EstadoInicialTruco;
-import fiuba.algo3.tpfinal.modelo.truco.EstadoTruco;
-import fiuba.algo3.tpfinal.modelo.truco.ReTruco;
-import fiuba.algo3.tpfinal.modelo.truco.Truco;
-import fiuba.algo3.tpfinal.modelo.truco.ValeCuatro;
+import java.util.LinkedList;
 
 public class JuegoDeTruco {
 

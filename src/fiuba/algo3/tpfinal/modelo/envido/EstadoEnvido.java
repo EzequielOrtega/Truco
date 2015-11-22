@@ -1,14 +1,15 @@
 package fiuba.algo3.tpfinal.modelo.envido;
 
+import fiuba.algo3.tpfinal.modelo.error.*;
 public abstract class EstadoEnvido {
 	
 	protected EstadoEnvido estadoAnterior;
 	protected int puntosDeEstado;
 	
 	public EstadoEnvido(EstadoEnvido estadoAnterior) {
-//		if (estadoAnterior.getClass() == EstadoFinalEnvido.class) {
-//			throw new SoloSePuedeCantarEnvidoUnaVezPorRonda();
-//		}
+		if (estadoAnterior instanceof EstadoFinalEnvido) {
+			throw new SoloSePuedeCantarEnvidoUnaVezPorRondaError();
+		}
 		this.estadoAnterior = estadoAnterior;
 	}
 
@@ -17,7 +18,7 @@ public abstract class EstadoEnvido {
 	}
 
 	public int obtenerPuntosNoQueridos() {
-		if (estadoAnterior.obtenerPuntosQueridos() == 0) {
+		if (estadoAnterior instanceof EstadoInicialEnvido) {
 			return (estadoAnterior.obtenerPuntosNoQueridos());
 		} else {
 			return (estadoAnterior.obtenerPuntosQueridos());

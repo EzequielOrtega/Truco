@@ -1,15 +1,11 @@
 package fiuba.algo3.tpfinal.tests;
 
-import org.junit.Assert;
+import fiuba.algo3.tpfinal.modelo.envido.*;
+import fiuba.algo3.tpfinal.modelo.error.NoRespetaJerarquiaDeEnvidoError;
 import org.junit.Before;
 import org.junit.Test;
 
-import fiuba.algo3.tpfinal.modelo.envido.Envido;
-import fiuba.algo3.tpfinal.modelo.envido.EstadoEnvido;
-import fiuba.algo3.tpfinal.modelo.envido.EstadoInicialEnvido;
-import fiuba.algo3.tpfinal.modelo.envido.FaltaEnvido;
-import fiuba.algo3.tpfinal.modelo.envido.RealEnvido;
-import fiuba.algo3.tpfinal.modelo.error.NoRespetaJerarquiaDeEnvidoError;
+import static org.junit.Assert.assertEquals;
 
 public class EstadoEnvidoTest {
 	
@@ -26,8 +22,8 @@ public class EstadoEnvidoTest {
 		estado = new Envido(estado);
 		estado = new RealEnvido(estado);
 		
-		Assert.assertEquals(7, estado.obtenerPuntosQueridos());
-		Assert.assertEquals(4, estado.obtenerPuntosNoQueridos());
+		assertEquals(7, estado.obtenerPuntosQueridos());
+		assertEquals(4, estado.obtenerPuntosNoQueridos());
 	}
 	
 	@Test
@@ -35,24 +31,24 @@ public class EstadoEnvidoTest {
 		estado = new Envido(estado);
 		estado = new RealEnvido(estado);
 		
-		Assert.assertEquals(5, estado.obtenerPuntosQueridos());
-		Assert.assertEquals(2, estado.obtenerPuntosNoQueridos());
+		assertEquals(5, estado.obtenerPuntosQueridos());
+		assertEquals(2, estado.obtenerPuntosNoQueridos());
 	}
 	
 	@Test
 	public void testRealEnvido() {
 		estado = new RealEnvido(estado);
 		
-		Assert.assertEquals(3, estado.obtenerPuntosQueridos());
-		Assert.assertEquals(1, estado.obtenerPuntosNoQueridos());
+		assertEquals(3, estado.obtenerPuntosQueridos());
+		assertEquals(1, estado.obtenerPuntosNoQueridos());
 	}
 	
 	@Test
 	public void testEnvidoSolo() {
 		estado = new Envido(estado);
 		
-		Assert.assertEquals(2, estado.obtenerPuntosQueridos());
-		Assert.assertEquals(1, estado.obtenerPuntosNoQueridos());
+		assertEquals(2, estado.obtenerPuntosQueridos());
+		assertEquals(1, estado.obtenerPuntosNoQueridos());
 	}
 	
 	@Test (expected = NoRespetaJerarquiaDeEnvidoError.class)
@@ -72,8 +68,8 @@ public class EstadoEnvidoTest {
 		estado = new Envido(estado);
 		estado = new Envido(estado);
 		
-		Assert.assertEquals(4, estado.obtenerPuntosQueridos());
-		Assert.assertEquals(2, estado.obtenerPuntosNoQueridos());
+		assertEquals(4, estado.obtenerPuntosQueridos());
+		assertEquals(2, estado.obtenerPuntosNoQueridos());
 	}
 
 	@Test (expected = NoRespetaJerarquiaDeEnvidoError.class)
@@ -87,7 +83,7 @@ public class EstadoEnvidoTest {
 	public void testFaltaEnvidoNoQuerido() {
 		estado = new FaltaEnvido(estado);
 		
-		Assert.assertEquals(1, estado.obtenerPuntosNoQueridos());
+		assertEquals(1, estado.obtenerPuntosNoQueridos());
 	}
 	
 	@Test
@@ -95,7 +91,7 @@ public class EstadoEnvidoTest {
 		estado = new Envido(estado);
 		estado = new FaltaEnvido(estado);
 		
-		Assert.assertEquals(2, estado.obtenerPuntosNoQueridos());
+		assertEquals(2, estado.obtenerPuntosNoQueridos());
 	}
 	
 	@Test
@@ -103,7 +99,7 @@ public class EstadoEnvidoTest {
 		estado = new RealEnvido(estado);
 		estado = new FaltaEnvido(estado);
 		
-		Assert.assertEquals(3, estado.obtenerPuntosNoQueridos());
+		assertEquals(3, estado.obtenerPuntosNoQueridos());
 	}
 	
 	@Test
@@ -112,7 +108,7 @@ public class EstadoEnvidoTest {
 		estado = new Envido(estado);
 		estado = new FaltaEnvido(estado);
 		
-		Assert.assertEquals(4, estado.obtenerPuntosNoQueridos());
+		assertEquals(4, estado.obtenerPuntosNoQueridos());
 	}
 	
 	@Test
@@ -121,7 +117,7 @@ public class EstadoEnvidoTest {
 		estado = new RealEnvido(estado);
 		estado = new FaltaEnvido(estado);
 		
-		Assert.assertEquals(5, estado.obtenerPuntosNoQueridos());
+		assertEquals(5, estado.obtenerPuntosNoQueridos());
 	}
 	
 	@Test
@@ -131,6 +127,6 @@ public class EstadoEnvidoTest {
 		estado = new RealEnvido(estado);
 		estado = new FaltaEnvido(estado);
 		
-		Assert.assertEquals(7, estado.obtenerPuntosNoQueridos());
+		assertEquals(7, estado.obtenerPuntosNoQueridos());
 	}
 }

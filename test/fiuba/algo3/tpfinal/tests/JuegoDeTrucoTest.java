@@ -2,11 +2,7 @@ package fiuba.algo3.tpfinal.tests;
 
 
 import fiuba.algo3.tpfinal.modelo.*;
-import fiuba.algo3.tpfinal.modelo.error.NoPuedeCantarTrucoSeCantoEnvidoError;
-import fiuba.algo3.tpfinal.modelo.error.NoPuedeJugarSeCantoEnvidoError;
-import fiuba.algo3.tpfinal.modelo.error.NoPuedeJugarSeCantoTrucoError;
-import fiuba.algo3.tpfinal.modelo.error.NoRespetaJerarquiaDeTrucoError;
-import fiuba.algo3.tpfinal.modelo.error.SoloSePuedeCantarEnvidoUnaVezPorRonda;
+import fiuba.algo3.tpfinal.modelo.error.*;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -139,7 +135,7 @@ public class JuegoDeTrucoTest {
         unJuego.jugar(jugador2.mostrarCartas().get(0));
     }
     
-    @Test (expected = SoloSePuedeCantarEnvidoUnaVezPorRonda.class)
+    @Test (expected = SoloSePuedeCantarEnvidoUnaVezPorRondaError.class)
     public void testSoloSePuedeCantarEnvidoUnaVezPorRonda() {
     	unJuego.envido();
     	unJuego.noQuieroEnvido();

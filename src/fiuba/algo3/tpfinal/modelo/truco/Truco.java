@@ -5,7 +5,7 @@ import fiuba.algo3.tpfinal.modelo.error.NoRespetaJerarquiaDeTrucoError;
 public class Truco extends EstadoTruco {
 	
 	public Truco(EstadoTruco estadoAnterior) {
-		if (estadoAnterior.obtenerPuntosQueridos() != 1) {
+		if (! (estadoAnterior instanceof EstadoInicialTruco)) {
 			throw new NoRespetaJerarquiaDeTrucoError();
 		}
 	}

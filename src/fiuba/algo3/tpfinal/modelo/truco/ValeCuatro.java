@@ -5,9 +5,7 @@ import fiuba.algo3.tpfinal.modelo.error.NoRespetaJerarquiaDeTrucoError;
 public class ValeCuatro extends EstadoTruco {
 
 	public ValeCuatro(EstadoTruco estadoAnterior) {
-		// TODO: preguntar si no es mejor preguntarle la clase al estadoAnterior,
-		// siendo que en este caso la clase representa un estado.
-		if (estadoAnterior.obtenerPuntosQueridos() != 3) { 
+		if (!(estadoAnterior instanceof ReTruco)) {
 			throw new NoRespetaJerarquiaDeTrucoError();
 		}
 	}

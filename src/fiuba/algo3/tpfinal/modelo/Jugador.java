@@ -1,10 +1,10 @@
 package fiuba.algo3.tpfinal.modelo;
 
 
-import java.util.Vector;
-
 import fiuba.algo3.tpfinal.modelo.error.CantidadDeCartasInvalidaError;
 import fiuba.algo3.tpfinal.modelo.error.NoTieneEsaCartaEnLaManoError;
+
+import java.util.Vector;
 
 public class Jugador {
     // Tal vez deberia llamarse JugadorDeTruco o crear una clase JugadorDeTruco que herede/implemente esta.
@@ -40,7 +40,7 @@ public class Jugador {
 
     public void agarrarCarta(Carta nuevaCarta) {
         if (cartas.size() == 3) {
-            throw new CantidadDeCartasInvalidaError("Un jugador no debe agarrar ni mas ni menos que 3 cartas.");
+            throw new CantidadDeCartasInvalidaError();
         }
         this.cartas.add(nuevaCarta);
     }
