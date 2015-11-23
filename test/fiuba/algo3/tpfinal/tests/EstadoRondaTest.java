@@ -85,6 +85,19 @@ public class EstadoRondaTest {
 		estadoRondaActual.obtenerGanadorDeLaRonda(jugadores);
 	}
 	
+	@Test (expected = NoRespetaJerarquiaDeRondaError.class)
+	public void testEstadoInicialSegundaNoVale() {
+		estadoRondaActual = new Segunda(estadoRondaActual);
+		
+	}
+	
+	@Test (expected = NoRespetaJerarquiaDeRondaError.class)
+	public void testEstadoInicialPrimeraSegundaSegundaNoVale() {
+		estadoRondaActual = new Primera(estadoRondaActual);
+		estadoRondaActual = new Segunda(estadoRondaActual);
+		estadoRondaActual = new Segunda(estadoRondaActual);
+	}
+	
 	@Test
 	public void testConcluyoLaRondaEnSegundaPorPardaEnPrimera() {
 		estadoRondaActual = new Primera(estadoRondaActual, Resultado.EMPATE);
