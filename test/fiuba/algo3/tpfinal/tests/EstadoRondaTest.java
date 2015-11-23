@@ -1,21 +1,15 @@
 package fiuba.algo3.tpfinal.tests;
 
-import java.util.LinkedList;
-
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
-
 import fiuba.algo3.tpfinal.modelo.Equipo;
 import fiuba.algo3.tpfinal.modelo.Jugador;
 import fiuba.algo3.tpfinal.modelo.Resultado;
-import fiuba.algo3.tpfinal.modelo.error.NoHayGanadorDeRondaInconclusaError;
-import fiuba.algo3.tpfinal.modelo.error.NoRespetaJerarquiaDeRondaError;
-import fiuba.algo3.tpfinal.modelo.ronda.EstadoInicialRonda;
-import fiuba.algo3.tpfinal.modelo.ronda.EstadoRonda;
-import fiuba.algo3.tpfinal.modelo.ronda.Primera;
-import fiuba.algo3.tpfinal.modelo.ronda.Segunda;
-import fiuba.algo3.tpfinal.modelo.ronda.Tercera;
+import fiuba.algo3.tpfinal.modelo.error.*;
+import fiuba.algo3.tpfinal.modelo.ronda.*;
+import org.junit.Before;
+import org.junit.Test;
+
+import java.util.LinkedList;
+import static org.junit.Assert.*;
 
 public class EstadoRondaTest {
 	
@@ -33,10 +27,10 @@ public class EstadoRondaTest {
 		jugadores.add(j3);
 		jugadores.add(j4);
 	}
-	//tests estado inicial
+	// Tests RONDA INICIAL
 	@Test
 	public void testNoConcluyoLaRondaEnEstadoInicial() {
-		Assert.assertFalse(estadoRondaActual.concluyoRonda());
+		assertFalse(estadoRondaActual.concluyoRonda());
 	}
 	
 	@Test (expected = NoHayGanadorDeRondaInconclusaError.class)
@@ -45,11 +39,11 @@ public class EstadoRondaTest {
 		estadoRondaActual.obtenerGanadorDeLaRonda(jugadores);
 	}
 	
-	//tests estado primera
+	// Tests PRIMERA
 	@Test
 	public void testNoConcluyoLaRondaEnPrimera() {
 		estadoRondaActual = new Primera(estadoRondaActual);
-		Assert.assertFalse(estadoRondaActual.concluyoRonda());
+		assertFalse(estadoRondaActual.concluyoRonda());
 	}
 	
 	@Test (expected = NoHayGanadorDeRondaInconclusaError.class)
@@ -64,19 +58,19 @@ public class EstadoRondaTest {
 		estadoRondaActual = new Primera(estadoRondaActual);
 	}
 	
-	//tests estado segunda
+	// Tests SEGUNDA
 	@Test
 	public void testNoConcluyoLaRondaEnSegundaPorGanadoresDiferentes() {
 		estadoRondaActual = new Primera(estadoRondaActual, Resultado.GANADOR1);
 		estadoRondaActual = new Segunda(estadoRondaActual, Resultado.GANADOR2);
-		Assert.assertFalse(estadoRondaActual.concluyoRonda());
+		assertFalse(estadoRondaActual.concluyoRonda());
 	}
 	
 	@Test
 	public void testNoConcluyoLaRondaEnSegundaPorEmpate() {
 		estadoRondaActual = new Primera(estadoRondaActual, Resultado.EMPATE);
 		estadoRondaActual = new Segunda(estadoRondaActual, Resultado.EMPATE);
-		Assert.assertFalse(estadoRondaActual.concluyoRonda());
+		assertFalse(estadoRondaActual.concluyoRonda());
 	}
 	
 	@Test (expected = NoHayGanadorDeRondaInconclusaError.class)
@@ -103,51 +97,51 @@ public class EstadoRondaTest {
 	public void testConcluyoLaRondaEnSegundaPorPardaEnPrimera() {
 		estadoRondaActual = new Primera(estadoRondaActual, Resultado.EMPATE);
 		estadoRondaActual = new Segunda(estadoRondaActual, Resultado.GANADOR2);
-		Assert.assertTrue(estadoRondaActual.concluyoRonda());
+		assertTrue(estadoRondaActual.concluyoRonda());
 	}
 	
 	@Test
 	public void testConcluyoLaRondaEnSegundaPorPardaEnSegunda() {
 		estadoRondaActual = new Primera(estadoRondaActual, Resultado.GANADOR1);
 		estadoRondaActual = new Segunda(estadoRondaActual, Resultado.EMPATE);
-		Assert.assertTrue(estadoRondaActual.concluyoRonda());
+		assertTrue(estadoRondaActual.concluyoRonda());
 	}
 	
 	@Test
 	public void testConcluyoLaRondaEnSegundaPorGanador() {
 		estadoRondaActual = new Primera(estadoRondaActual, Resultado.GANADOR1);
 		estadoRondaActual = new Segunda(estadoRondaActual, Resultado.GANADOR1);
-		Assert.assertTrue(estadoRondaActual.concluyoRonda());
+		assertTrue(estadoRondaActual.concluyoRonda());
 	}
 	
 	@Test
 	public void testGanadorDeLaRondaEnSegundaPorPardaEnPrimera() {
 		estadoRondaActual = new Primera(estadoRondaActual, Resultado.EMPATE);
 		estadoRondaActual = new Segunda(estadoRondaActual, Resultado.GANADOR2);
-		Assert.assertTrue(estadoRondaActual.obtenerGanadorDeLaRonda(jugadores) == jugadores.get(1));
+		assertEquals(jugadores.get(1), estadoRondaActual.obtenerGanadorDeLaRonda(jugadores));
 	}
 	
 	@Test
 	public void testGanadorDeLaRondaEnSegundaPorPardaEnSegunda() {
 		estadoRondaActual = new Primera(estadoRondaActual, Resultado.GANADOR1);
 		estadoRondaActual = new Segunda(estadoRondaActual, Resultado.EMPATE);
-		Assert.assertTrue(estadoRondaActual.obtenerGanadorDeLaRonda(jugadores) == jugadores.get(0));
+		assertEquals(jugadores.get(0), estadoRondaActual.obtenerGanadorDeLaRonda(jugadores));
 	}
 	
 	@Test
 	public void testGanadorDeLaRondaEnSegundaPorGanador() {
 		estadoRondaActual = new Primera(estadoRondaActual, Resultado.GANADOR1);
 		estadoRondaActual = new Segunda(estadoRondaActual, Resultado.GANADOR1);
-		Assert.assertTrue(estadoRondaActual.obtenerGanadorDeLaRonda(jugadores) == jugadores.get(0));
+		assertEquals(jugadores.get(0), estadoRondaActual.obtenerGanadorDeLaRonda(jugadores));
 	}
 	
-	//tests estado tercera
+	// Tests TERCERA
 	@Test
 	public void testConcluyoLaRondaEnTercera(){
 		estadoRondaActual = new Primera(estadoRondaActual);
 		estadoRondaActual = new Segunda(estadoRondaActual);
 		estadoRondaActual = new Tercera(estadoRondaActual);
-		Assert.assertTrue(estadoRondaActual.concluyoRonda());
+		assertTrue(estadoRondaActual.concluyoRonda());
 	}
 	
 	@Test (expected = NoRespetaJerarquiaDeRondaError.class)
@@ -174,7 +168,7 @@ public class EstadoRondaTest {
 		estadoRondaActual = new Primera(estadoRondaActual, Resultado.GANADOR1);
 		estadoRondaActual = new Segunda(estadoRondaActual, Resultado.GANADOR2);
 		estadoRondaActual = new Tercera(estadoRondaActual, Resultado.GANADOR2);
-		Assert.assertTrue(estadoRondaActual.obtenerGanadorDeLaRonda(jugadores) == jugadores.get(1));
+		assertEquals(jugadores.get(1), estadoRondaActual.obtenerGanadorDeLaRonda(jugadores));
 	}
 	
 	@Test
@@ -182,7 +176,7 @@ public class EstadoRondaTest {
 		estadoRondaActual = new Primera(estadoRondaActual, Resultado.GANADOR1);
 		estadoRondaActual = new Segunda(estadoRondaActual, Resultado.GANADOR2);
 		estadoRondaActual = new Tercera(estadoRondaActual, Resultado.EMPATE);
-		Assert.assertTrue(estadoRondaActual.obtenerGanadorDeLaRonda(jugadores) == jugadores.get(0));
+		assertEquals(jugadores.get(0), estadoRondaActual.obtenerGanadorDeLaRonda(jugadores));
 	}
 	
 	@Test
@@ -190,7 +184,7 @@ public class EstadoRondaTest {
 		estadoRondaActual = new Primera(estadoRondaActual, Resultado.EMPATE);
 		estadoRondaActual = new Segunda(estadoRondaActual, Resultado.EMPATE);
 		estadoRondaActual = new Tercera(estadoRondaActual, Resultado.EMPATE);
-		Assert.assertTrue(estadoRondaActual.obtenerGanadorDeLaRonda(jugadores) == jugadores.get(0));
+		assertEquals(jugadores.get(0), estadoRondaActual.obtenerGanadorDeLaRonda(jugadores));
 	}
 
 }
