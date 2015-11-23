@@ -13,6 +13,11 @@ public class Primera extends EstadoRonda {
 	public Primera(EstadoRonda estadoAnterior) {
 		super(estadoAnterior);
 	}
+	
+	public Primera(EstadoRonda estadoAnterior, Resultado resultadoDePrimera) {
+		super(estadoAnterior);
+		this.resultadoDePrimera = resultadoDePrimera;
+	}
 
 	@Override
 	public Boolean concluyoRonda() {
@@ -34,6 +39,12 @@ public class Primera extends EstadoRonda {
 
 	public void cambiarResultadoDeMano(Resultado resultadoDePrimera) {
 		this.resultadoDePrimera = resultadoDePrimera;
+	}
+
+	@Override
+	protected Resultado obtenerGanadorParcial() {
+		
+		return null;
 	}
 
 	

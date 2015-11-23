@@ -3,6 +3,7 @@ package fiuba.algo3.tpfinal.modelo.ronda;
 import java.util.LinkedList;
 
 import fiuba.algo3.tpfinal.modelo.Jugador;
+import fiuba.algo3.tpfinal.modelo.Resultado;
 import fiuba.algo3.tpfinal.modelo.error.NoHayGanadorDeRondaInconclusaError;
 
 public class EstadoInicialRonda extends EstadoRonda {
@@ -22,6 +23,18 @@ public class EstadoInicialRonda extends EstadoRonda {
 		if(!this.concluyoRonda()){
 			throw new NoHayGanadorDeRondaInconclusaError();
 		}
+		return null;
+	}
+
+	@Override
+	public Resultado obtenerResultadoDeMano() {
+		
+		return null;
+	}
+
+	@Override
+	protected Resultado obtenerGanadorParcial() {
+		
 		return null;
 	}
 
