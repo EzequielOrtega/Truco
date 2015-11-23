@@ -54,7 +54,47 @@ public class JuegoDeTrucoTest {
        	unJuego.moverAlSiguiente();
        	Assert.assertEquals(0, unJuego.obtenerJugadorActual().obtenerPuntaje());
     }
-    
+
+    // Tests ENVIDO
+
+    @Test
+    public void testEnvidoEnvidoOtorgaCuatroPuntosAlGanador() {
+        unJuego.envido();
+        unJuego.envido();
+        unJuego.quieroEnvido();
+
+        Assert.assertEquals(4, unJuego.puntosDeEquipo(Equipo.EQUIPO2));
+        Assert.assertEquals(0, unJuego.puntosDeEquipo(Equipo.EQUIPO1));
+    }
+
+    @Test
+    public void testEnvidoRealEnvidoOtorgaCincoPuntosAlGanador() {
+        unJuego.envido();
+        unJuego.realEnvido();
+        unJuego.quieroEnvido();
+
+        Assert.assertEquals(5, unJuego.puntosDeEquipo(Equipo.EQUIPO2));
+        Assert.assertEquals(0, unJuego.puntosDeEquipo(Equipo.EQUIPO1));
+    }
+
+    @Test (expected = NoPuedeJugarSeCantoEnvidoError.class)
+    public void testJugarSinResponderElEnvido(){
+        unJuego.comenzarPartida(true);
+        unJuego.repartir();
+        unJuego.envido();
+        Jugador jugador2 = unJuego.obtenerJugadorActual();
+        unJuego.jugar(jugador2.mostrarCartas().get(0));
+    }
+
+    @Test (expected = SoloSePuedeCantarEnvidoUnaVezPorRondaError.class)
+    public void testSoloSePuedeCantarEnvidoUnaVezPorRonda() {
+        unJuego.envido();
+        unJuego.noQuieroEnvido();
+        unJuego.envido();
+    }
+
+    // Tests TRUCO
+
     @Test
     public void testTrucoReTrucoValeCuatroNoQuerido() {
     	unJuego.truco();
@@ -88,59 +128,35 @@ public class JuegoDeTrucoTest {
     	unJuego.truco();
     	unJuego.valeCuatro();
     }
-    
-    @Test
-    public void testEnvidoRealEnvidoOtorgaCincoPuntosAlGanador() {
-    	unJuego.envido();
-    	unJuego.realEnvido();
-    	unJuego.quieroEnvido();
-    	
-    	Assert.assertEquals(5, unJuego.puntosDeEquipo(Equipo.EQUIPO2));
-    	Assert.assertEquals(0, unJuego.puntosDeEquipo(Equipo.EQUIPO1));
-    }
-    
+
     @Test
     public void testTrucoElEnvidoEstaPrimeroValeEnPrimeraMano() {
-    	unJuego.truco();
-    	unJuego.envido();
-    	unJuego.noQuieroEnvido();
-    	unJuego.noQuieroTruco();
-    	
-    	Assert.assertEquals(1, unJuego.obtenerJugadorActual().obtenerPuntaje());
-    	unJuego.moverAlSiguiente();
-    	Assert.assertEquals(1, unJuego.obtenerJugadorActual().obtenerPuntaje());
+        unJuego.truco();
+        unJuego.envido();
+        unJuego.noQuieroEnvido();
+        unJuego.noQuieroTruco();
+
+        Assert.assertEquals(1, unJuego.obtenerJugadorActual().obtenerPuntaje());
+        unJuego.moverAlSiguiente();
+        Assert.assertEquals(1, unJuego.obtenerJugadorActual().obtenerPuntaje());
     }
-    
+
     @Test (expected = NoPuedeCantarTrucoSeCantoEnvidoError.class)
     public void testSeCantaTrucoPeroSeCantoEnvidoAntesError() {
-    	unJuego.envido();
-    	unJuego.truco();
+        unJuego.envido();
+        unJuego.truco();
     }
-    
-    @Test (expected = NoPuedeJugarSeCantoEnvidoError.class)
-    public void testJugarSinResponderElEnvido(){
-    	unJuego.comenzarPartida(true);
-        unJuego.repartir();
-    	unJuego.envido();
-    	Jugador jugador2 = unJuego.obtenerJugadorActual();
-        unJuego.jugar(jugador2.mostrarCartas().get(0));
-    }
-    
+
     @Test (expected = NoPuedeJugarSeCantoTrucoError.class)
     public void testJugarSinResponderElTruco(){
-    	unJuego.comenzarPartida(true);
+        unJuego.comenzarPartida(true);
         unJuego.repartir();
-    	unJuego.truco();
-    	Jugador jugador2 = unJuego.obtenerJugadorActual();
+        unJuego.truco();
+        Jugador jugador2 = unJuego.obtenerJugadorActual();
         unJuego.jugar(jugador2.mostrarCartas().get(0));
     }
-    
-    @Test (expected = SoloSePuedeCantarEnvidoUnaVezPorRondaError.class)
-    public void testSoloSePuedeCantarEnvidoUnaVezPorRonda() {
-    	unJuego.envido();
-    	unJuego.noQuieroEnvido();
-    	unJuego.envido();
-    }
+
+
     @Ignore
     @Test
     public void testPardaLaPrimeraGanaLaSegunda() {
