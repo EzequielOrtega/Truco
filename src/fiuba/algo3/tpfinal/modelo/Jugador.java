@@ -92,4 +92,8 @@ public class Jugador {
 	public void resetearPuntos() {
 		this.puntaje = 0;
 	}
+
+	public boolean tieneFlor() {
+		return this.calculadorDeTantos.tieneFlor(cartas);
+	}
 }

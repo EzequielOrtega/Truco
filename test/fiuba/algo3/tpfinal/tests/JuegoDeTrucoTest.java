@@ -156,7 +156,6 @@ public class JuegoDeTrucoTest {
         unJuego.jugar(jugador2.mostrarCartas().get(0));
     }
 
-
     @Ignore
     @Test
     public void testPardaLaPrimeraGanaLaSegunda() {
@@ -166,5 +165,13 @@ public class JuegoDeTrucoTest {
     	
     	unJuego.moverAlSiguiente();
     	assertEquals(1, unJuego.obtenerJugadorActual().obtenerPuntaje());
+    }
+    
+    @Test
+    public void testFlor() {
+    	unJuego.avanzarJugadorActual();
+    	unJuego.flor();
+    	
+    	assertEquals(3, unJuego.obtenerJugadorActual().obtenerPuntaje());
     }
 }

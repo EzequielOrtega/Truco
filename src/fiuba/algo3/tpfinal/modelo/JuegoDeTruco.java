@@ -14,7 +14,7 @@ public class JuegoDeTruco {
     private Mazo mazoDeCartas = new Mazo();
     private JuezDeTruco arbitro = new JuezDeTruco();
     private Ronda ronda = new Ronda();
-    private LinkedList<Carta> cartasEnLaMesa;
+    private LinkedList<Carta> cartasEnLaMesa = new LinkedList<Carta>();
     private Jugador jugadorActual;
     private Jugador jugadorQueCanto = null;
 
@@ -104,28 +104,83 @@ public class JuegoDeTruco {
             throw new NoPuedeJugarSeCantoTrucoError();
         }
         this.cartasEnLaMesa.add(carta);
+        Resultado resultado = arbitro.ganadorDeLaMano(this.cartasEnLaMesa);
         if ((this.cartasEnLaMesa.size() == this.jugadores.tamanio())&&(!ronda.concluyoLaRonda())) {
-            ronda.insercion(arbitro.ganadorDeLaMano(this.cartasEnLaMesa));
+        	ronda.insercion(resultado);
+        }
+        if (this.ronda.concluyoLaRonda()) {
+        	this.sumarPuntosAlGanadorRonda(resultado);
+        	this.nuevaRonda();
         }
         this.avanzarJugadorActual();
     }
 
-    // FLOR
+    private void nuevaRonda() {
+		// TODO Auto-generated method stub
+		
+	}
 
-    public void flor() {
+	private void sumarPuntosAlGanadorRonda(Resultado resultado) {
+		Jugador jugadorGanador;
+		
+		if (resultado == Resultado.GANADOR1) {
+			jugadorGanador = this.jugadorUno();
+		} else {
+			if (resultado == Resultado.GANADOR2) {
+				jugadorGanador = this.jugadorDos();
+			} else {
+				if (resultado == Resultado.EMPATE) {
+					jugadorGanador = this.jugadorMano();
+				} else {
+					throw new ResultadoInvalidoError();
+				}
+			}
+		}
+		jugadorGanador.sumarPuntos(this.estadoActualTruco.obtenerPuntosQueridos());
+	}
+
+	private Jugador jugadorMano() {
+		return this.jugadorUno();
+	}
+
+	private Jugador jugadorDos() {
+		return this.jugadores.obtenerElemento(1);
+	}
+
+	private Jugador jugadorUno() {
+		return this.jugadores.obtenerElemento(0);
+	}
+	
+    // FLOR
+	
+	public void flor() {
         if (jugadorActual.mostrarCartas().size() != 3) {
             throw new SoloSePuedeCantarFlorEnPrimeraError();
         }
-
+        if (!this.jugadorActual.tieneFlor()) {
+        	throw new JugadorNoTieneFlorError();
+        }
         this.florCantada = true;
         this.estadoActualFlor = new Flor(this.estadoActualFlor);
         if (this.jugadorQueCanto == null) {
             this.jugadorQueCanto = jugadorActual;
         }
         this.avanzarJugadorActual();
+        if (!this.jugadorActual.tieneFlor()) {
+        	this.quieroFlor();
+        }
     }
 
-    public void contraFlor() {
+    private void quieroFlor() {
+    	this.jugadorQueCanto.sumarPuntos(estadoActualFlor.obtenerPuntosQueridos());
+    	
+        this.jugadorActual = jugadorQueCanto;
+    	this.estadoActualFlor = new EstadoFinalFlor(estadoActualFlor);
+        this.florCantada = false;
+        this.jugadorQueCanto = null;
+	}
+
+	public void contraFlor() {
         this.estadoActualFlor = new ContraFlor(this.estadoActualFlor);
         this.avanzarJugadorActual();
 
