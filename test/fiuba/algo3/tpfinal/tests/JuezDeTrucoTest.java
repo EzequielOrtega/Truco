@@ -1,29 +1,49 @@
 package fiuba.algo3.tpfinal.tests;
 
 
-import fiuba.algo3.tpfinal.modelo.Carta;
-import fiuba.algo3.tpfinal.modelo.Equipo;
-import fiuba.algo3.tpfinal.modelo.Figura;
-import fiuba.algo3.tpfinal.modelo.JuezDeTruco;
-import fiuba.algo3.tpfinal.modelo.Jugador;
-import fiuba.algo3.tpfinal.modelo.NoFigura;
-import fiuba.algo3.tpfinal.modelo.Palo;
-import fiuba.algo3.tpfinal.modelo.Resultado;
-
-import org.junit.Assert;
+import fiuba.algo3.tpfinal.modelo.*;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.util.LinkedList;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class JuezDeTrucoTest {
 	
 	private JuezDeTruco arbitro;
     private LinkedList<Jugador> dosJugadores;
     private LinkedList<Jugador> cuatroJugadores;
+
+    private Carta sieteEspada = new NoFigura(7 , Palo.ESPADA);
+    private Carta diezEspada = new Figura(10 , Palo.ESPADA);
+    private Carta dosCopa = new NoFigura(2 , Palo.COPA);
+    private Carta seisCopa = new NoFigura(6 , Palo.COPA);
+    private Carta unoEspada = new NoFigura(1 , Palo.ESPADA);
+    private Carta doceCopa = new Figura(12 , Palo.COPA);
+    private Carta unoCopa = new NoFigura(1 , Palo.COPA);
+    private Carta doceEspada = new Figura(12 , Palo.ESPADA);
+    private Carta cuatroEspada = new NoFigura(4 , Palo.ESPADA);
+    private Carta onceEspada = new Figura(11 , Palo.ESPADA);
+    private Carta tresCopa = new NoFigura(3 , Palo.COPA);
+    private Carta seisEspada = new NoFigura(6 , Palo.ESPADA);
+    private Carta cincoEspada = new NoFigura(5 , Palo.ESPADA);
+    private Carta cuatroCopa = new NoFigura(4 , Palo.COPA);
+    private Carta sieteBasto = new NoFigura(7 , Palo.BASTO);
+    private Carta cuatroBasto = new NoFigura(4 , Palo.BASTO);
+    private Carta tresOro = new Carta(3, Palo.ORO);
+    private Carta unoOro = new Carta(1, Palo.ORO);
+    private Carta cincoCopa = new Carta(5, Palo.COPA);
+    private Carta tresEspada = new Carta(3, Palo.ESPADA);
+    private Carta seisBasto = new NoFigura(6 , Palo.BASTO);
+    private Carta unoBasto = new NoFigura(1 , Palo.BASTO);
+    private Carta doceBasto = new Figura(12 , Palo.BASTO);
+    private Carta sieteOro = new NoFigura(7 , Palo.ORO);
+
 	
     @Before
-	public void setUp(){
+	public void setUp() {
 		this.arbitro = new JuezDeTruco();
 		this.dosJugadores = new LinkedList<Jugador>();
 		this.cuatroJugadores = new LinkedList<Jugador>();
@@ -37,203 +57,145 @@ public class JuezDeTrucoTest {
         this.cuatroJugadores.add(j2);
         this.cuatroJugadores.add(j3);
         this.cuatroJugadores.add(j4);
-        
+
 	}
     @Test
     public void testGanadorEnvidoDosJugadores() {
-    	Carta carta1 = new NoFigura(7 , Palo.ESPADA);
-    	Carta carta2 = new Figura(10 , Palo.ESPADA);
-    	Carta carta3 = new NoFigura(2 , Palo.COPA);
-    	dosJugadores.get(0).agarrarCarta(carta1);
-    	dosJugadores.get(0).agarrarCarta(carta2);
-    	dosJugadores.get(0).agarrarCarta(carta3);
-    	Carta carta4 = new NoFigura(6 , Palo.COPA);
-    	Carta carta5 = new NoFigura(1 , Palo.ESPADA);
-    	Carta carta6 = new Figura(12 , Palo.COPA);
-    	dosJugadores.get(1).agarrarCarta(carta4);
-    	dosJugadores.get(1).agarrarCarta(carta5);
-    	dosJugadores.get(1).agarrarCarta(carta6);
-    	Assert.assertTrue(dosJugadores.get(0).getValorEnvido() > dosJugadores.get(1).getValorEnvido());
-    	Assert.assertTrue(dosJugadores.get(0) == arbitro.ganadorEnvido(dosJugadores));
+    	dosJugadores.get(0).agarrarCarta(sieteEspada);
+    	dosJugadores.get(0).agarrarCarta(diezEspada);
+    	dosJugadores.get(0).agarrarCarta(dosCopa);
+    	dosJugadores.get(1).agarrarCarta(seisCopa);
+    	dosJugadores.get(1).agarrarCarta(unoEspada);
+    	dosJugadores.get(1).agarrarCarta(doceCopa);
+
+        assertTrue(dosJugadores.get(0).getValorEnvido() > dosJugadores.get(1).getValorEnvido());
+        assertEquals(dosJugadores.get(0), arbitro.ganadorEnvido(dosJugadores));
     }
     
     @Test
     public void testEmpateEnvidoDosJugadores() {
-    	Carta carta1 = new NoFigura(7 , Palo.ESPADA);
-    	Carta carta2 = new Figura(10 , Palo.ESPADA);
-    	Carta carta3 = new NoFigura(2 , Palo.COPA);
-    	dosJugadores.get(0).agarrarCarta(carta1);
-    	dosJugadores.get(0).agarrarCarta(carta2);
-    	dosJugadores.get(0).agarrarCarta(carta3);
-    	Carta carta4 = new NoFigura(6 , Palo.COPA);
-    	Carta carta5 = new NoFigura(1 , Palo.COPA);
-    	Carta carta6 = new Figura(12 , Palo.ESPADA);
-    	dosJugadores.get(1).agarrarCarta(carta4);
-    	dosJugadores.get(1).agarrarCarta(carta5);
-    	dosJugadores.get(1).agarrarCarta(carta6);
-    	Assert.assertTrue(dosJugadores.get(0).getValorEnvido() == dosJugadores.get(1).getValorEnvido());
-    	Assert.assertTrue(dosJugadores.get(0) == arbitro.ganadorEnvido(dosJugadores));
+    	dosJugadores.get(0).agarrarCarta(sieteEspada);
+    	dosJugadores.get(0).agarrarCarta(diezEspada);
+    	dosJugadores.get(0).agarrarCarta(dosCopa);
+    	dosJugadores.get(1).agarrarCarta(seisCopa);
+    	dosJugadores.get(1).agarrarCarta(unoCopa);
+    	dosJugadores.get(1).agarrarCarta(doceEspada);
+
+    	assertEquals(dosJugadores.get(0).getValorEnvido(), dosJugadores.get(1).getValorEnvido());
+    	assertEquals(dosJugadores.get(0), arbitro.ganadorEnvido(dosJugadores));
     }
     
     @Test
     public void testGanadorEnvidoCuatroJugadores() {
-    	Carta carta1 = new NoFigura(7 , Palo.ESPADA);
-    	Carta carta2 = new Figura(10 , Palo.ESPADA);
-    	Carta carta3 = new NoFigura(2 , Palo.COPA);
-    	cuatroJugadores.get(0).agarrarCarta(carta1);
-    	cuatroJugadores.get(0).agarrarCarta(carta2);
-    	cuatroJugadores.get(0).agarrarCarta(carta3);
+        cuatroJugadores.get(0).agarrarCarta(sieteEspada);
+        cuatroJugadores.get(0).agarrarCarta(diezEspada);
+        cuatroJugadores.get(0).agarrarCarta(dosCopa);
+
+        cuatroJugadores.get(1).agarrarCarta(seisCopa);
+        cuatroJugadores.get(1).agarrarCarta(unoEspada);
+        cuatroJugadores.get(1).agarrarCarta(doceCopa);
+
+        cuatroJugadores.get(2).agarrarCarta(cuatroEspada);
+        cuatroJugadores.get(2).agarrarCarta(onceEspada);
+        cuatroJugadores.get(2).agarrarCarta(tresCopa);
+
+    	cuatroJugadores.get(3).agarrarCarta(seisEspada);
+    	cuatroJugadores.get(3).agarrarCarta(cincoEspada);
+    	cuatroJugadores.get(3).agarrarCarta(cuatroCopa);
     	
-    	Carta carta4 = new NoFigura(6 , Palo.COPA);
-    	Carta carta5 = new NoFigura(1 , Palo.ESPADA);
-    	Carta carta6 = new Figura(12 , Palo.COPA);
-    	cuatroJugadores.get(1).agarrarCarta(carta4);
-    	cuatroJugadores.get(1).agarrarCarta(carta5);
-    	cuatroJugadores.get(1).agarrarCarta(carta6);
-    	
-    	Carta carta7 = new NoFigura(4 , Palo.ESPADA);
-    	Carta carta8 = new Figura(11 , Palo.ESPADA);
-    	Carta carta9 = new NoFigura(3 , Palo.COPA);
-    	cuatroJugadores.get(2).agarrarCarta(carta7);
-    	cuatroJugadores.get(2).agarrarCarta(carta8);
-    	cuatroJugadores.get(2).agarrarCarta(carta9);
-    	
-    	Carta carta10 = new NoFigura(6 , Palo.ESPADA);
-    	Carta carta11 = new NoFigura(5 , Palo.ESPADA);
-    	Carta carta12 = new NoFigura(4 , Palo.COPA);
-    	cuatroJugadores.get(3).agarrarCarta(carta10);
-    	cuatroJugadores.get(3).agarrarCarta(carta11);
-    	cuatroJugadores.get(3).agarrarCarta(carta12);
-    	
-    	Assert.assertTrue(cuatroJugadores.get(3).getValorEnvido() > cuatroJugadores.get(0).getValorEnvido());
-    	Assert.assertTrue(cuatroJugadores.get(3).getValorEnvido() > cuatroJugadores.get(2).getValorEnvido());
-    	Assert.assertTrue(cuatroJugadores.get(3) == arbitro.ganadorEnvido(cuatroJugadores));
+    	assertTrue(cuatroJugadores.get(3).getValorEnvido() > cuatroJugadores.get(0).getValorEnvido());
+    	assertTrue(cuatroJugadores.get(3).getValorEnvido() > cuatroJugadores.get(2).getValorEnvido());
+    	assertEquals(cuatroJugadores.get(3), arbitro.ganadorEnvido(cuatroJugadores));
     }
     
     @Test
     public void testEmpateEnvidoCuatroJugadores() {
-    	Carta carta1 = new NoFigura(7 , Palo.BASTO);
-    	Carta carta2 = new Figura(10 , Palo.ESPADA);
-    	Carta carta3 = new NoFigura(4 , Palo.BASTO);
-    	cuatroJugadores.get(0).agarrarCarta(carta1);
-    	cuatroJugadores.get(0).agarrarCarta(carta2);
-    	cuatroJugadores.get(0).agarrarCarta(carta3);
+    	cuatroJugadores.get(0).agarrarCarta(sieteBasto);
+    	cuatroJugadores.get(0).agarrarCarta(diezEspada);
+    	cuatroJugadores.get(0).agarrarCarta(cuatroBasto);
+
+    	cuatroJugadores.get(1).agarrarCarta(seisCopa);
+    	cuatroJugadores.get(1).agarrarCarta(unoEspada);
+    	cuatroJugadores.get(1).agarrarCarta(doceCopa);
+
+    	cuatroJugadores.get(2).agarrarCarta(cuatroEspada);
+    	cuatroJugadores.get(2).agarrarCarta(onceEspada);
+    	cuatroJugadores.get(2).agarrarCarta(tresCopa);
+
+    	cuatroJugadores.get(3).agarrarCarta(seisEspada);
+    	cuatroJugadores.get(3).agarrarCarta(cincoEspada);
+    	cuatroJugadores.get(3).agarrarCarta(cuatroCopa);
     	
-    	Carta carta4 = new NoFigura(6 , Palo.COPA);
-    	Carta carta5 = new NoFigura(1 , Palo.ESPADA);
-    	Carta carta6 = new Figura(12 , Palo.COPA);
-    	cuatroJugadores.get(1).agarrarCarta(carta4);
-    	cuatroJugadores.get(1).agarrarCarta(carta5);
-    	cuatroJugadores.get(1).agarrarCarta(carta6);
-    	
-    	Carta carta7 = new NoFigura(4 , Palo.ESPADA);
-    	Carta carta8 = new Figura(11 , Palo.ESPADA);
-    	Carta carta9 = new NoFigura(3 , Palo.COPA);
-    	cuatroJugadores.get(2).agarrarCarta(carta7);
-    	cuatroJugadores.get(2).agarrarCarta(carta8);
-    	cuatroJugadores.get(2).agarrarCarta(carta9);
-    	
-    	Carta carta10 = new NoFigura(6 , Palo.ESPADA);
-    	Carta carta11 = new NoFigura(5 , Palo.ESPADA);
-    	Carta carta12 = new NoFigura(4 , Palo.COPA);
-    	cuatroJugadores.get(3).agarrarCarta(carta10);
-    	cuatroJugadores.get(3).agarrarCarta(carta11);
-    	cuatroJugadores.get(3).agarrarCarta(carta12);
-    	
-    	Assert.assertTrue(cuatroJugadores.get(3).getValorEnvido() == cuatroJugadores.get(0).getValorEnvido());
-    	Assert.assertTrue(cuatroJugadores.get(3).getValorEnvido() > cuatroJugadores.get(2).getValorEnvido());
-    	Assert.assertTrue(cuatroJugadores.get(0) == arbitro.ganadorEnvido(cuatroJugadores));
+    	assertEquals(cuatroJugadores.get(3).getValorEnvido(), cuatroJugadores.get(0).getValorEnvido());
+    	assertTrue(cuatroJugadores.get(3).getValorEnvido() > cuatroJugadores.get(2).getValorEnvido());
+    	assertEquals(cuatroJugadores.get(0), arbitro.ganadorEnvido(cuatroJugadores));
     }
 
     @Test
     public void testGanadorFlor() {
-    	Carta carta1 = new NoFigura(7 , Palo.ESPADA);
-    	Carta carta2 = new Figura(10 , Palo.ESPADA);
-    	Carta carta3 = new NoFigura(4 , Palo.ESPADA);
-    	dosJugadores.get(0).agarrarCarta(carta1);
-    	dosJugadores.get(0).agarrarCarta(carta2);
-    	dosJugadores.get(0).agarrarCarta(carta3);
+    	dosJugadores.get(0).agarrarCarta(sieteEspada);
+    	dosJugadores.get(0).agarrarCarta(diezEspada);
+    	dosJugadores.get(0).agarrarCarta(cuatroEspada);
+
+    	dosJugadores.get(1).agarrarCarta(seisBasto);
+    	dosJugadores.get(1).agarrarCarta(unoBasto);
+    	dosJugadores.get(1).agarrarCarta(doceBasto);
     	
-    	Carta carta4 = new NoFigura(6 , Palo.BASTO);
-    	Carta carta5 = new NoFigura(1 , Palo.BASTO);
-    	Carta carta6 = new Figura(12 , Palo.BASTO);
-    	dosJugadores.get(1).agarrarCarta(carta4);
-    	dosJugadores.get(1).agarrarCarta(carta5);
-    	dosJugadores.get(1).agarrarCarta(carta6);
-    	
-    	Assert.assertTrue(dosJugadores.get(0).getValorFlor() > dosJugadores.get(1).getValorFlor());
-    	Assert.assertTrue(dosJugadores.get(0) == arbitro.ganadorFlor(dosJugadores));
+    	assertTrue(dosJugadores.get(0).getValorFlor() > dosJugadores.get(1).getValorFlor());
+    	assertEquals(dosJugadores.get(0), arbitro.ganadorFlor(dosJugadores));
     }
     
     @Test
-    public void testEmpateEnFlor(){
-    	Carta carta1 = new NoFigura(3 , Palo.ESPADA);
-    	Carta carta2 = new Figura(10 , Palo.ESPADA);
-    	Carta carta3 = new NoFigura(4 , Palo.ESPADA);
-    	dosJugadores.get(0).agarrarCarta(carta1);
-    	dosJugadores.get(0).agarrarCarta(carta2);
-    	dosJugadores.get(0).agarrarCarta(carta3);
+    public void testEmpateEnFlor() {
+    	dosJugadores.get(0).agarrarCarta(tresEspada);
+    	dosJugadores.get(0).agarrarCarta(diezEspada);
+    	dosJugadores.get(0).agarrarCarta(cuatroEspada);
+
+    	dosJugadores.get(1).agarrarCarta(seisBasto);
+    	dosJugadores.get(1).agarrarCarta(unoBasto);
+    	dosJugadores.get(1).agarrarCarta(doceBasto);
     	
-    	Carta carta4 = new NoFigura(6 , Palo.BASTO);
-    	Carta carta5 = new NoFigura(1 , Palo.BASTO);
-    	Carta carta6 = new Figura(12 , Palo.BASTO);
-    	dosJugadores.get(1).agarrarCarta(carta4);
-    	dosJugadores.get(1).agarrarCarta(carta5);
-    	dosJugadores.get(1).agarrarCarta(carta6);
-    	
-    	Assert.assertTrue(dosJugadores.get(0).getValorFlor() == dosJugadores.get(1).getValorFlor());
-    	Assert.assertTrue(dosJugadores.get(0) == arbitro.ganadorFlor(dosJugadores));
+    	assertEquals(dosJugadores.get(0).getValorFlor(), dosJugadores.get(1).getValorFlor());
+    	assertEquals(dosJugadores.get(0), arbitro.ganadorFlor(dosJugadores));
     }
     
     @Test
     public void testGanadorManoDosJugadores() {
-        Carta carta1 = new Carta(7, Palo.ORO);
-        Carta carta2 = new Carta(1, Palo.ORO);
         LinkedList<Carta> cartas = new LinkedList<Carta>();
-        cartas.add(carta1);
-        cartas.add(carta2);
-        Assert.assertEquals(Resultado.GANADOR1, arbitro.ganadorDeLaMano(cartas));
+        cartas.add(sieteOro);
+        cartas.add(unoOro);
+        assertEquals(Resultado.GANADOR1, arbitro.ganadorDeLaMano(cartas));
         cartas.removeFirst();
         cartas.removeFirst();
-        cartas.add(carta2);
-        cartas.add(carta1);        
-        Assert.assertEquals(Resultado.GANADOR2, arbitro.ganadorDeLaMano(cartas));
+        cartas.add(unoOro);
+        cartas.add(sieteOro);
+        assertEquals(Resultado.GANADOR2, arbitro.ganadorDeLaMano(cartas));
     }
     @Test
-    public void testEmpateManoDosJugadores(){
-    	Carta carta1 = new Carta(3, Palo.ORO);
-        Carta carta2 = new Carta(3, Palo.COPA);
+    public void testEmpateManoDosJugadores() {
         LinkedList<Carta> cartas = new LinkedList<Carta>();
-        cartas.add(carta1);
-        cartas.add(carta2);
-        Assert.assertEquals(Resultado.EMPATE, arbitro.ganadorDeLaMano(cartas));
+        cartas.add(tresOro);
+        cartas.add(tresCopa);
+        assertEquals(Resultado.EMPATE, arbitro.ganadorDeLaMano(cartas));
     }
     
     @Test 
-    public void testGanadorDeManoCuatroJugadores(){
-    	Carta carta1 = new Carta(7, Palo.ORO);
-        Carta carta2 = new Carta(1, Palo.ORO);
-        Carta carta3 = new Carta(5, Palo.COPA);
-        Carta carta4 = new Carta(7, Palo.ESPADA);
+    public void testGanadorDeManoCuatroJugadores() {
         LinkedList<Carta> cartas = new LinkedList<Carta>();
-        cartas.add(carta1);
-        cartas.add(carta2);
-        cartas.add(carta3);
-        cartas.add(carta4);
-        Assert.assertEquals(Resultado.GANADOR2, arbitro.ganadorDeLaMano(cartas));
+        cartas.add(sieteOro);
+        cartas.add(unoOro);
+        cartas.add(cincoCopa);
+        cartas.add(sieteEspada);
+        assertEquals(Resultado.GANADOR2, arbitro.ganadorDeLaMano(cartas));
     }
     
     @Test 
-    public void testEmpateDeManoCuatroJugadores(){
-    	Carta carta1 = new Carta(3, Palo.ORO);
-        Carta carta2 = new Carta(1, Palo.ORO);
-        Carta carta3 = new Carta(5, Palo.COPA);
-        Carta carta4 = new Carta(3, Palo.ESPADA);
+    public void testEmpateDeManoCuatroJugadores() {
         LinkedList<Carta> cartas = new LinkedList<Carta>();
-        cartas.add(carta1);
-        cartas.add(carta2);
-        cartas.add(carta3);
-        cartas.add(carta4);
-        Assert.assertEquals(Resultado.EMPATE, arbitro.ganadorDeLaMano(cartas));
+        cartas.add(tresOro);
+        cartas.add(unoOro);
+        cartas.add(cincoCopa);
+        cartas.add(tresEspada);
+        assertEquals(Resultado.EMPATE, arbitro.ganadorDeLaMano(cartas));
     }
 }

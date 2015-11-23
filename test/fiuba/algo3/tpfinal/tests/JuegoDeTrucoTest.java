@@ -4,10 +4,10 @@ package fiuba.algo3.tpfinal.tests;
 import fiuba.algo3.tpfinal.modelo.*;
 import fiuba.algo3.tpfinal.modelo.error.*;
 
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
+import static org.junit.Assert.*;
 
 public class JuegoDeTrucoTest {
 
@@ -26,12 +26,12 @@ public class JuegoDeTrucoTest {
     	unJuego.obtenerJugadorActual().entregarCartas();
     	unJuego.moverAlSiguiente();
     	unJuego.obtenerJugadorActual().entregarCartas();
-    	// cartas de Juan
+    	// Cartas de Juan
     	unJuego.obtenerJugadorActual().agarrarCarta(unoDeEspada);
     	unJuego.obtenerJugadorActual().agarrarCarta(sieteDeEspada);
     	unJuego.obtenerJugadorActual().agarrarCarta(sotaDeEspada);
     	unJuego.moverAlSiguiente();
-    	// cartas de Ana
+    	// Cartas de Ana
     	unJuego.obtenerJugadorActual().agarrarCarta(sotaDeBasto);
     	unJuego.obtenerJugadorActual().agarrarCarta(cincoDeEspada);
     	unJuego.obtenerJugadorActual().agarrarCarta(unoDeBasto);
@@ -42,17 +42,17 @@ public class JuegoDeTrucoTest {
         unJuego.comenzarPartida(true);
         unJuego.repartir();
         Jugador jugador1 = unJuego.obtenerJugadorActual();
-        Assert.assertTrue(3 == jugador1.mostrarCartas().size());
+        assertEquals(3, jugador1.mostrarCartas().size());
         unJuego.moverAlSiguiente();
         Jugador jugador2 = unJuego.obtenerJugadorActual();
-        Assert.assertTrue(3 == jugador2.mostrarCartas().size());
+        assertEquals(3, jugador2.mostrarCartas().size());
     }
     
     @Test
     public void testPartidaComienzaCeroACero() {
-       	Assert.assertEquals(0, unJuego.obtenerJugadorActual().obtenerPuntaje());
+       	assertEquals(0, unJuego.obtenerJugadorActual().obtenerPuntaje());
        	unJuego.moverAlSiguiente();
-       	Assert.assertEquals(0, unJuego.obtenerJugadorActual().obtenerPuntaje());
+       	assertEquals(0, unJuego.obtenerJugadorActual().obtenerPuntaje());
     }
 
     // Tests ENVIDO
@@ -63,8 +63,8 @@ public class JuegoDeTrucoTest {
         unJuego.envido();
         unJuego.quieroEnvido();
 
-        Assert.assertEquals(4, unJuego.puntosDeEquipo(Equipo.EQUIPO2));
-        Assert.assertEquals(0, unJuego.puntosDeEquipo(Equipo.EQUIPO1));
+        assertEquals(4, unJuego.puntosDeEquipo(Equipo.EQUIPO2));
+        assertEquals(0, unJuego.puntosDeEquipo(Equipo.EQUIPO1));
     }
 
     @Test
@@ -73,8 +73,8 @@ public class JuegoDeTrucoTest {
         unJuego.realEnvido();
         unJuego.quieroEnvido();
 
-        Assert.assertEquals(5, unJuego.puntosDeEquipo(Equipo.EQUIPO2));
-        Assert.assertEquals(0, unJuego.puntosDeEquipo(Equipo.EQUIPO1));
+        assertEquals(5, unJuego.puntosDeEquipo(Equipo.EQUIPO2));
+        assertEquals(0, unJuego.puntosDeEquipo(Equipo.EQUIPO1));
     }
 
     @Test (expected = NoPuedeJugarSeCantoEnvidoError.class)
@@ -102,7 +102,7 @@ public class JuegoDeTrucoTest {
     	unJuego.valeCuatro();
     	unJuego.noQuieroTruco();
     	
-    	Assert.assertEquals(3, unJuego.obtenerJugadorActual().obtenerPuntaje());
+    	assertEquals(3, unJuego.obtenerJugadorActual().obtenerPuntaje());
     }
     
     @Test
@@ -110,7 +110,7 @@ public class JuegoDeTrucoTest {
     	unJuego.truco();
     	unJuego.noQuieroTruco();
     	
-    	Assert.assertEquals(1, unJuego.obtenerJugadorActual().obtenerPuntaje());
+    	assertEquals(1, unJuego.obtenerJugadorActual().obtenerPuntaje());
     }
 
     @Test (expected = NoRespetaJerarquiaDeTrucoError.class)
@@ -136,9 +136,9 @@ public class JuegoDeTrucoTest {
         unJuego.noQuieroEnvido();
         unJuego.noQuieroTruco();
 
-        Assert.assertEquals(1, unJuego.obtenerJugadorActual().obtenerPuntaje());
+        assertEquals(1, unJuego.obtenerJugadorActual().obtenerPuntaje());
         unJuego.moverAlSiguiente();
-        Assert.assertEquals(1, unJuego.obtenerJugadorActual().obtenerPuntaje());
+        assertEquals(1, unJuego.obtenerJugadorActual().obtenerPuntaje());
     }
 
     @Test (expected = NoPuedeCantarTrucoSeCantoEnvidoError.class)
@@ -165,6 +165,6 @@ public class JuegoDeTrucoTest {
     	unJuego.jugar(unoDeEspada);
     	
     	unJuego.moverAlSiguiente();
-    	Assert.assertEquals(1, unJuego.obtenerJugadorActual().obtenerPuntaje());
+    	assertEquals(1, unJuego.obtenerJugadorActual().obtenerPuntaje());
     }
 }
