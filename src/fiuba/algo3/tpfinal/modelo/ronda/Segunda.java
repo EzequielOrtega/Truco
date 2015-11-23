@@ -41,15 +41,15 @@ public class Segunda extends EstadoRonda {
 		}
 		Jugador ganador = null;
 		switch(this.obtenerGanadorParcial()){
-		case GANADOR1:{
-			ganador = jugadores.get(0);
-			break;
-		}
-		case GANADOR2:{
-			ganador = jugadores.get(1);
-			break;
-		}
-		case EMPATE:{break;}
+			case GANADOR1:{
+				ganador = jugadores.get(0);
+				break;
+			}
+			case GANADOR2:{
+				ganador = jugadores.get(1);
+				break;
+			}
+			case EMPATE: {break;}
 		}
 		return ganador;
 	}

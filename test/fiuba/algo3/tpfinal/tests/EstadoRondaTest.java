@@ -10,6 +10,7 @@ import fiuba.algo3.tpfinal.modelo.Equipo;
 import fiuba.algo3.tpfinal.modelo.Jugador;
 import fiuba.algo3.tpfinal.modelo.Resultado;
 import fiuba.algo3.tpfinal.modelo.error.NoHayGanadorDeRondaInconclusaError;
+import fiuba.algo3.tpfinal.modelo.error.NoRespetaJerarquiaDeRondaError;
 import fiuba.algo3.tpfinal.modelo.ronda.EstadoInicialRonda;
 import fiuba.algo3.tpfinal.modelo.ronda.EstadoRonda;
 import fiuba.algo3.tpfinal.modelo.ronda.Primera;
@@ -54,6 +55,12 @@ public class EstadoRondaTest {
 	public void testNoHayGanadorDeRondaEnPrimera() {
 		estadoRondaActual = new Primera(estadoRondaActual);
 		estadoRondaActual.obtenerGanadorDeLaRonda(jugadores);
+	}
+	
+	@Test (expected = NoRespetaJerarquiaDeRondaError.class)
+	public void testEstadoInicialPrimeraPrimeraNoVale() {
+		estadoRondaActual = new Primera(estadoRondaActual);
+		estadoRondaActual = new Primera(estadoRondaActual);
 	}
 	
 	//tests estado segunda

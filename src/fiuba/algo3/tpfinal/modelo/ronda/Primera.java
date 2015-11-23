@@ -5,6 +5,7 @@ import java.util.LinkedList;
 import fiuba.algo3.tpfinal.modelo.Jugador;
 import fiuba.algo3.tpfinal.modelo.Resultado;
 import fiuba.algo3.tpfinal.modelo.error.NoHayGanadorDeRondaInconclusaError;
+import fiuba.algo3.tpfinal.modelo.error.NoRespetaJerarquiaDeRondaError;
 
 public class Primera extends EstadoRonda {
 	
@@ -12,10 +13,17 @@ public class Primera extends EstadoRonda {
 	
 	public Primera(EstadoRonda estadoAnterior) {
 		super(estadoAnterior);
+		if(!(estadoAnterior instanceof EstadoInicialRonda)){
+			throw new NoRespetaJerarquiaDeRondaError();
+		}
+		
 	}
 	
 	public Primera(EstadoRonda estadoAnterior, Resultado resultadoDePrimera) {
 		super(estadoAnterior);
+		if(!(estadoAnterior instanceof EstadoInicialRonda)){
+			throw new NoRespetaJerarquiaDeRondaError();
+		}
 		this.resultadoDePrimera = resultadoDePrimera;
 	}
 
