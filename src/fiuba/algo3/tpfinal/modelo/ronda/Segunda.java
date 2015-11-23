@@ -43,11 +43,13 @@ public class Segunda extends EstadoRonda {
 		switch(this.obtenerGanadorParcial()){
 		case GANADOR1:{
 			ganador = jugadores.get(0);
+			break;
 		}
 		case GANADOR2:{
 			ganador = jugadores.get(1);
+			break;
 		}
-		case EMPATE:{}
+		case EMPATE:{break;}
 		}
 		return ganador;
 	}
@@ -63,12 +65,14 @@ public class Segunda extends EstadoRonda {
 	@Override
 	protected Resultado obtenerGanadorParcial() {
 		Resultado resultadoParcial = null;
-		if(estadoAnterior.obtenerResultadoDeMano() == resultadoDeSegunda){
+		if((estadoAnterior.obtenerResultadoDeMano() == resultadoDeSegunda) &&(resultadoDeSegunda != Resultado.EMPATE)){
 			resultadoParcial = resultadoDeSegunda;
 		}else if((estadoAnterior.obtenerResultadoDeMano() != Resultado.EMPATE) && (resultadoDeSegunda == Resultado.EMPATE)){
 			resultadoParcial = estadoAnterior.obtenerResultadoDeMano();
 		}else if((estadoAnterior.obtenerResultadoDeMano() == Resultado.EMPATE) && (resultadoDeSegunda != Resultado.EMPATE)){
 			resultadoParcial = resultadoDeSegunda;
+		}else{
+			resultadoParcial = Resultado.EMPATE;
 		}
 		return resultadoParcial;
 	}

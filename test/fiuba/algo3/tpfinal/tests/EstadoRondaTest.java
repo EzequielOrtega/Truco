@@ -4,7 +4,6 @@ import java.util.LinkedList;
 
 import org.junit.Assert;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import fiuba.algo3.tpfinal.modelo.Equipo;
@@ -107,7 +106,6 @@ public class EstadoRondaTest {
 		Assert.assertTrue(estadoRondaActual.obtenerGanadorDeLaRonda(jugadores) == jugadores.get(1));
 	}
 	
-	@Ignore
 	@Test
 	public void testGanadorDeLaRondaEnSegundaPorPardaEnSegunda() {
 		estadoRondaActual = new Primera(estadoRondaActual, Resultado.GANADOR1);
@@ -115,7 +113,6 @@ public class EstadoRondaTest {
 		Assert.assertTrue(estadoRondaActual.obtenerGanadorDeLaRonda(jugadores) == jugadores.get(0));
 	}
 	
-	@Ignore
 	@Test
 	public void testGanadorDeLaRondaEnSegundaPorGanador() {
 		estadoRondaActual = new Primera(estadoRondaActual, Resultado.GANADOR1);
