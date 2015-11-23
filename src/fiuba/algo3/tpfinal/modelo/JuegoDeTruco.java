@@ -4,7 +4,7 @@ import fiuba.algo3.tpfinal.modelo.envido.*;
 import fiuba.algo3.tpfinal.modelo.error.*;
 import fiuba.algo3.tpfinal.modelo.truco.*;
 import fiuba.algo3.tpfinal.modelo.flor.*;
-
+import fiuba.algo3.tpfinal.modelo.ronda.*;
 import java.util.LinkedList;
 
 public class JuegoDeTruco {

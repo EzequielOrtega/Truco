@@ -1,17 +1,17 @@
 package fiuba.algo3.tpfinal.tests;
 
-import java.util.LinkedList;
-
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
-
 import fiuba.algo3.tpfinal.modelo.Equipo;
 import fiuba.algo3.tpfinal.modelo.Jugador;
 import fiuba.algo3.tpfinal.modelo.Resultado;
-import fiuba.algo3.tpfinal.modelo.Ronda;
+import fiuba.algo3.tpfinal.modelo.ronda.*;
 import fiuba.algo3.tpfinal.modelo.error.NoHayGanadorDeRondaInconclusaError;
 import fiuba.algo3.tpfinal.modelo.error.YaSeJugaronLasTresManosError;
+import org.junit.Before;
+import org.junit.Test;
+
+import java.util.LinkedList;
+
+import static org.junit.Assert.*;
 
 public class RondaTest {
 	
@@ -33,19 +33,19 @@ public class RondaTest {
 	
 	@Test
 	public void testRondaSeCreaVacia() {
-		Assert.assertTrue(this.ronda.estaVacia());
-		Assert.assertTrue(this.ronda.tamanio() == 0);
+		assertTrue(this.ronda.estaVacia());
+		assertEquals(0, this.ronda.tamanio());
 	}
 	
 	@Test
-	public void testInsercion(){
-		Assert.assertTrue(this.ronda.tamanio() == 0);
+	public void testInsercion() {
+		assertEquals(0, this.ronda.tamanio());
 		this.ronda.insercion(Resultado.GANADOR1);
-		Assert.assertTrue(this.ronda.tamanio() == 1);
+		assertEquals(1, this.ronda.tamanio());
 		this.ronda.insercion(Resultado.GANADOR2);
-		Assert.assertTrue(this.ronda.tamanio() == 2);
+		assertEquals(2, this.ronda.tamanio());
 		this.ronda.insercion(Resultado.EMPATE);
-		Assert.assertTrue(this.ronda.tamanio() == 3);
+		assertEquals(3, this.ronda.tamanio());
 	}
 	
 	@Test (expected = YaSeJugaronLasTresManosError.class)
@@ -59,21 +59,21 @@ public class RondaTest {
 	@Test
 	public void testNoConcluyoRondaEnPrimera(){
 		this.ronda.insercion(Resultado.GANADOR1);
-		Assert.assertFalse(ronda.concluyoLaRonda());	
+		assertFalse(ronda.concluyoLaRonda());
 	}
 	
 	@Test
 	public void testConcluyoLaRondaEnSegundaConEmpateEnPrimera(){
 		this.ronda.insercion(Resultado.EMPATE);
 		this.ronda.insercion(Resultado.GANADOR1);
-		Assert.assertTrue(ronda.concluyoLaRonda());		
+		assertTrue(ronda.concluyoLaRonda());
 	}
 	
 	@Test
 	public void testConcluyoLaRondaEnSegundaConEmpateEnSegunda(){
 		this.ronda.insercion(Resultado.GANADOR1);
 		this.ronda.insercion(Resultado.EMPATE);
-		Assert.assertTrue(ronda.concluyoLaRonda());		
+		assertTrue(ronda.concluyoLaRonda());
 	}
 	
 	@Test
@@ -81,7 +81,7 @@ public class RondaTest {
 		this.ronda.insercion(Resultado.GANADOR1);
 		this.ronda.insercion(Resultado.GANADOR2);
 		this.ronda.insercion(Resultado.EMPATE);
-		Assert.assertTrue(ronda.concluyoLaRonda());
+		assertTrue(ronda.concluyoLaRonda());
 	}
 	
 	@Test (expected = NoHayGanadorDeRondaInconclusaError.class)
@@ -96,14 +96,14 @@ public class RondaTest {
 	public void testGanadorDeLaRondaEnSegundaConEmpateEnPrimera(){
 		this.ronda.insercion(Resultado.EMPATE);
 		this.ronda.insercion(Resultado.GANADOR1);
-		Assert.assertTrue(jugadores.get(0) == this.ronda.ganadorDeLaRonda(jugadores));
+		assertEquals(jugadores.get(0), this.ronda.ganadorDeLaRonda(jugadores));
 	}
 	
 	@Test
 	public void testGanadorDeLaRondaEnSegundaConEmpateEnSegunda(){
 		this.ronda.insercion(Resultado.GANADOR2);
 		this.ronda.insercion(Resultado.EMPATE);
-		Assert.assertTrue(jugadores.get(1) == this.ronda.ganadorDeLaRonda(jugadores));
+		assertEquals(jugadores.get(1), this.ronda.ganadorDeLaRonda(jugadores));
 	}
 	
 	@Test
@@ -111,7 +111,7 @@ public class RondaTest {
 		this.ronda.insercion(Resultado.GANADOR2);
 		this.ronda.insercion(Resultado.GANADOR1);
 		this.ronda.insercion(Resultado.EMPATE);
-		Assert.assertTrue(jugadores.get(1) == this.ronda.ganadorDeLaRonda(jugadores));
+		assertEquals(jugadores.get(1), this.ronda.ganadorDeLaRonda(jugadores));
 	}
 	
 	@Test
@@ -119,7 +119,7 @@ public class RondaTest {
 		this.ronda.insercion(Resultado.GANADOR2);
 		this.ronda.insercion(Resultado.GANADOR1);
 		this.ronda.insercion(Resultado.GANADOR1);
-		Assert.assertTrue(jugadores.get(0) == this.ronda.ganadorDeLaRonda(jugadores));
+		assertEquals(jugadores.get(0), this.ronda.ganadorDeLaRonda(jugadores));
 	}
 	
 	@Test
@@ -127,7 +127,7 @@ public class RondaTest {
 		this.ronda.insercion(Resultado.EMPATE);
 		this.ronda.insercion(Resultado.EMPATE);
 		this.ronda.insercion(Resultado.EMPATE);
-		Assert.assertTrue(jugadores.get(0) == this.ronda.ganadorDeLaRonda(jugadores));
+		assertEquals(jugadores.get(0), this.ronda.ganadorDeLaRonda(jugadores));
 	}
 
 }
