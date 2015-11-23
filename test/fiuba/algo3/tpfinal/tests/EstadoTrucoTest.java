@@ -1,15 +1,11 @@
 package fiuba.algo3.tpfinal.tests;
 
-import org.junit.Assert;
+import fiuba.algo3.tpfinal.modelo.error.NoRespetaJerarquiaDeTrucoError;
+import fiuba.algo3.tpfinal.modelo.truco.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import fiuba.algo3.tpfinal.modelo.error.NoRespetaJerarquiaDeTrucoError;
-import fiuba.algo3.tpfinal.modelo.truco.EstadoInicialTruco;
-import fiuba.algo3.tpfinal.modelo.truco.EstadoTruco;
-import fiuba.algo3.tpfinal.modelo.truco.ReTruco;
-import fiuba.algo3.tpfinal.modelo.truco.Truco;
-import fiuba.algo3.tpfinal.modelo.truco.ValeCuatro;
+import static org.junit.Assert.assertEquals;
 
 public class EstadoTrucoTest {
 	
@@ -23,8 +19,8 @@ public class EstadoTrucoTest {
 	public void testTruco() {
 		estadoAnterior = new Truco(estadoAnterior);
 		
-		Assert.assertEquals(2, estadoAnterior.obtenerPuntosQueridos());
-		Assert.assertEquals(1, estadoAnterior.obtenerPuntosNoQueridos());
+		assertEquals(2, estadoAnterior.obtenerPuntosQueridos());
+		assertEquals(1, estadoAnterior.obtenerPuntosNoQueridos());
 	}
 	
 	@Test
@@ -32,8 +28,8 @@ public class EstadoTrucoTest {
 		estadoAnterior = new Truco(estadoAnterior);
 		estadoAnterior = new ReTruco(estadoAnterior);
 		
-		Assert.assertEquals(3, estadoAnterior.obtenerPuntosQueridos());
-		Assert.assertEquals(2, estadoAnterior.obtenerPuntosNoQueridos());
+		assertEquals(3, estadoAnterior.obtenerPuntosQueridos());
+		assertEquals(2, estadoAnterior.obtenerPuntosNoQueridos());
 	}
 	
 	@Test
@@ -42,8 +38,8 @@ public class EstadoTrucoTest {
 		estadoAnterior = new ReTruco(estadoAnterior);
 		estadoAnterior = new ValeCuatro(estadoAnterior);
 		
-		Assert.assertEquals(4, estadoAnterior.obtenerPuntosQueridos());
-		Assert.assertEquals(3, estadoAnterior.obtenerPuntosNoQueridos());
+		assertEquals(4, estadoAnterior.obtenerPuntosQueridos());
+		assertEquals(3, estadoAnterior.obtenerPuntosNoQueridos());
 	}
 
 	@Test (expected = NoRespetaJerarquiaDeTrucoError.class)

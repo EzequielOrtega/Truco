@@ -1,8 +1,8 @@
 package fiuba.algo3.tpfinal.modelo;
 
-import java.util.LinkedList;
-
 import fiuba.algo3.tpfinal.modelo.error.LaCartaIngresadaNoEstaEnLaTablaError;
+
+import java.util.LinkedList;
 
 public class TablaDeValores {
 	
@@ -12,33 +12,33 @@ public class TablaDeValores {
 		elementos = new LinkedList<ElementoDeTabla<Carta>>();
 	}
 	
-	public Boolean insercion(Carta carta, Integer valor){
+	public Boolean insercion(Carta carta, int valor){
 		ElementoDeTabla<Carta> elementoNuevo = new ElementoDeTabla<Carta>(carta, valor);
 		elementos.add(elementoNuevo);
 		return true;
 	}
 	
-	public Integer busqueda(Carta carta){
-		Integer valorADevolver = null;
+	public int busqueda(Carta carta){
+		int valorADevolver = -1;
 		for(ElementoDeTabla<Carta> elementoActual: elementos){
 			if(elementoActual.getLlave().equals(carta)){
 				valorADevolver = elementoActual.getValor();
 			}
 		}
-		if(valorADevolver == null){
+		if(valorADevolver == -1){
 			throw new LaCartaIngresadaNoEstaEnLaTablaError();
 		}
 		return valorADevolver;
 	}
 	
 	public Boolean borrar(Carta carta){
-		Integer posicionElemento = null;
-		for(Integer x = 0; x < elementos.size(); x++){
+		int posicionElemento = -1;
+		for(int x = 0; x < elementos.size(); x++){
 			if(elementos.get(x).getLlave().equals(carta)){
 				posicionElemento = x;
 			}
 		}
-		if(posicionElemento == null){
+		if(posicionElemento == -1){
 			throw new LaCartaIngresadaNoEstaEnLaTablaError();
 		}
 		elementos.remove(posicionElemento);

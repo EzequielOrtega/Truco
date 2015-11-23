@@ -1,16 +1,17 @@
 package fiuba.algo3.tpfinal.tests;
 
-import fiuba.algo3.tpfinal.modelo.*;
+import fiuba.algo3.tpfinal.modelo.Carta;
+import fiuba.algo3.tpfinal.modelo.Mazo;
+import fiuba.algo3.tpfinal.modelo.Palo;
 import fiuba.algo3.tpfinal.modelo.error.NoHayMasCartasError;
-
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import java.util.List;
 
-import java.util.Vector;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 
 public class MazoTest {
@@ -26,21 +27,21 @@ public class MazoTest {
     public void testCrearMazoExitoso() {
         assertEquals(40, nuevoMazo.cantidadDeCartasRestantes());
     }
-    
+
     @Ignore
     @Test
     public void testMezclarMazoExitoso() {
-    	nuevoMazo.mezclar();
-    	Vector<Carta> orden1 = nuevoMazo.getCartas();
+    	List<Carta> orden1 = nuevoMazo.getCartas();
         nuevoMazo.mezclar();
-        Vector<Carta> orden2 = nuevoMazo.getCartas();
+        List<Carta> orden2 = nuevoMazo.getCartas();
         Boolean cartasMezcladas = false;
-        for(Integer x = 0; x < 40; x++){
-        	if(!orden1.get(x).equals(orden2.get(x))){
+        for(int x = 0; x < 40; x++){
+        	if(!(orden1.get(x).mismoPaloQue(orden2.get(x))) || (orden1.get(x).getValor())!=(orden2.get(x).getValor())) {
         		cartasMezcladas = true;
+                break;
         	}
         }
-        Assert.assertTrue(cartasMezcladas);
+        assertTrue(cartasMezcladas);
     }
 
     @Test

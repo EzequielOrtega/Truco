@@ -1,17 +1,15 @@
 package fiuba.algo3.tpfinal.tests;
 
 
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
-
 import fiuba.algo3.tpfinal.modelo.Carta;
 import fiuba.algo3.tpfinal.modelo.NoFigura;
 import fiuba.algo3.tpfinal.modelo.Palo;
 import fiuba.algo3.tpfinal.modelo.TablaDeValores;
 import fiuba.algo3.tpfinal.modelo.error.LaCartaIngresadaNoEstaEnLaTablaError;
+import org.junit.Before;
+import org.junit.Test;
 
-
+import static org.junit.Assert.*;
 
 public class TablaDeValoresTest {
 	
@@ -25,14 +23,14 @@ public class TablaDeValoresTest {
 	@Test
 	public void testInsercionCorrecta() {
 		Carta carta = new NoFigura(1, Palo.ESPADA);
-		Assert.assertTrue(tabla.insercion(carta, 13));
+		assertTrue(tabla.insercion(carta, 13));
 	}
 	
 	@Test
 	public void testBusqueda(){
 		Carta carta = new NoFigura(1, Palo.ESPADA);
 		tabla.insercion(carta, 13);
-		Assert.assertTrue(13 == tabla.busqueda(carta));
+		assertEquals(13, tabla.busqueda(carta));
 	}
 	
 	@Test (expected = LaCartaIngresadaNoEstaEnLaTablaError.class)
@@ -45,13 +43,13 @@ public class TablaDeValoresTest {
 	public void testEliminarElemento() {
 		Carta carta = new NoFigura(1, Palo.ESPADA);
 		tabla.insercion(carta, 13);
-		Assert.assertTrue(tabla.borrar(carta));
+		assertTrue(tabla.borrar(carta));
 	}
 	
 	@Test (expected = LaCartaIngresadaNoEstaEnLaTablaError.class)
 	public void testEliminarElementoError() {
 		Carta carta = new NoFigura(1, Palo.ESPADA);
-		Assert.assertTrue(tabla.borrar(carta));
+		assertTrue(tabla.borrar(carta));
 	}
 
 }
