@@ -1,9 +1,9 @@
 package fiuba.algo3.tpfinal.modelo;
 
-import java.util.Vector;
-
 import fiuba.algo3.tpfinal.modelo.error.JugadorNoTieneFlorError;
 import fiuba.algo3.tpfinal.modelo.error.SoloSePuedeCantarEnvidoEnPrimeraError;
+
+import java.util.Vector;
 
 public class CalculadorDeTantos {
 
@@ -17,9 +17,9 @@ public class CalculadorDeTantos {
 
 	public int obtenerTantosDeFlor(Vector<Carta> cartas){
 
-		if (this.tieneFlor(cartas)){
+		if (this.tieneFlor(cartas)) {
 			int tantosDeFlor = 20;
-			for (Carta carta: cartas){
+			for (Carta carta: cartas) {
 				CartaParaEnvidoYFlor cartaActual = (CartaParaEnvidoYFlor) carta;
 				tantosDeFlor += cartaActual.obtenerValorParaEnvidoYFlor();
 			}
