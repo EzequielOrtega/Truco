@@ -1,24 +1,30 @@
 package fiuba.algo3.tpfinal.tests;
 
-import java.util.LinkedList;
-
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
-
 import fiuba.algo3.tpfinal.modelo.Equipo;
 import fiuba.algo3.tpfinal.modelo.Jugador;
 import fiuba.algo3.tpfinal.modelo.ListaCircular;
 import fiuba.algo3.tpfinal.modelo.error.ElementoNoEstaEnLaListaError;
 import fiuba.algo3.tpfinal.modelo.error.PosicionFueraDeLosLimitesDeLaListaError;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
+
+import java.util.LinkedList;
+
+import static org.junit.Assert.*;
 
 public class ListaCircularTest {
 	
 	private ListaCircular<Jugador> jugadores;
+	private Jugador eze, matu, micaela, marcos;
 	
 	@Before
 	public void setup(){
 		jugadores = new ListaCircular<Jugador>();
+        eze = new Jugador("eze", Equipo.EQUIPO1);
+        matu = new Jugador("matu", Equipo.EQUIPO1);
+        micaela = new Jugador("micaela", Equipo.EQUIPO1);
+        marcos = new Jugador("marcos", Equipo.EQUIPO1);
 	}
 	
 	@Test
@@ -27,109 +33,85 @@ public class ListaCircularTest {
 	}
 	
 	@Test
-	public void testAumentaElTamanioAlAgregar(){
-		Jugador jugador = new Jugador("eze", Equipo.EQUIPO1);
-		Assert.assertTrue(0 == jugadores.tamanio());
-		jugadores.agregar(jugador);
-		Assert.assertTrue(1 == jugadores.tamanio());
+	public void testAumentaElTamanioAlAgregar() {
+		assertEquals(0, jugadores.tamanio());
+		jugadores.agregar(eze);
+		assertEquals(1, jugadores.tamanio());
 	}
 	
 	@Test
 	public void testLosElementosSeAgreganCorrectamente(){
-		Jugador jugador1 = new Jugador("eze", Equipo.EQUIPO1);
-		Jugador jugador2 = new Jugador("matu", Equipo.EQUIPO2);
-		jugadores.agregar(jugador1);
-		jugadores.agregar(jugador2);
-		Assert.assertTrue(jugador1 == jugadores.obtenerElemento(0));
-		Assert.assertTrue(jugador2 == jugadores.obtenerElemento(1));
+		jugadores.agregar(eze);
+		jugadores.agregar(matu);
+		assertEquals(eze, jugadores.obtenerElemento(0));
+		assertEquals(matu, jugadores.obtenerElemento(1));
 	}
 	
 	@Test
-	public void testMoverAlSiguiente(){
-		Jugador jugador1 = new Jugador("eze", Equipo.EQUIPO1);
-		Jugador jugador2 = new Jugador("matu", Equipo.EQUIPO2);
-		jugadores.agregar(jugador1);
-		jugadores.agregar(jugador2);
-		Assert.assertTrue(jugador1 == jugadores.obtenerElemento(0));
+	public void testMoverAlSiguiente() {
+		jugadores.agregar(eze);
+		jugadores.agregar(matu);
+		assertEquals(eze, jugadores.obtenerElemento(0));
 		jugadores.moverAlSiguiente();
-		Assert.assertTrue(jugador2 == jugadores.obtenerElemento(0));
+		assertEquals(matu, jugadores.obtenerElemento(0));
 	}
 	
 	@Test
-	public void testVaciarLista(){
-		Jugador jugador1 = new Jugador("eze", Equipo.EQUIPO1);
-		Jugador jugador2 = new Jugador("matu", Equipo.EQUIPO2);
-		jugadores.agregar(jugador1);
-		jugadores.agregar(jugador2);
-		Assert.assertFalse(jugadores.estaVacia());
+	public void testVaciarLista() {
+		jugadores.agregar(eze);
+		jugadores.agregar(matu);
+		assertFalse(jugadores.estaVacia());
 		jugadores.vaciar();
-		Assert.assertTrue(jugadores.estaVacia());
+		assertTrue(jugadores.estaVacia());
 	}
 	
 	@Test
-	public void testObtenerElementos(){
-		Jugador jugador1 = new Jugador("eze", Equipo.EQUIPO1);
-		Jugador jugador2 = new Jugador("matu", Equipo.EQUIPO2);
-		jugadores.agregar(jugador1);
-		jugadores.agregar(jugador2);
+	public void testObtenerElementos() {
+		jugadores.agregar(eze);
+		jugadores.agregar(matu);
 		LinkedList<Jugador> jugadoresList = jugadores.obtenerElementos();
-		Assert.assertTrue(jugador1 == jugadoresList.getFirst());
-		Assert.assertTrue(jugador2 == jugadoresList.getLast());
+		assertEquals(eze, jugadoresList.getFirst());
+		assertEquals(matu, jugadoresList.getLast());
 	}
 	
 	@Test
-	public void testObtenerSiguienteDeUnJugadorParticular(){
-		Jugador jugador1 = new Jugador("eze", Equipo.EQUIPO1);
-		Jugador jugador2 = new Jugador("matu", Equipo.EQUIPO2);
-		Jugador jugador3 = new Jugador("micaela", Equipo.EQUIPO1);
-		Jugador jugador4 = new Jugador("marcos", Equipo.EQUIPO2);
-		jugadores.agregar(jugador1);
-		jugadores.agregar(jugador2);
-		jugadores.agregar(jugador3);
-		jugadores.agregar(jugador4);		
-		Assert.assertTrue(jugador3 == jugadores.obtenerElementoSiguienteDe(jugador2));
-		Assert.assertTrue(jugador1 == jugadores.obtenerElementoSiguienteDe(jugador4));
+	public void testObtenerSiguienteDeUnJugadorParticular() {
+		jugadores.agregar(eze);
+		jugadores.agregar(matu);
+		jugadores.agregar(micaela);
+		jugadores.agregar(marcos);
+		assertEquals(marcos, jugadores.obtenerElementoSiguienteDe(micaela));
+		assertEquals(eze, jugadores.obtenerElementoSiguienteDe(marcos));
 	}
 	
 	@Test (expected = ElementoNoEstaEnLaListaError.class)
-	public void testObtenerSiguienteDeUnJugadorParticularQueNoEstaEnLaLista(){
-		Jugador jugador1 = new Jugador("eze", Equipo.EQUIPO1);
-		Jugador jugador2 = new Jugador("matu", Equipo.EQUIPO2);
-		Jugador jugador3 = new Jugador("micaela", Equipo.EQUIPO1);
-		jugadores.agregar(jugador1);
-		jugadores.agregar(jugador2);
-		jugadores.obtenerElementoSiguienteDe(jugador3);
+	public void testObtenerSiguienteDeUnJugadorParticularQueNoEstaEnLaLista() {
+		jugadores.agregar(eze);
+		jugadores.agregar(matu);
+		jugadores.obtenerElementoSiguienteDe(micaela);
 	}
 	
 	@Test
-	public void testObtenerElementoEnPosicionX(){
-		Jugador jugador1 = new Jugador("eze", Equipo.EQUIPO1);
-		Jugador jugador2 = new Jugador("matu", Equipo.EQUIPO2);
-		Jugador jugador3 = new Jugador("micaela", Equipo.EQUIPO1);
-		Jugador jugador4 = new Jugador("marcos", Equipo.EQUIPO2);
-		jugadores.agregar(jugador1);
-		jugadores.agregar(jugador2);
-		jugadores.agregar(jugador3);
-		jugadores.agregar(jugador4);		
-		Assert.assertTrue(jugador3 == jugadores.obtenerElemento(2));
-		Assert.assertTrue(jugador1 == jugadores.obtenerElemento(0));
+	public void testObtenerElementoEnPosicionX() {
+		jugadores.agregar(eze);
+		jugadores.agregar(matu);
+		jugadores.agregar(micaela);
+		jugadores.agregar(marcos);
+		assertEquals(micaela, jugadores.obtenerElemento(2));
+		assertEquals(eze, jugadores.obtenerElemento(0));
 	}
 	
 	@Test (expected = PosicionFueraDeLosLimitesDeLaListaError.class)
-	public void testObtenerElementoEnPosicionXMenorACero(){
-		Jugador jugador1 = new Jugador("eze", Equipo.EQUIPO1);
-		Jugador jugador2 = new Jugador("matu", Equipo.EQUIPO2);
-		jugadores.agregar(jugador1);
-		jugadores.agregar(jugador2);
+	public void testObtenerElementoEnPosicionXMenorACero() {
+		jugadores.agregar(eze);
+		jugadores.agregar(matu);
 		jugadores.obtenerElemento(-1);		
 	}
 	
 	@Test (expected = PosicionFueraDeLosLimitesDeLaListaError.class)
-	public void testObtenerElementoEnPosicionXMayorAlTamanioDeLaLista(){
-		Jugador jugador1 = new Jugador("eze", Equipo.EQUIPO1);
-		Jugador jugador2 = new Jugador("matu", Equipo.EQUIPO2);
-		jugadores.agregar(jugador1);
-		jugadores.agregar(jugador2);
+	public void testObtenerElementoEnPosicionXMayorAlTamanioDeLaLista() {
+		jugadores.agregar(eze);
+		jugadores.agregar(matu);
 		jugadores.obtenerElemento(4);		
 	}
 

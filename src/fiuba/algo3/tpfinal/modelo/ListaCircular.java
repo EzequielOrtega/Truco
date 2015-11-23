@@ -1,21 +1,21 @@
 package fiuba.algo3.tpfinal.modelo;
 
-import java.util.LinkedList;
-
 import fiuba.algo3.tpfinal.modelo.error.ElementoNoEstaEnLaListaError;
 import fiuba.algo3.tpfinal.modelo.error.PosicionFueraDeLosLimitesDeLaListaError;
+
+import java.util.LinkedList;
 
 public class ListaCircular<T> {
 	
 	private Nodo<T> raiz;
-	private Integer cantidadDeNodos;
+	private int cantidadDeNodos;
 	
 	public ListaCircular(){
 		raiz = null;
 		cantidadDeNodos = 0;
 	}
 	
-	public Integer tamanio(){
+	public int tamanio(){
 		return cantidadDeNodos;
 	}
 	
@@ -23,18 +23,18 @@ public class ListaCircular<T> {
 		return this.tamanio()==0;
 	}
 	
-	public void agregar(T dato){
+	public void agregar(T dato) {
 		Nodo<T> nodoNuevo;
-		if(this.estaVacia()){
+		if(this.estaVacia()) {
 			nodoNuevo = new Nodo<T>(dato, null, null);
 			raiz = nodoNuevo;
 			cantidadDeNodos++;
-		}else if(this.tamanio() == 1){
+		} else if(this.tamanio() == 1) {
 			nodoNuevo = new Nodo<T>(dato, raiz, raiz);
 			raiz.modificarAnterior(nodoNuevo);
 			raiz.modificarSiguiente(nodoNuevo);
 			cantidadDeNodos++;
-		}else{
+		} else {
 			nodoNuevo = new Nodo<T>(dato, null, raiz);
 			Nodo<T> ultimo = raiz.obtenerAnterior();
 			nodoNuevo.modificarAnterior(ultimo);
@@ -68,7 +68,7 @@ public class ListaCircular<T> {
 	public LinkedList<T> obtenerElementos(){
 		LinkedList<T> elementos = new LinkedList<T>();
 		Nodo<T> nodoActual = raiz;
-		for(Integer x = 0; x < cantidadDeNodos; x++){
+		for(int x = 0; x < cantidadDeNodos; x++){
 			elementos.add(nodoActual.obtenerDato());
 			nodoActual = nodoActual.obtenerSiguiente();
 		}
@@ -78,13 +78,13 @@ public class ListaCircular<T> {
 	public T obtenerElementoSiguienteDe(T elemento) {
 		T elementoBuscado = null;
 		Nodo<T> nodoActual = raiz;
-		for(Integer x = 0; x < this.tamanio(); x++){
-			if(nodoActual.obtenerDato() == elemento){
+		for(int x = 0; x < this.tamanio(); x++) {
+			if(nodoActual.obtenerDato() == elemento) {
 				elementoBuscado = nodoActual.obtenerSiguiente().obtenerDato();
 			}
 			nodoActual = nodoActual.obtenerSiguiente();
 		}
-		if (elementoBuscado == null){
+		if (elementoBuscado == null) {
 			throw new ElementoNoEstaEnLaListaError();
 		}
 		return elementoBuscado;
