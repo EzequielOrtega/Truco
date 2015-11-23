@@ -15,6 +15,7 @@ import fiuba.algo3.tpfinal.modelo.ronda.EstadoInicialRonda;
 import fiuba.algo3.tpfinal.modelo.ronda.EstadoRonda;
 import fiuba.algo3.tpfinal.modelo.ronda.Primera;
 import fiuba.algo3.tpfinal.modelo.ronda.Segunda;
+import fiuba.algo3.tpfinal.modelo.ronda.Tercera;
 
 public class EstadoRondaTest {
 	
@@ -137,6 +138,58 @@ public class EstadoRondaTest {
 	public void testGanadorDeLaRondaEnSegundaPorGanador() {
 		estadoRondaActual = new Primera(estadoRondaActual, Resultado.GANADOR1);
 		estadoRondaActual = new Segunda(estadoRondaActual, Resultado.GANADOR1);
+		Assert.assertTrue(estadoRondaActual.obtenerGanadorDeLaRonda(jugadores) == jugadores.get(0));
+	}
+	
+	//tests estado tercera
+	@Test
+	public void testConcluyoLaRondaEnTercera(){
+		estadoRondaActual = new Primera(estadoRondaActual);
+		estadoRondaActual = new Segunda(estadoRondaActual);
+		estadoRondaActual = new Tercera(estadoRondaActual);
+		Assert.assertTrue(estadoRondaActual.concluyoRonda());
+	}
+	
+	@Test (expected = NoRespetaJerarquiaDeRondaError.class)
+	public void testEstadoInicialPrimeraTerceraNoVale() {
+		estadoRondaActual = new Primera(estadoRondaActual);
+		estadoRondaActual = new Tercera(estadoRondaActual);		
+	}
+	
+	@Test (expected = NoRespetaJerarquiaDeRondaError.class)
+	public void testEstadoInicialTerceraNoVale() {
+		estadoRondaActual = new Tercera(estadoRondaActual);
+	}
+	
+	@Test (expected = NoRespetaJerarquiaDeRondaError.class)
+	public void testEstadoInicialPrimeraSegundaTerceraTerceraNoVale() {
+		estadoRondaActual = new Primera(estadoRondaActual);
+		estadoRondaActual = new Segunda(estadoRondaActual);
+		estadoRondaActual = new Tercera(estadoRondaActual);
+		estadoRondaActual = new Tercera(estadoRondaActual);
+	}
+	
+	@Test
+	public void testGanadorDeLaRondaEnTerceraPorHaberGanadoDosManos() {
+		estadoRondaActual = new Primera(estadoRondaActual, Resultado.GANADOR1);
+		estadoRondaActual = new Segunda(estadoRondaActual, Resultado.GANADOR2);
+		estadoRondaActual = new Tercera(estadoRondaActual, Resultado.GANADOR2);
+		Assert.assertTrue(estadoRondaActual.obtenerGanadorDeLaRonda(jugadores) == jugadores.get(1));
+	}
+	
+	@Test
+	public void testGanadorDeLaRondaEnTerceraConPardaEnTercera() {
+		estadoRondaActual = new Primera(estadoRondaActual, Resultado.GANADOR1);
+		estadoRondaActual = new Segunda(estadoRondaActual, Resultado.GANADOR2);
+		estadoRondaActual = new Tercera(estadoRondaActual, Resultado.EMPATE);
+		Assert.assertTrue(estadoRondaActual.obtenerGanadorDeLaRonda(jugadores) == jugadores.get(0));
+	}
+	
+	@Test
+	public void testGanadorDeLaRondaEnTerceraConPardaEnTodasLasManos() {
+		estadoRondaActual = new Primera(estadoRondaActual, Resultado.EMPATE);
+		estadoRondaActual = new Segunda(estadoRondaActual, Resultado.EMPATE);
+		estadoRondaActual = new Tercera(estadoRondaActual, Resultado.EMPATE);
 		Assert.assertTrue(estadoRondaActual.obtenerGanadorDeLaRonda(jugadores) == jugadores.get(0));
 	}
 

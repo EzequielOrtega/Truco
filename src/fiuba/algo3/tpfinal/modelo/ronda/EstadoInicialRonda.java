@@ -10,6 +10,7 @@ public class EstadoInicialRonda extends EstadoRonda {
 	
 	public EstadoInicialRonda() {
 		super(null);
+		this.mano = Mano.INICIAL;
 	}
 
 	@Override
@@ -34,6 +35,12 @@ public class EstadoInicialRonda extends EstadoRonda {
 
 	@Override
 	protected Resultado obtenerGanadorParcial() {
+		
+		return null;
+	}
+
+	@Override
+	protected Resultado obtenerResultadoDePrimera() {
 		
 		return null;
 	}

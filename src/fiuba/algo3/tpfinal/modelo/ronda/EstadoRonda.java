@@ -8,12 +8,19 @@ import fiuba.algo3.tpfinal.modelo.Resultado;
 public abstract class EstadoRonda {
 
 	protected EstadoRonda estadoAnterior;
+	protected Mano mano;
 
 	public EstadoRonda(EstadoRonda estadoAnterior) {
 		this.estadoAnterior = estadoAnterior;
 	}
 	
+	public Mano obtenerMano(){
+		return mano;
+	}
+	
 	protected abstract Resultado obtenerResultadoDeMano();
+	
+	protected abstract Resultado obtenerResultadoDePrimera();
 	
 	public abstract Boolean concluyoRonda();
 	

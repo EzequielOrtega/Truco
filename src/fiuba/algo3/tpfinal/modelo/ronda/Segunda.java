@@ -16,6 +16,7 @@ public class Segunda extends EstadoRonda {
 		if(!(estadoAnterior instanceof Primera)){
 			throw new NoRespetaJerarquiaDeRondaError();
 		}
+		this.mano = Mano.SEGUNDA;
 	}
 	
 	public Segunda(EstadoRonda estadoAnterior, Resultado resultadoDeSegunda) {
@@ -24,6 +25,7 @@ public class Segunda extends EstadoRonda {
 			throw new NoRespetaJerarquiaDeRondaError();
 		}
 		this.resultadoDeSegunda = resultadoDeSegunda;
+		this.mano = Mano.SEGUNDA;
 	}
 
 	@Override
@@ -82,6 +84,12 @@ public class Segunda extends EstadoRonda {
 			resultadoParcial = Resultado.EMPATE;
 		}
 		return resultadoParcial;
+	}
+
+	@Override
+	protected Resultado obtenerResultadoDePrimera() {
+		
+		return estadoAnterior.obtenerResultadoDePrimera();
 	}
 
 }
