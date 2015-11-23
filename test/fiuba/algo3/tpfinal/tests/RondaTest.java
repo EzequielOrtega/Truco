@@ -4,7 +4,6 @@ import java.util.LinkedList;
 
 import org.junit.Assert;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import fiuba.algo3.tpfinal.modelo.Equipo;
@@ -93,7 +92,6 @@ public class RondaTest {
 		ronda.ganadorDeLaRonda(jugadores);
 	}
 	
-	@Ignore
 	@Test
 	public void testGanadorDeLaRondaEnSegundaConEmpateEnPrimera(){
 		this.ronda.insercion(Resultado.EMPATE);
@@ -101,7 +99,6 @@ public class RondaTest {
 		Assert.assertTrue(jugadores.get(0) == this.ronda.ganadorDeLaRonda(jugadores));
 	}
 	
-	@Ignore
 	@Test
 	public void testGanadorDeLaRondaEnSegundaConEmpateEnSegunda(){
 		this.ronda.insercion(Resultado.GANADOR2);
@@ -109,7 +106,6 @@ public class RondaTest {
 		Assert.assertTrue(jugadores.get(1) == this.ronda.ganadorDeLaRonda(jugadores));
 	}
 	
-	@Ignore
 	@Test
 	public void testGanadorDeLaRondaEnTerceraConEmpateEnTercera(){
 		this.ronda.insercion(Resultado.GANADOR2);
@@ -118,7 +114,6 @@ public class RondaTest {
 		Assert.assertTrue(jugadores.get(1) == this.ronda.ganadorDeLaRonda(jugadores));
 	}
 	
-	@Ignore
 	@Test
 	public void testGanadorDeLaRondaEnTerceraConDosManosGanadas(){
 		this.ronda.insercion(Resultado.GANADOR2);
@@ -127,13 +122,12 @@ public class RondaTest {
 		Assert.assertTrue(jugadores.get(0) == this.ronda.ganadorDeLaRonda(jugadores));
 	}
 	
-	@Ignore
 	@Test
-	public void testNoHayGanadorDeLaRondaEnTercera(){
+	public void testGanadorDeLaRondaPorEmpateEnTodasLasManosEsElMano(){
 		this.ronda.insercion(Resultado.EMPATE);
 		this.ronda.insercion(Resultado.EMPATE);
 		this.ronda.insercion(Resultado.EMPATE);
-		Assert.assertTrue(null == this.ronda.ganadorDeLaRonda(jugadores));
+		Assert.assertTrue(jugadores.get(0) == this.ronda.ganadorDeLaRonda(jugadores));
 	}
 
 }
