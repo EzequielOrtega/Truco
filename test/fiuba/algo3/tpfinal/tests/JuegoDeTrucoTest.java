@@ -5,7 +5,6 @@ import fiuba.algo3.tpfinal.modelo.*;
 import fiuba.algo3.tpfinal.modelo.error.*;
 
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -158,12 +157,12 @@ public class JuegoDeTrucoTest {
 
     @Test
     public void testPardaLaPrimeraGanaLaSegunda() {
-    	unJuego.jugar(sotaDeBasto);
     	unJuego.jugar(sotaDeEspada);
-    	unJuego.jugar(unoDeEspada);
+    	unJuego.jugar(sotaDeBasto);
     	unJuego.jugar(unoDeBasto);
+    	unJuego.jugar(unoDeEspada);
     	
-    	assertEquals(1, unJuego.puntosDeEquipo(Equipo.EQUIPO1));
+    	assertEquals(1, unJuego.puntosDeEquipo(Equipo.EQUIPO2));
     }
     
     @Test
