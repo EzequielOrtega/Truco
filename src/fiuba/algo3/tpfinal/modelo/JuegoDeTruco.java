@@ -125,7 +125,10 @@ public class JuegoDeTruco {
     // FLOR
 	
 	public void flor() {
-        if (jugadorActual.mostrarCartas().size() != 3) {
+        if(!this.conFlor){
+        	throw new SeEstaJugandoSinFlorError();
+        }
+		if (jugadorActual.mostrarCartas().size() != 3) {
             throw new SoloSePuedeCantarFlorEnPrimeraError();
         }
         if (!this.jugadorActual.tieneFlor()) {
