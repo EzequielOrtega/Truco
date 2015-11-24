@@ -29,9 +29,9 @@ public class EstadoFlorTest {
     }
 
     @Test
-    public void testFlorFlorDaSeisPuntos() {
+    public void testContraFlorDaSeisPuntos() {
         estado = new Flor(estado);
-        estado = new Flor(estado);
+        estado = new ContraFlor(estado);
         assertEquals(6, estado.obtenerPuntosQueridos());
     }
 

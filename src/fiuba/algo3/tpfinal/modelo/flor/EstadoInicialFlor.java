@@ -12,9 +12,4 @@ public class EstadoInicialFlor extends EstadoFlor {
     public int obtenerPuntosQueridos() {
         return puntosDeEstado;
     }
-
-    @Override
-    public int obtenerPuntosNoQueridos() {
-        return 0;
-    }
 }

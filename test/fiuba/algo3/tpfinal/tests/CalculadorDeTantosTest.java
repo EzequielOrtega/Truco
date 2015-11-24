@@ -13,7 +13,7 @@ import static org.junit.Assert.*;
 
 public class CalculadorDeTantosTest {
 	
-	private CalculadorDeTantos calculador;
+	private CalculadorDeEnvidoYFlor calculador;
 	private Carta unoDeEspada, sieteDeEspada, sotaDeEspada, 
 			sieteDeCopa, sotaDeBasto, cincoDeEspada, unoDeBasto,
 			caballoDeOro, reyDeCopa;
@@ -21,7 +21,7 @@ public class CalculadorDeTantosTest {
 	
 	@Before
 	public void setUp(){
-        calculador = new CalculadorDeTantos();
+        calculador = new CalculadorDeEnvidoYFlor();
         unoDeEspada = new NoFigura(1, Palo.ESPADA);
         sieteDeEspada = new NoFigura(7, Palo.ESPADA);
         sotaDeEspada = new Figura(10, Palo.ESPADA);

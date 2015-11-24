@@ -17,6 +17,7 @@ public abstract class EstadoFlor {
     public int obtenerPuntosQueridos() {
         return (this.puntosDeEstado + estadoAnterior.obtenerPuntosQueridos());
     }
+    
     public int obtenerPuntosNoQueridos() {
         return 0;
     }

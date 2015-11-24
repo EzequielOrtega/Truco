@@ -12,11 +12,11 @@ import static org.junit.Assert.assertTrue;
 
 public class CalculadorDeValorRelativoTest {
 	
-	private CalculadorDeValorRelativo calculador;
+	private CalculadorDeTruco calculador;
 	
 	@Before
 	public void setup(){
-		calculador = new CalculadorDeValorRelativo();
+		calculador = new CalculadorDeTruco();
 	}
 	
 	@Test

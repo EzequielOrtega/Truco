@@ -11,12 +11,8 @@ public class ContraFlor extends EstadoFlor {
         }
         this.puntosDeEstado = 3;
     }
-
-    // No se si ponerlo asi o directamente si poner return 6 y 4, porque nunca cambian.
-    public int obtenerPuntosQueridos() {
-        return (this.puntosDeEstado + estadoAnterior.obtenerPuntosQueridos());
-    }
+    
     public int obtenerPuntosNoQueridos() {
-        return this.puntosDeEstado + 1;
+        return estadoAnterior.obtenerPuntosQueridos() + 1;
     }
 }

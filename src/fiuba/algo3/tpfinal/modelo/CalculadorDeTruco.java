@@ -1,10 +1,10 @@
 package fiuba.algo3.tpfinal.modelo;
 
-public class CalculadorDeValorRelativo {
+public class CalculadorDeTruco {
 	
 	private TablaDeValores tabla;
 	
-	public CalculadorDeValorRelativo(){
+	public CalculadorDeTruco(){
 		tabla = new TablaDeValores();
 		this.InsertarElementosEnTabla();
 	}

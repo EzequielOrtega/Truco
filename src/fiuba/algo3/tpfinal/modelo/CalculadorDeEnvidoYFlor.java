@@ -5,7 +5,7 @@ import fiuba.algo3.tpfinal.modelo.error.SoloSePuedeCantarEnvidoEnPrimeraError;
 
 import java.util.Vector;
 
-public class CalculadorDeTantos {
+public class CalculadorDeEnvidoYFlor {
 
 	public boolean tieneFlor(Vector<Carta> cartas){
 		if(cartas.size()<3){

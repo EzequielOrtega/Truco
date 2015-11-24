@@ -161,7 +161,7 @@ public class JuegoDeTruco {
 
 	public void noQuieroFlor() {
 		if (this.estadoActualFlor instanceof Flor) {
-			throw new NoSePuedeNoQuererFlorError();
+			throw new NoSePuedeRechazarFlorError();
 		}
 		this.jugadorQueCanto.sumarPuntos(this.estadoActualFlor.obtenerPuntosNoQueridos());
 		this.jugadorActual = jugadorQueCanto;

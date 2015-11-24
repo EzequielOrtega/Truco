@@ -12,7 +12,7 @@ public class Jugador {
     private final String nombre;
     private Vector<Carta> cartas;
     private int puntaje;
-    private CalculadorDeTantos calculadorDeTantos;
+    private CalculadorDeEnvidoYFlor calculadorDeTantos;
     private Vector<Carta> cartasJugadas;
     private Equipo equipo;
    
@@ -20,7 +20,7 @@ public class Jugador {
     public Jugador (String nombreJugador, Equipo equipo) {
         this.nombre = nombreJugador;
         this.puntaje = 0;
-        this.calculadorDeTantos = new CalculadorDeTantos();
+        this.calculadorDeTantos = new CalculadorDeEnvidoYFlor();
         this.cartas = new Vector<Carta>();
         this.cartasJugadas = new Vector<Carta>();
         this.equipo = equipo;

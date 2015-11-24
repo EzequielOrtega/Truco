@@ -8,20 +8,20 @@ import fiuba.algo3.tpfinal.modelo.error.NoHayGanadorDeRondaInconclusaError;
 import fiuba.algo3.tpfinal.modelo.error.NoRespetaJerarquiaDeRondaError;
 
 public class Primera extends EstadoRonda {
-	
+
 	private Resultado resultadoDePrimera;
-	
+
 	public Primera(EstadoRonda estadoAnterior) {
 		super(estadoAnterior);
-		if(!(estadoAnterior instanceof EstadoInicialRonda)){
+		if (!(estadoAnterior instanceof EstadoInicialRonda)) {
 			throw new NoRespetaJerarquiaDeRondaError();
 		}
-		this.mano = Mano.PRIMERA;		
+		this.mano = Mano.PRIMERA;
 	}
-	
+
 	public Primera(EstadoRonda estadoAnterior, Resultado resultadoDePrimera) {
 		super(estadoAnterior);
-		if(!(estadoAnterior instanceof EstadoInicialRonda)){
+		if (!(estadoAnterior instanceof EstadoInicialRonda)) {
 			throw new NoRespetaJerarquiaDeRondaError();
 		}
 		this.resultadoDePrimera = resultadoDePrimera;
@@ -30,13 +30,13 @@ public class Primera extends EstadoRonda {
 
 	@Override
 	public Boolean concluyoRonda() {
-		
+
 		return false;
 	}
 
 	@Override
 	public Jugador obtenerGanadorDeLaRonda(LinkedList<Jugador> jugadores) {
-		if(!this.concluyoRonda()){
+		if (!this.concluyoRonda()) {
 			throw new NoHayGanadorDeRondaInconclusaError();
 		}
 		return null;
@@ -52,15 +52,14 @@ public class Primera extends EstadoRonda {
 
 	@Override
 	protected Resultado obtenerGanadorParcial() {
-		
+
 		return null;
 	}
 
 	@Override
 	protected Resultado obtenerResultadoDePrimera() {
-		
+
 		return resultadoDePrimera;
 	}
 
-	
 }

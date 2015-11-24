@@ -40,7 +40,7 @@ public class JuezDeTruco {
     //ganador2 si gana el equipo2
     //empate en caso de empardar
     public Resultado ganadorDeLaMano(LinkedList<Carta> cartas){
-    	CalculadorDeValorRelativo calculador = new CalculadorDeValorRelativo();
+    	CalculadorDeTruco calculador = new CalculadorDeTruco();
     	Integer valorMaximo = -1;
     	for(Integer x = 0; x < cartas.size()-1; x++){
     		Integer valorMaximoActual = Math.max(calculador.obtenerValorCarta(cartas.get(x)), calculador.obtenerValorCarta(cartas.get(x+1)));
