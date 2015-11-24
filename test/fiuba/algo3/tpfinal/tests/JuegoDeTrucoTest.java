@@ -156,15 +156,14 @@ public class JuegoDeTrucoTest {
         unJuego.jugar(jugador2.mostrarCartas().get(0));
     }
 
-    @Ignore
     @Test
     public void testPardaLaPrimeraGanaLaSegunda() {
     	unJuego.jugar(sotaDeBasto);
     	unJuego.jugar(sotaDeEspada);
     	unJuego.jugar(unoDeEspada);
+    	unJuego.jugar(unoDeBasto);
     	
-    	unJuego.moverAlSiguiente();
-    	assertEquals(1, unJuego.obtenerJugadorActual().obtenerPuntaje());
+    	assertEquals(1, unJuego.puntosDeEquipo(Equipo.EQUIPO1));
     }
     
     @Test

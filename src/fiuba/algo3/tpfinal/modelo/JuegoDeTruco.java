@@ -103,53 +103,35 @@ public class JuegoDeTruco {
         if(this.trucoCantado){
             throw new NoPuedeJugarSeCantoTrucoError();
         }
-        this.cartasEnLaMesa.add(carta);
-        Resultado resultado = arbitro.ganadorDeLaMano(this.cartasEnLaMesa);
+        this.cartasEnLaMesa.add(carta);   
+        this.avanzarJugadorActual();
         if ((this.cartasEnLaMesa.size() == this.jugadores.tamanio())&&(!ronda.concluyoLaRonda())) {
-        	ronda.insercion(resultado);
+        	ronda.insercion(arbitro.ganadorDeLaMano(this.cartasEnLaMesa));
+        	cartasEnLaMesa = new LinkedList<Carta>();
         }
         if (this.ronda.concluyoLaRonda()) {
-        	this.sumarPuntosAlGanadorRonda(resultado);
-        	this.nuevaRonda();
+        	Jugador jugadorGanador = this.ronda.ganadorDeLaRonda(jugadores.obtenerElementos());
+        	jugadorGanador.sumarPuntos(this.estadoActualTruco.obtenerPuntosQueridos());
+        	//Setear valores iniciales para la proxima ronda y avanzar el mano
         }
-        this.avanzarJugadorActual();
     }
 
-    private void nuevaRonda() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	private void sumarPuntosAlGanadorRonda(Resultado resultado) {
-		Jugador jugadorGanador;
-		
-		if (resultado == Resultado.GANADOR1) {
-			jugadorGanador = this.jugadorUno();
-		} else {
-			if (resultado == Resultado.GANADOR2) {
-				jugadorGanador = this.jugadorDos();
-			} else {
-				if (resultado == Resultado.EMPATE) {
-					jugadorGanador = this.jugadorMano();
-				} else {
-					throw new ResultadoInvalidoError();
-				}
-			}
-		}
-		jugadorGanador.sumarPuntos(this.estadoActualTruco.obtenerPuntosQueridos());
-	}
-
-	private Jugador jugadorMano() {
-		return this.jugadorUno();
-	}
-
-	private Jugador jugadorDos() {
-		return this.jugadores.obtenerElemento(1);
-	}
-
-	private Jugador jugadorUno() {
-		return this.jugadores.obtenerElemento(0);
-	}
+//    private void nuevaRonda() {
+//		// TODO Auto-generated method stub
+//		
+//	}
+//
+//	private Jugador jugadorMano() {
+//		return this.jugadorUno();
+//	}
+//
+//	private Jugador jugadorDos() {
+//		return this.jugadores.obtenerElemento(1);
+//	}
+//
+//	private Jugador jugadorUno() {
+//		return this.jugadores.obtenerElemento(0);
+//	}
 	
     // FLOR
 	
@@ -265,7 +247,7 @@ public class JuegoDeTruco {
 		jugadorActual.sumarPuntos(estadoActualTruco.obtenerPuntosNoQueridos());
 		this.estadoActualTruco = new EstadoInicialTruco();
 		this.trucoCantado = false;
-		//this.terminarRonda();
+		//Setear valores iniciales para la proxima ronda y avanzar el mano
 	}
 
 }
