@@ -217,14 +217,37 @@ public class JuegoDeTruco {
 	public void quieroEnvido() {
 
 		Jugador ganador = arbitro.ganadorEnvido(jugadores.obtenerElementos());
-		ganador.sumarPuntos(this.estadoActualEnvido.obtenerPuntosQueridos());
-
+		if (estadoActualEnvido instanceof FaltaEnvido) {
+			ganador.sumarPuntos(this.puntosRestantesContrario(ganador));
+		} else {		
+			ganador.sumarPuntos(this.estadoActualEnvido.obtenerPuntosQueridos());
+		}
 		this.jugadorActual = jugadorQueCanto;
 		this.estadoActualEnvido = new EstadoFinalEnvido(estadoActualEnvido);
 		this.envidoCantado = false;
 		this.jugadorQueCanto = null;
 	}
+	
+	private int puntosRestantesContrario(Jugador ganadorFaltaEnvido) {
+		int puntosRestantes = 0;
+		for (Equipo actual : Equipo.values()) {
+			if (! ganadorFaltaEnvido.coincideElEquipo(actual)) {
+				int puntosEquipo = this.puntosDeEquipo(actual);
+				puntosRestantes = 30 - puntosEquipo;
+			}
+		}
+		return puntosRestantes;
+	}
 
+	public void faltaEnvido() {
+		this.envidoCantado = true;
+		estadoActualEnvido = new FaltaEnvido(estadoActualEnvido);
+		if (this.jugadorQueCanto == null) {
+			this.jugadorQueCanto = jugadorActual;
+		}
+		this.avanzarJugadorActual();
+	}
+	
 	public void noQuieroEnvido() {
 		this.avanzarJugadorActual();
 		jugadorActual.sumarPuntos(this.estadoActualEnvido.obtenerPuntosNoQueridos());
@@ -270,5 +293,4 @@ public class JuegoDeTruco {
 		this.trucoCantado = false;
 		// Setear valores iniciales para la proxima ronda y avanzar el mano
 	}
-
 }
