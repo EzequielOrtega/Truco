@@ -31,7 +31,7 @@ public class Jugador {
     }
 
     public void sumarPuntos(int cantidadDePuntos) {
-        puntaje =+ cantidadDePuntos;
+        puntaje += cantidadDePuntos;
     }
 
     public Vector<Carta> mostrarCartas() {

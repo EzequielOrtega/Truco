@@ -170,13 +170,37 @@ public class JuegoDeTrucoTest {
     	assertEquals(1, unJuego.puntosDeEquipo(Equipo.EQUIPO1));
     }
  
+    @Test (expected = NoPuedeJugarSeCantoFlorError.class)
+    public void testNoSePuedeJugarSiSeCantoFlor() {
+    	unJuego.jugar(sotaDeBasto);
+    	unJuego.flor();
+    	unJuego.jugar(sotaDeEspada);
+    }
+    
     @Test
     public void testFlor() {
     	unJuego.jugar(sotaDeBasto);
     	unJuego.flor();
+    	unJuego.quieroFlor();
     	unJuego.jugar(sotaDeEspada);
     	
-    	Assert.assertTrue(3 == unJuego.puntosDeEquipo(Equipo.EQUIPO2));
+    	assertEquals(3, unJuego.puntosDeEquipo(Equipo.EQUIPO2));
+    }
+    
+    @Test
+    public void testFlorYTrucoSumaBien() {
+    	unJuego.jugar(sotaDeBasto);
+    	unJuego.flor();
+    	unJuego.quieroFlor();
+    	unJuego.jugar(sotaDeEspada);
+    	unJuego.truco();
+    	unJuego.reTruco();
+    	unJuego.valeCuatro();
+    	unJuego.quieroTruco();
+    	unJuego.jugar(unoDeBasto);
+    	unJuego.jugar(unoDeEspada);
+    	
+    	assertEquals(7, unJuego.puntosDeEquipo(Equipo.EQUIPO2));
     }
     
     @Ignore
