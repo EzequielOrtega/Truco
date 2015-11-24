@@ -230,6 +230,9 @@ public class JuegoDeTruco {
 		if (this.envidoCantado) {
 			throw new NoPuedeCantarTrucoSeCantoEnvidoError();
 		}
+		if (this.florCantada) {
+			throw new NoPuedeCantarTrucoSeCantoFlorError();
+		}
 		this.trucoCantado = true;
 		this.jugadorQueCantoTruco = this.jugadorActual;
 		this.estadoActualTruco = new Truco(estadoActualTruco);

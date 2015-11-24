@@ -5,11 +5,8 @@ import fiuba.algo3.tpfinal.modelo.*;
 import fiuba.algo3.tpfinal.modelo.error.*;
 
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import static org.junit.Assert.*;
-
-import org.junit.Assert;
 
 public class JuegoDeTrucoTest {
 
@@ -203,7 +200,6 @@ public class JuegoDeTrucoTest {
     	assertEquals(7, unJuego.puntosDeEquipo(Equipo.EQUIPO2));
     }
     
-    @Ignore
     @Test
     public void testEnvidoTrucoSumaBien() {
     	unJuego.envido();
@@ -220,5 +216,12 @@ public class JuegoDeTrucoTest {
     	
     	assertEquals(0, unJuego.puntosDeEquipo(Equipo.EQUIPO1));
     	assertEquals(5, unJuego.puntosDeEquipo(Equipo.EQUIPO2));
+    }
+    
+    @Test (expected = NoPuedeCantarTrucoSeCantoFlorError.class)
+    public void testFlorTrucoNoVale(){
+    	unJuego.jugar(sotaDeBasto);
+    	unJuego.flor();
+    	unJuego.truco();
     }
 }

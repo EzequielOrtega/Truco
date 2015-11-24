@@ -9,6 +9,8 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
+import org.junit.Assert;
+
 public class JugadorTest {
 
     private Jugador nuevoJugador;
@@ -53,5 +55,12 @@ public class JugadorTest {
     @Test (expected = NoTieneEsaCartaEnLaManoError.class)
     public void testNoSePuedeJugarUnaCartaQueNoTengaEnLaMano() {
     	nuevoJugador.jugarCarta(carta1);
+    }
+    
+    @Test
+    public void testAcumularPuntos() {
+    	Assert.assertEquals(0, nuevoJugador.obtenerPuntaje());
+    	nuevoJugador.sumarPuntos(2);
+    	Assert.assertEquals(2, nuevoJugador.obtenerPuntaje());
     }
 }
