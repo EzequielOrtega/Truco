@@ -3,7 +3,12 @@ package fiuba.algo3.tpfinal.modelo.error;
 public class NoSePuedeRechazarFlorError extends RuntimeException {
 
 
-    public NoSePuedeRechazarFlorError() {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public NoSePuedeRechazarFlorError() {
 
     }
 

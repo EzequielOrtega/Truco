@@ -5,6 +5,7 @@ import fiuba.algo3.tpfinal.modelo.*;
 import fiuba.algo3.tpfinal.modelo.error.*;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -160,12 +161,13 @@ public class JuegoDeTrucoTest {
 
     @Test
     public void testPardaLaPrimeraGanaLaSegunda() {
+    	unJuego.avanzarJugadorActual();
     	unJuego.jugar(sotaDeEspada);
     	unJuego.jugar(sotaDeBasto);
-    	unJuego.jugar(unoDeBasto);
     	unJuego.jugar(unoDeEspada);
+    	unJuego.jugar(unoDeBasto);
     	
-    	assertEquals(1, unJuego.puntosDeEquipo(Equipo.EQUIPO2));
+    	assertEquals(1, unJuego.puntosDeEquipo(Equipo.EQUIPO1));
     }
  
     @Test
@@ -175,5 +177,24 @@ public class JuegoDeTrucoTest {
     	unJuego.jugar(sotaDeEspada);
     	
     	Assert.assertTrue(3 == unJuego.puntosDeEquipo(Equipo.EQUIPO2));
+    }
+    
+    @Ignore
+    @Test
+    public void testEnvidoTrucoSumaBien() {
+    	unJuego.envido();
+    	unJuego.envido();
+    	unJuego.noQuieroEnvido();
+    	unJuego.truco();
+    	unJuego.reTruco();
+    	unJuego.quieroTruco();
+    	
+    	unJuego.jugar(sotaDeBasto);
+    	unJuego.jugar(sotaDeEspada);
+    	unJuego.jugar(unoDeBasto);
+    	unJuego.jugar(unoDeEspada);
+    	
+    	assertEquals(0, unJuego.puntosDeEquipo(Equipo.EQUIPO1));
+    	assertEquals(5, unJuego.puntosDeEquipo(Equipo.EQUIPO2));
     }
 }

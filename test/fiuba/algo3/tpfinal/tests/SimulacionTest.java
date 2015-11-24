@@ -53,7 +53,7 @@ public class SimulacionTest {
 		//se canta envido
 		juego.envido();
 		juego.quieroEnvido();
-		Assert.assertTrue(2 == juego.puntosDeEquipo(Equipo.EQUIPO1));
+		Assert.assertEquals(2, juego.puntosDeEquipo(Equipo.EQUIPO1));
 		//se juega primera
 		juego.jugar(sotaDeEspada);
 		juego.jugar(sotaDeBasto);
@@ -66,7 +66,7 @@ public class SimulacionTest {
 		juego.jugar(unoDeEspada);
 		juego.jugar(unoDeBasto);
 		//me toma 4 puntos
-		//Assert.assertTrue(6 == juego.puntosDeEquipo(Equipo.EQUIPO1));
-		Assert.assertTrue(0 == juego.puntosDeEquipo(Equipo.EQUIPO2));
+		//Assert.assertEquals(6, juego.puntosDeEquipo(Equipo.EQUIPO1));
+		Assert.assertEquals(0, juego.puntosDeEquipo(Equipo.EQUIPO2));
 	}
 }

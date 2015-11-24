@@ -18,13 +18,13 @@ public class JuegoDeTruco {
     private Jugador jugadorActual;
     private Jugador jugadorQueCanto = null;
     private Jugador jugadorQueCantoTruco = null;
-    private Boolean conFlor = false;
+    private boolean conFlor = false;
     private EstadoFlor estadoActualFlor = new EstadoInicialFlor();
     private boolean florCantada = false;
     private EstadoEnvido estadoActualEnvido = new EstadoInicialEnvido();
-    private Boolean envidoCantado = false;
+    private boolean envidoCantado = false;
     private EstadoTruco estadoActualTruco = new EstadoInicialTruco();
-    private Boolean trucoCantado = false;
+    private boolean trucoCantado = false;
 
     public JuegoDeTruco(String nombreJ1, String nombreJ2) {
     	Jugador jugador = new Jugador(nombreJ1, Equipo.EQUIPO1);
@@ -109,11 +109,11 @@ public class JuegoDeTruco {
             this.florCantada = false;
             this.jugadorQueCanto = null;
         }
-        this.cartasEnLaMesa.add(carta);   
+        this.cartasEnLaMesa.add(jugadorActual.jugarCarta(carta));   
         this.avanzarJugadorActual();
         if ((this.cartasEnLaMesa.size() == this.jugadores.tamanio())&&(!ronda.concluyoLaRonda())) {
         	ronda.insercion(arbitro.ganadorDeLaMano(this.cartasEnLaMesa));
-        	cartasEnLaMesa = new LinkedList<Carta>();
+        	this.cartasEnLaMesa = new LinkedList<Carta>();
         }
         if (this.ronda.concluyoLaRonda()) {
         	Jugador jugadorGanador = this.ronda.ganadorDeLaRonda(jugadores.obtenerElementos());
@@ -144,7 +144,9 @@ public class JuegoDeTruco {
         if (this.jugadorQueCanto == null) {
             this.jugadorQueCanto = jugadorActual;
         }
-        this.avanzarJugadorActual();
+        if (!(this.jugadorActual == jugadorQueCanto)) {
+        	this.avanzarJugadorActual();
+        }
     }
 
     public void quieroFlor() {
