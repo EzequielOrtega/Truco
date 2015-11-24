@@ -38,8 +38,8 @@ public class CartaTest {
     	nuevaCarta = new Carta(1, Palo.ESPADA);
     	otraCarta = new Carta(1, Palo.ESPADA);
     	Carta carta3 = new Carta(1, Palo.BASTO);
-    	assertTrue(nuevaCarta.equals(otraCarta));
-    	assertFalse(nuevaCarta.equals(carta3));
+    	assertTrue(nuevaCarta.esIgualA(otraCarta));
+    	assertFalse(nuevaCarta.esIgualA(carta3));
     }
 
 

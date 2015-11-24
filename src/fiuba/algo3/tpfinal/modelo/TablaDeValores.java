@@ -21,7 +21,7 @@ public class TablaDeValores {
 	public int busqueda(Carta carta){
 		int valorADevolver = -1;
 		for(ElementoDeTabla<Carta> elementoActual: elementos){
-			if(elementoActual.getLlave().equals(carta)){
+			if(elementoActual.getLlave().esIgualA(carta)){
 				valorADevolver = elementoActual.getValor();
 			}
 		}
@@ -34,7 +34,7 @@ public class TablaDeValores {
 	public Boolean borrar(Carta carta){
 		int posicionElemento = -1;
 		for(int x = 0; x < elementos.size(); x++){
-			if(elementos.get(x).getLlave().equals(carta)){
+			if(elementos.get(x).getLlave().esIgualA(carta)){
 				posicionElemento = x;
 			}
 		}

@@ -5,10 +5,7 @@ import fiuba.algo3.tpfinal.modelo.Mazo;
 import fiuba.algo3.tpfinal.modelo.Palo;
 import fiuba.algo3.tpfinal.modelo.error.NoHayMasCartasError;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
-
-import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -28,17 +25,15 @@ public class MazoTest {
         assertEquals(40, nuevoMazo.cantidadDeCartasRestantes());
     }
 
-    @Ignore
     @Test
     public void testMezclarMazoExitoso() {
-    	List<Carta> orden1 = nuevoMazo.getCartas();
-        nuevoMazo.mezclar();
-        List<Carta> orden2 = nuevoMazo.getCartas();
+    	Mazo otroMazo = new Mazo();
+    	otroMazo.mezclar();
+    	nuevoMazo.mezclar();
         Boolean cartasMezcladas = false;
-        for(int x = 0; x < 40; x++){
-        	if(!(orden1.get(x).mismoPaloQue(orden2.get(x))) || (orden1.get(x).getValor())!=(orden2.get(x).getValor())) {
+        for(int x = 0; x < 40; x++) {
+        	if (!(nuevoMazo.getCartas().get(x).esIgualA(otroMazo.getCartas().get(x)))) {
         		cartasMezcladas = true;
-                break;
         	}
         }
         assertTrue(cartasMezcladas);

@@ -20,15 +20,15 @@ public class Carta {
     }
 
     public boolean mismoPaloQue(Carta otraCarta) {
-        return (this.getPalo().equals(otraCarta.getPalo()));
+        return (this.getPalo() == otraCarta.getPalo());
     }
 
     public boolean mismoPaloQue(Carta otraCarta, Carta terceraCarta) {
         return (this.getPalo().equals(otraCarta.getPalo()) && this.getPalo().equals(terceraCarta.getPalo()));
     }
 
-    public boolean equals(Carta cartaAComparar){
-    	return ((this.valor == cartaAComparar.getValor()) && (this.getPalo() == cartaAComparar.getPalo()));
+    public boolean esIgualA(Carta cartaAComparar){
+    	return ((this.valor == cartaAComparar.getValor()) && (this.mismoPaloQue(cartaAComparar)));
     }
 
 }
