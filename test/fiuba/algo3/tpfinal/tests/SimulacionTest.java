@@ -65,7 +65,7 @@ public class SimulacionTest {
 		//parda la mejor
 		juego.jugar(unoDeEspada);
 		juego.jugar(unoDeBasto);
-		//me da 2 puntos por el vale 4
+		//me toma 4 puntos
 		//Assert.assertTrue(6 == juego.puntosDeEquipo(Equipo.EQUIPO1));
 		Assert.assertTrue(0 == juego.puntosDeEquipo(Equipo.EQUIPO2));
 	}

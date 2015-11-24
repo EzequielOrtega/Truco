@@ -17,7 +17,7 @@ public class JuegoDeTruco {
     private LinkedList<Carta> cartasEnLaMesa = new LinkedList<Carta>();
     private Jugador jugadorActual;
     private Jugador jugadorQueCanto = null;
-
+    private Jugador jugadorQueCantoTruco = null;
     private Boolean conFlor = false;
     private EstadoFlor estadoActualFlor = new EstadoInicialFlor();
     private boolean florCantada = false;
@@ -228,7 +228,7 @@ public class JuegoDeTruco {
 			throw new NoPuedeCantarTrucoSeCantoEnvidoError();
 		}
 		this.trucoCantado = true;
-		this.jugadorQueCanto = this.jugadorActual;
+		this.jugadorQueCantoTruco = this.jugadorActual;
 		this.estadoActualTruco = new Truco(estadoActualTruco);
 		this.avanzarJugadorActual();
 	}
@@ -244,13 +244,12 @@ public class JuegoDeTruco {
 	}
 
     public void quieroTruco(){
-        jugadorActual = jugadorQueCanto;
+        jugadorActual = jugadorQueCantoTruco;
         this.trucoCantado = false;
     }
 
 	public void noQuieroTruco() {
-		this.avanzarJugadorActual();
-		jugadorActual.sumarPuntos(estadoActualTruco.obtenerPuntosNoQueridos());
+		jugadorQueCantoTruco.sumarPuntos(estadoActualTruco.obtenerPuntosNoQueridos());
 		this.estadoActualTruco = new EstadoInicialTruco();
 		this.trucoCantado = false;
 		//Setear valores iniciales para la proxima ronda y avanzar el mano

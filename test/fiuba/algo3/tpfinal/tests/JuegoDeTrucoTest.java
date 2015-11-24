@@ -5,9 +5,10 @@ import fiuba.algo3.tpfinal.modelo.*;
 import fiuba.algo3.tpfinal.modelo.error.*;
 
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import static org.junit.Assert.*;
+
+import org.junit.Assert;
 
 public class JuegoDeTrucoTest {
 
@@ -23,6 +24,7 @@ public class JuegoDeTrucoTest {
     @Before
     public void setUp() {
     	unJuego = new JuegoDeTruco("Ana", "Juan");
+    	unJuego.comenzarPartida(true);
     	unJuego.obtenerJugadorActual().entregarCartas();
     	unJuego.moverAlSiguiente();
     	unJuego.obtenerJugadorActual().entregarCartas();
@@ -102,7 +104,7 @@ public class JuegoDeTrucoTest {
     	unJuego.valeCuatro();
     	unJuego.noQuieroTruco();
     	
-    	assertEquals(3, unJuego.obtenerJugadorActual().obtenerPuntaje());
+    	assertEquals(3, unJuego.puntosDeEquipo(Equipo.EQUIPO1));
     }
     
     @Test
@@ -110,7 +112,7 @@ public class JuegoDeTrucoTest {
     	unJuego.truco();
     	unJuego.noQuieroTruco();
     	
-    	assertEquals(1, unJuego.obtenerJugadorActual().obtenerPuntaje());
+    	assertEquals(1, unJuego.puntosDeEquipo(Equipo.EQUIPO1));
     }
 
     @Test (expected = NoRespetaJerarquiaDeTrucoError.class)
@@ -128,8 +130,7 @@ public class JuegoDeTrucoTest {
     	unJuego.truco();
     	unJuego.valeCuatro();
     }
-    
-    @Ignore
+
     @Test
     public void testTrucoElEnvidoEstaPrimeroValeEnPrimeraMano() {
         unJuego.truco();
@@ -137,9 +138,9 @@ public class JuegoDeTrucoTest {
         unJuego.noQuieroEnvido();
         unJuego.noQuieroTruco();
 
-        assertEquals(1, unJuego.obtenerJugadorActual().obtenerPuntaje());
+        assertEquals(1, unJuego.puntosDeEquipo(Equipo.EQUIPO2));
         unJuego.moverAlSiguiente();
-        assertEquals(1, unJuego.obtenerJugadorActual().obtenerPuntaje());
+        assertEquals(1, unJuego.puntosDeEquipo(Equipo.EQUIPO1));
     }
 
     @Test (expected = NoPuedeCantarTrucoSeCantoEnvidoError.class)
@@ -166,14 +167,13 @@ public class JuegoDeTrucoTest {
     	
     	assertEquals(1, unJuego.puntosDeEquipo(Equipo.EQUIPO2));
     }
-    
-    //este test esta mal planteado
-    @Ignore
+ 
     @Test
     public void testFlor() {
-    	unJuego.avanzarJugadorActual();
+    	unJuego.jugar(sotaDeBasto);
     	unJuego.flor();
+    	unJuego.jugar(sotaDeEspada);
     	
-    	assertEquals(3, unJuego.obtenerJugadorActual().obtenerPuntaje());
+    	Assert.assertTrue(3 == unJuego.puntosDeEquipo(Equipo.EQUIPO2));
     }
 }
