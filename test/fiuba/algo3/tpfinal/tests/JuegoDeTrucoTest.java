@@ -128,7 +128,8 @@ public class JuegoDeTrucoTest {
     	unJuego.truco();
     	unJuego.valeCuatro();
     }
-
+    
+    @Ignore
     @Test
     public void testTrucoElEnvidoEstaPrimeroValeEnPrimeraMano() {
         unJuego.truco();

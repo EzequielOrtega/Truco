@@ -228,6 +228,7 @@ public class JuegoDeTruco {
 			throw new NoPuedeCantarTrucoSeCantoEnvidoError();
 		}
 		this.trucoCantado = true;
+		this.jugadorQueCanto = this.jugadorActual;
 		this.estadoActualTruco = new Truco(estadoActualTruco);
 		this.avanzarJugadorActual();
 	}
@@ -243,7 +244,7 @@ public class JuegoDeTruco {
 	}
 
     public void quieroTruco(){
-        this.avanzarJugadorActual();
+        jugadorActual = jugadorQueCanto;
         this.trucoCantado = false;
     }
 
