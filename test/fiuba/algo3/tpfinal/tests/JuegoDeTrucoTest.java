@@ -224,4 +224,15 @@ public class JuegoDeTrucoTest {
     	unJuego.flor();
     	unJuego.truco();
     }
+    
+    @Test
+    public void testContraFlorAlRestoGanaLaPartida() {
+    	unJuego.jugar(unoDeBasto);
+    	unJuego.flor();
+    	unJuego.contraFlorAlResto();
+    	unJuego.quieroFlor();
+    	
+    	assertEquals(30, unJuego.puntosDeEquipo(Equipo.EQUIPO2));
+    	assertEquals(0, unJuego.puntosDeEquipo(Equipo.EQUIPO1));
+    }
 }

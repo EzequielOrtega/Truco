@@ -146,17 +146,27 @@ public class JuegoDeTruco {
 	}
 
 	public void quieroFlor() {
-		try {
-			Jugador ganadorDeFlor = this.arbitro.ganadorFlor(jugadores.obtenerElementos());
+		Jugador ganadorDeFlor = this.arbitro.ganadorFlor(jugadores.obtenerElementos());
+		if (this.estadoActualFlor instanceof ContraFlorAlResto) {
+			ganadorDeFlor.sumarPuntos(this.puntosRestantes(ganadorDeFlor));
+		} else {
 			ganadorDeFlor.sumarPuntos(this.estadoActualFlor.obtenerPuntosQueridos());
-
-		} catch (JugadorNoTieneFlorError x) {
-			jugadorQueCanto.sumarPuntos(this.estadoActualFlor.obtenerPuntosQueridos());
 		}
 		this.jugadorActual = jugadorQueCanto;
 		this.estadoActualFlor = new EstadoFinalFlor(estadoActualFlor);
 		this.florCantada = false;
 		this.jugadorQueCanto = null;
+	}
+
+	private int puntosRestantes(Jugador ganadorDeFlor) {
+		int puntosRestantes = 0;
+		for (Equipo actual : Equipo.values()) {
+			if (ganadorDeFlor.coincideElEquipo(actual)) {
+				int puntosEquipo = this.puntosDeEquipo(actual);
+				puntosRestantes = 30 - puntosEquipo;
+			}
+		}
+		return puntosRestantes;
 	}
 
 	public void noQuieroFlor() {

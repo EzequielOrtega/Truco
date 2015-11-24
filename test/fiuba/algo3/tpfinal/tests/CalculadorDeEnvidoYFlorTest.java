@@ -1,7 +1,6 @@
 package fiuba.algo3.tpfinal.tests;
 
 import fiuba.algo3.tpfinal.modelo.*;
-import fiuba.algo3.tpfinal.modelo.error.JugadorNoTieneFlorError;
 import fiuba.algo3.tpfinal.modelo.error.SoloSePuedeCantarEnvidoEnPrimeraError;
 
 import org.junit.Before;
@@ -11,7 +10,7 @@ import java.util.Vector;
 
 import static org.junit.Assert.*;
 
-public class CalculadorDeTantosTest {
+public class CalculadorDeEnvidoYFlorTest {
 	
 	private CalculadorDeEnvidoYFlor calculador;
 	private Carta unoDeEspada, sieteDeEspada, sotaDeEspada, 
@@ -60,13 +59,7 @@ public class CalculadorDeTantosTest {
 		cartas.add(cincoDeEspada);
 		assertEquals(33, calculador.obtenerTantosDeFlor(cartas));
 	}
-	@Test (expected = JugadorNoTieneFlorError.class)
-	public void testObtenerTantosDeFlorSinFLorError(){
-		cartas.add(unoDeEspada);
-		cartas.add(sieteDeCopa);
-		cartas.add(sotaDeBasto);
-		calculador.obtenerTantosDeFlor(cartas);
-	}
+	
 	@Test
 	public void testObtenerTantosDeEnvidoDeTresCartas(){
 		cartas.addElement(unoDeEspada);

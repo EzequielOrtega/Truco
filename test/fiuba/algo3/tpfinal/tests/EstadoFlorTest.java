@@ -64,7 +64,7 @@ public class EstadoFlorTest {
         estado = new Flor(estado);
         estado = new ContraFlor(estado);
         estado = new ContraFlorAlResto(estado);
-        assertEquals(6, estado.obtenerPuntosQueridos());
+        assertEquals(6, estado.obtenerPuntosNoQueridos());
     }
 
     @Test (expected = SoloSePuedeCantarFlorUnaVezPorRondaError.class)
@@ -72,5 +72,12 @@ public class EstadoFlorTest {
         estado = new EstadoFinalFlor(estado);
         estado = new Flor(estado);
     }
-
+    
+    @Test
+    public void testFlorContraFlorAlResto() {
+    	estado = new Flor(estado);
+    	estado = new ContraFlorAlResto(estado);
+    	
+    	assertEquals(3, estado.obtenerPuntosNoQueridos());
+    }
 }

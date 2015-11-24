@@ -1,6 +1,5 @@
 package fiuba.algo3.tpfinal.modelo;
 
-import fiuba.algo3.tpfinal.modelo.error.JugadorNoTieneFlorError;
 import fiuba.algo3.tpfinal.modelo.error.SoloSePuedeCantarEnvidoEnPrimeraError;
 
 import java.util.Vector;
@@ -25,7 +24,8 @@ public class CalculadorDeEnvidoYFlor {
 			}
 			return tantosDeFlor;
 		}else{
-			throw new JugadorNoTieneFlorError();
+			//throw new JugadorNoTieneFlorError();
+			return 0;
 		}
 	}
 

@@ -10,7 +10,7 @@ import java.util.Vector;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-public class CalculadorDeValorRelativoTest {
+public class CalculadorDeTrucoTest {
 	
 	private CalculadorDeTruco calculador;
 	
