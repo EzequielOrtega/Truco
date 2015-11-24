@@ -96,4 +96,18 @@ public class Jugador {
 	public boolean tieneFlor() {
 		return this.calculadorDeTantos.tieneFlor(cartas);
 	}
+
+	public boolean posee(Carta carta) {
+		Vector<Carta> cartasTodas = new Vector<Carta>();
+        cartasTodas.addAll(cartas);
+        cartasTodas.addAll(cartasJugadas);
+        Boolean posee = false;
+        for (Carta cartaActual : cartasTodas) {
+        	if (cartaActual.esIgualA(carta)) {
+        		posee = true;
+        		break;
+        	}
+        }
+		return posee;
+	}
 }

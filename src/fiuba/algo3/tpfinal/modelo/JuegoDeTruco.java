@@ -108,17 +108,47 @@ public class JuegoDeTruco {
 		this.cartasEnLaMesa.add(jugadorActual.jugarCarta(carta));
 		this.avanzarJugadorActual();
 		if ((this.cartasEnLaMesa.size() == this.jugadores.tamanio()) && (!ronda.concluyoLaRonda())) {
-			ronda.insercion(arbitro.ganadorDeLaMano(this.cartasEnLaMesa));
+			Resultado resultadoRonda = arbitro.ganadorDeLaMano(this.cartasEnLaMesa);
+			ronda.insercion(resultadoRonda);
+			switch(resultadoRonda) {
+				case EMPATE: {
+					jugadorActual = jugadores.obtenerElemento(0);
+					break;
+				}
+				default: {
+					//Carta cartaMasAlta = this.obtenerCartaMasAlta(cartasEnLaMesa);
+					//jugadorActual = this.jugadorQuePoseeLaCarta(cartaMasAlta);
+					break;
+				}				
+			}
 			this.cartasEnLaMesa = new LinkedList<Carta>();
 		}
 		if (this.ronda.concluyoLaRonda()) {
 			Jugador jugadorGanador = this.ronda.ganadorDeLaRonda(jugadores.obtenerElementos());
 			jugadorGanador.sumarPuntos(this.estadoActualTruco.obtenerPuntosQueridos());
+			jugadores.moverAlSiguiente();
 			// Setear valores iniciales para la proxima ronda y avanzar el mano
 		}
 	}
 
 	// FLOR
+
+	private Carta obtenerCartaMasAlta(LinkedList<Carta> cartas) {
+		Carta cartaMasAlta = cartas.get(0);
+		
+		return cartaMasAlta;
+	}
+
+	private Jugador jugadorQuePoseeLaCarta(Carta carta) {
+		Jugador jugadorBuscado = null;
+		for (Jugador jugadorActual : jugadores.obtenerElementos()) {
+			if (jugadorActual.posee(carta)) {
+				jugadorBuscado = jugadorActual;
+				break;
+			}
+		}
+		return jugadorBuscado;
+	}
 
 	public void flor() {
 		if (!this.conFlor) {

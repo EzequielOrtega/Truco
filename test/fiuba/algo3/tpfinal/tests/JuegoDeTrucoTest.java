@@ -5,6 +5,7 @@ import fiuba.algo3.tpfinal.modelo.*;
 import fiuba.algo3.tpfinal.modelo.error.*;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -156,6 +157,7 @@ public class JuegoDeTrucoTest {
         unJuego.jugar(jugador2.mostrarCartas().get(0));
     }
 
+    @Ignore
     @Test
     public void testPardaLaPrimeraGanaLaSegunda() {
     	unJuego.avanzarJugadorActual();
