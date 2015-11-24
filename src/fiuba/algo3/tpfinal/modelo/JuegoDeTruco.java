@@ -103,6 +103,12 @@ public class JuegoDeTruco {
         if(this.trucoCantado){
             throw new NoPuedeJugarSeCantoTrucoError();
         }
+        if(this.florCantada){
+        	this.jugadorQueCanto.sumarPuntos(this.estadoActualFlor.obtenerPuntosQueridos());
+        	this.estadoActualFlor = new EstadoFinalFlor(estadoActualFlor);
+            this.florCantada = false;
+            this.jugadorQueCanto = null;
+        }
         this.cartasEnLaMesa.add(carta);   
         this.avanzarJugadorActual();
         if ((this.cartasEnLaMesa.size() == this.jugadores.tamanio())&&(!ronda.concluyoLaRonda())) {
@@ -115,23 +121,6 @@ public class JuegoDeTruco {
         	//Setear valores iniciales para la proxima ronda y avanzar el mano
         }
     }
-
-//    private void nuevaRonda() {
-//		// TODO Auto-generated method stub
-//		
-//	}
-//
-//	private Jugador jugadorMano() {
-//		return this.jugadorUno();
-//	}
-//
-//	private Jugador jugadorDos() {
-//		return this.jugadores.obtenerElemento(1);
-//	}
-//
-//	private Jugador jugadorUno() {
-//		return this.jugadores.obtenerElemento(0);
-//	}
 	
     // FLOR
 	
@@ -144,23 +133,36 @@ public class JuegoDeTruco {
         }
         this.florCantada = true;
         this.estadoActualFlor = new Flor(this.estadoActualFlor);
+        if(this.envidoCantado){
+        	this.envidoCantado = false;
+        	this.jugadorQueCanto = jugadorActual;
+        	this.estadoActualEnvido = new EstadoFinalEnvido(estadoActualEnvido);
+        }
         if (this.jugadorQueCanto == null) {
             this.jugadorQueCanto = jugadorActual;
         }
         this.avanzarJugadorActual();
-        if (!this.jugadorActual.tieneFlor()) {
-        	this.quieroFlor();
-        }
     }
 
-    private void quieroFlor() {
-    	this.jugadorQueCanto.sumarPuntos(estadoActualFlor.obtenerPuntosQueridos());
-    	
+    public void quieroFlor() {
+    	Jugador ganadorDeFlor = this.arbitro.ganadorFlor(jugadores.obtenerElementos());
+    	ganadorDeFlor.sumarPuntos(this.estadoActualFlor.obtenerPuntosQueridos());
         this.jugadorActual = jugadorQueCanto;
     	this.estadoActualFlor = new EstadoFinalFlor(estadoActualFlor);
         this.florCantada = false;
         this.jugadorQueCanto = null;
 	}
+    
+    public void noQuieroFlor(){
+    	if(this.estadoActualFlor instanceof Flor){
+    		throw new NoSePuedeNoQuererFlorError();
+    	}
+    	this.jugadorQueCanto.sumarPuntos(this.estadoActualFlor.obtenerPuntosNoQueridos());
+    	this.jugadorActual = jugadorQueCanto;
+    	this.estadoActualFlor = new EstadoFinalFlor(estadoActualFlor);
+        this.florCantada = false;
+        this.jugadorQueCanto = null;
+    }
 
 	public void contraFlor() {
         this.estadoActualFlor = new ContraFlor(this.estadoActualFlor);
