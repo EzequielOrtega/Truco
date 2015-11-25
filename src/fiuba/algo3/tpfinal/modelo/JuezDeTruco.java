@@ -4,6 +4,7 @@ import java.util.LinkedList;
 
 public class JuezDeTruco {
 	
+	private CalculadorDeTruco calculador = new CalculadorDeTruco();
    
     public Jugador ganadorEnvido(LinkedList<Jugador> jugadores) {
     	Jugador ganadorEnvido = jugadores.getFirst();
@@ -40,7 +41,6 @@ public class JuezDeTruco {
     //ganador2 si gana el equipo2
     //empate en caso de empardar
     public Resultado ganadorDeLaMano(LinkedList<Carta> cartas){
-    	CalculadorDeTruco calculador = new CalculadorDeTruco();
     	Integer valorMaximo = -1;
     	for(Integer x = 0; x < cartas.size()-1; x++){
     		Integer valorMaximoActual = Math.max(calculador.obtenerValorCarta(cartas.get(x)), calculador.obtenerValorCarta(cartas.get(x+1)));
@@ -64,4 +64,14 @@ public class JuezDeTruco {
 		}
     	return resultado;
     }
+
+	public Carta obtenerCartaMasAlta(LinkedList<Carta> cartas) {
+		Carta cartaMasAlta = cartas.get(0);
+		for (int x = 1; x < cartas.size(); x++) {
+			if (calculador.obtenerValorCarta(cartaMasAlta) < calculador.obtenerValorCarta(cartas.get(x))) {
+				cartaMasAlta = cartas.get(x);
+			}
+		}
+		return cartaMasAlta;
+	}
 }

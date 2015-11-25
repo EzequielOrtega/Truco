@@ -94,7 +94,6 @@ public class JuegoDeTruco {
 		this.avanzarJugadorActual();
 	}
 
-	// todavia esta incompleto
 	public void jugar(Carta carta) {
 		if (this.envidoCantado) {
 			throw new NoPuedeJugarSeCantoEnvidoError();
@@ -116,8 +115,8 @@ public class JuegoDeTruco {
 					break;
 				}
 				default: {
-					//Carta cartaMasAlta = this.obtenerCartaMasAlta(cartasEnLaMesa);
-					//jugadorActual = this.jugadorQuePoseeLaCarta(cartaMasAlta);
+					Carta cartaMasAlta = this.obtenerCartaMasAlta(cartasEnLaMesa);
+					jugadorActual = this.jugadorQuePoseeLaCarta(cartaMasAlta);
 					break;
 				}				
 			}
@@ -125,18 +124,13 @@ public class JuegoDeTruco {
 		}
 		if (this.ronda.concluyoLaRonda()) {
 			Jugador jugadorGanador = this.ronda.ganadorDeLaRonda(jugadores.obtenerElementos());
-			jugadorGanador.sumarPuntos(this.estadoActualTruco.obtenerPuntosQueridos());
-			jugadores.moverAlSiguiente();
-			// Setear valores iniciales para la proxima ronda y avanzar el mano
+			jugadorGanador.sumarPuntos(this.estadoActualTruco.obtenerPuntosQueridos());			
+			this.setearValoresParaProximaRonda();
 		}
 	}
 
-	// FLOR
-
 	private Carta obtenerCartaMasAlta(LinkedList<Carta> cartas) {
-		Carta cartaMasAlta = cartas.get(0);
-		
-		return cartaMasAlta;
+		return arbitro.obtenerCartaMasAlta(cartas);
 	}
 
 	private Jugador jugadorQuePoseeLaCarta(Carta carta) {
@@ -149,7 +143,23 @@ public class JuegoDeTruco {
 		}
 		return jugadorBuscado;
 	}
+	
+	private void setearValoresParaProximaRonda() {
+		jugadores.moverAlSiguiente();
+		jugadorActual = jugadores.obtenerElemento(0);
+		this.envidoCantado = false;
+		this.estadoActualEnvido = new EstadoInicialEnvido();
+		this.florCantada = false;
+		this.estadoActualFlor = new EstadoInicialFlor();
+		this.trucoCantado = false;
+		this.estadoActualTruco = new EstadoInicialTruco();
+		this.jugadorQueCanto = null;
+		this.jugadorQueCantoTruco = null;
+		this.repartir();
+	}
 
+	//Flor
+	
 	public void flor() {
 		if (!this.conFlor) {
 			throw new SeEstaJugandoSinFlorError();
@@ -321,6 +331,16 @@ public class JuegoDeTruco {
 		jugadorQueCantoTruco.sumarPuntos(estadoActualTruco.obtenerPuntosNoQueridos());
 		this.estadoActualTruco = new EstadoInicialTruco();
 		this.trucoCantado = false;
-		// Setear valores iniciales para la proxima ronda y avanzar el mano
+		this.setearValoresParaProximaRonda();
+	}
+	
+	public void irseAlMazo() {
+		int cantidadDeCartas = this.jugadorActual.mostrarCartas().size();
+		this.avanzarJugadorActual();
+		this.jugadorActual.sumarPuntos(this.estadoActualTruco.obtenerPuntosQueridos());
+		if (cantidadDeCartas == 3) {
+			this.jugadorActual.sumarPuntos(1);
+		}
+		this.setearValoresParaProximaRonda();
 	}
 }
