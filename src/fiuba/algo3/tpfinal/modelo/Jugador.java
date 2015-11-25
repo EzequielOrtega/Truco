@@ -30,9 +30,7 @@ public class Jugador {
         return nombre;
     }
 
-    public void sumarPuntos(int cantidadDePuntos) {
-        puntaje += cantidadDePuntos;
-    }
+    // MANEJO DE CARTAS
 
     public Vector<Carta> mostrarCartas() {
         return cartas;
@@ -49,36 +47,57 @@ public class Jugador {
         this.cartas.removeAllElements();
         this.cartasJugadas.removeAllElements();
     }
-    
-    public int obtenerPuntaje(){
-    	return this.puntaje;
-    }
-    
-    public Boolean coincideElEquipo(Equipo equipo){
-    	return (this.equipo == equipo);
-    }
-    
-    public Boolean estanEnElMismoEquipo(Jugador otroJugador){
-    	return (otroJugador.coincideElEquipo(this.equipo));
-    }
 
-    //jugarCarta() acepta los valores 1, 2 o 3, que corresponden a las 3 posibles cartas de la mano del jugador
-    // Falta ver como funciona esto para cuando ya saque una carta y me quedan dos, o una en la mano.
     public Carta jugarCarta(Carta carta) {
         if (! cartas.contains(carta)) {
-        	throw new NoTieneEsaCartaEnLaManoError();
+            throw new NoTieneEsaCartaEnLaManoError();
         }
         cartas.remove(carta);
         cartasJugadas.add(carta);
         return carta;
     }
 
+    public boolean posee(Carta carta) {
+        Vector<Carta> cartasTodas = new Vector<Carta>();
+        cartasTodas.addAll(cartas);
+        cartasTodas.addAll(cartasJugadas);
+        for (Carta cartaActual : cartasTodas) {
+            if (cartaActual.esIgualA(carta)) {
+                return true;
+            }
+        }
+        return false;
+    }
 
-    // ENVIDO Y FLOR:
+    // PUNTAJE
+
+    public void sumarPuntos(int cantidadDePuntos) {
+        puntaje += cantidadDePuntos;
+    }
+    public void resetearPuntos() {
+        this.puntaje = 0;
+    }
+    public int obtenerPuntaje(){
+    	return this.puntaje;
+    }
+
+    // EQUIPO
+
+    public Boolean coincideElEquipo(Equipo equipo){
+    	return (this.equipo == equipo);
+    }
+    public Boolean estanEnElMismoEquipo(Jugador otroJugador){
+    	return (otroJugador.coincideElEquipo(this.equipo));
+    }
+
+    // ENVIDO Y FLOR
+
     public int getValorEnvido () {
         Vector<Carta> cartasTodas = new Vector<Carta>();
         cartasTodas.addAll(cartas);
         cartasTodas.addAll(cartasJugadas);
+        if(cartasTodas.size()!= 3)
+            throw new CantidadDeCartasInvalidaError();
         return calculadorDeTantos.obtenerTantosDeEnvido(cartasTodas);
     }
 
@@ -89,25 +108,7 @@ public class Jugador {
         return calculadorDeTantos.obtenerTantosDeFlor(cartasTodas);
     }
 
-	public void resetearPuntos() {
-		this.puntaje = 0;
-	}
-
 	public boolean tieneFlor() {
 		return this.calculadorDeTantos.tieneFlor(cartas);
-	}
-
-	public boolean posee(Carta carta) {
-		Vector<Carta> cartasTodas = new Vector<Carta>();
-        cartasTodas.addAll(cartas);
-        cartasTodas.addAll(cartasJugadas);
-        Boolean posee = false;
-        for (Carta cartaActual : cartasTodas) {
-        	if (cartaActual.esIgualA(carta)) {
-        		posee = true;
-        		break;
-        	}
-        }
-		return posee;
 	}
 }

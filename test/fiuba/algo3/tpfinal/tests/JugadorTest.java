@@ -1,15 +1,15 @@
 package fiuba.algo3.tpfinal.tests;
 
-import fiuba.algo3.tpfinal.modelo.*;
+import fiuba.algo3.tpfinal.modelo.Carta;
+import fiuba.algo3.tpfinal.modelo.Equipo;
+import fiuba.algo3.tpfinal.modelo.Jugador;
+import fiuba.algo3.tpfinal.modelo.Palo;
 import fiuba.algo3.tpfinal.modelo.error.CantidadDeCartasInvalidaError;
 import fiuba.algo3.tpfinal.modelo.error.NoTieneEsaCartaEnLaManoError;
-
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
-
-import org.junit.Assert;
+import static org.junit.Assert.*;
 
 public class JugadorTest {
 
@@ -29,6 +29,9 @@ public class JugadorTest {
     public void testJugadorSeCreaConElNombreCorrecto() {
         assertEquals("Juan", nuevoJugador.getNombre());
     }
+
+
+    // TESTS MANEJO DE CARTAS
 
     @Test
     public void testAgarrarCartasGuardaCartasExitosamente() {
@@ -52,15 +55,70 @@ public class JugadorTest {
         nuevoJugador.agarrarCarta(carta4);
     }
 
+    @Test
+    public void testMostrarCartas() {
+        assertEquals(0, nuevoJugador.mostrarCartas().size());
+        nuevoJugador.agarrarCarta(carta1);
+        assertEquals(1, nuevoJugador.mostrarCartas().size());
+        nuevoJugador.agarrarCarta(carta2);
+        assertEquals(2, nuevoJugador.mostrarCartas().size());
+        nuevoJugador.agarrarCarta(carta3);
+        assertEquals(3, nuevoJugador.mostrarCartas().size());
+    }
+
+    @Test
+    public void testCartasEnManoDisminuyenAlJugarCarta() {
+        nuevoJugador.agarrarCarta(carta1);
+        nuevoJugador.agarrarCarta(carta2);
+        nuevoJugador.agarrarCarta(carta3);
+        assertEquals(3, nuevoJugador.mostrarCartas().size());
+        nuevoJugador.jugarCarta(carta2);
+        assertEquals(2, nuevoJugador.mostrarCartas().size());
+    }
+
     @Test (expected = NoTieneEsaCartaEnLaManoError.class)
     public void testNoSePuedeJugarUnaCartaQueNoTengaEnLaMano() {
     	nuevoJugador.jugarCarta(carta1);
     }
-    
+
+    @Test
+    public void testEntregarCartas() {
+        nuevoJugador.agarrarCarta(carta1);
+        nuevoJugador.agarrarCarta(carta2);
+        nuevoJugador.agarrarCarta(carta3);
+        nuevoJugador.entregarCartas();
+        assertEquals(0, nuevoJugador.mostrarCartas().size());
+    }
+
+    // TESTS PUNTAJE
+
+    @Test
+    public void testJugadorSeCreaConCeroPuntos() {
+        assertEquals(0, nuevoJugador.obtenerPuntaje());
+    }
+
     @Test
     public void testAcumularPuntos() {
-    	Assert.assertEquals(0, nuevoJugador.obtenerPuntaje());
+    	assertEquals(0, nuevoJugador.obtenerPuntaje());
     	nuevoJugador.sumarPuntos(2);
-    	Assert.assertEquals(2, nuevoJugador.obtenerPuntaje());
+    	assertEquals(2, nuevoJugador.obtenerPuntaje());
+    }
+
+    @Test
+    public void testResetearPuntos() {
+        nuevoJugador.sumarPuntos(2);
+        assertEquals(2, nuevoJugador.obtenerPuntaje());
+        nuevoJugador.resetearPuntos();
+        assertEquals(0, nuevoJugador.obtenerPuntaje());
+    }
+
+    // TESTS EQUIPO
+
+    @Test
+    public void testCompararEquipoConOtroJugador() {
+        Jugador otroJugador = new Jugador("Pablo", Equipo.EQUIPO1);
+        assertTrue(nuevoJugador.estanEnElMismoEquipo(otroJugador));
+        otroJugador = new Jugador("Mica", Equipo.EQUIPO2);
+        assertFalse(nuevoJugador.estanEnElMismoEquipo(otroJugador));
     }
 }
