@@ -127,7 +127,7 @@ public class JuegoDeTruco {
 			jugadorGanador.sumarPuntos(this.estadoActualTruco.obtenerPuntosQueridos());
 			jugadores.moverAlSiguiente();
 			jugadorActual = jugadores.obtenerElemento(0);
-			// Setear valores iniciales para la proxima ronda y avanzar el mano
+			this.setearValoresParaProximaRonda();
 		}
 	}
 
@@ -144,6 +144,18 @@ public class JuegoDeTruco {
 			}
 		}
 		return jugadorBuscado;
+	}
+	
+	private void setearValoresParaProximaRonda() {
+		this.envidoCantado = false;
+		this.estadoActualEnvido = new EstadoInicialEnvido();
+		this.florCantada = false;
+		this.estadoActualFlor = new EstadoInicialFlor();
+		this.trucoCantado = false;
+		this.estadoActualTruco = new EstadoInicialTruco();
+		this.jugadorQueCanto = null;
+		this.jugadorQueCantoTruco = null;
+		this.repartir();
 	}
 
 	//Flor
@@ -319,6 +331,6 @@ public class JuegoDeTruco {
 		jugadorQueCantoTruco.sumarPuntos(estadoActualTruco.obtenerPuntosNoQueridos());
 		this.estadoActualTruco = new EstadoInicialTruco();
 		this.trucoCantado = false;
-		// Setear valores iniciales para la proxima ronda y avanzar el mano
+		this.setearValoresParaProximaRonda();
 	}
 }
