@@ -94,7 +94,6 @@ public class JuegoDeTruco {
 		this.avanzarJugadorActual();
 	}
 
-	// todavia esta incompleto
 	public void jugar(Carta carta) {
 		if (this.envidoCantado) {
 			throw new NoPuedeJugarSeCantoEnvidoError();
@@ -116,8 +115,8 @@ public class JuegoDeTruco {
 					break;
 				}
 				default: {
-					//Carta cartaMasAlta = this.obtenerCartaMasAlta(cartasEnLaMesa);
-					//jugadorActual = this.jugadorQuePoseeLaCarta(cartaMasAlta);
+					Carta cartaMasAlta = this.obtenerCartaMasAlta(cartasEnLaMesa);
+					jugadorActual = this.jugadorQuePoseeLaCarta(cartaMasAlta);
 					break;
 				}				
 			}
@@ -127,16 +126,13 @@ public class JuegoDeTruco {
 			Jugador jugadorGanador = this.ronda.ganadorDeLaRonda(jugadores.obtenerElementos());
 			jugadorGanador.sumarPuntos(this.estadoActualTruco.obtenerPuntosQueridos());
 			jugadores.moverAlSiguiente();
+			jugadorActual = jugadores.obtenerElemento(0);
 			// Setear valores iniciales para la proxima ronda y avanzar el mano
 		}
 	}
 
-	// FLOR
-
 	private Carta obtenerCartaMasAlta(LinkedList<Carta> cartas) {
-		Carta cartaMasAlta = cartas.get(0);
-		
-		return cartaMasAlta;
+		return arbitro.obtenerCartaMasAlta(cartas);
 	}
 
 	private Jugador jugadorQuePoseeLaCarta(Carta carta) {
@@ -150,6 +146,8 @@ public class JuegoDeTruco {
 		return jugadorBuscado;
 	}
 
+	//Flor
+	
 	public void flor() {
 		if (!this.conFlor) {
 			throw new SeEstaJugandoSinFlorError();
