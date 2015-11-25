@@ -309,4 +309,64 @@ public class JuegoDeTrucoTest {
 		Assert.assertTrue(30 == unJuego.puntosDeEquipo(Equipo.EQUIPO2));
 		Assert.assertTrue(0 == unJuego.puntosDeEquipo(Equipo.EQUIPO1));
 	}
+	
+	@Test
+	public void testIrseAlMazoEnPrimeraSonDosPuntosParaElContrario() {
+		unJuego.irseAlMazo();
+		Assert.assertTrue(2 == unJuego.puntosDeEquipo(Equipo.EQUIPO2));
+	}
+	
+	@Test
+	public void testIrseAlMazoEnSegundaSinCantarTruco() {
+		unJuego.jugar(sotaDeBasto);
+		unJuego.jugar(sieteDeEspada);
+		unJuego.jugar(unoDeEspada);
+		unJuego.irseAlMazo();		
+		Assert.assertTrue(1 == unJuego.puntosDeEquipo(Equipo.EQUIPO2));
+	}
+	
+	@Test
+	public void testIrseAlMazoEnSegundaConTruco() {
+		unJuego.jugar(sotaDeBasto);
+		unJuego.jugar(sieteDeEspada);
+		unJuego.truco();
+		unJuego.quieroTruco();
+		unJuego.jugar(unoDeEspada);
+		unJuego.irseAlMazo();		
+		Assert.assertTrue(2 == unJuego.puntosDeEquipo(Equipo.EQUIPO2));
+	}
+	
+	@Test
+	public void testIrseAlMazoEnSegundaConReTruco() {
+		unJuego.jugar(sotaDeBasto);
+		unJuego.jugar(sieteDeEspada);
+		unJuego.truco();
+		unJuego.reTruco();
+		unJuego.quieroTruco();
+		unJuego.jugar(unoDeEspada);
+		unJuego.irseAlMazo();		
+		Assert.assertTrue(3 == unJuego.puntosDeEquipo(Equipo.EQUIPO2));
+	}
+	
+	@Test
+	public void testIrseAlMazoEnSegundaConValeCuatro() {
+		unJuego.jugar(sotaDeBasto);
+		unJuego.jugar(sieteDeEspada);
+		unJuego.truco();
+		unJuego.reTruco();
+		unJuego.valeCuatro();
+		unJuego.quieroTruco();
+		unJuego.jugar(unoDeEspada);
+		unJuego.irseAlMazo();		
+		Assert.assertTrue(4 == unJuego.puntosDeEquipo(Equipo.EQUIPO2));
+	}
+	
+	@Test
+	public void testIrseAlMazoEnSegundaConTrucoNoQuerido() {
+		unJuego.jugar(sotaDeBasto);
+		unJuego.jugar(sieteDeEspada);
+		unJuego.truco();
+		unJuego.irseAlMazo();		
+		Assert.assertTrue(1 == unJuego.puntosDeEquipo(Equipo.EQUIPO2));
+	}
 }

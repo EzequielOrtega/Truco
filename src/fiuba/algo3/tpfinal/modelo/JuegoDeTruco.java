@@ -375,7 +375,11 @@ public class JuegoDeTruco {
 	public void irseAlMazo() {
 		int cantidadDeCartas = this.jugadorActual.mostrarCartas().size();
 		this.avanzarJugadorActual();
-		this.jugadorActual.sumarPuntos(this.estadoActualTruco.obtenerPuntosQueridos());
+		if (this.trucoCantado) {
+			this.jugadorActual.sumarPuntos(this.estadoActualTruco.obtenerPuntosNoQueridos());
+		} else {
+			this.jugadorActual.sumarPuntos(this.estadoActualTruco.obtenerPuntosQueridos());
+		}
 		if (cantidadDeCartas == 3) {
 			this.jugadorActual.sumarPuntos(1);
 		}
