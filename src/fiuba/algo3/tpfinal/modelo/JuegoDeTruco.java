@@ -12,7 +12,7 @@ public class JuegoDeTruco {
 
 	private final ListaCircular<Jugador> jugadores = new ListaCircular<Jugador>();
 	private Mazo mazoDeCartas = new Mazo();
-	private JuezDeTruco arbitro = new JuezDeTruco();
+	private JuezDeTruco juez = new JuezDeTruco();
 	private Ronda ronda = new Ronda();
 	private LinkedList<Carta> cartasEnLaMesa = new LinkedList<Carta>();
 	private Jugador jugadorActual;
@@ -109,7 +109,7 @@ public class JuegoDeTruco {
 		this.cartasEnLaMesa.add(jugadorActual.jugarCarta(carta));
 		this.avanzarJugadorActual();
 		if ((this.cartasEnLaMesa.size() == this.jugadores.tamanio()) && (!ronda.concluyoLaRonda())) {
-			Resultado resultadoRonda = arbitro.ganadorDeLaMano(this.cartasEnLaMesa);
+			Resultado resultadoRonda = juez.ganadorDeLaMano(this.cartasEnLaMesa);
 			ronda.insercion(resultadoRonda);
 			switch (resultadoRonda) {
 			case EMPATE: {
@@ -132,7 +132,7 @@ public class JuegoDeTruco {
 	}
 
 	private Carta obtenerCartaMasAlta(LinkedList<Carta> cartas) {
-		return arbitro.obtenerCartaMasAlta(cartas);
+		return juez.obtenerCartaMasAlta(cartas);
 	}
 
 	private Jugador jugadorQuePoseeLaCarta(Carta carta) {
@@ -188,7 +188,8 @@ public class JuegoDeTruco {
 	}
 
 	public void quieroFlor() {
-		Jugador ganadorDeFlor = this.arbitro.ganadorFlor(jugadores.obtenerElementos());
+		Jugador ganadorDeFlor = this.juez.ganadorFlor(jugadores.obtenerElementos());
+        // TODO: polimorfismo para sumarPuntos en contrafloralresto
 		if (this.estadoActualFlor instanceof ContraFlorAlResto) {
 			ganadorDeFlor.sumarPuntos(this.puntosRestantes(ganadorDeFlor));
 		} else {
@@ -277,7 +278,8 @@ public class JuegoDeTruco {
 
 	public void quieroEnvido() {
 
-		Jugador ganador = arbitro.ganadorEnvido(jugadores.obtenerElementos());
+		Jugador ganador = juez.ganadorEnvido(jugadores.obtenerElementos());
+        // TODO: polimorfismo para sumarPuntos en faltaEnvido
 		if (estadoActualEnvido instanceof FaltaEnvido) {
 			ganador.sumarPuntos(this.puntosRestantesContrario(ganador));
 		} else {

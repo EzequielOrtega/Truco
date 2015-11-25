@@ -1,6 +1,17 @@
 package fiuba.algo3.tpfinal.modelo.truco;
 
+import java.util.LinkedList;
+
 public class EstadoInicialTruco extends EstadoTruco {
+	private static LinkedList<Object> estadosAceptados;
+
+	static {
+		estadosAceptados = new LinkedList<>();
+	}
+
+	public EstadoInicialTruco() {
+		super(null);
+	}
 
 	@Override
 	public int obtenerPuntosQueridos() {

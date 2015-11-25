@@ -1,13 +1,18 @@
 package fiuba.algo3.tpfinal.modelo.truco;
 
-import fiuba.algo3.tpfinal.modelo.error.NoRespetaJerarquiaDeTrucoError;
+import java.util.LinkedList;
 
 public class Truco extends EstadoTruco {
 
-	public Truco(EstadoTruco estadoAnterior) {
-		if (!(estadoAnterior instanceof EstadoInicialTruco)) {
-			throw new NoRespetaJerarquiaDeTrucoError();
-		}
+    private static LinkedList<Object> estadosAceptados;
+
+    static {
+        estadosAceptados = new LinkedList<>();
+        estadosAceptados.add(EstadoInicialTruco.class);
+    }
+
+    public Truco(EstadoTruco estadoAnterior) {
+		super(estadoAnterior, estadosAceptados);
 	}
 
 	public int obtenerPuntosQueridos() {
