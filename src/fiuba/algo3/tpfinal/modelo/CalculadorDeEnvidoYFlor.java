@@ -58,8 +58,8 @@ public class CalculadorDeEnvidoYFlor {
 		return valorEnvidoDeDosCartas;
 	}
 
-	private int maximo(Integer integer1, Integer integer2, Integer integer3) {
-		return (Math.max (Math.max (integer1.intValue(), integer2.intValue()), integer3.intValue()));
+	private int maximo(int integer1, int integer2, int integer3) {
+		return Math.max (Math.max(integer1, integer2), integer3);
 	}
 
 }

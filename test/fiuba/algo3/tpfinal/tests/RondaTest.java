@@ -49,7 +49,7 @@ public class RondaTest {
 	}
 	
 	@Test (expected = YaSeJugaronLasTresManosError.class)
-	public void testInsercionDeMasDeTresManos(){
+	public void testInsercionDeMasDeTresManosLanzaError(){
 		this.ronda.insercion(Resultado.GANADOR1);
 		this.ronda.insercion(Resultado.GANADOR1);
 		this.ronda.insercion(Resultado.GANADOR1);

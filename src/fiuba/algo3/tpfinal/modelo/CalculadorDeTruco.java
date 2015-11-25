@@ -4,7 +4,7 @@ public class CalculadorDeTruco {
 	
 	private TablaDeValores tabla;
 	
-	public CalculadorDeTruco(){
+	public CalculadorDeTruco() {
 		tabla = new TablaDeValores();
 		this.InsertarElementosEnTabla();
 	}
@@ -13,7 +13,7 @@ public class CalculadorDeTruco {
 		return this.tabla.busqueda(carta);
 	}
 	
-	//solo para testear que estan todas las cartas en la tabla
+	// Solo para testear que estan todas las cartas en la tabla
 	public boolean eliminarCarta(Carta carta) {
 		return this.tabla.borrar(carta);
 	}

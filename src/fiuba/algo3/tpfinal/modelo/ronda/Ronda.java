@@ -20,24 +20,11 @@ public class Ronda {
 	
 	public int tamanio() {
 		int tamanio = 0;
-		switch(this.estadoRonda.obtenerMano()){
-			case INICIAL:{
-				tamanio = 0;
-				break;
-			}
-			case PRIMERA:{
-				tamanio = 1;
-				break;
-			}
-			case SEGUNDA:{
-				tamanio = 2;
-				break;
-			}
-			case TERCERA:{
-				tamanio = 3;
-				break;
-			}
-		}		
+        for (Mano mano: Mano.values()) {
+            if (estadoRonda.obtenerMano().equals(mano))
+                break;
+        tamanio++;
+        }
 		return tamanio;
 	}
 

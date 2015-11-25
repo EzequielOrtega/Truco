@@ -27,7 +27,9 @@ public class EstadoRondaTest {
 		jugadores.add(j3);
 		jugadores.add(j4);
 	}
+
 	// Tests RONDA INICIAL
+
 	@Test
 	public void testNoConcluyoLaRondaEnEstadoInicial() {
 		assertFalse(estadoRondaActual.concluyoRonda());
@@ -40,6 +42,7 @@ public class EstadoRondaTest {
 	}
 	
 	// Tests PRIMERA
+
 	@Test
 	public void testNoConcluyoLaRondaEnPrimera() {
 		estadoRondaActual = new Primera(estadoRondaActual);
@@ -59,6 +62,7 @@ public class EstadoRondaTest {
 	}
 	
 	// Tests SEGUNDA
+
 	@Test
 	public void testNoConcluyoLaRondaEnSegundaPorGanadoresDiferentes() {
 		estadoRondaActual = new Primera(estadoRondaActual, Resultado.GANADOR1);
@@ -136,6 +140,7 @@ public class EstadoRondaTest {
 	}
 	
 	// Tests TERCERA
+
 	@Test
 	public void testConcluyoLaRondaEnTercera(){
 		estadoRondaActual = new Primera(estadoRondaActual);

@@ -27,14 +27,14 @@ public class TablaDeValoresTest {
 	}
 	
 	@Test
-	public void testBusqueda(){
+	public void testBusqueda() {
 		Carta carta = new NoFigura(1, Palo.ESPADA);
 		tabla.insercion(carta, 13);
 		assertEquals(13, tabla.busqueda(carta));
 	}
 	
 	@Test (expected = LaCartaIngresadaNoEstaEnLaTablaError.class)
-	public void testBusquedaError(){
+	public void testBusquedaError() {
 		Carta carta = new NoFigura(1, Palo.ESPADA);
 		tabla.busqueda(carta);
 	}

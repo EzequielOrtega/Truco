@@ -34,7 +34,7 @@ public class CartaTest {
     }
     
     @Test
-    public void testComparacionDeCartas(){
+    public void testComparacionDeCartas() {
     	nuevaCarta = new Carta(1, Palo.ESPADA);
     	otraCarta = new Carta(1, Palo.ESPADA);
     	Carta carta3 = new Carta(1, Palo.BASTO);

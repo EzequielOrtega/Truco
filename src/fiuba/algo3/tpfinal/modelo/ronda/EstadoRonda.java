@@ -1,9 +1,9 @@
 package fiuba.algo3.tpfinal.modelo.ronda;
 
-import java.util.LinkedList;
-
 import fiuba.algo3.tpfinal.modelo.Jugador;
 import fiuba.algo3.tpfinal.modelo.Resultado;
+
+import java.util.LinkedList;
 
 public abstract class EstadoRonda {
 
@@ -14,7 +14,7 @@ public abstract class EstadoRonda {
 		this.estadoAnterior = estadoAnterior;
 	}
 	
-	public Mano obtenerMano(){
+	public Mano obtenerMano() {
 		return mano;
 	}
 	

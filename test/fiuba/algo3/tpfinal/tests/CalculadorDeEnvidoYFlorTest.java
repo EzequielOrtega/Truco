@@ -62,9 +62,9 @@ public class CalculadorDeEnvidoYFlorTest {
 	
 	@Test
 	public void testObtenerTantosDeEnvidoDeTresCartas(){
-		cartas.addElement(unoDeEspada);
-		cartas.addElement(sieteDeEspada);
-		cartas.addElement(cincoDeEspada);
+		cartas.add(unoDeEspada);
+		cartas.add(sieteDeEspada);
+		cartas.add(cincoDeEspada);
 		assertEquals(32, calculador.obtenerTantosDeEnvido(cartas));
 	}
 	@Test
