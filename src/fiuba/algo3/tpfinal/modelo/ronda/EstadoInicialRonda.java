@@ -7,7 +7,7 @@ import fiuba.algo3.tpfinal.modelo.Resultado;
 import fiuba.algo3.tpfinal.modelo.error.NoHayGanadorDeRondaInconclusaError;
 
 public class EstadoInicialRonda extends EstadoRonda {
-	
+
 	public EstadoInicialRonda() {
 		super(null);
 		this.mano = Mano.INICIAL;
@@ -15,13 +15,13 @@ public class EstadoInicialRonda extends EstadoRonda {
 
 	@Override
 	public Boolean concluyoRonda() {
-		
+
 		return false;
 	}
 
 	@Override
 	public Jugador obtenerGanadorDeLaRonda(LinkedList<Jugador> jugadores) {
-		if(!this.concluyoRonda()){
+		if (!this.concluyoRonda()) {
 			throw new NoHayGanadorDeRondaInconclusaError();
 		}
 		return null;
@@ -29,21 +29,20 @@ public class EstadoInicialRonda extends EstadoRonda {
 
 	@Override
 	public Resultado obtenerResultadoDeMano() {
-		
+
 		return null;
 	}
 
 	@Override
 	protected Resultado obtenerGanadorParcial() {
-		
+
 		return null;
 	}
 
 	@Override
 	protected Resultado obtenerResultadoDePrimera() {
-		
+
 		return null;
 	}
 
-	
 }

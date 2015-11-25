@@ -5,5 +5,5 @@ public abstract class EstadoTruco {
 	public abstract int obtenerPuntosQueridos();
 
 	public abstract int obtenerPuntosNoQueridos();
-	
+
 }

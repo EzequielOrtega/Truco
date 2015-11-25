@@ -6,6 +6,7 @@ public class NoPuedeJugarSeCantoTrucoError extends RuntimeException {
 
 	public NoPuedeJugarSeCantoTrucoError() {
 	}
+
 	public NoPuedeJugarSeCantoTrucoError(String s) {
 		System.err.print(s);
 		System.err.println();

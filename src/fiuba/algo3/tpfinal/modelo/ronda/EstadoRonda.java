@@ -13,20 +13,19 @@ public abstract class EstadoRonda {
 	public EstadoRonda(EstadoRonda estadoAnterior) {
 		this.estadoAnterior = estadoAnterior;
 	}
-	
-	public Mano obtenerMano(){
+
+	public Mano obtenerMano() {
 		return mano;
 	}
-	
+
 	protected abstract Resultado obtenerResultadoDeMano();
-	
+
 	protected abstract Resultado obtenerResultadoDePrimera();
-	
+
 	public abstract Boolean concluyoRonda();
-	
+
 	protected abstract Resultado obtenerGanadorParcial();
-	
+
 	public abstract Jugador obtenerGanadorDeLaRonda(LinkedList<Jugador> jugadores);
 
-	
 }

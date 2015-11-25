@@ -6,6 +6,7 @@ public class NoRespetaJerarquiaDeEnvidoError extends RuntimeException {
 
 	public NoRespetaJerarquiaDeEnvidoError() {
 	}
+
 	public NoRespetaJerarquiaDeEnvidoError(String s) {
 		System.err.print(s);
 		System.err.println();

@@ -1,9 +1,14 @@
 package fiuba.algo3.tpfinal.tests;
 
-import fiuba.algo3.tpfinal.modelo.*;
+import static org.junit.Assert.assertEquals;
+
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
+import fiuba.algo3.tpfinal.modelo.Carta;
+import fiuba.algo3.tpfinal.modelo.CartaParaEnvidoYFlor;
+import fiuba.algo3.tpfinal.modelo.Figura;
+import fiuba.algo3.tpfinal.modelo.NoFigura;
+import fiuba.algo3.tpfinal.modelo.Palo;
 
 public class CartaParaEnvidoYFlorTest {
 
@@ -13,9 +18,9 @@ public class CartaParaEnvidoYFlorTest {
 		CartaParaEnvidoYFlor reyDeCopaBis = (CartaParaEnvidoYFlor) reyDeCopa;
 		assertEquals(0, reyDeCopaBis.obtenerValorParaEnvidoYFlor());
 	}
-	
+
 	@Test
-	public void testValorParaEnvidoYFlorDeNofiguraEsUnEntero(){
+	public void testValorParaEnvidoYFlorDeNofiguraEsUnEntero() {
 		Carta anchoDeEspadas = new NoFigura(1, Palo.ESPADA);
 		CartaParaEnvidoYFlor anchoDeEspadasBis = (CartaParaEnvidoYFlor) anchoDeEspadas;
 		assertEquals(1, anchoDeEspadasBis.obtenerValorParaEnvidoYFlor());

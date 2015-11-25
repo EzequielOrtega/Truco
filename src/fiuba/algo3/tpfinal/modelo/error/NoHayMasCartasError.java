@@ -6,10 +6,10 @@ public class NoHayMasCartasError extends RuntimeException {
 
 	public NoHayMasCartasError() {
 
-    }
+	}
 
-    public NoHayMasCartasError(String s) {
-        System.err.print(s);
-        System.err.println();
-    }
+	public NoHayMasCartasError(String s) {
+		System.err.print(s);
+		System.err.println();
+	}
 }

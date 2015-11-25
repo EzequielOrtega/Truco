@@ -1,11 +1,11 @@
 package fiuba.algo3.tpfinal.modelo;
 
 public class ElementoDeTabla<T> {
-	
+
 	private T llave;
 	private Integer valor;
-	
-	public ElementoDeTabla(T llave, Integer valor){
+
+	public ElementoDeTabla(T llave, Integer valor) {
 		this.setLlave(llave);
 		this.setValor(valor);
 	}

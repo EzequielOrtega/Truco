@@ -6,10 +6,11 @@ public class ValorDeCartaInvalidoError extends RuntimeException {
 
 	public ValorDeCartaInvalidoError() {
 
-    }
-    public ValorDeCartaInvalidoError(String s) {
-        System.err.print(s);
-        System.err.println();
-    }
+	}
+
+	public ValorDeCartaInvalidoError(String s) {
+		System.err.print(s);
+		System.err.println();
+	}
 
 }

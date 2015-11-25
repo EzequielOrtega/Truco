@@ -5,9 +5,10 @@ public class CantidadDeCartasInvalidaError extends RuntimeException {
 	private static final long serialVersionUID = 1L;
 
 	public CantidadDeCartasInvalidaError() {
-    }
-    public CantidadDeCartasInvalidaError(String s) {
-        System.err.print(s);
-        System.err.println();
-    }
+	}
+
+	public CantidadDeCartasInvalidaError(String s) {
+		System.err.print(s);
+		System.err.println();
+	}
 }

@@ -7,6 +7,7 @@ public class JugadorNoTieneFlorError extends RuntimeException {
 	public JugadorNoTieneFlorError() {
 
 	}
+
 	public JugadorNoTieneFlorError(String s) {
 		System.out.print(s);
 		System.out.println();

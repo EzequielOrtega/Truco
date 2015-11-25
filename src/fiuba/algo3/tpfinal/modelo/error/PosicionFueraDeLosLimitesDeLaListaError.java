@@ -6,6 +6,7 @@ public class PosicionFueraDeLosLimitesDeLaListaError extends RuntimeException {
 
 	public PosicionFueraDeLosLimitesDeLaListaError() {
 	}
+
 	public PosicionFueraDeLosLimitesDeLaListaError(String s) {
 		System.err.print(s);
 		System.err.println();
