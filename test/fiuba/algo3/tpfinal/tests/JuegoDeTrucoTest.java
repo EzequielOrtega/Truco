@@ -2,6 +2,7 @@ package fiuba.algo3.tpfinal.tests;
 
 import static org.junit.Assert.assertEquals;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -13,6 +14,7 @@ import fiuba.algo3.tpfinal.modelo.JuegoDeTruco;
 import fiuba.algo3.tpfinal.modelo.Jugador;
 import fiuba.algo3.tpfinal.modelo.NoFigura;
 import fiuba.algo3.tpfinal.modelo.Palo;
+import fiuba.algo3.tpfinal.modelo.error.JugadorNoTieneFlorError;
 import fiuba.algo3.tpfinal.modelo.error.NoPuedeCantarEnvidoSeCantoFlorError;
 import fiuba.algo3.tpfinal.modelo.error.NoPuedeCantarTrucoSeCantoEnvidoError;
 import fiuba.algo3.tpfinal.modelo.error.NoPuedeCantarTrucoSeCantoFlorError;
@@ -238,15 +240,11 @@ public class JuegoDeTrucoTest {
 		unJuego.truco();
 	}
 
-	@Test
-	public void testContraFlorAlRestoGanaLaPartida() {
+	@Test (expected = JugadorNoTieneFlorError.class)
+	public void testFlorContraFlorSinFlor() {
 		unJuego.jugar(unoDeBasto);
 		unJuego.flor();
 		unJuego.contraFlorAlResto();
-		unJuego.quieroFlor();
-
-		assertEquals(30, unJuego.puntosDeEquipo(Equipo.EQUIPO2));
-		assertEquals(0, unJuego.puntosDeEquipo(Equipo.EQUIPO1));
 	}
 
 	@Test
@@ -270,7 +268,7 @@ public class JuegoDeTrucoTest {
 	
 	@Test (expected = NoPuedeCantarEnvidoSeCantoFlorError.class)
 	public void testFlorEnvidoNoVale() {
-		unJuego.jugar(sotaDeBasto);
+		unJuego.avanzarJugadorActual();
 		unJuego.flor();
 		unJuego.envido();
 	}
@@ -287,5 +285,28 @@ public class JuegoDeTrucoTest {
 		unJuego.jugar(sotaDeBasto);
 		unJuego.flor();
 		unJuego.faltaEnvido();
+	}
+	
+	@Test
+	public void testContraFlorGanaLaPartida() {
+		//entrego las cartas para que ambos tengan flor
+		Carta cincoDeBasto = new NoFigura(5, Palo.BASTO);
+		unJuego.obtenerJugadorActual().entregarCartas();
+		unJuego.obtenerJugadorActual().agarrarCarta(sotaDeBasto);
+		unJuego.obtenerJugadorActual().agarrarCarta(cincoDeBasto);
+		unJuego.obtenerJugadorActual().agarrarCarta(unoDeBasto);
+		unJuego.avanzarJugadorActual();
+		unJuego.obtenerJugadorActual().entregarCartas();
+		unJuego.obtenerJugadorActual().agarrarCarta(unoDeEspada);
+		unJuego.obtenerJugadorActual().agarrarCarta(sieteDeEspada);
+		unJuego.obtenerJugadorActual().agarrarCarta(sotaDeEspada);
+		unJuego.avanzarJugadorActual();
+		//comienza la ronda
+		unJuego.flor();
+		unJuego.contraFlorAlResto();
+		unJuego.quieroFlor();
+		
+		Assert.assertTrue(30 == unJuego.puntosDeEquipo(Equipo.EQUIPO2));
+		Assert.assertTrue(0 == unJuego.puntosDeEquipo(Equipo.EQUIPO1));
 	}
 }

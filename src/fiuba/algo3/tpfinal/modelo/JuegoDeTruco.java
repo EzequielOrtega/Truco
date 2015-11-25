@@ -192,7 +192,7 @@ public class JuegoDeTruco {
 		if (jugadorActual.mostrarCartas().size() != 3) {
 			throw new SoloSePuedeCantarFlorEnPrimeraError();
 		}
-		if (!this.jugadorActual.tieneFlor()) {
+		if (this.jugadorActual.getValorFlor() == 0) {
 			throw new JugadorNoTieneFlorError();
 		}
 		this.florCantada = true;
@@ -202,12 +202,11 @@ public class JuegoDeTruco {
 			this.jugadorQueCanto = null;
 			this.estadoActualEnvido = new EstadoFinalEnvido(estadoActualEnvido);
 		}
-		if (this.jugadorQueCanto == null) {
-			this.jugadorQueCanto = jugadorActual;
-		}
-		if (!(this.jugadorActual == jugadorQueCanto)) {
-			this.avanzarJugadorActual();
-		}
+		this.jugadorQueCanto = jugadorActual;
+		this.avanzarJugadorActual();
+//		if (!(this.jugadorActual == jugadorQueCanto)) {
+//			this.avanzarJugadorActual();
+//		}
 	}
 
 	public void quieroFlor() {
@@ -246,12 +245,18 @@ public class JuegoDeTruco {
 	}
 
 	public void contraFlor() {
+		if (this.jugadorActual.getValorFlor() == 0) {
+			throw new JugadorNoTieneFlorError();
+		}
 		this.estadoActualFlor = new ContraFlor(this.estadoActualFlor);
 		this.avanzarJugadorActual();
 
 	}
 
 	public void contraFlorAlResto() {
+		if (this.jugadorActual.getValorFlor() == 0) {
+			throw new JugadorNoTieneFlorError();
+		}
 		this.estadoActualFlor = new ContraFlorAlResto(this.estadoActualFlor);
 		this.avanzarJugadorActual();
 	}
