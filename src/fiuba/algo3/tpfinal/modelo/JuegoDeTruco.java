@@ -1,36 +1,12 @@
 package fiuba.algo3.tpfinal.modelo;
 
-import java.util.LinkedList;
-
-import fiuba.algo3.tpfinal.modelo.envido.Envido;
-import fiuba.algo3.tpfinal.modelo.envido.EstadoEnvido;
-import fiuba.algo3.tpfinal.modelo.envido.EstadoFinalEnvido;
-import fiuba.algo3.tpfinal.modelo.envido.EstadoInicialEnvido;
-import fiuba.algo3.tpfinal.modelo.envido.FaltaEnvido;
-import fiuba.algo3.tpfinal.modelo.envido.RealEnvido;
-import fiuba.algo3.tpfinal.modelo.error.JugadorNoTieneFlorError;
-import fiuba.algo3.tpfinal.modelo.error.NoPuedeCantarEnvidoSeCantoFlorError;
-import fiuba.algo3.tpfinal.modelo.error.NoPuedeCantarTrucoSeCantoEnvidoError;
-import fiuba.algo3.tpfinal.modelo.error.NoPuedeCantarTrucoSeCantoFlorError;
-import fiuba.algo3.tpfinal.modelo.error.NoPuedeJugarSeCantoEnvidoError;
-import fiuba.algo3.tpfinal.modelo.error.NoPuedeJugarSeCantoFlorError;
-import fiuba.algo3.tpfinal.modelo.error.NoPuedeJugarSeCantoTrucoError;
-import fiuba.algo3.tpfinal.modelo.error.NoSePuedeRechazarFlorError;
-import fiuba.algo3.tpfinal.modelo.error.SeEstaJugandoSinFlorError;
-import fiuba.algo3.tpfinal.modelo.error.SoloSePuedeCantarEnvidoEnPrimeraError;
-import fiuba.algo3.tpfinal.modelo.error.SoloSePuedeCantarFlorEnPrimeraError;
-import fiuba.algo3.tpfinal.modelo.flor.ContraFlor;
-import fiuba.algo3.tpfinal.modelo.flor.ContraFlorAlResto;
-import fiuba.algo3.tpfinal.modelo.flor.EstadoFinalFlor;
-import fiuba.algo3.tpfinal.modelo.flor.EstadoFlor;
-import fiuba.algo3.tpfinal.modelo.flor.EstadoInicialFlor;
-import fiuba.algo3.tpfinal.modelo.flor.Flor;
+import fiuba.algo3.tpfinal.modelo.envido.*;
+import fiuba.algo3.tpfinal.modelo.error.*;
+import fiuba.algo3.tpfinal.modelo.flor.*;
 import fiuba.algo3.tpfinal.modelo.ronda.Ronda;
-import fiuba.algo3.tpfinal.modelo.truco.EstadoInicialTruco;
-import fiuba.algo3.tpfinal.modelo.truco.EstadoTruco;
-import fiuba.algo3.tpfinal.modelo.truco.ReTruco;
-import fiuba.algo3.tpfinal.modelo.truco.Truco;
-import fiuba.algo3.tpfinal.modelo.truco.ValeCuatro;
+import fiuba.algo3.tpfinal.modelo.truco.*;
+
+import java.util.LinkedList;
 
 public class JuegoDeTruco {
 
@@ -40,8 +16,9 @@ public class JuegoDeTruco {
 	private Ronda ronda = new Ronda();
 	private LinkedList<Carta> cartasEnLaMesa = new LinkedList<Carta>();
 	private Jugador jugadorActual;
-	private Jugador jugadorQueCanto = null;
-	private Jugador jugadorQueCantoTruco = null;
+	private Jugador jugadorQueCantoEnvido = null;
+    private Jugador jugadorQueCantoFlor = null;
+    private Jugador jugadorQueCantoTruco = null;
 	private boolean conFlor = false;
 	private EstadoFlor estadoActualFlor = new EstadoInicialFlor();
 	private boolean florCantada = false;
@@ -178,7 +155,8 @@ public class JuegoDeTruco {
 		this.estadoActualFlor = new EstadoInicialFlor();
 		this.trucoCantado = false;
 		this.estadoActualTruco = new EstadoInicialTruco();
-		this.jugadorQueCanto = null;
+		this.jugadorQueCantoEnvido = null;
+        this.jugadorQueCantoFlor = null;
 		this.jugadorQueCantoTruco = null;
 		this.repartir();
 	}
@@ -189,20 +167,20 @@ public class JuegoDeTruco {
 		if (!this.conFlor) {
 			throw new SeEstaJugandoSinFlorError();
 		}
-		if (jugadorActual.mostrarCartas().size() != 3) {
-			throw new SoloSePuedeCantarFlorEnPrimeraError();
-		}
+        if (this.ronda.estaEnPrimera()) {
+            throw new SoloSePuedeCantarFlorEnPrimeraError();
+        }
 		if (this.jugadorActual.getValorFlor() == 0) {
 			throw new JugadorNoTieneFlorError();
 		}
 		this.florCantada = true;
 		this.estadoActualFlor = new Flor(this.estadoActualFlor);
 		if (this.envidoCantado) {
-			this.envidoCantado = false;
-			this.jugadorQueCanto = null;
+			//this.envidoCantado = false;
+			//this.jugadorQueCantoEnvido = null;
 			this.estadoActualEnvido = new EstadoFinalEnvido(estadoActualEnvido);
 		}
-		this.jugadorQueCanto = jugadorActual;
+		this.jugadorQueCantoFlor = jugadorActual;
 		this.avanzarJugadorActual();
 //		if (!(this.jugadorActual == jugadorQueCanto)) {
 //			this.avanzarJugadorActual();
@@ -216,10 +194,15 @@ public class JuegoDeTruco {
 		} else {
 			ganadorDeFlor.sumarPuntos(this.estadoActualFlor.obtenerPuntosQueridos());
 		}
-		this.jugadorActual = jugadorQueCanto;
+        // En caso de que se haya cantado envido y luego el otro canto flor
+        if (envidoCantado) {
+            this.jugadorActual = jugadorQueCantoEnvido;
+            envidoCantado = false;
+        }
+        else { this.jugadorActual = jugadorQueCantoFlor; }
 		this.estadoActualFlor = new EstadoFinalFlor(estadoActualFlor);
 		this.florCantada = false;
-		this.jugadorQueCanto = null;
+		this.jugadorQueCantoFlor = null;
 	}
 
 	private int puntosRestantes(Jugador ganadorDeFlor) {
@@ -237,11 +220,11 @@ public class JuegoDeTruco {
 		if (this.estadoActualFlor instanceof Flor) {
 			throw new NoSePuedeRechazarFlorError();
 		}
-		this.jugadorQueCanto.sumarPuntos(this.estadoActualFlor.obtenerPuntosNoQueridos());
-		this.jugadorActual = jugadorQueCanto;
+		this.jugadorQueCantoFlor.sumarPuntos(this.estadoActualFlor.obtenerPuntosNoQueridos());
+		this.jugadorActual = jugadorQueCantoFlor;
 		this.estadoActualFlor = new EstadoFinalFlor(estadoActualFlor);
 		this.florCantada = false;
-		this.jugadorQueCanto = null;
+		this.jugadorQueCantoFlor = null;
 	}
 
 	public void contraFlor() {
@@ -263,7 +246,7 @@ public class JuegoDeTruco {
 
 	// ENVIDO
 	public void envido() {
-		if (jugadorActual.mostrarCartas().size() != 3) {
+		if (this.ronda.estaEnPrimera()) {
 			throw new SoloSePuedeCantarEnvidoEnPrimeraError();
 		}
 		if (this.florCantada) {
@@ -271,8 +254,8 @@ public class JuegoDeTruco {
 		}
 		this.envidoCantado = true;
 		this.estadoActualEnvido = new Envido(this.estadoActualEnvido);
-		if (this.jugadorQueCanto == null) {
-			this.jugadorQueCanto = jugadorActual;
+		if (this.jugadorQueCantoEnvido == null) {
+			this.jugadorQueCantoEnvido = jugadorActual;
 		}
 		this.avanzarJugadorActual();
 	}
@@ -281,10 +264,13 @@ public class JuegoDeTruco {
 		if (this.florCantada) {
 			throw new NoPuedeCantarEnvidoSeCantoFlorError();
 		}
+		if (this.ronda.estaEnPrimera()) {
+			throw new SoloSePuedeCantarEnvidoEnPrimeraError();
+		}
 		this.envidoCantado = true;
 		estadoActualEnvido = new RealEnvido(estadoActualEnvido);
-		if (this.jugadorQueCanto == null) {
-			this.jugadorQueCanto = jugadorActual;
+		if (this.jugadorQueCantoEnvido == null) {
+			this.jugadorQueCantoEnvido = jugadorActual;
 		}
 		this.avanzarJugadorActual();
 	}
@@ -297,10 +283,10 @@ public class JuegoDeTruco {
 		} else {
 			ganador.sumarPuntos(this.estadoActualEnvido.obtenerPuntosQueridos());
 		}
-		this.jugadorActual = jugadorQueCanto;
+		this.jugadorActual = jugadorQueCantoEnvido;
 		this.estadoActualEnvido = new EstadoFinalEnvido(estadoActualEnvido);
 		this.envidoCantado = false;
-		this.jugadorQueCanto = null;
+		this.jugadorQueCantoEnvido = null;
 	}
 
 	private int puntosRestantesContrario(Jugador ganadorFaltaEnvido) {
@@ -320,8 +306,8 @@ public class JuegoDeTruco {
 		}
 		this.envidoCantado = true;
 		estadoActualEnvido = new FaltaEnvido(estadoActualEnvido);
-		if (this.jugadorQueCanto == null) {
-			this.jugadorQueCanto = jugadorActual;
+		if (this.jugadorQueCantoEnvido == null) {
+			this.jugadorQueCantoEnvido = jugadorActual;
 		}
 		this.avanzarJugadorActual();
 	}
@@ -329,10 +315,10 @@ public class JuegoDeTruco {
 	public void noQuieroEnvido() {
 		this.avanzarJugadorActual();
 		jugadorActual.sumarPuntos(this.estadoActualEnvido.obtenerPuntosNoQueridos());
-		this.jugadorActual = jugadorQueCanto;
+		this.jugadorActual = jugadorQueCantoEnvido;
 		this.estadoActualEnvido = new EstadoFinalEnvido(estadoActualEnvido);
 		this.envidoCantado = false;
-		this.jugadorQueCanto = null;
+		this.jugadorQueCantoEnvido = null;
 	}
 
 	// TRUCO

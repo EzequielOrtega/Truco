@@ -60,5 +60,9 @@ public class Ronda {
 			throw new NoHayGanadorDeRondaInconclusaError();
 		}
 		return this.estadoRonda.obtenerGanadorDeLaRonda(jugadores);
-	}	
+	}
+
+    public boolean estaEnPrimera() {
+        return (this.tamanio() == 1);
+    }
 }

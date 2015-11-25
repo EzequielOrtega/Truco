@@ -1,16 +1,10 @@
 package fiuba.algo3.tpfinal.tests;
 
-import org.junit.Assert;
+import fiuba.algo3.tpfinal.modelo.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import fiuba.algo3.tpfinal.modelo.Carta;
-import fiuba.algo3.tpfinal.modelo.Equipo;
-import fiuba.algo3.tpfinal.modelo.Figura;
-import fiuba.algo3.tpfinal.modelo.JuegoDeTruco;
-import fiuba.algo3.tpfinal.modelo.Jugador;
-import fiuba.algo3.tpfinal.modelo.NoFigura;
-import fiuba.algo3.tpfinal.modelo.Palo;
+import static org.junit.Assert.assertEquals;
 
 public class SimulacionTest {
 
@@ -35,10 +29,10 @@ public class SimulacionTest {
 
 	@Test
 	public void testSimulacionDePartida1() {
-		// comienza la partida sin flor
+		// Comienza la partida sin flor
 		juego.comenzarPartida(false);
-		// le cambio las cartas a los jugadores para poder controlar los
-		// resultados
+		// Le cambio las cartas a los jugadores para poder controlar los
+		// Resultados
 		Jugador j1 = juego.obtenerJugadorActual();
 		juego.moverAlSiguiente();
 		Jugador j2 = juego.obtenerJugadorActual();
@@ -51,22 +45,59 @@ public class SimulacionTest {
 		j2.agarrarCarta(unoDeBasto);
 		j2.agarrarCarta(cincoDeEspada);
 		j2.agarrarCarta(sotaDeBasto);
-		// se canta envido
+		// Se canta envido
 		juego.envido();
 		juego.quieroEnvido();
-		Assert.assertEquals(2, juego.puntosDeEquipo(Equipo.EQUIPO1));
-		// se juega primera
+		assertEquals(2, juego.puntosDeEquipo(Equipo.EQUIPO1));
+		// Se juega primera
 		juego.jugar(sotaDeEspada);
 		juego.jugar(sotaDeBasto);
-		// se canta truco
+		// Se canta truco
 		juego.truco();
 		juego.reTruco();
 		juego.valeCuatro();
 		juego.quieroTruco();
-		// parda la mejor
+		// Parda la mejor
 		juego.jugar(unoDeEspada);
 		juego.jugar(unoDeBasto);
-		Assert.assertEquals(6, juego.puntosDeEquipo(Equipo.EQUIPO1));
-		Assert.assertEquals(0, juego.puntosDeEquipo(Equipo.EQUIPO2));
+		assertEquals(6, juego.puntosDeEquipo(Equipo.EQUIPO1));
+		assertEquals(0, juego.puntosDeEquipo(Equipo.EQUIPO2));
+	}
+
+	@Test
+	public void testSimulacionDePartida2() {
+		// Comienza la partida sin flor
+		juego.comenzarPartida(true);
+		// Le cambio las cartas a los jugadores para poder controlar los
+		// Resultados
+		Jugador j1 = juego.obtenerJugadorActual();
+		juego.moverAlSiguiente();
+		Jugador j2 = juego.obtenerJugadorActual();
+		juego.moverAlSiguiente();
+		j1.entregarCartas();
+        j1.agarrarCarta(unoDeBasto);
+        j1.agarrarCarta(cincoDeEspada);
+        j1.agarrarCarta(sotaDeBasto);
+		j2.entregarCartas();
+        j2.agarrarCarta(unoDeEspada);
+        j2.agarrarCarta(sieteDeEspada);
+        j2.agarrarCarta(sotaDeEspada);
+		// Se canta envido, pero flor esta primera
+		juego.envido();
+		juego.flor();
+        juego.quieroFlor();
+        assertEquals(3, juego.puntosDeEquipo(Equipo.EQUIPO2));
+        // Se juega primera
+        juego.jugar(unoDeBasto);
+        // Se canta truco
+        juego.truco();
+        juego.quieroTruco();
+        juego.jugar(unoDeEspada);
+        // Segunda
+        juego.jugar(sotaDeEspada);
+        juego.jugar(sotaDeBasto);
+        // Parda la segunda, gana el que gano la primera
+        assertEquals(0, juego.puntosDeEquipo(Equipo.EQUIPO1));
+        assertEquals(5, juego.puntosDeEquipo(Equipo.EQUIPO2));
 	}
 }
