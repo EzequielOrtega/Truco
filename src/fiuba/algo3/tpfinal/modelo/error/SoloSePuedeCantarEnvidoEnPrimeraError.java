@@ -6,6 +6,7 @@ public class SoloSePuedeCantarEnvidoEnPrimeraError extends RuntimeException {
 
 	public SoloSePuedeCantarEnvidoEnPrimeraError() {
 	}
+
 	public SoloSePuedeCantarEnvidoEnPrimeraError(String s) {
 		System.err.print(s);
 		System.err.println();

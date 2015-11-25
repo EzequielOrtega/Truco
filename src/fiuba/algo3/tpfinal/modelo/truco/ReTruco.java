@@ -9,7 +9,7 @@ public class ReTruco extends EstadoTruco {
 			throw new NoRespetaJerarquiaDeTrucoError();
 		}
 	}
-	
+
 	public int obtenerPuntosQueridos() {
 		return 3;
 	}

@@ -6,6 +6,7 @@ public class NoPuedeJugarSeCantoEnvidoError extends RuntimeException {
 
 	public NoPuedeJugarSeCantoEnvidoError() {
 	}
+
 	public NoPuedeJugarSeCantoEnvidoError(String s) {
 		System.err.print(s);
 		System.err.println();

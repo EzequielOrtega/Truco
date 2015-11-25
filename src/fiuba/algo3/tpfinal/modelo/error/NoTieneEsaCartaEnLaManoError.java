@@ -6,6 +6,7 @@ public class NoTieneEsaCartaEnLaManoError extends RuntimeException {
 
 	public NoTieneEsaCartaEnLaManoError() {
 	}
+
 	public NoTieneEsaCartaEnLaManoError(String s) {
 		System.err.print(s);
 		System.err.println();

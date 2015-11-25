@@ -1,11 +1,12 @@
 package fiuba.algo3.tpfinal.modelo.envido;
 
-import fiuba.algo3.tpfinal.modelo.error.*;
+import fiuba.algo3.tpfinal.modelo.error.SoloSePuedeCantarEnvidoUnaVezPorRondaError;
+
 public abstract class EstadoEnvido {
-	
+
 	protected EstadoEnvido estadoAnterior;
 	protected int puntosDeEstado;
-	
+
 	public EstadoEnvido(EstadoEnvido estadoAnterior) {
 		if (estadoAnterior instanceof EstadoFinalEnvido) {
 			throw new SoloSePuedeCantarEnvidoUnaVezPorRondaError();

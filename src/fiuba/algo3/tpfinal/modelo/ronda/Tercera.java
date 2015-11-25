@@ -12,15 +12,15 @@ public class Tercera extends EstadoRonda {
 
 	public Tercera(EstadoRonda estadoAnterior) {
 		super(estadoAnterior);
-		if(!(estadoAnterior instanceof Segunda)){
+		if (!(estadoAnterior instanceof Segunda)) {
 			throw new NoRespetaJerarquiaDeRondaError();
 		}
 		this.mano = Mano.TERCERA;
 	}
-	
+
 	public Tercera(EstadoRonda estadoAnterior, Resultado resultadoDeTercera) {
 		super(estadoAnterior);
-		if(!(estadoAnterior instanceof Segunda)){
+		if (!(estadoAnterior instanceof Segunda)) {
 			throw new NoRespetaJerarquiaDeRondaError();
 		}
 		this.resultadoDeTercera = resultadoDeTercera;
@@ -42,9 +42,9 @@ public class Tercera extends EstadoRonda {
 	@Override
 	protected Resultado obtenerGanadorParcial() {
 		Resultado resultado = null;
-		if(resultadoDeTercera != Resultado.EMPATE){
+		if (resultadoDeTercera != Resultado.EMPATE) {
 			resultado = resultadoDeTercera;
-		}else{
+		} else {
 			resultado = this.obtenerResultadoDePrimera();
 		}
 		return resultado;
@@ -53,25 +53,26 @@ public class Tercera extends EstadoRonda {
 	@Override
 	public Jugador obtenerGanadorDeLaRonda(LinkedList<Jugador> jugadores) {
 		Jugador ganador = null;
-		switch(this.obtenerGanadorParcial()){
-			case GANADOR1:{
-				ganador = jugadores.get(0);
-				break;
-			}
-			case GANADOR2:{
-				ganador = jugadores.get(1);
-				break;
-			}
-			case EMPATE: {
-				ganador = jugadores.get(0);
-				break;}
+		switch (this.obtenerGanadorParcial()) {
+		case GANADOR1: {
+			ganador = jugadores.get(0);
+			break;
+		}
+		case GANADOR2: {
+			ganador = jugadores.get(1);
+			break;
+		}
+		case EMPATE: {
+			ganador = jugadores.get(0);
+			break;
+		}
 		}
 		return ganador;
 	}
 
 	@Override
 	protected Resultado obtenerResultadoDePrimera() {
-		
+
 		return estadoAnterior.obtenerResultadoDePrimera();
 	}
 

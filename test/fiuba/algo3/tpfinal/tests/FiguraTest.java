@@ -9,16 +9,16 @@ import fiuba.algo3.tpfinal.modelo.error.ValorDeCartaInvalidoError;
 
 public class FiguraTest {
 
-	@Test	(expected = ValorDeCartaInvalidoError.class)
+	@Test(expected = ValorDeCartaInvalidoError.class)
 	public void testValorMayorADoce() {
 		@SuppressWarnings("unused")
 		Carta carta = new Figura(13, Palo.ESPADA);
 	}
-	
-	@Test (expected = ValorDeCartaInvalidoError.class)
-	public void testValorMenorADiez(){
+
+	@Test(expected = ValorDeCartaInvalidoError.class)
+	public void testValorMenorADiez() {
 		@SuppressWarnings("unused")
 		Carta carta = new Figura(9, Palo.ESPADA);
 	}
-	
+
 }
