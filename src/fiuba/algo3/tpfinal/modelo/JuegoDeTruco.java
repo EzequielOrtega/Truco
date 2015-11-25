@@ -176,15 +176,10 @@ public class JuegoDeTruco {
 		this.florCantada = true;
 		this.estadoActualFlor = new Flor(this.estadoActualFlor);
 		if (this.envidoCantado) {
-			//this.envidoCantado = false;
-			//this.jugadorQueCantoEnvido = null;
 			this.estadoActualEnvido = new EstadoFinalEnvido(estadoActualEnvido);
 		}
 		this.jugadorQueCantoFlor = jugadorActual;
 		this.avanzarJugadorActual();
-//		if (!(this.jugadorActual == jugadorQueCanto)) {
-//			this.avanzarJugadorActual();
-//		}
 	}
 
 	public void quieroFlor() {
@@ -250,9 +245,6 @@ public class JuegoDeTruco {
 		if (this.ronda.estaEnPrimera()) {
 			throw new SoloSePuedeCantarEnvidoEnPrimeraError();
 		}
-		if (this.florCantada) {
-			throw new NoPuedeCantarEnvidoSeCantoFlorError();
-		}
 		this.envidoCantado = true;
 		this.estadoActualEnvido = new Envido(estadoActualEnvido, estadoActualFlor);
 		if (this.jugadorQueCantoEnvido == null) {
@@ -303,9 +295,6 @@ public class JuegoDeTruco {
 	}
 
 	public void faltaEnvido() {
-		if (this.florCantada) {
-			throw new NoPuedeCantarEnvidoSeCantoFlorError();
-		}
 		this.envidoCantado = true;
 		estadoActualEnvido = new FaltaEnvido(estadoActualEnvido, estadoActualFlor);
 		if (this.jugadorQueCantoEnvido == null) {
@@ -326,12 +315,6 @@ public class JuegoDeTruco {
 	// TRUCO
 
 	public void truco() {
-		if (this.envidoCantado) {
-			throw new NoPuedeCantarTrucoSeCantoEnvidoError();
-		}
-		if (this.florCantada) {
-			throw new NoPuedeCantarTrucoSeCantoFlorError();
-		}
 		this.trucoCantado = true;
 		this.jugadorQueCantoTruco = this.jugadorActual;
 		this.estadoActualTruco = new Truco(estadoActualTruco, estadoActualEnvido, estadoActualFlor);
