@@ -13,6 +13,7 @@ import fiuba.algo3.tpfinal.modelo.JuegoDeTruco;
 import fiuba.algo3.tpfinal.modelo.Jugador;
 import fiuba.algo3.tpfinal.modelo.NoFigura;
 import fiuba.algo3.tpfinal.modelo.Palo;
+import fiuba.algo3.tpfinal.modelo.error.NoPuedeCantarEnvidoSeCantoFlorError;
 import fiuba.algo3.tpfinal.modelo.error.NoPuedeCantarTrucoSeCantoEnvidoError;
 import fiuba.algo3.tpfinal.modelo.error.NoPuedeCantarTrucoSeCantoFlorError;
 import fiuba.algo3.tpfinal.modelo.error.NoPuedeJugarSeCantoEnvidoError;
@@ -169,16 +170,14 @@ public class JuegoDeTrucoTest {
 		unJuego.jugar(jugador2.mostrarCartas().get(0));
 	}
 
-	@Ignore
 	@Test
 	public void testPardaLaPrimeraGanaLaSegunda() {
-		unJuego.avanzarJugadorActual();
-		unJuego.jugar(sotaDeEspada);
 		unJuego.jugar(sotaDeBasto);
-		unJuego.jugar(unoDeEspada);
+		unJuego.jugar(sotaDeEspada);
 		unJuego.jugar(unoDeBasto);
+		unJuego.jugar(unoDeEspada);
 
-		assertEquals(1, unJuego.puntosDeEquipo(Equipo.EQUIPO1));
+		assertEquals(1, unJuego.puntosDeEquipo(Equipo.EQUIPO2));
 	}
 
 	@Test(expected = NoPuedeJugarSeCantoFlorError.class)
@@ -267,5 +266,26 @@ public class JuegoDeTrucoTest {
 
 		assertEquals(25, unJuego.puntosDeEquipo(Equipo.EQUIPO2));
 		assertEquals(5, unJuego.puntosDeEquipo(Equipo.EQUIPO1));
+	}
+	
+	@Test (expected = NoPuedeCantarEnvidoSeCantoFlorError.class)
+	public void testFlorEnvidoNoVale() {
+		unJuego.jugar(sotaDeBasto);
+		unJuego.flor();
+		unJuego.envido();
+	}
+	
+	@Test (expected = NoPuedeCantarEnvidoSeCantoFlorError.class)
+	public void testFlorRealEnvidoNoVale() {
+		unJuego.jugar(sotaDeBasto);
+		unJuego.flor();
+		unJuego.realEnvido();
+	}
+	
+	@Test (expected = NoPuedeCantarEnvidoSeCantoFlorError.class)
+	public void testFlorFaltaEnvidoNoVale() {
+		unJuego.jugar(sotaDeBasto);
+		unJuego.flor();
+		unJuego.faltaEnvido();
 	}
 }

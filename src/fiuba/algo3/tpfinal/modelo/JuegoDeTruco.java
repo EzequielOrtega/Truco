@@ -9,6 +9,7 @@ import fiuba.algo3.tpfinal.modelo.envido.EstadoInicialEnvido;
 import fiuba.algo3.tpfinal.modelo.envido.FaltaEnvido;
 import fiuba.algo3.tpfinal.modelo.envido.RealEnvido;
 import fiuba.algo3.tpfinal.modelo.error.JugadorNoTieneFlorError;
+import fiuba.algo3.tpfinal.modelo.error.NoPuedeCantarEnvidoSeCantoFlorError;
 import fiuba.algo3.tpfinal.modelo.error.NoPuedeCantarTrucoSeCantoEnvidoError;
 import fiuba.algo3.tpfinal.modelo.error.NoPuedeCantarTrucoSeCantoFlorError;
 import fiuba.algo3.tpfinal.modelo.error.NoPuedeJugarSeCantoEnvidoError;
@@ -260,7 +261,9 @@ public class JuegoDeTruco {
 		if (jugadorActual.mostrarCartas().size() != 3) {
 			throw new SoloSePuedeCantarEnvidoEnPrimeraError();
 		}
-
+		if (this.florCantada) {
+			throw new NoPuedeCantarEnvidoSeCantoFlorError();
+		}
 		this.envidoCantado = true;
 		this.estadoActualEnvido = new Envido(this.estadoActualEnvido);
 		if (this.jugadorQueCanto == null) {
@@ -270,6 +273,9 @@ public class JuegoDeTruco {
 	}
 
 	public void realEnvido() {
+		if (this.florCantada) {
+			throw new NoPuedeCantarEnvidoSeCantoFlorError();
+		}
 		this.envidoCantado = true;
 		estadoActualEnvido = new RealEnvido(estadoActualEnvido);
 		if (this.jugadorQueCanto == null) {
@@ -304,6 +310,9 @@ public class JuegoDeTruco {
 	}
 
 	public void faltaEnvido() {
+		if (this.florCantada) {
+			throw new NoPuedeCantarEnvidoSeCantoFlorError();
+		}
 		this.envidoCantado = true;
 		estadoActualEnvido = new FaltaEnvido(estadoActualEnvido);
 		if (this.jugadorQueCanto == null) {
