@@ -352,11 +352,19 @@ public class JuegoDeTruco {
 
 	public void reTruco() {
 		this.estadoActualTruco = new ReTruco(estadoActualTruco);
+		if (!this.trucoCantado) {
+			this.trucoCantado = true;
+			this.jugadorQueCantoTruco = this.jugadorActual;
+		}
 		this.avanzarJugadorActual();
 	}
 
 	public void valeCuatro() {
 		this.estadoActualTruco = new ValeCuatro(estadoActualTruco);
+		if (!this.trucoCantado) {
+			this.trucoCantado = true;
+			this.jugadorQueCantoTruco = this.jugadorActual;
+		}
 		this.avanzarJugadorActual();
 	}
 
