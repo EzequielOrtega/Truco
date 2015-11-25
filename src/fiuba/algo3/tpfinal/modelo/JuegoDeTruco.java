@@ -124,9 +124,7 @@ public class JuegoDeTruco {
 		}
 		if (this.ronda.concluyoLaRonda()) {
 			Jugador jugadorGanador = this.ronda.ganadorDeLaRonda(jugadores.obtenerElementos());
-			jugadorGanador.sumarPuntos(this.estadoActualTruco.obtenerPuntosQueridos());
-			jugadores.moverAlSiguiente();
-			jugadorActual = jugadores.obtenerElemento(0);
+			jugadorGanador.sumarPuntos(this.estadoActualTruco.obtenerPuntosQueridos());			
 			this.setearValoresParaProximaRonda();
 		}
 	}
@@ -147,6 +145,8 @@ public class JuegoDeTruco {
 	}
 	
 	private void setearValoresParaProximaRonda() {
+		jugadores.moverAlSiguiente();
+		jugadorActual = jugadores.obtenerElemento(0);
 		this.envidoCantado = false;
 		this.estadoActualEnvido = new EstadoInicialEnvido();
 		this.florCantada = false;
@@ -331,6 +331,16 @@ public class JuegoDeTruco {
 		jugadorQueCantoTruco.sumarPuntos(estadoActualTruco.obtenerPuntosNoQueridos());
 		this.estadoActualTruco = new EstadoInicialTruco();
 		this.trucoCantado = false;
+		this.setearValoresParaProximaRonda();
+	}
+	
+	public void irseAlMazo() {
+		int cantidadDeCartas = this.jugadorActual.mostrarCartas().size();
+		this.avanzarJugadorActual();
+		this.jugadorActual.sumarPuntos(this.estadoActualTruco.obtenerPuntosQueridos());
+		if (cantidadDeCartas == 3) {
+			this.jugadorActual.sumarPuntos(1);
+		}
 		this.setearValoresParaProximaRonda();
 	}
 }
