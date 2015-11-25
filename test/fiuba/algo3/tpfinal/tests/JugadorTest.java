@@ -38,13 +38,9 @@ public class JugadorTest {
         nuevoJugador.agarrarCarta(carta1);
         nuevoJugador.agarrarCarta(carta2);
         nuevoJugador.agarrarCarta(carta3);
-
-        assertEquals(Palo.ESPADA, nuevoJugador.mostrarCartas().get(0).getPalo());
-        assertEquals(Palo.ESPADA, nuevoJugador.mostrarCartas().get(1).getPalo());
-        assertEquals(Palo.BASTO, nuevoJugador.mostrarCartas().get(2).getPalo());
-        assertEquals(7, nuevoJugador.mostrarCartas().get(0).getValor());
-        assertEquals(3, nuevoJugador.mostrarCartas().get(1).getValor());
-        assertEquals(4, nuevoJugador.mostrarCartas().get(2).getValor());
+        assertEquals(carta1, nuevoJugador.mostrarCartas().get(0));
+        assertEquals(carta2, nuevoJugador.mostrarCartas().get(1));
+        assertEquals(carta3, nuevoJugador.mostrarCartas().get(2));
     }
 
     @Test (expected = CantidadDeCartasInvalidaError.class)
@@ -90,6 +86,13 @@ public class JugadorTest {
         assertEquals(0, nuevoJugador.mostrarCartas().size());
     }
 
+    @Test
+    public void testPoseeCarta() {
+        nuevoJugador.agarrarCarta(carta1);
+        assertTrue(nuevoJugador.poseeCarta(carta1));
+        assertFalse(nuevoJugador.poseeCarta(carta2));
+    }
+
     // TESTS PUNTAJE
 
     @Test
@@ -116,9 +119,21 @@ public class JugadorTest {
 
     @Test
     public void testCompararEquipoConOtroJugador() {
-        Jugador otroJugador = new Jugador("Pablo", Equipo.EQUIPO1);
+        Jugador otroJugador = new Jugador("Mica", Equipo.EQUIPO1);
         assertTrue(nuevoJugador.estanEnElMismoEquipo(otroJugador));
         otroJugador = new Jugador("Mica", Equipo.EQUIPO2);
         assertFalse(nuevoJugador.estanEnElMismoEquipo(otroJugador));
+    }
+
+    // TESTS ENVIDO Y FLOR
+
+    @Test (expected = CantidadDeCartasInvalidaError.class)
+    public void testNoSePuedeObtenerEnvidoSinCartas() {
+        nuevoJugador.getValorEnvido();
+    }
+
+    @Test (expected = CantidadDeCartasInvalidaError.class)
+    public void testNoSePuedeObtenerFlorSinCartas() {
+        nuevoJugador.getValorFlor();
     }
 }

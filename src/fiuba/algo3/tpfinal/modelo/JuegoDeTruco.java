@@ -136,7 +136,7 @@ public class JuegoDeTruco {
 	private Jugador jugadorQuePoseeLaCarta(Carta carta) {
 		Jugador jugadorBuscado = null;
 		for (Jugador jugadorActual : jugadores.obtenerElementos()) {
-			if (jugadorActual.posee(carta)) {
+			if (jugadorActual.poseeCarta(carta)) {
 				jugadorBuscado = jugadorActual;
 				break;
 			}

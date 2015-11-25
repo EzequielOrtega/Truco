@@ -57,7 +57,7 @@ public class Jugador {
         return carta;
     }
 
-    public boolean posee(Carta carta) {
+    public boolean poseeCarta(Carta carta) {
         Vector<Carta> cartasTodas = new Vector<Carta>();
         cartasTodas.addAll(cartas);
         cartasTodas.addAll(cartasJugadas);
@@ -105,6 +105,8 @@ public class Jugador {
         Vector<Carta> cartasTodas = new Vector<Carta>();
         cartasTodas.addAll(cartas);
         cartasTodas.addAll(cartasJugadas);
+        if(cartasTodas.size()!= 3)
+            throw new CantidadDeCartasInvalidaError();
         return calculadorDeTantos.obtenerTantosDeFlor(cartasTodas);
     }
 
