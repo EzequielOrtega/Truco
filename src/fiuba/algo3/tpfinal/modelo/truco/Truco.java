@@ -1,5 +1,8 @@
 package fiuba.algo3.tpfinal.modelo.truco;
 
+import fiuba.algo3.tpfinal.modelo.envido.*;
+import fiuba.algo3.tpfinal.modelo.flor.*;
+
 import java.util.LinkedList;
 
 public class Truco extends EstadoTruco {
@@ -9,10 +12,14 @@ public class Truco extends EstadoTruco {
     static {
         estadosAceptados = new LinkedList<>();
         estadosAceptados.add(EstadoInicialTruco.class);
+        estadosAceptados.add(EstadoInicialEnvido.class);
+        estadosAceptados.add(EstadoFinalEnvido.class);
+        estadosAceptados.add(EstadoInicialFlor.class);
+        estadosAceptados.add(EstadoFinalFlor.class);
     }
 
-    public Truco(EstadoTruco estadoAnterior) {
-		super(estadoAnterior, estadosAceptados);
+    public Truco(EstadoTruco estadoAnterior, EstadoEnvido envidoAnterior, EstadoFlor florAnterior) {
+		super(estadoAnterior, envidoAnterior, florAnterior, estadosAceptados);
 	}
 
 	public int obtenerPuntosQueridos() {
