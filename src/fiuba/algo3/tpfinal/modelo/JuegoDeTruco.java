@@ -170,7 +170,7 @@ public class JuegoDeTruco {
         if (this.ronda.estaEnPrimera()) {
             throw new SoloSePuedeCantarFlorEnPrimeraError();
         }
-		if (this.jugadorActual.getValorFlor() == 0) {
+		if (this.jugadorActual.getValorFlor() == -1) {
 			throw new JugadorNoTieneFlorError();
 		}
 		this.florCantada = true;
@@ -184,13 +184,7 @@ public class JuegoDeTruco {
 
 	public void quieroFlor() {
 		Jugador ganadorDeFlor = this.juez.ganadorFlor(jugadores.obtenerElementos());
-        // TODO: polimorfismo para sumarPuntos en contrafloralresto
-		if (this.estadoActualFlor instanceof ContraFlorAlResto) {
-			ganadorDeFlor.sumarPuntos(this.puntosRestantes(ganadorDeFlor));
-		} else {
-			ganadorDeFlor.sumarPuntos(this.estadoActualFlor.obtenerPuntosQueridos());
-		}
-        // En caso de que se haya cantado envido y luego el otro canto flor
+		ganadorDeFlor.sumarPuntos(this.estadoActualFlor.obtenerPuntosQueridos());
         if (envidoCantado) {
             this.jugadorActual = jugadorQueCantoEnvido;
             envidoCantado = false;
@@ -224,7 +218,7 @@ public class JuegoDeTruco {
 	}
 
 	public void contraFlor() {
-		if (this.jugadorActual.getValorFlor() == 0) {
+		if (this.jugadorActual.getValorFlor() == -1) {
 			throw new JugadorNoTieneFlorError();
 		}
 		this.estadoActualFlor = new ContraFlor(this.estadoActualFlor);
@@ -233,10 +227,11 @@ public class JuegoDeTruco {
 	}
 
 	public void contraFlorAlResto() {
-		if (this.jugadorActual.getValorFlor() == 0) {
+		if (this.jugadorActual.getValorFlor() == -1) {
 			throw new JugadorNoTieneFlorError();
 		}
-		this.estadoActualFlor = new ContraFlorAlResto(this.estadoActualFlor);
+		Jugador ganadorDeFlor = this.juez.ganadorFlor(jugadores.obtenerElementos());
+		this.estadoActualFlor = new ContraFlorAlResto(this.estadoActualFlor, this.puntosRestantes(ganadorDeFlor));
 		this.avanzarJugadorActual();
 	}
 

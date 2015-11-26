@@ -64,14 +64,14 @@ public class EstadoFlorTest {
 
 	@Test(expected = NoRespetaJerarquiaDeFlorError.class)
 	public void testContraFlorAlRestoDirectoLanzaError() {
-		estado = new ContraFlorAlResto(estado);
+		estado = new ContraFlorAlResto(estado, 30);
 	}
 
 	@Test
 	public void testFlorContraFlorContraFlorAlRestoNoQueridaDaSeisPuntos() {
 		estado = new Flor(estado);
 		estado = new ContraFlor(estado);
-		estado = new ContraFlorAlResto(estado);
+		estado = new ContraFlorAlResto(estado, 30);
 		assertEquals(6, estado.obtenerPuntosNoQueridos());
 	}
 
@@ -84,7 +84,7 @@ public class EstadoFlorTest {
 	@Test
 	public void testFlorContraFlorAlResto() {
 		estado = new Flor(estado);
-		estado = new ContraFlorAlResto(estado);
+		estado = new ContraFlorAlResto(estado, 30);
 
 		assertEquals(3, estado.obtenerPuntosNoQueridos());
 	}

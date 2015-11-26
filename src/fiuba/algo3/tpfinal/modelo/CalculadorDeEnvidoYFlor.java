@@ -25,7 +25,7 @@ public class CalculadorDeEnvidoYFlor {
 			return tantosDeFlor;
 		}else{
 			//throw new JugadorNoTieneFlorError();
-			return 0;
+			return -1;
 		}
 	}
 
