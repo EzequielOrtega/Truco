@@ -4,25 +4,24 @@ import java.util.LinkedList;
 
 import fiuba.algo3.tpfinal.modelo.Jugador;
 import fiuba.algo3.tpfinal.modelo.Resultado;
-import fiuba.algo3.tpfinal.modelo.error.NoRespetaJerarquiaDeRondaError;
 
 public class Tercera extends EstadoRonda {
 
 	private Resultado resultadoDeTercera;
+	private static LinkedList<Object> estadosAceptados;
+
+	static {
+		estadosAceptados = new LinkedList<>();
+		estadosAceptados.add(Segunda.class);
+	}
 
 	public Tercera(EstadoRonda estadoAnterior) {
-		super(estadoAnterior);
-		if (!(estadoAnterior instanceof Segunda)) {
-			throw new NoRespetaJerarquiaDeRondaError();
-		}
+		super(estadoAnterior, estadosAceptados);
 		this.mano = Mano.TERCERA;
 	}
 
 	public Tercera(EstadoRonda estadoAnterior, Resultado resultadoDeTercera) {
-		super(estadoAnterior);
-		if (!(estadoAnterior instanceof Segunda)) {
-			throw new NoRespetaJerarquiaDeRondaError();
-		}
+		super(estadoAnterior, estadosAceptados);
 		this.resultadoDeTercera = resultadoDeTercera;
 		this.mano = Mano.TERCERA;
 	}

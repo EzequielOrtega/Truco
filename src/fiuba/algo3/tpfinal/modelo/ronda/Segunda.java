@@ -5,25 +5,24 @@ import java.util.LinkedList;
 import fiuba.algo3.tpfinal.modelo.Jugador;
 import fiuba.algo3.tpfinal.modelo.Resultado;
 import fiuba.algo3.tpfinal.modelo.error.NoHayGanadorDeRondaInconclusaError;
-import fiuba.algo3.tpfinal.modelo.error.NoRespetaJerarquiaDeRondaError;
 
 public class Segunda extends EstadoRonda {
 
 	private Resultado resultadoDeSegunda;
+	private static LinkedList<Object> estadosAceptados;
+
+	static {
+		estadosAceptados = new LinkedList<>();
+		estadosAceptados.add(Primera.class);
+	}
 
 	public Segunda(EstadoRonda estadoAnterior) {
-		super(estadoAnterior);
-		if (!(estadoAnterior instanceof Primera)) {
-			throw new NoRespetaJerarquiaDeRondaError();
-		}
+		super(estadoAnterior, estadosAceptados);
 		this.mano = Mano.SEGUNDA;
 	}
 
 	public Segunda(EstadoRonda estadoAnterior, Resultado resultadoDeSegunda) {
-		super(estadoAnterior);
-		if (!(estadoAnterior instanceof Primera)) {
-			throw new NoRespetaJerarquiaDeRondaError();
-		}
+		super(estadoAnterior, estadosAceptados);
 		this.resultadoDeSegunda = resultadoDeSegunda;
 		this.mano = Mano.SEGUNDA;
 	}

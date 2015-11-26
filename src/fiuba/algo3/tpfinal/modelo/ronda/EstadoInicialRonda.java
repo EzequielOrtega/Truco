@@ -9,7 +9,7 @@ import fiuba.algo3.tpfinal.modelo.error.NoHayGanadorDeRondaInconclusaError;
 public class EstadoInicialRonda extends EstadoRonda {
 
 	public EstadoInicialRonda() {
-		super(null);
+		super();
 		this.mano = Mano.INICIAL;
 	}
 
