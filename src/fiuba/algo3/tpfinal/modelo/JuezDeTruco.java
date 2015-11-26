@@ -5,7 +5,8 @@ import java.util.LinkedList;
 public class JuezDeTruco {
 	
 	private CalculadorDeTruco calculador = new CalculadorDeTruco();
-   
+	private Resultado resultadoAnterior = null; 
+	
     public Jugador ganadorEnvido(LinkedList<Jugador> jugadores) {
     	Jugador ganadorEnvido = jugadores.getFirst();
         int maximoValor = jugadores.getFirst().getValorEnvido();
@@ -17,7 +18,7 @@ public class JuezDeTruco {
                 ganadorEnvido = jugadores.get(0);
             }
         }
-
+        
         return ganadorEnvido;
      }
 

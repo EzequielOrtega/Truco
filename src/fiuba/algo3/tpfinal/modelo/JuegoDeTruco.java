@@ -26,7 +26,8 @@ public class JuegoDeTruco {
 	private boolean envidoCantado = false;
 	private EstadoTruco estadoActualTruco = new EstadoInicialTruco();
 	private boolean trucoCantado = false;
-
+	private Object resultadoAnterior = null;
+	
 	public JuegoDeTruco(String nombreJ1, String nombreJ2) {
 		Jugador jugador = new Jugador(nombreJ1, Equipo.EQUIPO1);
 		jugadores.agregar(jugador);
@@ -110,6 +111,14 @@ public class JuegoDeTruco {
 		this.avanzarJugadorActual();
 		if ((this.cartasEnLaMesa.size() == this.jugadores.tamanio()) && (!ronda.concluyoLaRonda())) {
 			Resultado resultadoRonda = juez.ganadorDeLaMano(this.cartasEnLaMesa);
+			if (this.resultadoAnterior == null) {
+				this.resultadoAnterior = resultadoRonda;
+			} else if (resultadoAnterior == Resultado.GANADOR2) {
+				this.resultadoAnterior = resultadoRonda;
+				resultadoRonda = this.invertirResultado(resultadoRonda);
+			} else {
+				this.resultadoAnterior = resultadoRonda;
+			}
 			ronda.insercion(resultadoRonda);
 			switch (resultadoRonda) {
 				case EMPATE: {
@@ -128,6 +137,14 @@ public class JuegoDeTruco {
 			Jugador jugadorGanador = this.ronda.ganadorDeLaRonda(jugadores.obtenerElementos());
 			jugadorGanador.sumarPuntos(this.estadoActualTruco.obtenerPuntosQueridos());
 			this.setearValoresParaProximaRonda();
+		}
+	}
+
+	private Resultado invertirResultado(Resultado resultadoRonda) {
+		if (resultadoRonda == Resultado.GANADOR2) {
+			return Resultado.GANADOR1;
+		} else {
+			return Resultado.GANADOR2;
 		}
 	}
 
@@ -158,6 +175,7 @@ public class JuegoDeTruco {
 		this.jugadorQueCantoEnvido = null;
         this.jugadorQueCantoFlor = null;
 		this.jugadorQueCantoTruco = null;
+		this.resultadoAnterior = null;
 		this.repartir();
 	}
 
@@ -337,7 +355,12 @@ public class JuegoDeTruco {
 	}
 
 	public void noQuieroTruco() {
-		jugadorQueCantoTruco.sumarPuntos(estadoActualTruco.obtenerPuntosNoQueridos());
+		if (this.jugadorQueCantoTruco.coincideElEquipoCon(this.jugadorActual)) {
+			this.avanzarJugadorActual();
+			this.jugadorActual.sumarPuntos(estadoActualTruco.obtenerPuntosNoQueridos());
+		} else {
+			this.jugadorQueCantoTruco.sumarPuntos(estadoActualTruco.obtenerPuntosNoQueridos());
+		}
 		this.estadoActualTruco = new EstadoInicialTruco();
 		this.trucoCantado = false;
 		this.setearValoresParaProximaRonda();

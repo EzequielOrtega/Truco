@@ -115,4 +115,8 @@ public class Jugador {
 	public boolean tieneFlor() {
 		return this.calculadorDeTantos.tieneFlor(cartas);
 	}
+	
+	public Boolean coincideElEquipoCon(Jugador otroJugador) {
+		return otroJugador.coincideElEquipo(this.equipo);
+	}
 }
