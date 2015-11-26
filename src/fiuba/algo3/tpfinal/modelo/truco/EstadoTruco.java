@@ -13,9 +13,9 @@ public abstract class EstadoTruco {
 
 	protected LinkedList<Object> estadosAceptados = new LinkedList<>();
 
-	public EstadoTruco(EstadoTruco estadoAnterior) {
-
+	public EstadoTruco() {
 	}
+	
 	public EstadoTruco(EstadoTruco estadoAnterior, LinkedList<Object> estadosAceptados) {
 		if (!estadosAceptados.contains(estadoAnterior.getClass())) {
 			throw new NoRespetaJerarquiaDeTrucoError();
