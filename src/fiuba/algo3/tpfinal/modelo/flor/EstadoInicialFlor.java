@@ -3,7 +3,7 @@ package fiuba.algo3.tpfinal.modelo.flor;
 public class EstadoInicialFlor extends EstadoFlor {
 
 	public EstadoInicialFlor() {
-		super(null);
+		super();
 		this.puntosDeEstado = 0;
 	}
 

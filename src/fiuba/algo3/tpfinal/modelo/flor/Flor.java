@@ -1,17 +1,20 @@
 package fiuba.algo3.tpfinal.modelo.flor;
 
-import fiuba.algo3.tpfinal.modelo.error.NoRespetaJerarquiaDeFlorError;
+import java.util.LinkedList;
+
 import fiuba.algo3.tpfinal.modelo.error.NoSePuedeRechazarFlorError;
-import fiuba.algo3.tpfinal.modelo.error.SoloSePuedeCantarFlorUnaVezPorRondaError;
 
 public class Flor extends EstadoFlor {
+	
+	private static LinkedList<Object> estadosAceptados;
+	static {
+		estadosAceptados = new LinkedList<Object>();
+		estadosAceptados.add(EstadoInicialFlor.class);
+	}
+	
 	public Flor(EstadoFlor estadoAnterior) {
-		super(estadoAnterior);
+		super(estadoAnterior, estadosAceptados);
 		this.puntosDeEstado = 3;
-		if ((estadoAnterior instanceof EstadoFinalFlor) || (estadoAnterior instanceof Flor))
-			throw new SoloSePuedeCantarFlorUnaVezPorRondaError();
-		if (estadoAnterior instanceof ContraFlor)
-			throw new NoRespetaJerarquiaDeFlorError();
 	}
 
 	public int obtenerPuntosNoQueridos() {
