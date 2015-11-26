@@ -9,10 +9,15 @@ public abstract class EstadoFlor {
 
 	protected EstadoFlor estadoAnterior;
 	protected int puntosDeEstado;
+	private static LinkedList<Object> estadoFinal;
 	
+	static {
+		estadoFinal = new LinkedList<Object>();
+		estadoFinal.add(EstadoFinalFlor.class);
+	}
 
 	public EstadoFlor(EstadoFlor estadoAnterior, LinkedList<Object> estadosAceptados) {
-		if (estadoAnterior instanceof EstadoFinalFlor) {
+		if (estadoFinal.contains(estadoAnterior.getClass())) {
 			throw new SoloSePuedeCantarFlorUnaVezPorRondaError();
 		}
 		if (!estadosAceptados.contains(estadoAnterior.getClass())) {
