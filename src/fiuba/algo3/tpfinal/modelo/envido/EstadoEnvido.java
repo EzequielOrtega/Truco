@@ -9,11 +9,16 @@ import java.util.LinkedList;
 public abstract class EstadoEnvido {
 
 	protected EstadoEnvido estadoAnterior;
-	protected LinkedList<Object> estadosAceptados = new LinkedList<>();
 	protected int puntosDeEstado;
+	private static LinkedList<Object> estadoFinal;
+	
+	static {
+		estadoFinal = new LinkedList<Object>();
+		estadoFinal.add(EstadoFinalEnvido.class);
+	}
 
 	public EstadoEnvido(EstadoEnvido estadoAnterior, EstadoFlor estadoFlor, LinkedList<Object> estadosAceptados) {
-		if (estadoAnterior instanceof EstadoFinalEnvido) {
+		if (estadoFinal.contains(estadoAnterior.getClass())) {
 			throw new SoloSePuedeCantarEnvidoUnaVezPorRondaError();
 		}
 		if (!estadosAceptados.contains(estadoFlor.getClass())) {
