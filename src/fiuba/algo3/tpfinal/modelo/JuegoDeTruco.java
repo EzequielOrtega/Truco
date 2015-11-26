@@ -112,15 +112,15 @@ public class JuegoDeTruco {
 			Resultado resultadoRonda = juez.ganadorDeLaMano(this.cartasEnLaMesa);
 			ronda.insercion(resultadoRonda);
 			switch (resultadoRonda) {
-			case EMPATE: {
-				jugadorActual = jugadores.obtenerElemento(0);
-				break;
-			}
-			default: {
-				Carta cartaMasAlta = this.obtenerCartaMasAlta(cartasEnLaMesa);
-				jugadorActual = this.jugadorQuePoseeLaCarta(cartaMasAlta);
-				break;
-			}
+				case EMPATE: {
+					jugadorActual = jugadores.obtenerElemento(0);
+					break;
+				}
+				default: {
+					Carta cartaMasAlta = this.obtenerCartaMasAlta(cartasEnLaMesa);
+					jugadorActual = this.jugadorQuePoseeLaCarta(cartaMasAlta);
+					break;
+				}
 			}
 			this.cartasEnLaMesa = new LinkedList<Carta>();
 		}
@@ -355,5 +355,9 @@ public class JuegoDeTruco {
 			this.jugadorActual.sumarPuntos(1);
 		}
 		this.setearValoresParaProximaRonda();
+	}
+	
+	public Boolean concluyoLaRonda() {
+		return this.ronda.concluyoLaRonda();
 	}
 }
