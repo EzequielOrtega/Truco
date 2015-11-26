@@ -193,6 +193,7 @@ public class JuegoDeTruco {
 		this.estadoActualFlor = new EstadoFinalFlor(estadoActualFlor);
 		this.florCantada = false;
 		this.jugadorQueCantoFlor = null;
+		this.estadoActualEnvido = new EstadoFinalEnvido(this.estadoActualEnvido);
 	}
 
 	private int puntosRestantes(Jugador ganadorDeFlor) {
@@ -266,12 +267,7 @@ public class JuegoDeTruco {
 	public void quieroEnvido() {
 
 		Jugador ganador = juez.ganadorEnvido(jugadores.obtenerElementos());
-        // TODO: polimorfismo para sumarPuntos en faltaEnvido
-		if (estadoActualEnvido instanceof FaltaEnvido) {
-			ganador.sumarPuntos(this.puntosRestantesContrario(ganador));
-		} else {
-			ganador.sumarPuntos(this.estadoActualEnvido.obtenerPuntosQueridos());
-		}
+		ganador.sumarPuntos(this.estadoActualEnvido.obtenerPuntosQueridos());
 		this.jugadorActual = jugadorQueCantoEnvido;
 		this.estadoActualEnvido = new EstadoFinalEnvido(estadoActualEnvido);
 		this.envidoCantado = false;
@@ -291,7 +287,8 @@ public class JuegoDeTruco {
 
 	public void faltaEnvido() {
 		this.envidoCantado = true;
-		estadoActualEnvido = new FaltaEnvido(estadoActualEnvido, estadoActualFlor);
+		Jugador ganador = juez.ganadorEnvido(jugadores.obtenerElementos());
+		estadoActualEnvido = new FaltaEnvido(estadoActualEnvido, estadoActualFlor, this.puntosRestantesContrario(ganador), this.puntosRestantes(ganador));
 		if (this.jugadorQueCantoEnvido == null) {
 			this.jugadorQueCantoEnvido = jugadorActual;
 		}

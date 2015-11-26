@@ -85,7 +85,7 @@ public class EstadoEnvidoTest {
 
 	@Test
 	public void testFaltaEnvidoNoQuerido() {
-		estado = new FaltaEnvido(estado, estadoFlor);
+		estado = new FaltaEnvido(estado, estadoFlor, 30, 30);
 
 		assertEquals(1, estado.obtenerPuntosNoQueridos());
 	}
@@ -93,7 +93,7 @@ public class EstadoEnvidoTest {
 	@Test
 	public void testEnvidoFaltaEnvidoNoQuerido() {
 		estado = new Envido(estado, estadoFlor);
-		estado = new FaltaEnvido(estado, estadoFlor);
+		estado = new FaltaEnvido(estado, estadoFlor, 30, 30);
 
 		assertEquals(2, estado.obtenerPuntosNoQueridos());
 	}
@@ -101,7 +101,7 @@ public class EstadoEnvidoTest {
 	@Test
 	public void testRealEnvidoFaltaEnvidoNoQuerido() {
 		estado = new RealEnvido(estado, estadoFlor);
-		estado = new FaltaEnvido(estado, estadoFlor);
+		estado = new FaltaEnvido(estado, estadoFlor, 30, 30);
 
 		assertEquals(3, estado.obtenerPuntosNoQueridos());
 	}
@@ -110,7 +110,7 @@ public class EstadoEnvidoTest {
 	public void testEnvidoEnvidoFaltaEnvidoNoQuerido() {
 		estado = new Envido(estado, estadoFlor);
 		estado = new Envido(estado, estadoFlor);
-		estado = new FaltaEnvido(estado, estadoFlor);
+		estado = new FaltaEnvido(estado, estadoFlor, 30, 30);
 
 		assertEquals(4, estado.obtenerPuntosNoQueridos());
 	}
@@ -119,7 +119,7 @@ public class EstadoEnvidoTest {
 	public void testEnvidoRealEnvidoFaltaEnvidoNoQuerido() {
 		estado = new Envido(estado, estadoFlor);
 		estado = new RealEnvido(estado, estadoFlor);
-		estado = new FaltaEnvido(estado, estadoFlor);
+		estado = new FaltaEnvido(estado, estadoFlor, 30, 30);
 
 		assertEquals(5, estado.obtenerPuntosNoQueridos());
 	}
@@ -129,7 +129,7 @@ public class EstadoEnvidoTest {
 		estado = new Envido(estado, estadoFlor);
 		estado = new Envido(estado, estadoFlor);
 		estado = new RealEnvido(estado, estadoFlor);
-		estado = new FaltaEnvido(estado, estadoFlor);
+		estado = new FaltaEnvido(estado, estadoFlor, 30, 30);
 
 		assertEquals(7, estado.obtenerPuntosNoQueridos());
 	}

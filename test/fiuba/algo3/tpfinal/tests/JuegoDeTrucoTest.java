@@ -252,7 +252,7 @@ public class JuegoDeTrucoTest {
 		unJuego.faltaEnvido();
 		unJuego.quieroEnvido();
 
-		assertEquals(30, unJuego.puntosDeEquipo(Equipo.EQUIPO2));
+		assertEquals(15, unJuego.puntosDeEquipo(Equipo.EQUIPO2));
 		assertEquals(0, unJuego.puntosDeEquipo(Equipo.EQUIPO1));
 	}
 
@@ -262,7 +262,7 @@ public class JuegoDeTrucoTest {
 		unJuego.faltaEnvido();
 		unJuego.quieroEnvido();
 
-		assertEquals(25, unJuego.puntosDeEquipo(Equipo.EQUIPO2));
+		assertEquals(15, unJuego.puntosDeEquipo(Equipo.EQUIPO2));
 		assertEquals(5, unJuego.puntosDeEquipo(Equipo.EQUIPO1));
 	}
 	
