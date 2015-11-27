@@ -111,7 +111,6 @@ public class JuegoDeTruco {
 		if ((this.cartasEnLaMesa.size() == this.jugadores.tamanio()) && (!ronda.concluyoLaRonda())) {
 			Resultado resultadoRonda = juez.ganadorDeLaMano(this.cartasEnLaMesa, this.jugadores.obtenerElementos());
 			ronda.insercion(resultadoRonda);
-			System.out.println(resultadoRonda.toString());
 			switch (resultadoRonda) {
 				case EMPATE: {
 					jugadorActual = jugadores.obtenerElemento(0);

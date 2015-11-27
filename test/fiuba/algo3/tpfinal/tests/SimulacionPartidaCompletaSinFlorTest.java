@@ -112,7 +112,6 @@ public class SimulacionPartidaCompletaSinFlorTest {
 		eze.agarrarCarta(sieteCopa);
 		juego.envido();
 		juego.quieroEnvido();
-		Assert.assertEquals(4, juego.puntosDeEquipo(Equipo.EQUIPO1));
 		juego.jugar(anchoCopa);
 		juego.truco();
 		juego.quieroTruco();
@@ -124,6 +123,82 @@ public class SimulacionPartidaCompletaSinFlorTest {
 		Assert.assertTrue(juego.concluyoLaRonda());
 		Assert.assertEquals(6, juego.puntosDeEquipo(Equipo.EQUIPO1));
 		Assert.assertEquals(2, juego.puntosDeEquipo(Equipo.EQUIPO2));
+	}
+	
+	@Test
+	public void testRonda3() {
+		matu.sumarPuntos(6);
+		eze.sumarPuntos(2);
+		matu.entregarCartas();
+		eze.entregarCartas();
+		matu.agarrarCarta(dosEspada);
+		matu.agarrarCarta(cuatroOro);
+		matu.agarrarCarta(seisOro);
+		eze.agarrarCarta(tresBasto);
+		eze.agarrarCarta(reyEspada);
+		eze.agarrarCarta(seisBasto);
+		juego.envido();
+		juego.realEnvido();
+		juego.quieroEnvido();
+		juego.jugar(dosEspada);
+		juego.jugar(tresBasto);
+		juego.jugar(reyEspada);
+		juego.irseAlMazo();
+		Assert.assertEquals(11, juego.puntosDeEquipo(Equipo.EQUIPO1));
+		Assert.assertEquals(3, juego.puntosDeEquipo(Equipo.EQUIPO2));
+	}
+	
+	@Test
+	public void testRonda4() {
+		juego.moverAlSiguiente();
+		matu.sumarPuntos(11);
+		eze.sumarPuntos(3);
+		matu.entregarCartas();
+		eze.entregarCartas();
+		matu.agarrarCarta(caballoCopa);
+		matu.agarrarCarta(cuatroCopa);
+		matu.agarrarCarta(tresCopa);
+		eze.agarrarCarta(sotaBasto);
+		eze.agarrarCarta(caballoBasto);
+		eze.agarrarCarta(dosCopa);
+		juego.jugar(sotaBasto);
+		juego.envido();
+		juego.noQuieroEnvido();
+		juego.truco();
+		juego.quieroTruco();
+		juego.jugar(caballoCopa);
+		juego.jugar(cuatroCopa);
+		juego.jugar(caballoBasto);
+		juego.jugar(dosCopa);
+		juego.jugar(tresCopa);
+		Assert.assertEquals(14, juego.puntosDeEquipo(Equipo.EQUIPO1));
+		Assert.assertEquals(3, juego.puntosDeEquipo(Equipo.EQUIPO2));
+	}
+	
+	@Test
+	public void testRonda5(){
+		matu.sumarPuntos(14);
+		eze.sumarPuntos(3);
+		matu.entregarCartas();
+		eze.entregarCartas();
+		matu.agarrarCarta(sotaEspada);
+		matu.agarrarCarta(caballoCopa);
+		matu.agarrarCarta(reyOro);
+		eze.agarrarCarta(tresBasto);
+		eze.agarrarCarta(cuatroBasto);
+		eze.agarrarCarta(cuatroCopa);
+		juego.jugar(sotaEspada);
+		juego.envido();
+		juego.noQuieroEnvido();
+		juego.jugar(tresBasto);
+		juego.jugar(cuatroBasto);
+		juego.jugar(caballoCopa);
+		juego.jugar(reyOro);
+		juego.truco();
+		juego.quieroTruco();
+		juego.jugar(cuatroCopa);
+		Assert.assertEquals(16, juego.puntosDeEquipo(Equipo.EQUIPO1));
+		Assert.assertEquals(4, juego.puntosDeEquipo(Equipo.EQUIPO2));
 	}
 
 }
