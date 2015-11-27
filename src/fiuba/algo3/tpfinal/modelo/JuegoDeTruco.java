@@ -111,6 +111,7 @@ public class JuegoDeTruco {
 		this.avanzarJugadorActual();
 		if ((this.cartasEnLaMesa.size() == this.jugadores.tamanio()) && (!ronda.concluyoLaRonda())) {
 			Resultado resultadoRonda = juez.ganadorDeLaMano(this.cartasEnLaMesa);
+			System.out.println(resultadoRonda.toString());
 			if (this.resultadoAnterior == null) {
 				this.resultadoAnterior = resultadoRonda;
 			} else if (resultadoAnterior == Resultado.GANADOR2) {
@@ -119,6 +120,7 @@ public class JuegoDeTruco {
 			} else {
 				this.resultadoAnterior = resultadoRonda;
 			}
+			System.out.println(resultadoRonda.toString());
 			ronda.insercion(resultadoRonda);
 			switch (resultadoRonda) {
 				case EMPATE: {
@@ -128,6 +130,7 @@ public class JuegoDeTruco {
 				default: {
 					Carta cartaMasAlta = this.obtenerCartaMasAlta(cartasEnLaMesa);
 					jugadorActual = this.jugadorQuePoseeLaCarta(cartaMasAlta);
+					System.out.println(jugadorActual.getNombre());
 					break;
 				}
 			}

@@ -2,6 +2,7 @@ package fiuba.algo3.tpfinal.tests;
 
 import org.junit.Assert;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import fiuba.algo3.tpfinal.modelo.Carta;
@@ -15,6 +16,8 @@ import fiuba.algo3.tpfinal.modelo.Palo;
 public class SimulacionPartidaCompletaSinFlorTest {
 	
 	private JuegoDeTruco juego;
+	private Jugador matu;
+	private Jugador eze;
 	
 	private Carta anchoEspada = new NoFigura(1, Palo.ESPADA);
 	private Carta dosEspada = new NoFigura(2, Palo.ESPADA);
@@ -65,15 +68,14 @@ public class SimulacionPartidaCompletaSinFlorTest {
 		this.juego = new JuegoDeTruco("Matu", "Eze");
 		Boolean conFlor = false;
 		juego.comenzarPartida(conFlor);
+		matu = this.juego.obtenerJugadorActual();
+		juego.avanzarJugadorActual();
+		eze = this.juego.obtenerJugadorActual();
+		juego.avanzarJugadorActual();
 	}
 	
 	@Test
-	public void testPartidaSinFlor() {
-		Jugador matu = this.juego.obtenerJugadorActual();
-		juego.avanzarJugadorActual();
-		Jugador eze = this.juego.obtenerJugadorActual();
-		juego.avanzarJugadorActual();
-		//Ronda 1
+	public void testRonda1() {
 		matu.entregarCartas();
 		eze.entregarCartas();
 		matu.agarrarCarta(sotaOro);
@@ -93,7 +95,35 @@ public class SimulacionPartidaCompletaSinFlorTest {
 		juego.noQuieroTruco();
 		Assert.assertEquals(2, juego.puntosDeEquipo(Equipo.EQUIPO1));
 		Assert.assertEquals(2, juego.puntosDeEquipo(Equipo.EQUIPO2));
-		
+	}
+	
+	@Ignore
+	@Test
+	public void testRonda2(){
+		juego.moverAlSiguiente();
+		matu.sumarPuntos(2);
+		eze.sumarPuntos(2);
+		matu.entregarCartas();
+		eze.entregarCartas();
+		matu.agarrarCarta(dosBasto);
+		matu.agarrarCarta(sieteBasto);
+		matu.agarrarCarta(tresEspada);
+		eze.agarrarCarta(anchoCopa);
+		eze.agarrarCarta(tresOro);
+		eze.agarrarCarta(sieteCopa);
+		juego.envido();
+		juego.quieroEnvido();
+		juego.jugar(anchoCopa);
+		juego.truco();
+		juego.quieroTruco();
+		juego.jugar(dosBasto);
+		juego.jugar(sieteBasto);
+		juego.jugar(tresOro);
+		juego.jugar(sieteCopa);
+		juego.jugar(tresEspada);
+		Assert.assertTrue(juego.concluyoLaRonda());
+		Assert.assertEquals(6, juego.puntosDeEquipo(Equipo.EQUIPO1));
+		Assert.assertEquals(2, juego.puntosDeEquipo(Equipo.EQUIPO2));
 	}
 
 }
