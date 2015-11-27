@@ -2,6 +2,7 @@ package fiuba.algo3.tpfinal.modelo.ronda;
 
 import java.util.LinkedList;
 
+import fiuba.algo3.tpfinal.modelo.Equipo;
 import fiuba.algo3.tpfinal.modelo.Jugador;
 import fiuba.algo3.tpfinal.modelo.Resultado;
 import fiuba.algo3.tpfinal.modelo.error.NoHayGanadorDeRondaInconclusaError;
@@ -53,11 +54,19 @@ public class Segunda extends EstadoRonda {
 		Jugador ganador = null;
 		switch (this.obtenerGanadorParcial()) {
 		case GANADOR1: {
-			ganador = jugadores.get(0);
+			if (jugadores.get(0).coincideElEquipo(Equipo.EQUIPO1)){
+				ganador = jugadores.get(0);
+			} else {
+				ganador = jugadores.get(1);
+			}
 			break;
 		}
 		case GANADOR2: {
-			ganador = jugadores.get(1);
+			if (jugadores.get(0).coincideElEquipo(Equipo.EQUIPO2)){
+				ganador = jugadores.get(0);
+			} else {
+				ganador = jugadores.get(1);
+			}
 			break;
 		}
 		case EMPATE: {

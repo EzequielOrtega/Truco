@@ -97,7 +97,6 @@ public class SimulacionPartidaCompletaSinFlorTest {
 		Assert.assertEquals(2, juego.puntosDeEquipo(Equipo.EQUIPO2));
 	}
 	
-	@Ignore
 	@Test
 	public void testRonda2(){
 		juego.moverAlSiguiente();
