@@ -365,4 +365,12 @@ public class JuegoDeTruco {
 	public Boolean concluyoLaRonda() {
 		return this.ronda.concluyoLaRonda();
 	}
+	
+	public Boolean concluyoLaPartida() {
+		Boolean concluyoLaPartida = false;
+		if ((this.puntosDeEquipo(Equipo.EQUIPO1) >= 30) || (this.puntosDeEquipo(Equipo.EQUIPO2) >= 30)) {
+			concluyoLaPartida = true;
+		}
+		return concluyoLaPartida;
+	}
 }
