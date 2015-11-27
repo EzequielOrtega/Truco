@@ -113,6 +113,7 @@ public class SimulacionPartidaCompletaSinFlorTest {
 		eze.agarrarCarta(sieteCopa);
 		juego.envido();
 		juego.quieroEnvido();
+		Assert.assertEquals(4, juego.puntosDeEquipo(Equipo.EQUIPO1));
 		juego.jugar(anchoCopa);
 		juego.truco();
 		juego.quieroTruco();

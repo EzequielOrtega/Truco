@@ -26,7 +26,6 @@ public class JuegoDeTruco {
 	private boolean envidoCantado = false;
 	private EstadoTruco estadoActualTruco = new EstadoInicialTruco();
 	private boolean trucoCantado = false;
-	private Object resultadoAnterior = null;
 	
 	public JuegoDeTruco(String nombreJ1, String nombreJ2) {
 		Jugador jugador = new Jugador(nombreJ1, Equipo.EQUIPO1);
@@ -110,18 +109,9 @@ public class JuegoDeTruco {
 		this.cartasEnLaMesa.add(jugadorActual.jugarCarta(carta));
 		this.avanzarJugadorActual();
 		if ((this.cartasEnLaMesa.size() == this.jugadores.tamanio()) && (!ronda.concluyoLaRonda())) {
-			Resultado resultadoRonda = juez.ganadorDeLaMano(this.cartasEnLaMesa);
-			System.out.println(resultadoRonda.toString());
-			if (this.resultadoAnterior == null) {
-				this.resultadoAnterior = resultadoRonda;
-			} else if (resultadoAnterior == Resultado.GANADOR2) {
-				this.resultadoAnterior = resultadoRonda;
-				resultadoRonda = this.invertirResultado(resultadoRonda);
-			} else {
-				this.resultadoAnterior = resultadoRonda;
-			}
-			System.out.println(resultadoRonda.toString());
+			Resultado resultadoRonda = juez.ganadorDeLaMano(this.cartasEnLaMesa, this.jugadores.obtenerElementos());
 			ronda.insercion(resultadoRonda);
+			System.out.println(resultadoRonda.toString());
 			switch (resultadoRonda) {
 				case EMPATE: {
 					jugadorActual = jugadores.obtenerElemento(0);
@@ -130,7 +120,6 @@ public class JuegoDeTruco {
 				default: {
 					Carta cartaMasAlta = this.obtenerCartaMasAlta(cartasEnLaMesa);
 					jugadorActual = this.jugadorQuePoseeLaCarta(cartaMasAlta);
-					System.out.println(jugadorActual.getNombre());
 					break;
 				}
 			}
@@ -140,14 +129,6 @@ public class JuegoDeTruco {
 			Jugador jugadorGanador = this.ronda.ganadorDeLaRonda(jugadores.obtenerElementos());
 			jugadorGanador.sumarPuntos(this.estadoActualTruco.obtenerPuntosQueridos());
 			this.setearValoresParaProximaRonda();
-		}
-	}
-
-	private Resultado invertirResultado(Resultado resultadoRonda) {
-		if (resultadoRonda == Resultado.GANADOR2) {
-			return Resultado.GANADOR1;
-		} else {
-			return Resultado.GANADOR2;
 		}
 	}
 
@@ -178,7 +159,6 @@ public class JuegoDeTruco {
 		this.jugadorQueCantoEnvido = null;
         this.jugadorQueCantoFlor = null;
 		this.jugadorQueCantoTruco = null;
-		this.resultadoAnterior = null;
 		this.repartir();
 	}
 

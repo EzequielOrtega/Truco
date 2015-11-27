@@ -5,9 +5,7 @@ import java.util.LinkedList;
 public class JuezDeTruco {
 	
 	private CalculadorDeTruco calculador = new CalculadorDeTruco();
-	private Resultado resultadoAnterior = null; 
-	
-    public Jugador ganadorEnvido(LinkedList<Jugador> jugadores) {
+	public Jugador ganadorEnvido(LinkedList<Jugador> jugadores) {
     	Jugador ganadorEnvido = jugadores.getFirst();
         int maximoValor = jugadores.getFirst().getValorEnvido();
         for (Jugador jug: jugadores) {
@@ -74,5 +72,35 @@ public class JuezDeTruco {
 			}
 		}
 		return cartaMasAlta;
+	}
+	
+	public Resultado ganadorDeLaMano(LinkedList<Carta> cartas, LinkedList<Jugador> jugadores) {
+		Carta cartaMasAlta = cartas.get(0);
+		Boolean huboEmpate = false;
+		for (int x = 1; x < jugadores.size(); x++) {
+			if (calculador.obtenerValorCarta(cartaMasAlta) < calculador.obtenerValorCarta(cartas.get(x))) {
+				cartaMasAlta = cartas.get(x);
+				huboEmpate = false;
+			} else if (calculador.obtenerValorCarta(cartaMasAlta) == calculador.obtenerValorCarta(cartas.get(x))) {
+				huboEmpate = true;
+			}
+		}
+		if (!huboEmpate) {
+			Jugador ganadorDeLaMano = null;
+			for (Jugador jugadorActual : jugadores) {
+				if (jugadorActual.poseeCarta(cartaMasAlta)) {
+					ganadorDeLaMano = jugadorActual;
+					break;
+				}
+			}
+			if (ganadorDeLaMano.coincideElEquipo(Equipo.EQUIPO1)) {
+				return Resultado.GANADOR1;
+			} else {
+				return Resultado.GANADOR2;
+			}
+		} else {
+			return Resultado.EMPATE;
+		}
+		
 	}
 }
