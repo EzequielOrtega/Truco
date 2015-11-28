@@ -117,5 +117,25 @@ public class ListaCircularTest {
 		jugadores.agregar(matu);
 		jugadores.obtenerElemento(4);
 	}
+	
+	@Test
+	public void testEsPieDosJugadores() {
+		jugadores.agregar(eze);
+		jugadores.agregar(matu);
+		Assert.assertTrue(jugadores.esPie(eze));
+		Assert.assertTrue(jugadores.esPie(matu));
+	}
+	
+	@Test
+	public void testEsPieCuatroJugadores() {
+		jugadores.agregar(eze);
+		jugadores.agregar(matu);
+		jugadores.agregar(marcos);
+		jugadores.agregar(micaela);
+		Assert.assertFalse(jugadores.esPie(eze));
+		Assert.assertFalse(jugadores.esPie(matu));
+		Assert.assertTrue(jugadores.esPie(marcos));
+		Assert.assertTrue(jugadores.esPie(micaela));
+	}
 
 }
