@@ -14,6 +14,7 @@ import fiuba.algo3.tpfinal.modelo.Jugador;
 import fiuba.algo3.tpfinal.modelo.NoFigura;
 import fiuba.algo3.tpfinal.modelo.Palo;
 import fiuba.algo3.tpfinal.modelo.error.JugadorNoTieneFlorError;
+import fiuba.algo3.tpfinal.modelo.error.NoPuedeCantarEnvidoNoEsPieError;
 import fiuba.algo3.tpfinal.modelo.error.NoPuedeCantarEnvidoSeCantoFlorError;
 import fiuba.algo3.tpfinal.modelo.error.NoPuedeCantarTrucoSeCantoEnvidoError;
 import fiuba.algo3.tpfinal.modelo.error.NoPuedeCantarTrucoSeCantoFlorError;
@@ -25,7 +26,7 @@ import fiuba.algo3.tpfinal.modelo.error.SoloSePuedeCantarEnvidoUnaVezPorRondaErr
 
 public class JuegoDeTrucoTest {
 
-	JuegoDeTruco unJuego;
+	JuegoDeTruco unJuego, juegoDeCuatro;
 	Jugador j1, j2;
 	private Carta unoDeEspada = new NoFigura(1, Palo.ESPADA);
 	private Carta sieteDeEspada = new NoFigura(7, Palo.ESPADA);
@@ -50,6 +51,8 @@ public class JuegoDeTrucoTest {
 		unJuego.obtenerJugadorActual().agarrarCarta(sotaDeBasto);
 		unJuego.obtenerJugadorActual().agarrarCarta(cincoDeEspada);
 		unJuego.obtenerJugadorActual().agarrarCarta(unoDeBasto);
+		
+		juegoDeCuatro = new JuegoDeTruco("eze", "marcos", "matu", "micaela");
 	}
 
 	@Test
@@ -368,4 +371,20 @@ public class JuegoDeTrucoTest {
 		unJuego.irseAlMazo();		
 		Assert.assertEquals(1, unJuego.puntosDeEquipo(Equipo.EQUIPO2));
 	}
+	
+	@Test (expected = NoPuedeCantarEnvidoNoEsPieError.class)
+	public void testCantarEnvidoSinSerPie() {
+		juegoDeCuatro.comenzarPartida(true);
+		juegoDeCuatro.envido();
+	}
+	
+	@Test
+	public void testCantarEnvidoSinSerPiePorTrucoCantado() {
+		juegoDeCuatro.comenzarPartida(true);
+		juegoDeCuatro.truco();
+		juegoDeCuatro.envido();
+		juegoDeCuatro.quieroEnvido();
+		Assert.assertTrue((juegoDeCuatro.puntosDeEquipo(Equipo.EQUIPO1) == 2) || (juegoDeCuatro.puntosDeEquipo(Equipo.EQUIPO2) == 2));
+	}
+		
 }
