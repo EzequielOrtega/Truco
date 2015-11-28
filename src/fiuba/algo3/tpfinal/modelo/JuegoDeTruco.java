@@ -243,6 +243,9 @@ public class JuegoDeTruco {
 		if (this.ronda.estaEnPrimera()) {
 			throw new SoloSePuedeCantarEnvidoEnPrimeraError();
 		}
+		if (!this.puedeCantarLosTantos()) {
+			throw new NoPuedeCantarEnvidoNoEsPieError();
+		}
 		this.envidoCantado = true;
 		this.estadoActualEnvido = new Envido(estadoActualEnvido, estadoActualFlor);
 		if (this.jugadorQueCantoEnvido == null) {
@@ -252,11 +255,11 @@ public class JuegoDeTruco {
 	}
 
 	public void realEnvido() {
-		if (this.florCantada) {
-			throw new NoPuedeCantarEnvidoSeCantoFlorError();
-		}
 		if (this.ronda.estaEnPrimera()) {
 			throw new SoloSePuedeCantarEnvidoEnPrimeraError();
+		}
+		if (!this.puedeCantarLosTantos()) {
+			throw new NoPuedeCantarEnvidoNoEsPieError();
 		}
 		this.envidoCantado = true;
 		estadoActualEnvido = new RealEnvido(estadoActualEnvido, estadoActualFlor);
@@ -288,6 +291,12 @@ public class JuegoDeTruco {
 	}
 
 	public void faltaEnvido() {
+		if (this.ronda.estaEnPrimera()) {
+			throw new SoloSePuedeCantarEnvidoEnPrimeraError();
+		}
+		if (!this.puedeCantarLosTantos()) {
+			throw new NoPuedeCantarEnvidoNoEsPieError();
+		}
 		this.envidoCantado = true;
 		Jugador ganador = juez.ganadorEnvido(jugadores.obtenerElementos());
 		estadoActualEnvido = new FaltaEnvido(estadoActualEnvido, estadoActualFlor, this.puntosRestantesContrario(ganador), this.puntosRestantes(ganador));
@@ -381,5 +390,13 @@ public class JuegoDeTruco {
 			concluyoLaPartida = true;
 		}
 		return concluyoLaPartida;
+	}
+	
+	private Boolean puedeCantarLosTantos() {
+		Boolean puedeCantarLosTantos = false;
+		if ((jugadores.esPie(this.jugadorActual)) || (this.envidoCantado)) {
+			puedeCantarLosTantos = true;
+		}
+		return puedeCantarLosTantos;
 	}
 }
