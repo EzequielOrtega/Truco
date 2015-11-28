@@ -337,15 +337,22 @@ public class JuegoDeTruco {
 	}
 
 	public void noQuieroTruco() {
-		if (this.jugadorQueCantoTruco.coincideElEquipoCon(this.jugadorActual)) {
-			this.avanzarJugadorActual();
-			this.jugadorActual.sumarPuntos(estadoActualTruco.obtenerPuntosNoQueridos());
-		} else {
-			this.jugadorQueCantoTruco.sumarPuntos(estadoActualTruco.obtenerPuntosNoQueridos());
-		}
+		Jugador jugadorASumar = this.obtenerJugadorNoQuieroTruco();
+		jugadorASumar.sumarPuntos(estadoActualTruco.obtenerPuntosNoQueridos());
 		this.estadoActualTruco = new EstadoInicialTruco();
 		this.trucoCantado = false;
 		this.setearValoresParaProximaRonda();
+	}
+
+	private Jugador obtenerJugadorNoQuieroTruco() {
+		Jugador jugadorPedido;
+		if (this.jugadorQueCantoTruco.coincideElEquipoCon(this.jugadorActual)) {
+			this.avanzarJugadorActual();
+			jugadorPedido = this.jugadorActual;
+		} else {
+			jugadorPedido = this.jugadorQueCantoTruco;
+		}
+		return jugadorPedido;
 	}
 
 	public void irseAlMazo() {

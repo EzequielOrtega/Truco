@@ -312,7 +312,7 @@ public class JuegoDeTrucoTest {
 	@Test
 	public void testIrseAlMazoEnPrimeraSonDosPuntosParaElContrario() {
 		unJuego.irseAlMazo();
-		Assert.assertTrue(2 == unJuego.puntosDeEquipo(Equipo.EQUIPO2));
+		Assert.assertEquals(2, unJuego.puntosDeEquipo(Equipo.EQUIPO2));
 	}
 	
 	@Test
@@ -321,7 +321,7 @@ public class JuegoDeTrucoTest {
 		unJuego.jugar(sieteDeEspada);
 		unJuego.jugar(unoDeEspada);
 		unJuego.irseAlMazo();		
-		Assert.assertTrue(1 == unJuego.puntosDeEquipo(Equipo.EQUIPO2));
+		Assert.assertEquals(1, unJuego.puntosDeEquipo(Equipo.EQUIPO2));
 	}
 	
 	@Test
@@ -344,7 +344,7 @@ public class JuegoDeTrucoTest {
 		unJuego.quieroTruco();
 		unJuego.jugar(unoDeEspada);
 		unJuego.irseAlMazo();		
-		Assert.assertTrue(3 == unJuego.puntosDeEquipo(Equipo.EQUIPO2));
+		Assert.assertEquals(3, unJuego.puntosDeEquipo(Equipo.EQUIPO2));
 	}
 	
 	@Test
@@ -366,6 +366,6 @@ public class JuegoDeTrucoTest {
 		unJuego.jugar(sieteDeEspada);
 		unJuego.truco();
 		unJuego.irseAlMazo();		
-		Assert.assertTrue(1 == unJuego.puntosDeEquipo(Equipo.EQUIPO2));
+		Assert.assertEquals(1, unJuego.puntosDeEquipo(Equipo.EQUIPO2));
 	}
 }

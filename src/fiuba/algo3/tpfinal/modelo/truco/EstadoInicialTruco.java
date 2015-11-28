@@ -12,6 +12,6 @@ public class EstadoInicialTruco extends EstadoTruco {
 
 	@Override
 	public int obtenerPuntosNoQueridos() {
-		return 0;
+		return 1;
 	}
 }

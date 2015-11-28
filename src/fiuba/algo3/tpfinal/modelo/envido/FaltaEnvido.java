@@ -25,10 +25,12 @@ public class FaltaEnvido extends EstadoEnvido {
 	}
 	
 	public int obtenerPuntosQueridos() {
+		int puntosQueridos;
 		if (this.puntosRestantes > 15) {
-			return (this.puntosRestantes - 15);
+			puntosQueridos = this.puntosRestantes - 15;
 		} else {
-			return this.puntosRestantesContrario;
+			puntosQueridos = this.puntosRestantesContrario;
 		}
+		return puntosQueridos;
 	}
 }
