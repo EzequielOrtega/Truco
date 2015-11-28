@@ -394,7 +394,7 @@ public class JuegoDeTruco {
 	
 	private Boolean puedeCantarLosTantos() {
 		Boolean puedeCantarLosTantos = false;
-		if ((jugadores.esPie(this.jugadorActual)) || (this.envidoCantado)) {
+		if ((jugadores.esPie(this.jugadorActual)) || (this.envidoCantado) || (this.trucoCantado)) {
 			puedeCantarLosTantos = true;
 		}
 		return puedeCantarLosTantos;
