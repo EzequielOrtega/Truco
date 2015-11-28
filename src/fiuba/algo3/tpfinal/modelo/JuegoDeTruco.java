@@ -50,6 +50,7 @@ public class JuegoDeTruco {
 	}
 
 	public void comenzarPartida(Boolean conFlor) {
+		this.jugadorActual = jugadores.obtenerElemento(0);
 		this.resetearPuntos();
 		this.conFlor = conFlor;
 	}
@@ -81,7 +82,7 @@ public class JuegoDeTruco {
 		LinkedList<Jugador> jugadoresList = jugadores.obtenerElementos();
 		for (Jugador jugadorActual : jugadoresList) {
 			if (jugadorActual.coincideElEquipo(equipo)) {
-				puntos = +jugadorActual.obtenerPuntaje();
+				puntos = puntos + jugadorActual.obtenerPuntaje();
 			}
 		}
 		return puntos;
@@ -185,11 +186,12 @@ public class JuegoDeTruco {
 	public void quieroFlor() {
 		Jugador ganadorDeFlor = this.juez.ganadorFlor(jugadores.obtenerElementos());
 		ganadorDeFlor.sumarPuntos(this.estadoActualFlor.obtenerPuntosQueridos());
-        if (envidoCantado) {
-            this.jugadorActual = jugadorQueCantoEnvido;
-            envidoCantado = false;
-        }
-        else { this.jugadorActual = jugadorQueCantoFlor; }
+		if (envidoCantado) {
+			this.jugadorActual = jugadorQueCantoEnvido;
+			envidoCantado = false;
+		} else {
+			this.jugadorActual = jugadorQueCantoFlor;
+		}
 		this.estadoActualFlor = new EstadoFinalFlor(estadoActualFlor);
 		this.florCantada = false;
 		this.jugadorQueCantoFlor = null;

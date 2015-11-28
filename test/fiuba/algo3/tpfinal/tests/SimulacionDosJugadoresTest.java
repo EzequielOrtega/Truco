@@ -6,7 +6,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public class SimulacionTest {
+public class SimulacionDosJugadoresTest {
 
 	private JuegoDeTruco juego;
 	private Carta unoDeEspada;
@@ -101,7 +101,7 @@ public class SimulacionTest {
 
     @Test
     public void testSimulacionDePartida3() {
-        // Comienza la partida sin flor
+        // Comienza la partida con flor
         juego.comenzarPartida(true);
         Jugador j1 = juego.obtenerJugadorActual();
         juego.moverAlSiguiente();
@@ -132,7 +132,7 @@ public class SimulacionTest {
         juego.jugar(sotaDeEspada);
         juego.jugar(sotaDeBasto);
         // Parda la segunda, gana el que gano la primera
-       // assertEquals(0, juego.puntosDeEquipo(Equipo.EQUIPO1));
-        //assertEquals(5, juego.puntosDeEquipo(Equipo.EQUIPO2));
+        assertEquals(6, juego.puntosDeEquipo(Equipo.EQUIPO1));
+        assertEquals(2, juego.puntosDeEquipo(Equipo.EQUIPO2));
     }
 }
