@@ -15,7 +15,6 @@ public class FaltaEnvido extends EstadoEnvido {
 	static {
 		estadosAceptados = new LinkedList<>();
 		estadosAceptados.add(EstadoInicialFlor.class);
-		estadosAceptados.add(EstadoFinalFlor.class);
 	}
 	
 	public FaltaEnvido(EstadoEnvido estadoAnterior, EstadoFlor estadoFlor, int puntosRestantesContrario, int puntosRestantes) {
