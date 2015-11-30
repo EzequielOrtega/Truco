@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.*?>
+<?import javafx.scene.effect.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
@@ -7,8 +9,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fiuba.algo3.tpfinal.control.VentanaInicialControl">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1000.0" stylesheets="@AlgoTruco.css" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fiuba.algo3.tpfinal.control.VentanaInicialControl">
    <top>
       <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
@@ -32,12 +33,31 @@
                 </Menu>
               </menus>
             </MenuBar>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="AlgoTruco" textAlignment="CENTER" underline="true">
-               <font>
-                  <Font name="Charter Bold" size="45.0" />
-               </font>
-            </Text>
+            <HBox>
+               <children>
+                  <Region prefHeight="89.0" prefWidth="405.0" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label" text="AlgoTruco" textAlignment="CENTER" underline="true" HBox.hgrow="ALWAYS">
+                     <font>
+                        <Font name="Charter Bold" size="45.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="H_RESIZE" />
+                     </cursor>
+                  </Text>
+                  <Region layoutX="10.0" layoutY="10.0" prefHeight="92.0" prefWidth="381.0" />
+               </children>
+            </HBox>
          </children>
       </VBox>
    </top>
+   <center>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="473.0" layoutY="151.0" prefHeight="34.0" prefWidth="108.0" text="Qué desea hacer?" />
+            <Label layoutX="303.0" layoutY="108.0" text="Bienvenidos a AlgoTruco, el clásico juego de truco argentino, disponible para 2 y 4 jugadores." />
+            <Button fx:id="botonComenzarJuego" layoutX="512.0" layoutY="218.0" mnemonicParsing="false" onAction="#nuevoJuegoHandler" text="Comenzar a jugar" />
+            <Button fx:id="botonSalirJuego" layoutX="517.0" layoutY="274.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="105.0" onAction="#cerrarHandler" text="Salir" />
+         </children>
+      </AnchorPane>
+   </center>
 </BorderPane>

@@ -112,7 +112,10 @@
                                                 <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
                                             </rowConstraints>
                                             <children>
-
+                                                <Button fx:id="botonCarta1" mnemonicParsing="false" onAction="#JugarCarta1Handler" text="Carta dada vuelta" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                                                <Button fx:id="botonCarta3" mnemonicParsing="false" onAction="#JugarCarta3Handler" text="Carta dada vuelta" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                                                <Button fx:id="botonCarta2" mnemonicParsing="false" onAction="#JugarCarta2Handler" text="Carta dada vuelta" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                                              <!---  <Button fx:id="botonMostrarCartas" mnemonicParsing="false" onAction="#MostrarCartasHandler" text="Mostrar cartas" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" /> --->
                                             </children>
                                         </GridPane>
                                     </children>
