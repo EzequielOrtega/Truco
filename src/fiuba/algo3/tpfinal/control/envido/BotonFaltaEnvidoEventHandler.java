@@ -14,6 +14,7 @@ import javafx.scene.control.Alert.AlertType;
 public class BotonFaltaEnvidoEventHandler implements EventHandler<ActionEvent> {
 
 	private JuegoDeTruco juego;
+	@SuppressWarnings("unused")
 	private Programa programa;
 	
 	public BotonFaltaEnvidoEventHandler(JuegoDeTruco juego, Programa programa) {

@@ -1,6 +1,5 @@
 package fiuba.algo3.tpfinal.modelo.envido;
 
-import fiuba.algo3.tpfinal.modelo.flor.EstadoFinalFlor;
 import fiuba.algo3.tpfinal.modelo.flor.EstadoFlor;
 import fiuba.algo3.tpfinal.modelo.flor.EstadoInicialFlor;
 
