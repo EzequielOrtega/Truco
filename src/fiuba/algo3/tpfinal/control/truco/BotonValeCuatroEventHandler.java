@@ -1,4 +1,4 @@
-package fiuba.algo3.tpfinal.control;
+package fiuba.algo3.tpfinal.control.truco;
 
 import fiuba.algo3.tpfinal.modelo.JuegoDeTruco;
 import fiuba.algo3.tpfinal.modelo.error.NoRespetaJerarquiaDeTrucoError;
