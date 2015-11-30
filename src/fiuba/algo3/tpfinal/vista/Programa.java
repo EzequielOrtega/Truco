@@ -15,6 +15,7 @@ public class Programa extends Application {
     }
 
     private Stage principal;
+    private BorderPane presentacion = new BorderPane();
     private JuegoDeTruco juego;
     private Equipo equipo1;
     private Equipo equipo2;
@@ -29,6 +30,21 @@ public class Programa extends Application {
         grid.setPadding(new Insets(10, 10, 10, 10));
         grid.setVgap(8);
         grid.setHgap(10);
+
+        MenuBar menuBar = new MenuBar();
+        // El '_' es un shortcut (Alt + la primer letra del menu)
+        Menu menuFile = new Menu("_File");
+        Menu menuEdit = new Menu("_Edit");
+        Menu menuView = new Menu("_View");
+
+        MenuItem nuevoJuego = new MenuItem("New");
+        //nuevoJuego.setOnAction(e -> );
+        menuFile.getItems().add(nuevoJuego);
+        menuFile.getItems().add(new MenuItem("Open.."));
+        menuFile.getItems().add(new MenuItem("Save.."));
+        menuFile.getItems().add(new MenuItem("Exit"));
+
+        menuBar.getMenus().addAll(menuFile, menuEdit, menuView);
 
         ChoiceBox<String> cantidadJugadores = new ChoiceBox<>();
         cantidadJugadores.getItems().addAll("2 jugadores", "4 jugadores");
@@ -62,10 +78,11 @@ public class Programa extends Application {
         });
         GridPane.setConstraints(nuevoJuegoButton, 1, 4);
 
+        presentacion.setTop(menuBar);
         // Agrego al gridPane
         grid.getChildren().addAll(cantidadJugadores, j1Label, j1Input, j2Label, j2Input, conFlor, nuevoJuegoButton);
-
-        Scene scene = new Scene(grid, 300, 200);
+        presentacion.setCenter(grid);
+        Scene scene = new Scene(presentacion, 400, 300);
         principal.setScene(scene);
         principal.show();
 
