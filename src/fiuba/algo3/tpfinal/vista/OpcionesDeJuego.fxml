@@ -2,9 +2,17 @@
 
 
 <?import javafx.scene.control.*?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.text.Font?>
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+<?import javafx.scene.layout.AnchorPane?>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="fiuba.algo3.tpfinal.control.OpcionesDeJuegoControl">
 
-</BorderPane>
+    <children>
+        <Label layoutX="68.0" layoutY="42.0" text="Jugadores" />
+        <RadioButton fx:id="opcionDeADos" layoutX="47.0" layoutY="122.0" mnemonicParsing="false" onAction="#opcionDosJugadoresHandler" text="De a 2" />
+        <TextField fx:id="textJ1E1" layoutX="259.0" layoutY="37.0" promptText="Jugador 1 - Equipo 1" />
+        <TextField fx:id="textJ1E2" layoutX="259.0" layoutY="101.0" promptText="Jugador 1 - Equipo 2" />
+        <Button fx:id="botonComenzarJuego" layoutX="436.0" layoutY="563.0" mnemonicParsing="false" onAction="#comenzarJuegoHandler" text="Comenzar el juego" />
+        <CheckBox fx:id="conFlor" layoutX="58.0" layoutY="457.0" mnemonicParsing="false" text="Con flor" />
+    </children>
+
+</AnchorPane>
