@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fiuba.algo3.tpfinal.control.VentanaInicialControl">
+   <top>
+      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <MenuBar>
+              <menus>
+                <Menu mnemonicParsing="false" text="Archivo">
+                  <items>
+                      <MenuItem mnemonicParsing="false" onAction="#nuevoJuegoHandler" text="Nuevo juego..." />
+                      <MenuItem mnemonicParsing="false" onAction="#cerrarHandler" text="Cerrar" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Editar">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="Borrar" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Ayuda">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="Sobre AlgoTruco..." />
+                  </items>
+                </Menu>
+              </menus>
+            </MenuBar>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="AlgoTruco" textAlignment="CENTER" underline="true">
+               <font>
+                  <Font name="Charter Bold" size="45.0" />
+               </font>
+            </Text>
+         </children>
+      </VBox>
+   </top>
+</BorderPane>
