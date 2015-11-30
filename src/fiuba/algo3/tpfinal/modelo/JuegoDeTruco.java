@@ -409,4 +409,18 @@ public class JuegoDeTruco {
 		Jugador ganadorEnvido = this.juez.ganadorEnvido(jugadores.obtenerElementos());
 		return ganadorEnvido.getNombre();
 	}
+
+	public String obtenerNombreGanadorDeFlor() {
+		Jugador ganadorFlor = this.juez.ganadorFlor(jugadores.obtenerElementos());
+		return ganadorFlor.getNombre();
+	}
+
+	public int puntosDeFlorGanador() {
+		Jugador ganadorFlor = this.juez.ganadorFlor(jugadores.obtenerElementos());
+		return ganadorFlor.getValorFlor(); 
+	}
+
+	public Object obtenerEstadoDeFlor() {
+		return this.estadoActualFlor;
+	}
 }
