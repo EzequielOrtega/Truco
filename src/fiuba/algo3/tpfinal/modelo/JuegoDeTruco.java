@@ -399,4 +399,14 @@ public class JuegoDeTruco {
 		}
 		return puedeCantarLosTantos;
 	}
+
+	public int puntosDeEnvidoGanador() {
+		Jugador ganadorEnvido = this.juez.ganadorEnvido(jugadores.obtenerElementos());
+		return ganadorEnvido.getValorEnvido(); 
+	}
+
+	public String obtenerNombreGanadorDeEnvido() {
+		Jugador ganadorEnvido = this.juez.ganadorEnvido(jugadores.obtenerElementos());
+		return ganadorEnvido.getNombre();
+	}
 }
