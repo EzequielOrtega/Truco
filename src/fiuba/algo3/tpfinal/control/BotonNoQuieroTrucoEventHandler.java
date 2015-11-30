@@ -1,0 +1,33 @@
+package fiuba.algo3.tpfinal.control;
+
+import fiuba.algo3.tpfinal.modelo.Equipo;
+import fiuba.algo3.tpfinal.modelo.JuegoDeTruco;
+import fiuba.algo3.tpfinal.vista.Programa;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+
+public class BotonNoQuieroTrucoEventHandler implements EventHandler<ActionEvent> {
+	
+	private JuegoDeTruco juego;
+	private Programa programa;
+	
+	public BotonNoQuieroTrucoEventHandler(JuegoDeTruco juego, Programa programa) {
+		this.programa = programa;
+		this.juego = juego;
+	}
+
+	@Override
+	public void handle(ActionEvent arg0) {
+		juego.noQuieroTruco();
+		//programa.seCanto("");
+		Alert jerarquiaNoValida = new Alert(AlertType.INFORMATION);
+		jerarquiaNoValida.setTitle("La ronda ha concluido");
+		jerarquiaNoValida.setHeaderText("Puntajes: ");
+		jerarquiaNoValida.setContentText("<n>Puntaje equipo 1: " + juego.puntosDeEquipo(Equipo.EQUIPO1) + "</n>"
+									   + "<n>Puntaje equipo 2: " + juego.puntosDeEquipo(Equipo.EQUIPO2) + "</n>");
+		jerarquiaNoValida.showAndWait();
+		//programa.actualizarPuntajes();
+	}
+}
