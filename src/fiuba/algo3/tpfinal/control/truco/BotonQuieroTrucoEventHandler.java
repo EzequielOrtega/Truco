@@ -19,5 +19,6 @@ public class BotonQuieroTrucoEventHandler implements EventHandler<ActionEvent> {
 	public void handle(ActionEvent arg0) {
 		juego.quieroTruco();
 		//programa.seCanto("");
+		//programa.deshabilitarBotonesEnvidoYFlor();
 	}
 }
