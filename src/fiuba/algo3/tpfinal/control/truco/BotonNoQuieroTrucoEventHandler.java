@@ -27,8 +27,8 @@ public class BotonNoQuieroTrucoEventHandler implements EventHandler<ActionEvent>
 			Alert jerarquiaNoValida = new Alert(AlertType.INFORMATION);
 			jerarquiaNoValida.setTitle("La partida ha concluido");
 			jerarquiaNoValida.setHeaderText("Puntajes: ");
-			jerarquiaNoValida.setContentText("<n>Puntaje equipo 1: " + juego.puntosDeEquipo(Equipo.EQUIPO1) + "</n>"
-										   + "<n>Puntaje equipo 2: " + juego.puntosDeEquipo(Equipo.EQUIPO2) + "</n>");
+			jerarquiaNoValida.setContentText("Puntaje equipo 1: " + juego.puntosDeEquipo(Equipo.EQUIPO1) + "\n"
+										   + "Puntaje equipo 2: " + juego.puntosDeEquipo(Equipo.EQUIPO2) + "\n");
 			jerarquiaNoValida.showAndWait();
 		} else {
 			//programa.prepararProximaRonda();
