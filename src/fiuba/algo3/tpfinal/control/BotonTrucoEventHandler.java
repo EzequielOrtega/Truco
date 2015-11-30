@@ -4,6 +4,7 @@ import fiuba.algo3.tpfinal.modelo.JuegoDeTruco;
 import fiuba.algo3.tpfinal.modelo.error.NoPuedeCantarTrucoSeCantoEnvidoError;
 import fiuba.algo3.tpfinal.modelo.error.NoPuedeCantarTrucoSeCantoFlorError;
 import fiuba.algo3.tpfinal.modelo.error.NoRespetaJerarquiaDeTrucoError;
+import fiuba.algo3.tpfinal.vista.Programa;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
@@ -12,15 +13,18 @@ import javafx.scene.control.Alert.AlertType;
 public class BotonTrucoEventHandler implements EventHandler<ActionEvent>{
 	
 	private JuegoDeTruco juego;
+	private Programa programa;
 	
-	public BotonTrucoEventHandler(JuegoDeTruco juego) {
+	public BotonTrucoEventHandler(JuegoDeTruco juego, Programa programa) {
 		this.juego = juego;
+		this.programa = programa;
 	}
 	
 	@Override
 	public void handle(ActionEvent actionEvent) {
 		try {
 			juego.truco();
+			//programa.seCanto("Truco");
 		} catch (NoRespetaJerarquiaDeTrucoError x1) {
 			Alert jerarquiaNoValida = new Alert(AlertType.ERROR);
 			jerarquiaNoValida.setTitle("Error");
