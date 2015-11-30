@@ -20,6 +20,12 @@
     -fx-text-fill: #FFFFFF;
     -fx-background-radius: 4;
 }
+
+.maintitle-label {
+    -fx-text-fill: #800000;
+    -fx-background-color: #FFF0F5;
+}
+
 #bold-label{
     -fx-font-weight: bold;
 }

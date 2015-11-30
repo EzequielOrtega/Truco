@@ -11,7 +11,7 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1000.0" stylesheets="@AlgoTruco.css" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fiuba.algo3.tpfinal.control.VentanaInicialControl">
    <top>
-      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+      <VBox BorderPane.alignment="CENTER">
          <children>
             <MenuBar>
               <menus>
@@ -33,10 +33,10 @@
                 </Menu>
               </menus>
             </MenuBar>
-            <HBox>
+            <HBox styleClass="maintitle-label">
                <children>
                   <Region prefHeight="89.0" prefWidth="405.0" />
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label" text="AlgoTruco" textAlignment="CENTER" underline="true" HBox.hgrow="ALWAYS">
+                  <Text fill="#e17878" strokeWidth="0.0" styleClass="maintitle-label" text="AlgoTruco" textAlignment="CENTER" underline="true" HBox.hgrow="ALWAYS">
                      <font>
                         <Font name="Charter Bold" size="45.0" />
                      </font>
@@ -53,10 +53,27 @@
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="473.0" layoutY="151.0" prefHeight="34.0" prefWidth="108.0" text="Qué desea hacer?" />
-            <Label layoutX="303.0" layoutY="108.0" text="Bienvenidos a AlgoTruco, el clásico juego de truco argentino, disponible para 2 y 4 jugadores." />
-            <Button fx:id="botonComenzarJuego" layoutX="512.0" layoutY="218.0" mnemonicParsing="false" onAction="#nuevoJuegoHandler" text="Comenzar a jugar" />
-            <Button fx:id="botonSalirJuego" layoutX="517.0" layoutY="274.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="105.0" onAction="#cerrarHandler" text="Salir" />
+            <Label layoutX="392.0" layoutY="217.0" prefHeight="73.0" prefWidth="242.0" text="Qué desea hacer?">
+               <font>
+                  <Font size="27.0" />
+               </font></Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="173.0" layoutY="109.0" text="Bienvenidos a AlgoTruco, el clásico juego de truco argentino,">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font></Label>
+            <Button fx:id="botonComenzarJuego" layoutX="372.0" layoutY="311.0" mnemonicParsing="false" onAction="#nuevoJuegoHandler" prefHeight="87.0" prefWidth="281.0" text="Comenzar a jugar">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font></Button>
+            <Button fx:id="botonSalirJuego" layoutX="374.0" layoutY="468.0" mnemonicParsing="false" onAction="#cerrarHandler" prefHeight="86.0" prefWidth="277.0" text="Salir">
+               <font>
+                  <Font name="System Bold" size="27.0" />
+               </font></Button>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="225.0" layoutY="158.0" prefHeight="28.0" prefWidth="552.0" text="disponible para 2 y 4 jugadores.">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </center>
