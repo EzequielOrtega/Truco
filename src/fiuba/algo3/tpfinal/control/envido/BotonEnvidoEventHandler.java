@@ -27,6 +27,7 @@ public class BotonEnvidoEventHandler implements EventHandler<ActionEvent> {
 		try {
 			juego.envido();
 			//programa.seCanto("Envido");
+			//programa.habilitarBotonQuieroEnvido();
 		} catch (SoloSePuedeCantarEnvidoEnPrimeraError x1) {
 			Alert jerarquiaNoValida = new Alert(AlertType.ERROR);
 			jerarquiaNoValida.setTitle("Error");

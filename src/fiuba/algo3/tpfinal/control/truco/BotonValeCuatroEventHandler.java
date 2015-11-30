@@ -23,6 +23,7 @@ public class BotonValeCuatroEventHandler implements EventHandler<ActionEvent> {
 		try {
 			juego.valeCuatro();
 			//programa.seCanto("ValeCuatro");
+			//programa.habilitarBotonQuieroTruco();
 		} catch (NoRespetaJerarquiaDeTrucoError x1) {
 			Alert jerarquiaNoValida = new Alert(AlertType.ERROR);
 			jerarquiaNoValida.setTitle("Error");

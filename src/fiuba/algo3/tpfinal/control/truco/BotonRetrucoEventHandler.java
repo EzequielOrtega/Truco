@@ -23,6 +23,7 @@ public class BotonRetrucoEventHandler implements EventHandler<ActionEvent> {
 		try {
 			juego.reTruco();
 			//programa.seCanto("ReTruco");
+			//programa.habilitarBotonQuieroTruco();
 		} catch (NoRespetaJerarquiaDeTrucoError x1) {
 			Alert jerarquiaNoValida = new Alert(AlertType.ERROR);
 			jerarquiaNoValida.setTitle("Error");
