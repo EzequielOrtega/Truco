@@ -1,12 +1,16 @@
 package fiuba.algo3.tpfinal.vista;
 
-import fiuba.algo3.tpfinal.modelo.*;
+import fiuba.algo3.tpfinal.modelo.Equipo;
+import fiuba.algo3.tpfinal.modelo.JuegoDeTruco;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.layout.*;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+
+import java.net.URL;
 
 public class Programa extends Application {
 
@@ -83,6 +87,10 @@ public class Programa extends Application {
         grid.getChildren().addAll(cantidadJugadores, j1Label, j1Input, j2Label, j2Input, conFlor, nuevoJuegoButton);
         presentacion.setCenter(grid);
         Scene scene = new Scene(presentacion, 400, 300);
+
+        URL url = this.getClass().getResource("AlgoTruco.css");
+        String css = url.toExternalForm();
+        scene.getStylesheets().add(css);
         principal.setScene(scene);
         principal.show();
 
