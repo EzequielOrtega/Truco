@@ -2,7 +2,6 @@ package fiuba.algo3.tpfinal.control.flor;
 
 import java.util.LinkedList;
 
-import fiuba.algo3.tpfinal.modelo.Equipo;
 import fiuba.algo3.tpfinal.modelo.JuegoDeTruco;
 import fiuba.algo3.tpfinal.modelo.flor.ContraFlor;
 import fiuba.algo3.tpfinal.modelo.flor.ContraFlorAlResto;
