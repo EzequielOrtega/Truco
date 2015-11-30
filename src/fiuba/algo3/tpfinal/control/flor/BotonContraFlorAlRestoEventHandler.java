@@ -10,12 +10,12 @@ import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 
-public class BotonContraFlorEventHandler implements EventHandler<ActionEvent> {
+public class BotonContraFlorAlRestoEventHandler implements EventHandler<ActionEvent> {
 	
 	private JuegoDeTruco juego;
 	private Programa programa;
 	
-	public BotonContraFlorEventHandler(JuegoDeTruco juego, Programa programa) {
+	public BotonContraFlorAlRestoEventHandler(JuegoDeTruco juego, Programa programa) {
 		this.programa = programa;
 		this.juego = juego;
 	}
@@ -23,7 +23,7 @@ public class BotonContraFlorEventHandler implements EventHandler<ActionEvent> {
 	@Override
 	public void handle(ActionEvent event) {
 		try {
-			juego.contraFlor();
+			juego.contraFlorAlResto();
 		} catch (JugadorNoTieneFlorError x1) {
 			Alert jerarquiaNoValida = new Alert(AlertType.ERROR);
 			jerarquiaNoValida.setTitle("Error");
