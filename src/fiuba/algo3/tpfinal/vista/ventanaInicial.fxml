@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1000.0" stylesheets="@AlgoTruco.css" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fiuba.algo3.tpfinal.control.VentanaInicialControl">
+<BorderPane stylesheets="@AlgoTruco.css" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fiuba.algo3.tpfinal.control.VentanaInicialControl">
    <top>
       <VBox BorderPane.alignment="CENTER">
          <children>
@@ -53,23 +53,23 @@
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="392.0" layoutY="217.0" prefHeight="73.0" prefWidth="242.0" text="Qué desea hacer?">
+            <Label layoutX="393.0" layoutY="217.0" prefHeight="73.0" prefWidth="242.0" text="Qué desea hacer?">
                <font>
                   <Font size="27.0" />
                </font></Label>
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="173.0" layoutY="109.0" text="Bienvenidos a AlgoTruco, el clásico juego de truco argentino,">
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="186.0" layoutY="108.0" text="Bienvenidos a AlgoTruco, el clásico juego de truco argentino,">
                <font>
                   <Font name="System Bold" size="22.0" />
                </font></Label>
-            <Button fx:id="botonComenzarJuego" layoutX="372.0" layoutY="311.0" mnemonicParsing="false" onAction="#nuevoJuegoHandler" prefHeight="87.0" prefWidth="281.0" text="Comenzar a jugar">
+            <Button fx:id="botonComenzarJuego" layoutX="373.0" layoutY="313.0" mnemonicParsing="false" onAction="#nuevoJuegoHandler" prefHeight="87.0" prefWidth="281.0" text="Comenzar a jugar">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font></Button>
-            <Button fx:id="botonSalirJuego" layoutX="374.0" layoutY="468.0" mnemonicParsing="false" onAction="#cerrarHandler" prefHeight="86.0" prefWidth="277.0" text="Salir">
+            <Button fx:id="botonSalirJuego" layoutX="375.0" layoutY="468.0" mnemonicParsing="false" onAction="#cerrarHandler" prefHeight="86.0" prefWidth="277.0" text="Salir">
                <font>
                   <Font name="System Bold" size="27.0" />
                </font></Button>
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="225.0" layoutY="158.0" prefHeight="28.0" prefWidth="552.0" text="disponible para 2 y 4 jugadores.">
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="238.0" layoutY="157.0" prefHeight="28.0" prefWidth="552.0" text="disponible para 2 y 4 jugadores.">
                <font>
                   <Font name="System Bold" size="22.0" />
                </font>

@@ -1,18 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.AnchorPane?>
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="fiuba.algo3.tpfinal.control.OpcionesDeJuegoControl">
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="717.0" prefWidth="1000.0" stylesheets="@AlgoTruco.css" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fiuba.algo3.tpfinal.control.OpcionesDeJuegoControl">
 
     <children>
-        <Label layoutX="68.0" layoutY="42.0" text="Jugadores" />
-        <RadioButton fx:id="opcionDeADos" layoutX="47.0" layoutY="122.0" mnemonicParsing="false" onAction="#opcionDosJugadoresHandler" text="De a 2" />
-        <TextField fx:id="textJ1E1" layoutX="259.0" layoutY="37.0" promptText="Jugador 1 - Equipo 1" />
-        <TextField fx:id="textJ1E2" layoutX="259.0" layoutY="101.0" promptText="Jugador 1 - Equipo 2" />
-        <Button fx:id="botonComenzarJuego" layoutX="436.0" layoutY="563.0" mnemonicParsing="false" onAction="#comenzarJuegoHandler" text="Comenzar el juego" />
-        <CheckBox fx:id="conFlor" layoutX="58.0" layoutY="457.0" mnemonicParsing="false" text="Con flor" />
+        <Label layoutX="129.0" layoutY="71.0" text="Cantidad de jugadores:">
+         <font>
+            <Font name="System Bold" size="26.0" />
+         </font></Label>
+        <RadioButton fx:id="opcionDeADos" layoutX="174.0" layoutY="181.0" mnemonicParsing="false" onAction="#opcionDosJugadoresHandler" prefHeight="31.0" prefWidth="153.0" styleClass="label" text="2 jugadores">
+         <font>
+            <Font size="20.0" />
+         </font></RadioButton>
+        <TextField fx:id="textJ1E1" layoutX="602.0" layoutY="127.0" promptText="Jugador 1 - Equipo 1" />
+        <TextField fx:id="textJ1E2" layoutX="602.0" layoutY="315.0" promptText="Jugador 1 - Equipo 2" />
+        <Button fx:id="botonComenzarJuego" layoutX="436.0" layoutY="563.0" mnemonicParsing="false" onAction="#comenzarJuegoHandler" prefHeight="72.0" prefWidth="247.0" text="Comenzar a jugar!">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font></Button>
+        <CheckBox fx:id="conFlor" alignment="CENTER" contentDisplay="CENTER" layoutX="174.0" layoutY="476.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="122.0" styleClass="label" text="Con flor">
+         <font>
+            <Font size="20.0" />
+         </font></CheckBox>
+      <RadioButton fx:id="opcionDeADos1" layoutX="174.0" layoutY="328.0" mnemonicParsing="false" onAction="#opcionDosJugadoresHandler" prefHeight="26.0" prefWidth="144.0" styleClass="label" text="4 jugadores">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </RadioButton>
     </children>
 
 </AnchorPane>
