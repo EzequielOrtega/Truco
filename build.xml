@@ -53,7 +53,7 @@
 	</target>
 
 	<target name="compilar.aplicacion" depends="setup, resolve">
-		<javac srcdir="src" destdir="${build}" includeantruntime="false" debug="yes" target="1.7">
+		<javac srcdir="src" destdir="${build}" includeantruntime="false" debug="yes" target="1.8">
 		</javac>
 	</target>
 
