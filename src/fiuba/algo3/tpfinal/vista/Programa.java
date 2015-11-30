@@ -27,7 +27,6 @@ public class Programa extends Application {
 
         this.principal = primaryStage;
         irAVentanaInicial();
-        elegirOpcionesDeJuego();
 
     }
 

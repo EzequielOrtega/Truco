@@ -21,7 +21,7 @@ public class VentanaInicialControl {
     }
 
     @FXML
-    public void salirHandler() {
+    public void cerrarHandler() {
         System.exit(0);
     }
 }
