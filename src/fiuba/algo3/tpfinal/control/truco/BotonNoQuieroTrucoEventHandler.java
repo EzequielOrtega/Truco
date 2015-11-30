@@ -22,6 +22,7 @@ public class BotonNoQuieroTrucoEventHandler implements EventHandler<ActionEvent>
 	public void handle(ActionEvent arg0) {
 		juego.noQuieroTruco();
 		//programa.seCanto("");		
+		//programa.deshabilitarBotonQuieroTruco();
 		//programa.actualizarPuntajes();
 		if (juego.concluyoLaPartida()) {
 			Alert jerarquiaNoValida = new Alert(AlertType.INFORMATION);

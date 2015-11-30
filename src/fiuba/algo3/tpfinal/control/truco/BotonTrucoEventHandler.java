@@ -25,6 +25,7 @@ public class BotonTrucoEventHandler implements EventHandler<ActionEvent>{
 		try {
 			juego.truco();
 			//programa.seCanto("Truco");
+			//programa.habilitarBotonQuieroTruco();
 		} catch (NoRespetaJerarquiaDeTrucoError x1) {
 			Alert jerarquiaNoValida = new Alert(AlertType.ERROR);
 			jerarquiaNoValida.setTitle("Error");
