@@ -70,16 +70,16 @@
                                         <Button fx:id="botonCartaJugada1J2" layoutX="341.0" layoutY="58.0" mnemonicParsing="false" visible="false" />
                                         <Button fx:id="botonCartaJugada2J2" layoutX="357.0" layoutY="83.0" mnemonicParsing="false" visible="false" />
                                         <Button fx:id="botonCartaJugada3J2" layoutX="373.0" layoutY="108.0" mnemonicParsing="false" visible="false" />
-                              <Label layoutX="367.0" layoutY="65.0" prefHeight="39.0" prefWidth="104.0" text="Jugador 2" textFill="#f5e1e1">
-                                 <font>
-                                    <Font name="System Bold" size="21.0" />
-                                 </font>
-                              </Label>
-                              <Label layoutX="367.0" layoutY="546.0" prefHeight="39.0" prefWidth="104.0" text="Jugador 1" textFill="#f5e1e1">
-                                 <font>
-                                    <Font name="System Bold" size="21.0" />
-                                 </font>
-                              </Label>
+                                        <Label layoutX="367.0" layoutY="65.0" prefHeight="39.0" prefWidth="104.0" text="Jugador 2" textFill="#f5e1e1">
+                                            <font>
+                                                <Font name="System Bold" size="21.0" />
+                                            </font>
+                                        </Label>
+                                        <Label layoutX="367.0" layoutY="546.0" prefHeight="39.0" prefWidth="104.0" text="Jugador 1" textFill="#f5e1e1">
+                                            <font>
+                                                <Font name="System Bold" size="21.0" />
+                                            </font>
+                                        </Label>
                                     </children>
                                 </AnchorPane>
                             </items>

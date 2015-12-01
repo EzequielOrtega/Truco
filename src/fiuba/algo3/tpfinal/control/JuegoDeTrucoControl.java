@@ -4,22 +4,19 @@ import fiuba.algo3.tpfinal.modelo.Carta;
 import fiuba.algo3.tpfinal.modelo.Equipo;
 import fiuba.algo3.tpfinal.modelo.JuegoDeTruco;
 import fiuba.algo3.tpfinal.modelo.Jugador;
-import fiuba.algo3.tpfinal.modelo.error.NoPuedeCantarTrucoSeCantoEnvidoError;
-import fiuba.algo3.tpfinal.modelo.error.NoPuedeCantarTrucoSeCantoFlorError;
-import fiuba.algo3.tpfinal.modelo.error.NoRespetaJerarquiaDeTrucoError;
+import fiuba.algo3.tpfinal.modelo.error.*;
+import fiuba.algo3.tpfinal.modelo.flor.ContraFlor;
+import fiuba.algo3.tpfinal.modelo.flor.ContraFlorAlResto;
 import fiuba.algo3.tpfinal.vista.Programa;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.Alert.AlertType;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
-public class TrucoDosJugadoresControl {
+public class JuegoDeTrucoControl {
 
     @FXML
     protected Label turno;
@@ -202,13 +199,33 @@ public class TrucoDosJugadoresControl {
 
     @FXML
     protected void reTrucoHandler(){
-        juego.reTruco();
+        try {
+            juego.reTruco();
+            //programa.seCanto("ReTruco");
+            //programa.habilitarBotonQuieroTruco();
+        } catch (NoRespetaJerarquiaDeTrucoError x1) {
+            Alert jerarquiaNoValida = new Alert(AlertType.ERROR);
+            jerarquiaNoValida.setTitle("Error");
+            jerarquiaNoValida.setHeaderText(null);
+            jerarquiaNoValida.setContentText("No respeta la jerarquia del truco");
+            jerarquiaNoValida.showAndWait();
+        }
         this.mostrarJugadorActual();
     }
 
     @FXML
     protected void valeCuatroHandler(){
-        juego.valeCuatro();
+        try {
+            juego.valeCuatro();
+            //programa.seCanto("ValeCuatro");
+            //programa.habilitarBotonQuieroTruco();
+        } catch (NoRespetaJerarquiaDeTrucoError x1) {
+            Alert jerarquiaNoValida = new Alert(AlertType.ERROR);
+            jerarquiaNoValida.setTitle("Error");
+            jerarquiaNoValida.setHeaderText(null);
+            jerarquiaNoValida.setContentText("No respeta la jerarquia del truco");
+            jerarquiaNoValida.showAndWait();
+        }
         this.mostrarJugadorActual();
     }
 
@@ -221,6 +238,17 @@ public class TrucoDosJugadoresControl {
     @FXML
     private void noQuieroTrucoHandler() {
         juego.noQuieroTruco();
+        if (juego.concluyoLaPartida()) {
+            //programa.deshabilitarTodosLosBotones();
+            Alert jerarquiaNoValida = new Alert(AlertType.INFORMATION);
+            jerarquiaNoValida.setTitle("La partida ha concluido");
+            jerarquiaNoValida.setHeaderText("Puntajes: ");
+            jerarquiaNoValida.setContentText("Puntaje equipo 1: " + juego.puntosDeEquipo(Equipo.EQUIPO1) + "\n"
+                    + "Puntaje equipo 2: " + juego.puntosDeEquipo(Equipo.EQUIPO2) + "\n");
+            jerarquiaNoValida.showAndWait();
+        } else {
+            //programa.prepararProximaRonda();
+        }
         this.nuevaRonda();
         this.mostrarPuntos();
         this.mostrarJugadorActual();
@@ -228,22 +256,126 @@ public class TrucoDosJugadoresControl {
 
     @FXML
     protected void cantarFlorHandler() {
-        this.juego.flor();
+        try {
+            juego.flor();
+            //programa.habilitarBotonesQuieroFlor();
+        } catch (SeEstaJugandoSinFlorError x1) {
+            Alert jerarquiaNoValida = new Alert(AlertType.ERROR);
+            jerarquiaNoValida.setTitle("Error");
+            jerarquiaNoValida.setHeaderText(null);
+            jerarquiaNoValida.setContentText("Se esta jugando sin flor");
+            jerarquiaNoValida.showAndWait();
+        } catch (SoloSePuedeCantarFlorEnPrimeraError x2) {
+            Alert jerarquiaNoValida = new Alert(AlertType.ERROR);
+            jerarquiaNoValida.setTitle("Error");
+            jerarquiaNoValida.setHeaderText(null);
+            jerarquiaNoValida.setContentText("Solo se puede cantar flor en primera");
+            jerarquiaNoValida.showAndWait();
+        } catch (SoloSePuedeCantarFlorUnaVezPorRondaError x3) {
+            Alert jerarquiaNoValida = new Alert(AlertType.ERROR);
+            jerarquiaNoValida.setTitle("Error");
+            jerarquiaNoValida.setHeaderText(null);
+            jerarquiaNoValida.setContentText("Solo se puede cantar flor una vez por ronda");
+            jerarquiaNoValida.showAndWait();
+        } catch (JugadorNoTieneFlorError x4) {
+            Alert jerarquiaNoValida = new Alert(AlertType.ERROR);
+            jerarquiaNoValida.setTitle("Error");
+            jerarquiaNoValida.setHeaderText(null);
+            jerarquiaNoValida.setContentText("No tiene flor");
+            jerarquiaNoValida.showAndWait();
+        } catch (NoRespetaJerarquiaDeFlorError x5) {
+            Alert jerarquiaNoValida = new Alert(AlertType.ERROR);
+            jerarquiaNoValida.setTitle("Error");
+            jerarquiaNoValida.setHeaderText(null);
+            jerarquiaNoValida.setContentText("No respeta la jerarquia de flor");
+            jerarquiaNoValida.showAndWait();
+        }
         this.mostrarJugadorActual();
     }
 
     @FXML
     protected void cantarContraFlorHandler() {
-        this.juego.contraFlor();
+        try {
+            juego.contraFlor();
+        } catch (JugadorNoTieneFlorError x1) {
+            Alert jerarquiaNoValida = new Alert(AlertType.ERROR);
+            jerarquiaNoValida.setTitle("Error");
+            jerarquiaNoValida.setHeaderText(null);
+            jerarquiaNoValida.setContentText("No tiene flor");
+            jerarquiaNoValida.showAndWait();
+        } catch (NoRespetaJerarquiaDeFlorError x2) {
+            Alert jerarquiaNoValida = new Alert(AlertType.ERROR);
+            jerarquiaNoValida.setTitle("Error");
+            jerarquiaNoValida.setHeaderText(null);
+            jerarquiaNoValida.setContentText("No respeta la jerarquia de flor");
+            jerarquiaNoValida.showAndWait();
+        } catch (SoloSePuedeCantarFlorUnaVezPorRondaError x3) {
+            Alert jerarquiaNoValida = new Alert(AlertType.ERROR);
+            jerarquiaNoValida.setTitle("Error");
+            jerarquiaNoValida.setHeaderText(null);
+            jerarquiaNoValida.setContentText("Solo se puede cantar flor una vez por ronda");
+            jerarquiaNoValida.showAndWait();
+        }
         this.mostrarJugadorActual();
     }
 
     @FXML
     protected void cantarContraFlorAlRestoHandler() {
-        this.juego.contraFlorAlResto();
+        try {
+            juego.contraFlorAlResto();
+        } catch (JugadorNoTieneFlorError x1) {
+            Alert jerarquiaNoValida = new Alert(AlertType.ERROR);
+            jerarquiaNoValida.setTitle("Error");
+            jerarquiaNoValida.setHeaderText(null);
+            jerarquiaNoValida.setContentText("No tiene flor");
+            jerarquiaNoValida.showAndWait();
+        } catch (NoRespetaJerarquiaDeFlorError x2) {
+            Alert jerarquiaNoValida = new Alert(AlertType.ERROR);
+            jerarquiaNoValida.setTitle("Error");
+            jerarquiaNoValida.setHeaderText(null);
+            jerarquiaNoValida.setContentText("No respeta la jerarquia de flor");
+            jerarquiaNoValida.showAndWait();
+        } catch (SoloSePuedeCantarFlorUnaVezPorRondaError x3) {
+            Alert jerarquiaNoValida = new Alert(AlertType.ERROR);
+            jerarquiaNoValida.setTitle("Error");
+            jerarquiaNoValida.setHeaderText(null);
+            jerarquiaNoValida.setContentText("Solo se puede cantar flor una vez por ronda");
+            jerarquiaNoValida.showAndWait();
+        }
         this.mostrarJugadorActual();
     }
 
+    @FXML
+    public void quieroFlorHandler() {
+        juego.quieroFlor();
+        //programa.actualizarPuntos();
+        //programa.deshabilitarBotonesEnvidoYFlor();
+        LinkedList<Object> estadosMostrarGanador = new LinkedList<Object>();
+        estadosMostrarGanador.add(ContraFlor.class);
+        estadosMostrarGanador.add(ContraFlorAlResto.class);
+        if (estadosMostrarGanador.contains(juego.obtenerEstadoDeFlor().getClass())) {
+            Alert jerarquiaNoValida = new Alert(AlertType.INFORMATION);
+            jerarquiaNoValida.setTitle("Tantos de la flor");
+            jerarquiaNoValida.setHeaderText("Ganador: " + juego.obtenerNombreGanadorDeFlor());
+            jerarquiaNoValida.setContentText("Puntaje del ganador: " + juego.puntosDeFlorGanador() + "\n");
+            jerarquiaNoValida.showAndWait();
+        }
+    }
+
+    @FXML
+    public void noQuieroFlorHandler() {
+        try {
+            juego.noQuieroFlor();
+            //programa.actualizarPuntos();
+            //programa.deshabilitarBotonesEnvidoYFlor();
+        } catch (NoSePuedeRechazarFlorError x1) {
+            Alert jerarquiaNoValida = new Alert(AlertType.ERROR);
+            jerarquiaNoValida.setTitle("Error");
+            jerarquiaNoValida.setHeaderText(null);
+            jerarquiaNoValida.setContentText("No se puede rechazar la flor");
+            jerarquiaNoValida.showAndWait();
+        }
+    }
     @FXML
     protected void cantarEnvidoHandler() {
         this.juego.envido();

@@ -1,7 +1,7 @@
 package fiuba.algo3.tpfinal.vista;
 
 import fiuba.algo3.tpfinal.control.OpcionesDeJuegoControl;
-import fiuba.algo3.tpfinal.control.TrucoDosJugadoresControl;
+import fiuba.algo3.tpfinal.control.JuegoDeTrucoControl;
 import fiuba.algo3.tpfinal.control.VentanaInicialControl;
 import fiuba.algo3.tpfinal.modelo.JuegoDeTruco;
 import javafx.application.Application;
@@ -59,7 +59,7 @@ public class Programa extends Application {
         AnchorPane partidaDeDos = loader.load();
         this.ventanaInicial.setCenter(partidaDeDos);
 
-        TrucoDosJugadoresControl controlador = loader.getController();
+        JuegoDeTrucoControl controlador = loader.getController();
         controlador.setPrograma(this, juego, conFlor);
     }
 }
