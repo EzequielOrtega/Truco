@@ -378,25 +378,137 @@ public class JuegoDeTrucoControl {
     }
     @FXML
     protected void cantarEnvidoHandler() {
-        this.juego.envido();
+        try {
+            juego.envido();
+            //programa.seCanto("Envido");
+            //programa.habilitarBotonQuieroEnvido();
+        } catch (SoloSePuedeCantarEnvidoEnPrimeraError x1) {
+            Alert jerarquiaNoValida = new Alert(AlertType.ERROR);
+            jerarquiaNoValida.setTitle("Error");
+            jerarquiaNoValida.setHeaderText(null);
+            jerarquiaNoValida.setContentText("El envido solo se puede cantar en primera");
+            jerarquiaNoValida.showAndWait();
+        } catch (NoPuedeCantarEnvidoNoEsPieError x2) {
+            Alert jugadaNoValida = new Alert(AlertType.ERROR);
+            jugadaNoValida.setTitle("Error");
+            jugadaNoValida.setHeaderText(null);
+            jugadaNoValida.setContentText("Solo el jugador que es pie puede cantar envido");
+            jugadaNoValida.showAndWait();
+        } catch (NoRespetaJerarquiaDeEnvidoError x3) {
+            Alert jugadaNoValida = new Alert(AlertType.ERROR);
+            jugadaNoValida.setTitle("Error");
+            jugadaNoValida.setHeaderText(null);
+            jugadaNoValida.setContentText("No respeta la jerarquia del envido");
+            jugadaNoValida.showAndWait();
+        } catch (SoloSePuedeCantarEnvidoUnaVezPorRondaError x4) {
+            Alert jugadaNoValida = new Alert(AlertType.ERROR);
+            jugadaNoValida.setTitle("Error");
+            jugadaNoValida.setHeaderText(null);
+            jugadaNoValida.setContentText("Solo se puede cantar envido una vez por ronda");
+            jugadaNoValida.showAndWait();
+        } catch (NoPuedeCantarEnvidoSeCantoFlorError x5) {
+            Alert jugadaNoValida = new Alert(AlertType.ERROR);
+            jugadaNoValida.setTitle("Error");
+            jugadaNoValida.setHeaderText(null);
+            jugadaNoValida.setContentText("Se canto flor, no se puede cantar envido");
+            jugadaNoValida.showAndWait();
+        }
         this.mostrarJugadorActual();
     }
 
     @FXML
     protected void cantarRealEnvidoHandler() {
-        this.juego.realEnvido();
+        try {
+            juego.realEnvido();
+            //programa.seCanto("RealEnvido");
+            //programa.habilitarBotonQuieroEnvido();
+        } catch (SoloSePuedeCantarEnvidoEnPrimeraError x1) {
+            Alert jerarquiaNoValida = new Alert(AlertType.ERROR);
+            jerarquiaNoValida.setTitle("Error");
+            jerarquiaNoValida.setHeaderText(null);
+            jerarquiaNoValida.setContentText("El real envido solo se puede cantar en primera");
+            jerarquiaNoValida.showAndWait();
+        } catch (NoPuedeCantarEnvidoNoEsPieError x2) {
+            Alert jugadaNoValida = new Alert(AlertType.ERROR);
+            jugadaNoValida.setTitle("Error");
+            jugadaNoValida.setHeaderText(null);
+            jugadaNoValida.setContentText("Solo el jugador que es pie puede cantar real envido");
+            jugadaNoValida.showAndWait();
+        } catch (NoRespetaJerarquiaDeEnvidoError x3) {
+            Alert jugadaNoValida = new Alert(AlertType.ERROR);
+            jugadaNoValida.setTitle("Error");
+            jugadaNoValida.setHeaderText(null);
+            jugadaNoValida.setContentText("No respeta la jerarquia del envido");
+            jugadaNoValida.showAndWait();
+        } catch (SoloSePuedeCantarEnvidoUnaVezPorRondaError x4) {
+            Alert jugadaNoValida = new Alert(AlertType.ERROR);
+            jugadaNoValida.setTitle("Error");
+            jugadaNoValida.setHeaderText(null);
+            jugadaNoValida.setContentText("Solo se puede cantar envido una vez por ronda");
+            jugadaNoValida.showAndWait();
+        } catch (NoPuedeCantarEnvidoSeCantoFlorError x5) {
+            Alert jugadaNoValida = new Alert(AlertType.ERROR);
+            jugadaNoValida.setTitle("Error");
+            jugadaNoValida.setHeaderText(null);
+            jugadaNoValida.setContentText("Se canto flor, no se puede cantar real envido");
+            jugadaNoValida.showAndWait();
+        }
         this.mostrarJugadorActual();
     }
 
     @FXML
     protected void cantarFaltaEnvidoHandler() {
-        this.juego.faltaEnvido();
+        try {
+            juego.faltaEnvido();
+            //programa.seCanto("FaltaEnvido");
+            //programa.habilitarBotonQuieroEnvido();
+        } catch (SoloSePuedeCantarEnvidoEnPrimeraError x1) {
+            Alert jerarquiaNoValida = new Alert(AlertType.ERROR);
+            jerarquiaNoValida.setTitle("Error");
+            jerarquiaNoValida.setHeaderText(null);
+            jerarquiaNoValida.setContentText("El falta envido solo se puede cantar en primera");
+            jerarquiaNoValida.showAndWait();
+        } catch (NoPuedeCantarEnvidoNoEsPieError x2) {
+            Alert jugadaNoValida = new Alert(AlertType.ERROR);
+            jugadaNoValida.setTitle("Error");
+            jugadaNoValida.setHeaderText(null);
+            jugadaNoValida.setContentText("Solo el jugador que es pie puede cantar falta envido");
+            jugadaNoValida.showAndWait();
+        } catch (SoloSePuedeCantarEnvidoUnaVezPorRondaError x3) {
+            Alert jugadaNoValida = new Alert(AlertType.ERROR);
+            jugadaNoValida.setTitle("Error");
+            jugadaNoValida.setHeaderText(null);
+            jugadaNoValida.setContentText("Solo se puede cantar envido una vez por ronda");
+            jugadaNoValida.showAndWait();
+        } catch (NoPuedeCantarEnvidoSeCantoFlorError x4) {
+            Alert jugadaNoValida = new Alert(AlertType.ERROR);
+            jugadaNoValida.setTitle("Error");
+            jugadaNoValida.setHeaderText(null);
+            jugadaNoValida.setContentText("Se canto flor, no se puede cantar falta envido");
+            jugadaNoValida.showAndWait();
+        }
         this.mostrarJugadorActual();
     }
 
     @FXML
     private void quieroEnvidoHandler() {
         this.juego.quieroEnvido();
+
+        Alert jerarquiaNoValida = new Alert(AlertType.INFORMATION);
+        jerarquiaNoValida.setTitle("Tantos del envido");
+        jerarquiaNoValida.setHeaderText("Ganador: " + juego.obtenerNombreGanadorDeEnvido());
+        jerarquiaNoValida.setContentText("Puntaje del ganador: " + juego.puntosDeEnvidoGanador() + "\n");
+        jerarquiaNoValida.showAndWait();
+        if (juego.concluyoLaPartida()) {
+            //programa.deshabilitarTodosLosBotones();
+            Alert mensaje = new Alert(AlertType.INFORMATION);
+            mensaje.setTitle("La partida ha concluido");
+            mensaje.setHeaderText("Puntajes: ");
+            mensaje.setContentText("Puntaje equipo 1: " + juego.puntosDeEquipo(Equipo.EQUIPO1) + "\n"
+                    + "Puntaje equipo 2: " + juego.puntosDeEquipo(Equipo.EQUIPO2) + "\n");
+            mensaje.showAndWait();
+        }
+
         this.visibilizarBotones(this.botonesFlor, false);
         this.visibilizarBotones(this.botonesEnvido, false);
         this.visibilizarBotones(this.botonesQuiero, false);
@@ -409,6 +521,17 @@ public class JuegoDeTrucoControl {
     @FXML
     private void noQuieroEnvidoHandler() {
         this.juego.noQuieroEnvido();
+
+        if (juego.concluyoLaPartida()) {
+            //programa.deshabilitarTodosLosBotones();
+            Alert mensaje = new Alert(AlertType.INFORMATION);
+            mensaje.setTitle("La partida ha concluido");
+            mensaje.setHeaderText("Puntajes: ");
+            mensaje.setContentText("Puntaje equipo 1: " + juego.puntosDeEquipo(Equipo.EQUIPO1) + "\n"
+                    + "Puntaje equipo 2: " + juego.puntosDeEquipo(Equipo.EQUIPO2) + "\n");
+            mensaje.showAndWait();
+        }
+
         this.visibilizarBotones(this.botonesFlor, false);
         this.visibilizarBotones(this.botonesEnvido, false);
         this.visibilizarBotones(this.botonesQuiero, false);
