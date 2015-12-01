@@ -1,5 +1,6 @@
 package fiuba.algo3.tpfinal.vista;
 
+import fiuba.algo3.tpfinal.control.JuegoFinalizadoControl;
 import fiuba.algo3.tpfinal.control.OpcionesDeJuegoControl;
 import fiuba.algo3.tpfinal.control.JuegoDeTrucoControl;
 import fiuba.algo3.tpfinal.control.VentanaInicialControl;
@@ -34,10 +35,8 @@ public class Programa extends Application {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(Programa.class.getResource("VentanaInicial.fxml"));
             this.ventanaInicial = loader.load();
-
             VentanaInicialControl controlador = loader.getController();
             controlador.setPrograma(this);
-
             Scene scene = new Scene(this.ventanaInicial);
             this.principal.setScene(scene);
             this.principal.show();
@@ -53,23 +52,32 @@ public class Programa extends Application {
 
     }
 
-    public void comenzarPartidaDeDos(JuegoDeTruco juego, boolean conFlor) throws IOException {
+    public void comenzarPartidaDosJugadores(JuegoDeTruco juego, boolean conFlor) throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(Programa.class.getResource("TrucoDosJugadores.fxml"));
-        AnchorPane partidaDeDos = loader.load();
-        this.ventanaInicial.setCenter(partidaDeDos);
-
+        AnchorPane partidaDosJugadores = loader.load();
+        this.ventanaInicial.setCenter(partidaDosJugadores);
         JuegoDeTrucoControl controlador = loader.getController();
         controlador.setPrograma(this, juego, conFlor);
     }
 
-    public void comenzarPartidaDeCuatro(JuegoDeTruco juego, boolean conFlor) throws IOException {
+    public void comenzarPartidaCuatroJugadores(JuegoDeTruco juego, boolean conFlor) throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(Programa.class.getResource("TrucoCuatroJugadores.fxml"));
-        AnchorPane partidaDeCuatro = loader.load();
-        this.ventanaInicial.setCenter(partidaDeCuatro);
-
+        AnchorPane partidaCuatroJugadores = loader.load();
+        this.ventanaInicial.setCenter(partidaCuatroJugadores);
         JuegoDeTrucoControl controlador = loader.getController();
         controlador.setPrograma(this, juego, conFlor);
     }
+
+    public void juegoFinalizado(JuegoDeTruco juego, boolean conFlor) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(Programa.class.getResource("JuegoFinalizado.fxml"));
+        AnchorPane juegoFinalizado = loader.load();
+        this.ventanaInicial.setCenter(juegoFinalizado);
+        JuegoFinalizadoControl controlador = loader.getController();
+        controlador.setPrograma(this);
+    }
+
+
 }

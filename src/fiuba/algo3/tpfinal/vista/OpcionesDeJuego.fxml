@@ -13,7 +13,7 @@
          <font>
             <Font name="System Bold" size="26.0" />
          </font></Label>
-        <RadioButton fx:id="opcionDeADos" layoutX="174.0" layoutY="181.0" mnemonicParsing="false" onAction="#opcionDosJugadoresHandler" prefHeight="31.0" prefWidth="153.0" styleClass="label" text="2 jugadores">
+        <RadioButton fx:id="opcionDosJugadores" layoutX="174.0" layoutY="181.0" mnemonicParsing="false" onAction="#opcionDosJugadoresHandler" prefHeight="31.0" prefWidth="153.0" styleClass="label" text="2 jugadores">
          <font>
             <Font size="20.0" />
          </font></RadioButton>
@@ -27,7 +27,7 @@
          <font>
             <Font size="20.0" />
          </font></CheckBox>
-      <RadioButton fx:id="opcionDeADos1" layoutX="174.0" layoutY="328.0" mnemonicParsing="false" onAction="#opcionDosJugadoresHandler" prefHeight="26.0" prefWidth="144.0" styleClass="label" text="4 jugadores">
+      <RadioButton fx:id="opcionCuatroJugadores" layoutX="174.0" layoutY="328.0" mnemonicParsing="false" onAction="#opcionCuatroJugadoresHandler" prefHeight="26.0" prefWidth="144.0" styleClass="label" text="4 jugadores">
          <font>
             <Font size="20.0" />
          </font>
