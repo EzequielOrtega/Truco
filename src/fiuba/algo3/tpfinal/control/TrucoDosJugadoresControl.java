@@ -4,10 +4,15 @@ import fiuba.algo3.tpfinal.modelo.Carta;
 import fiuba.algo3.tpfinal.modelo.Equipo;
 import fiuba.algo3.tpfinal.modelo.JuegoDeTruco;
 import fiuba.algo3.tpfinal.modelo.Jugador;
+import fiuba.algo3.tpfinal.modelo.error.NoPuedeCantarTrucoSeCantoEnvidoError;
+import fiuba.algo3.tpfinal.modelo.error.NoPuedeCantarTrucoSeCantoFlorError;
+import fiuba.algo3.tpfinal.modelo.error.NoRespetaJerarquiaDeTrucoError;
 import fiuba.algo3.tpfinal.vista.Programa;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Alert.AlertType;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -169,7 +174,29 @@ public class TrucoDosJugadoresControl {
 
     @FXML
     protected void trucoHandler(){
-        juego.truco();
+    	try {
+			juego.truco();
+			//programa.seCanto("Truco");
+			//programa.habilitarBotonQuieroTruco();
+		} catch (NoRespetaJerarquiaDeTrucoError x1) {
+			Alert jerarquiaNoValida = new Alert(AlertType.ERROR);
+			jerarquiaNoValida.setTitle("Error");
+			jerarquiaNoValida.setHeaderText(null);
+			jerarquiaNoValida.setContentText("No respeta la jerarquia del truco");
+			jerarquiaNoValida.showAndWait();
+		} catch (NoPuedeCantarTrucoSeCantoEnvidoError x2) {
+			Alert jugadaNoValida = new Alert(AlertType.ERROR);
+			jugadaNoValida.setTitle("Error");
+			jugadaNoValida.setHeaderText("No puede cantar truco, se canto envido");
+			jugadaNoValida.setContentText("Debe responderle al equipo contrario");
+			jugadaNoValida.showAndWait();
+		} catch (NoPuedeCantarTrucoSeCantoFlorError x3) {
+			Alert jugadaNoValida = new Alert(AlertType.ERROR);
+			jugadaNoValida.setTitle("Error");
+			jugadaNoValida.setHeaderText("No puede cantar truco, se canto flor");
+			jugadaNoValida.setContentText("Debe responderle al equipo contrario");
+			jugadaNoValida.showAndWait();
+		}
         this.mostrarJugadorActual();
     }
 
