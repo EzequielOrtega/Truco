@@ -62,4 +62,14 @@ public class Programa extends Application {
         JuegoDeTrucoControl controlador = loader.getController();
         controlador.setPrograma(this, juego, conFlor);
     }
+
+    public void comenzarPartidaDeCuatro(JuegoDeTruco juego, boolean conFlor) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(Programa.class.getResource("TrucoCuatroJugadores.fxml"));
+        AnchorPane partidaDeCuatro = loader.load();
+        this.ventanaInicial.setCenter(partidaDeCuatro);
+
+        JuegoDeTrucoControl controlador = loader.getController();
+        controlador.setPrograma(this, juego, conFlor);
+    }
 }

@@ -102,10 +102,10 @@
                                                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                             </rowConstraints>
                                             <children>
-                                                <Label fx:id="labelEquipo1" />
-                                                <Label fx:id="labelEquipo2" GridPane.rowIndex="1" />
-                                                <Label fx:id="puntajeEquipo1" styleClass="maintitle-label" text="Label" GridPane.columnIndex="1" GridPane.halignment="RIGHT" />
-                                                <Label fx:id="puntajeEquipo2" styleClass="maintitle-label" text="Label" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
+                                                <Label fx:id="labelEquipo1" styleClass="maintitle-label" text="Equipo: " GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
+                                                <Label fx:id="labelEquipo2" styleClass="maintitle-label" text="Equipo: " GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
+                                                <Label fx:id="puntajeEquipo1" styleClass="maintitle-label" text="Puntaje: " GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
+                                                <Label fx:id="puntajeEquipo2" styleClass="maintitle-label" text="Puntaje: " GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
                                             </children>
                                         </GridPane>
                                     </children>
