@@ -28,5 +28,14 @@ public class BotonQuieroEnvidoEventHandler implements EventHandler<ActionEvent> 
 		jerarquiaNoValida.setHeaderText("Ganador: " + juego.obtenerNombreGanadorDeEnvido());
 		jerarquiaNoValida.setContentText("Puntaje del ganador: " + juego.puntosDeEnvidoGanador() + "\n");
 		jerarquiaNoValida.showAndWait();
+		if (juego.concluyoLaPartida()) {
+			//programa.deshabilitarTodosLosBotones
+			Alert mensaje = new Alert(AlertType.INFORMATION);
+			mensaje.setTitle("La partida ha concluido");
+			mensaje.setHeaderText("Puntajes: ");
+			mensaje.setContentText("Puntaje equipo 1: " + juego.puntosDeEquipo(Equipo.EQUIPO1) + "\n"
+										   + "Puntaje equipo 2: " + juego.puntosDeEquipo(Equipo.EQUIPO2) + "\n");
+			mensaje.showAndWait();
+		}
 	}
 }
