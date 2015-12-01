@@ -25,6 +25,7 @@ public class BotonNoQuieroTrucoEventHandler implements EventHandler<ActionEvent>
 		//programa.deshabilitarBotonQuieroTruco();
 		//programa.actualizarPuntajes();
 		if (juego.concluyoLaPartida()) {
+			//programa.deshabilitarTodosLosBotones();
 			Alert jerarquiaNoValida = new Alert(AlertType.INFORMATION);
 			jerarquiaNoValida.setTitle("La partida ha concluido");
 			jerarquiaNoValida.setHeaderText("Puntajes: ");

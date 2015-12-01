@@ -29,7 +29,7 @@ public class BotonQuieroEnvidoEventHandler implements EventHandler<ActionEvent> 
 		jerarquiaNoValida.setContentText("Puntaje del ganador: " + juego.puntosDeEnvidoGanador() + "\n");
 		jerarquiaNoValida.showAndWait();
 		if (juego.concluyoLaPartida()) {
-			//programa.deshabilitarTodosLosBotones
+			//programa.deshabilitarTodosLosBotones();
 			Alert mensaje = new Alert(AlertType.INFORMATION);
 			mensaje.setTitle("La partida ha concluido");
 			mensaje.setHeaderText("Puntajes: ");
