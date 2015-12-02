@@ -7,7 +7,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fiuba.algo3.tpfinal.control.JuegoDeTrucoControl">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fiuba.algo3.tpfinal.control.JuegoDeTrucoControl">
     <children>
         <SplitPane dividerPositions="0.8419023136246787" layoutX="307.0" layoutY="123.0" orientation="VERTICAL" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <items>
@@ -65,7 +65,7 @@
                                 </AnchorPane>
                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="657.0" prefWidth="750.0">
                                     <children>
-                                        <Ellipse fill="#1d8614" layoutX="411.0" layoutY="329.0" radiusX="366.0" radiusY="335.0" stroke="BLACK" strokeType="INSIDE" />
+                                        <Ellipse fill="#1d8614" layoutX="220.0" layoutY="199.0" radiusX="206.0" radiusY="185.0" stroke="BLACK" strokeType="INSIDE" />
                                         <Button fx:id="botonCartaJugada1J1" layoutX="349.0" layoutY="565.0" mnemonicParsing="false" visible="false" />
                                         <Button fx:id="botonCartaJugada2J1" layoutX="365.0" layoutY="540.0" mnemonicParsing="false" visible="false" />
                                         <Button fx:id="botonCartaJugada3J1" layoutX="381.0" layoutY="515.0" mnemonicParsing="false" visible="false" />
@@ -78,22 +78,22 @@
                                         <Button fx:id="botonCartaJugada1J4" layoutX="341.0" layoutY="58.0" mnemonicParsing="false" visible="false" />
                                         <Button fx:id="botonCartaJugada2J4" layoutX="357.0" layoutY="83.0" mnemonicParsing="false" visible="false" />
                                         <Button fx:id="botonCartaJugada3J4" layoutX="373.0" layoutY="108.0" mnemonicParsing="false" visible="false" />
-                                        <Label fx:id="nombreJ2" layoutX="599.0" layoutY="310.0" prefHeight="39.0" prefWidth="104.0" text="Jugador 2" textFill="#f5e1e1">
+                                        <Label fx:id="nombreJ2" layoutX="321.0" layoutY="180.0" prefHeight="39.0" prefWidth="104.0" text="Jugador 2" textFill="#f5e1e1">
                                             <font>
                                                 <Font name="System Bold" size="21.0" />
                                             </font>
                                         </Label>
-                                        <Label fx:id="nombreJ1" layoutX="367.0" layoutY="546.0" prefHeight="39.0" prefWidth="104.0" text="Jugador 1" textFill="#f5e1e1">
+                                        <Label fx:id="nombreJ1" layoutX="168.0" layoutY="345.0" prefHeight="39.0" prefWidth="104.0" text="Jugador 1" textFill="#f5e1e1">
                                             <font>
                                                 <Font name="System Bold" size="21.0" />
                                             </font>
                                         </Label>
-                              <Label fx:id="nombreJ4" layoutX="87.0" layoutY="309.0" prefHeight="39.0" prefWidth="104.0" text="Jugador 4" textFill="#f5e1e1">
+                              <Label fx:id="nombreJ4" layoutX="14.0" layoutY="179.0" prefHeight="39.0" prefWidth="104.0" text="Jugador 4" textFill="#f5e1e1">
                                  <font>
                                     <Font name="System Bold" size="21.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="nombreJ3" layoutX="367.0" layoutY="39.0" prefHeight="39.0" prefWidth="104.0" text="Jugador 3" textFill="#f5e1e1">
+                              <Label fx:id="nombreJ3" layoutX="168.0" layoutY="14.0" prefHeight="39.0" prefWidth="104.0" text="Jugador 3" textFill="#f5e1e1">
                                  <font>
                                     <Font name="System Bold" size="21.0" />
                                  </font>

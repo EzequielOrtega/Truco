@@ -15,6 +15,7 @@ import java.util.*;
 public class JuegoDeTrucoControl {
 
     private JuegoDeTruco juego;
+    private Diccionario diccionario = new Diccionario();
     private Programa programa;
     private Jugador jugadorActual;
     private List<Carta> cartasJugadorActual;
@@ -195,6 +196,10 @@ public class JuegoDeTrucoControl {
     @FXML
     public void mostrarCartasHandler() {
         this.mostrarBotones(this.botonesCartasJugadorActual, true);
+        Vector<Carta> cartas = this.jugadorActual.mostrarCartas();
+        for (int x = 0; x < cartas.size(); x++) {
+        	this.botonesCartasJugadorActual.get(x).setText(this.diccionario.Busqueda(cartas.get(x)));
+        }
     }
 
     // **** Flor ****
