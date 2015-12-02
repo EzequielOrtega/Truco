@@ -71,6 +71,7 @@ public class Programa extends Application {
     }
 
     public void juegoFinalizado(JuegoDeTruco juego, boolean conFlor) throws IOException {
+        // TODO: mandarle el ganador para que lo informe por pantalla
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(Programa.class.getResource("JuegoFinalizado.fxml"));
         AnchorPane juegoFinalizado = loader.load();

@@ -197,31 +197,31 @@ public class JuegoDeTrucoControl {
             Alert jerarquiaNoValida = new Alert(AlertType.ERROR);
             jerarquiaNoValida.setTitle("Error");
             jerarquiaNoValida.setHeaderText(null);
-            jerarquiaNoValida.setContentText("Se esta jugando sin flor");
+            jerarquiaNoValida.setContentText("Se está jugando sin flor.");
             jerarquiaNoValida.showAndWait();
         } catch (SoloSePuedeCantarFlorEnPrimeraError x2) {
             Alert jerarquiaNoValida = new Alert(AlertType.ERROR);
             jerarquiaNoValida.setTitle("Error");
             jerarquiaNoValida.setHeaderText(null);
-            jerarquiaNoValida.setContentText("Solo se puede cantar flor en primera");
+            jerarquiaNoValida.setContentText("Sólo se puede cantar flor en primera.");
             jerarquiaNoValida.showAndWait();
         } catch (SoloSePuedeCantarFlorUnaVezPorRondaError x3) {
             Alert jerarquiaNoValida = new Alert(AlertType.ERROR);
             jerarquiaNoValida.setTitle("Error");
             jerarquiaNoValida.setHeaderText(null);
-            jerarquiaNoValida.setContentText("Solo se puede cantar flor una vez por ronda");
+            jerarquiaNoValida.setContentText("Sólo se puede cantar flor una vez por ronda.");
             jerarquiaNoValida.showAndWait();
         } catch (JugadorNoTieneFlorError x4) {
             Alert jerarquiaNoValida = new Alert(AlertType.ERROR);
             jerarquiaNoValida.setTitle("Error");
             jerarquiaNoValida.setHeaderText(null);
-            jerarquiaNoValida.setContentText("No tiene flor");
+            jerarquiaNoValida.setContentText("Usted no tiene flor!");
             jerarquiaNoValida.showAndWait();
         } catch (NoRespetaJerarquiaDeFlorError x5) {
             Alert jerarquiaNoValida = new Alert(AlertType.ERROR);
             jerarquiaNoValida.setTitle("Error");
             jerarquiaNoValida.setHeaderText(null);
-            jerarquiaNoValida.setContentText("No respeta la jerarquia de flor");
+            jerarquiaNoValida.setContentText("No respeta la jerarquía de flor.");
             jerarquiaNoValida.showAndWait();
         }
         this.mostrarJugadorActual();
@@ -235,19 +235,19 @@ public class JuegoDeTrucoControl {
             Alert jerarquiaNoValida = new Alert(AlertType.ERROR);
             jerarquiaNoValida.setTitle("Error");
             jerarquiaNoValida.setHeaderText(null);
-            jerarquiaNoValida.setContentText("No tiene flor");
+            jerarquiaNoValida.setContentText("Usted no tiene flor!");
             jerarquiaNoValida.showAndWait();
         } catch (NoRespetaJerarquiaDeFlorError x2) {
             Alert jerarquiaNoValida = new Alert(AlertType.ERROR);
             jerarquiaNoValida.setTitle("Error");
             jerarquiaNoValida.setHeaderText(null);
-            jerarquiaNoValida.setContentText("No respeta la jerarquia de flor");
+            jerarquiaNoValida.setContentText("No respeta la jerarquía de flor.");
             jerarquiaNoValida.showAndWait();
         } catch (SoloSePuedeCantarFlorUnaVezPorRondaError x3) {
             Alert jerarquiaNoValida = new Alert(AlertType.ERROR);
             jerarquiaNoValida.setTitle("Error");
             jerarquiaNoValida.setHeaderText(null);
-            jerarquiaNoValida.setContentText("Solo se puede cantar flor una vez por ronda");
+            jerarquiaNoValida.setContentText("Sólo se puede cantar flor una vez por ronda.");
             jerarquiaNoValida.showAndWait();
         }
         this.mostrarJugadorActual();
@@ -261,19 +261,19 @@ public class JuegoDeTrucoControl {
             Alert jerarquiaNoValida = new Alert(AlertType.ERROR);
             jerarquiaNoValida.setTitle("Error");
             jerarquiaNoValida.setHeaderText(null);
-            jerarquiaNoValida.setContentText("No tiene flor");
+            jerarquiaNoValida.setContentText("Usted no tiene flor!");
             jerarquiaNoValida.showAndWait();
         } catch (NoRespetaJerarquiaDeFlorError x2) {
             Alert jerarquiaNoValida = new Alert(AlertType.ERROR);
             jerarquiaNoValida.setTitle("Error");
             jerarquiaNoValida.setHeaderText(null);
-            jerarquiaNoValida.setContentText("No respeta la jerarquia de flor");
+            jerarquiaNoValida.setContentText("No respeta la jerarquía de flor.");
             jerarquiaNoValida.showAndWait();
         } catch (SoloSePuedeCantarFlorUnaVezPorRondaError x3) {
             Alert jerarquiaNoValida = new Alert(AlertType.ERROR);
             jerarquiaNoValida.setTitle("Error");
             jerarquiaNoValida.setHeaderText(null);
-            jerarquiaNoValida.setContentText("Solo se puede cantar flor una vez por ronda");
+            jerarquiaNoValida.setContentText("Sólo se puede cantar flor una vez por ronda.");
             jerarquiaNoValida.showAndWait();
         }
         this.mostrarJugadorActual();
@@ -289,11 +289,12 @@ public class JuegoDeTrucoControl {
         estadosMostrarGanador.add(ContraFlorAlResto.class);
         if (estadosMostrarGanador.contains(juego.obtenerEstadoDeFlor().getClass())) {
             Alert jerarquiaNoValida = new Alert(AlertType.INFORMATION);
-            jerarquiaNoValida.setTitle("Tantos de la flor");
+            jerarquiaNoValida.setTitle("Tantos de flor");
             jerarquiaNoValida.setHeaderText("Ganador: " + juego.obtenerNombreGanadorDeFlor());
             jerarquiaNoValida.setContentText("Puntaje del ganador: " + juego.puntosDeFlorGanador() + "\n");
             jerarquiaNoValida.showAndWait();
         }
+        // TODO: ver si termino el juego
     }
 
     @FXML
@@ -306,9 +307,10 @@ public class JuegoDeTrucoControl {
             Alert jerarquiaNoValida = new Alert(AlertType.ERROR);
             jerarquiaNoValida.setTitle("Error");
             jerarquiaNoValida.setHeaderText(null);
-            jerarquiaNoValida.setContentText("No se puede rechazar la flor");
+            jerarquiaNoValida.setContentText("No se puede rechazar la flor!");
             jerarquiaNoValida.showAndWait();
         }
+        // TODO: ver si termino el juego
     }
 
     // Envido
@@ -322,31 +324,31 @@ public class JuegoDeTrucoControl {
             Alert jerarquiaNoValida = new Alert(AlertType.ERROR);
             jerarquiaNoValida.setTitle("Error");
             jerarquiaNoValida.setHeaderText(null);
-            jerarquiaNoValida.setContentText("El envido solo se puede cantar en primera");
+            jerarquiaNoValida.setContentText("El envido sólo se puede cantar en primera.");
             jerarquiaNoValida.showAndWait();
         } catch (NoPuedeCantarEnvidoNoEsPieError x2) {
             Alert jugadaNoValida = new Alert(AlertType.ERROR);
             jugadaNoValida.setTitle("Error");
             jugadaNoValida.setHeaderText(null);
-            jugadaNoValida.setContentText("Solo el jugador que es pie puede cantar envido");
+            jugadaNoValida.setContentText("Sólo el jugador que es pie puede cantar envido.");
             jugadaNoValida.showAndWait();
         } catch (NoRespetaJerarquiaDeEnvidoError x3) {
             Alert jugadaNoValida = new Alert(AlertType.ERROR);
             jugadaNoValida.setTitle("Error");
             jugadaNoValida.setHeaderText(null);
-            jugadaNoValida.setContentText("No respeta la jerarquia del envido");
+            jugadaNoValida.setContentText("No respeta la jerarquía del envido.");
             jugadaNoValida.showAndWait();
         } catch (SoloSePuedeCantarEnvidoUnaVezPorRondaError x4) {
             Alert jugadaNoValida = new Alert(AlertType.ERROR);
             jugadaNoValida.setTitle("Error");
             jugadaNoValida.setHeaderText(null);
-            jugadaNoValida.setContentText("Solo se puede cantar envido una vez por ronda");
+            jugadaNoValida.setContentText("Sólo se puede cantar envido una vez por ronda.");
             jugadaNoValida.showAndWait();
         } catch (NoPuedeCantarEnvidoSeCantoFlorError x5) {
             Alert jugadaNoValida = new Alert(AlertType.ERROR);
             jugadaNoValida.setTitle("Error");
             jugadaNoValida.setHeaderText(null);
-            jugadaNoValida.setContentText("Se canto flor, no se puede cantar envido");
+            jugadaNoValida.setContentText("Ya se cantó flor, no se puede cantar envido.");
             jugadaNoValida.showAndWait();
         }
         this.mostrarJugadorActual();
@@ -362,31 +364,31 @@ public class JuegoDeTrucoControl {
             Alert jerarquiaNoValida = new Alert(AlertType.ERROR);
             jerarquiaNoValida.setTitle("Error");
             jerarquiaNoValida.setHeaderText(null);
-            jerarquiaNoValida.setContentText("El real envido solo se puede cantar en primera");
+            jerarquiaNoValida.setContentText("El real envido sólo se puede cantar en primera.");
             jerarquiaNoValida.showAndWait();
         } catch (NoPuedeCantarEnvidoNoEsPieError x2) {
             Alert jugadaNoValida = new Alert(AlertType.ERROR);
             jugadaNoValida.setTitle("Error");
             jugadaNoValida.setHeaderText(null);
-            jugadaNoValida.setContentText("Solo el jugador que es pie puede cantar real envido");
+            jugadaNoValida.setContentText("Sólo el jugador que es pie puede cantar real envido.");
             jugadaNoValida.showAndWait();
         } catch (NoRespetaJerarquiaDeEnvidoError x3) {
             Alert jugadaNoValida = new Alert(AlertType.ERROR);
             jugadaNoValida.setTitle("Error");
             jugadaNoValida.setHeaderText(null);
-            jugadaNoValida.setContentText("No respeta la jerarquia del envido");
+            jugadaNoValida.setContentText("No respeta la jerarquía del envido.");
             jugadaNoValida.showAndWait();
         } catch (SoloSePuedeCantarEnvidoUnaVezPorRondaError x4) {
             Alert jugadaNoValida = new Alert(AlertType.ERROR);
             jugadaNoValida.setTitle("Error");
             jugadaNoValida.setHeaderText(null);
-            jugadaNoValida.setContentText("Solo se puede cantar envido una vez por ronda");
+            jugadaNoValida.setContentText("Sólo se puede cantar envido una vez por ronda.");
             jugadaNoValida.showAndWait();
         } catch (NoPuedeCantarEnvidoSeCantoFlorError x5) {
             Alert jugadaNoValida = new Alert(AlertType.ERROR);
             jugadaNoValida.setTitle("Error");
             jugadaNoValida.setHeaderText(null);
-            jugadaNoValida.setContentText("Se canto flor, no se puede cantar real envido");
+            jugadaNoValida.setContentText("Ya se cantó flor, no se puede cantar real envido.");
             jugadaNoValida.showAndWait();
         }
         this.mostrarJugadorActual();
@@ -402,25 +404,25 @@ public class JuegoDeTrucoControl {
             Alert jerarquiaNoValida = new Alert(AlertType.ERROR);
             jerarquiaNoValida.setTitle("Error");
             jerarquiaNoValida.setHeaderText(null);
-            jerarquiaNoValida.setContentText("El falta envido solo se puede cantar en primera");
+            jerarquiaNoValida.setContentText("El falta envido sólo se puede cantar en primera.");
             jerarquiaNoValida.showAndWait();
         } catch (NoPuedeCantarEnvidoNoEsPieError x2) {
             Alert jugadaNoValida = new Alert(AlertType.ERROR);
             jugadaNoValida.setTitle("Error");
             jugadaNoValida.setHeaderText(null);
-            jugadaNoValida.setContentText("Solo el jugador que es pie puede cantar falta envido");
+            jugadaNoValida.setContentText("Sólo el jugador que es pie puede cantar falta envido.");
             jugadaNoValida.showAndWait();
         } catch (SoloSePuedeCantarEnvidoUnaVezPorRondaError x3) {
             Alert jugadaNoValida = new Alert(AlertType.ERROR);
             jugadaNoValida.setTitle("Error");
             jugadaNoValida.setHeaderText(null);
-            jugadaNoValida.setContentText("Solo se puede cantar envido una vez por ronda");
+            jugadaNoValida.setContentText("Sólo se puede cantar envido una vez por ronda.");
             jugadaNoValida.showAndWait();
         } catch (NoPuedeCantarEnvidoSeCantoFlorError x4) {
             Alert jugadaNoValida = new Alert(AlertType.ERROR);
             jugadaNoValida.setTitle("Error");
             jugadaNoValida.setHeaderText(null);
-            jugadaNoValida.setContentText("Se canto flor, no se puede cantar falta envido");
+            jugadaNoValida.setContentText("Ya se cantó flor, no se puede cantar falta envido.");
             jugadaNoValida.showAndWait();
         }
         this.mostrarJugadorActual();
@@ -452,6 +454,7 @@ public class JuegoDeTrucoControl {
 
         this.mostrarPuntos();
         this.mostrarJugadorActual();
+        // TODO: ver si termino el juego
     }
 
     @FXML
@@ -475,6 +478,7 @@ public class JuegoDeTrucoControl {
 
         this.mostrarPuntos();
         this.mostrarJugadorActual();
+        // TODO: ver si termino el juego
     }
 
     // Truco
@@ -488,19 +492,19 @@ public class JuegoDeTrucoControl {
             Alert jerarquiaNoValida = new Alert(AlertType.ERROR);
             jerarquiaNoValida.setTitle("Error");
             jerarquiaNoValida.setHeaderText(null);
-            jerarquiaNoValida.setContentText("No respeta la jerarquia del truco");
+            jerarquiaNoValida.setContentText("No respeta la jerarquía del truco.");
             jerarquiaNoValida.showAndWait();
         } catch (NoPuedeCantarTrucoSeCantoEnvidoError x2) {
             Alert jugadaNoValida = new Alert(AlertType.ERROR);
             jugadaNoValida.setTitle("Error");
-            jugadaNoValida.setHeaderText("No puede cantar truco, se canto envido");
-            jugadaNoValida.setContentText("Debe responderle al equipo contrario");
+            jugadaNoValida.setHeaderText("No puede cantar truco, se cantó envido.");
+            jugadaNoValida.setContentText("Debe responderle al equipo contrario.");
             jugadaNoValida.showAndWait();
         } catch (NoPuedeCantarTrucoSeCantoFlorError x3) {
             Alert jugadaNoValida = new Alert(AlertType.ERROR);
             jugadaNoValida.setTitle("Error");
-            jugadaNoValida.setHeaderText("No puede cantar truco, se canto flor");
-            jugadaNoValida.setContentText("Debe responderle al equipo contrario");
+            jugadaNoValida.setHeaderText("No puede cantar truco, se cantó flor.");
+            jugadaNoValida.setContentText("Debe responderle al equipo contrario.");
             jugadaNoValida.showAndWait();
         }
         this.mostrarJugadorActual();
@@ -516,7 +520,7 @@ public class JuegoDeTrucoControl {
             Alert jerarquiaNoValida = new Alert(AlertType.ERROR);
             jerarquiaNoValida.setTitle("Error");
             jerarquiaNoValida.setHeaderText(null);
-            jerarquiaNoValida.setContentText("No respeta la jerarquia del truco");
+            jerarquiaNoValida.setContentText("No respeta la jerarquía del truco.");
             jerarquiaNoValida.showAndWait();
         }
         this.mostrarJugadorActual();
@@ -532,7 +536,7 @@ public class JuegoDeTrucoControl {
             Alert jerarquiaNoValida = new Alert(AlertType.ERROR);
             jerarquiaNoValida.setTitle("Error");
             jerarquiaNoValida.setHeaderText(null);
-            jerarquiaNoValida.setContentText("No respeta la jerarquia del truco");
+            jerarquiaNoValida.setContentText("No respeta la jerarquía del truco.");
             jerarquiaNoValida.showAndWait();
         }
         this.mostrarJugadorActual();
@@ -561,6 +565,7 @@ public class JuegoDeTrucoControl {
         this.nuevaRonda();
         this.mostrarPuntos();
         this.mostrarJugadorActual();
+        // TODO: ver si termino el juego
     }
 
 }
