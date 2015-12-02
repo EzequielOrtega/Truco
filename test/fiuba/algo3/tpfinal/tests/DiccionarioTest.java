@@ -9,6 +9,7 @@ import fiuba.algo3.tpfinal.modelo.Diccionario;
 import fiuba.algo3.tpfinal.modelo.Figura;
 import fiuba.algo3.tpfinal.modelo.NoFigura;
 import fiuba.algo3.tpfinal.modelo.Palo;
+import fiuba.algo3.tpfinal.modelo.error.LaCartaIngresadaNoEstaEnLaTablaError;
 
 public class DiccionarioTest {
 	
@@ -37,6 +38,12 @@ public class DiccionarioTest {
 		Assert.assertEquals("Dos de oro", diccionario.Busqueda(dosOro));
 		Carta tresOro = new NoFigura(3, Palo.ORO);
 		Assert.assertEquals("Tres de oro", diccionario.Busqueda(tresOro));
+	}
+	
+	@Test (expected = LaCartaIngresadaNoEstaEnLaTablaError.class)
+	public void testLaCartaBuscadaNoEstaEnLaTabla() {
+		Carta carta = new Carta(9, Palo.ESPADA);
+		diccionario.Busqueda(carta);
 	}
 
 }
