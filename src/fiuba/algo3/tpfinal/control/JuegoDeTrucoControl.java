@@ -18,10 +18,7 @@ public class JuegoDeTrucoControl {
     private Programa programa;
     private Jugador jugadorActual;
     private List<Carta> cartasJugadorActual;
-    private int cantidadJugadasJugador1 = 0, cantidadJugadasJugador2 = 0, cantidadJugadasJugador3 = 0, cantidadJugadasJugador4 = 0;
-    private List<Integer> cantidadJugadasJugador;
-    private int indiceJugador = 0;
-    private List<Button> botonesFlor, botonesEnvido, botonesTruco, botonesQuiero, botonesNoQuiero;
+    private List<Button> botonesFlor, botonesEnvido, botonesTruco, botonesQuiero;
     private boolean conFlor;
 
     @FXML private Label labelTurno, labelStatus;
@@ -54,7 +51,6 @@ public class JuegoDeTrucoControl {
         this.botonesCartasJugadasJugador3 = new ArrayList<>(Arrays.asList(this.botonCartaJugada1J3, this.botonCartaJugada2J3, this.botonCartaJugada3J3));
         this.botonesCartasJugadasJugador4 = new ArrayList<>(Arrays.asList(this.botonCartaJugada1J4, this.botonCartaJugada2J4, this.botonCartaJugada3J4));
         this.botonesCartasJugadas = new ArrayList<>(Arrays.asList(this.botonesCartasJugadasJugador1, this.botonesCartasJugadasJugador2));
-        this.cantidadJugadasJugador = new ArrayList<>(Arrays.asList(this.cantidadJugadasJugador1, this.cantidadJugadasJugador2));
     }
 
     public void setPrograma(Programa programa, JuegoDeTruco juego, boolean conFlor) {
@@ -107,7 +103,7 @@ public class JuegoDeTrucoControl {
         }
     }
 
-    private void nuevaRonda() {
+    private void setNuevaRonda() {
 
         int cantidadJugadores = 2; // Por ahora
         for(int i = 0; i < cantidadJugadores; i++) {
@@ -115,10 +111,7 @@ public class JuegoDeTrucoControl {
                 botonCartaJugada.setText("");
                 botonCartaJugada.setVisible(false);
             }
-            this.cantidadJugadasJugador.set(i, 0);
-
         }
-
         this.mostrarTodosLosBotones(false);
         this.mostrarBotones(this.botonesEnvido, true);
         this.mostrarBotones(this.botonesFlor, conFlor);
@@ -128,14 +121,9 @@ public class JuegoDeTrucoControl {
 
     private void ponerCartaEnLaMesa(Carta carta) {
         // TODO: implementar un diccionario para que pueda decir el string de la carta
-
-
-        Integer numeroJugada = this.cantidadJugadasJugador.get(this.indiceJugador);
-        Button botonCartaJugada = this.botonesCartasJugadas.get(this.indiceJugador).get(numeroJugada);
-
-        botonCartaJugada.setVisible(true);
-
-        this.cantidadJugadasJugador.set(this.indiceJugador, numeroJugada + 1);
+        int cantidad = this.jugadorActual.cantidadDeCartasJugadas();
+        Button botonCartaAPonerEnLaMesa = botonesCartasJugadorActual.get(cantidad);
+        botonCartaAPonerEnLaMesa.setVisible(true);
     }
 
     private void setPartidaFinalizada() throws IOException {
@@ -159,6 +147,8 @@ public class JuegoDeTrucoControl {
         if (juego.concluyoLaPartida()) {
             this.setPartidaFinalizada();
         }
+        if (juego.concluyoLaRonda())
+            this.setNuevaRonda();
     }
 
     @FXML
@@ -168,9 +158,10 @@ public class JuegoDeTrucoControl {
         this.ponerCartaEnLaMesa(cartasJugadorActual.get(1));
         this.mostrarJugadorActual();
         this.mostrarPuntos();
-        if (juego.concluyoLaPartida()) {
+        if (juego.concluyoLaPartida())
             this.setPartidaFinalizada();
-        }
+        if (juego.concluyoLaRonda())
+            this.setNuevaRonda();
     }
 
     @FXML
@@ -180,11 +171,16 @@ public class JuegoDeTrucoControl {
         this.ponerCartaEnLaMesa(cartasJugadorActual.get(2));
         this.mostrarJugadorActual();
         this.mostrarPuntos();
-        if (juego.concluyoLaPartida()) {
+        if (juego.concluyoLaPartida())
             this.setPartidaFinalizada();
-        }
+        if (juego.concluyoLaRonda())
+            this.setNuevaRonda();
     }
 
+    @FXML
+    public void mostrarCartasHandler() {
+        this.mostrarBotones(this.botonesCartasJugadorActual, true);
+    }
 
     // **** Flor ****
     @FXML
@@ -547,7 +543,7 @@ public class JuegoDeTrucoControl {
         if (juego.concluyoLaPartida()) {
             this.setPartidaFinalizada();
         } else {
-            this.nuevaRonda();
+            this.setNuevaRonda();
             this.mostrarPuntos();
             this.mostrarJugadorActual();
         }

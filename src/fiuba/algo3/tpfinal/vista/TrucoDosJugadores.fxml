@@ -7,7 +7,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="789.0" prefWidth="1067.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fiuba.algo3.tpfinal.control.JuegoDeTrucoControl">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fiuba.algo3.tpfinal.control.JuegoDeTrucoControl">
     <children>
         <SplitPane dividerPositions="0.8419023136246787" layoutX="307.0" layoutY="123.0" orientation="VERTICAL" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <items>
@@ -44,7 +44,7 @@
                                                                 <Button fx:id="botonTruco" mnemonicParsing="false" onAction="#trucoHandler" text="Truco" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
                                                                 <Button fx:id="botonFlor" mnemonicParsing="false" onAction="#florHandler" text="Flor" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
                                                                 <Button fx:id="botonRealEnvido" mnemonicParsing="false" onAction="#realEnvidoHandler" text="Real envido" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
-                                                                <Button fx:id="botonRetruco" mnemonicParsing="false" onAction="#reTrucoHandler" text="Re truco" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+                                                                <Button fx:id="botonReTruco" mnemonicParsing="false" onAction="#reTrucoHandler" text="Re truco" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
                                                                 <Button fx:id="botonContraFlor" mnemonicParsing="false" onAction="#contraFlorHandler" text="Contraflor" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
                                                                 <Button fx:id="botonFaltaEnvido" mnemonicParsing="false" onAction="#faltaEnvidoHandler" text="Falta envido" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
                                                                 <Button fx:id="botonValeCuatro" mnemonicParsing="false" onAction="#valeCuatroHandler" text="Vale 4" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
@@ -96,6 +96,7 @@
                                             <columnConstraints>
                                                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints />
                                             </columnConstraints>
                                             <rowConstraints>
                                                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -126,7 +127,7 @@
                                                 <Button fx:id="botonCarta1" mnemonicParsing="false" onAction="#jugarCarta1Handler" text="Carta dada vuelta" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
                                                 <Button fx:id="botonCarta3" mnemonicParsing="false" onAction="#jugarCarta3Handler" text="Carta dada vuelta" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
                                                 <Button fx:id="botonCarta2" mnemonicParsing="false" onAction="#jugarCarta2Handler" text="Carta dada vuelta" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
-                                                <Button fx:id="botonMostrarCartas" mnemonicParsing="false" styleClass="button-blue" text="Mostrar cartas" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                                                <Button fx:id="botonMostrarCartas" mnemonicParsing="false" onAction="#mostrarCartasHandler" styleClass="button-blue" text="Mostrar cartas" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
                                             </children>
                                         </GridPane>
                                     </children>

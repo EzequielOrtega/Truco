@@ -1,9 +1,9 @@
 package fiuba.algo3.tpfinal.modelo;
 
-import java.util.Vector;
-
 import fiuba.algo3.tpfinal.modelo.error.CantidadDeCartasInvalidaError;
 import fiuba.algo3.tpfinal.modelo.error.NoTieneEsaCartaEnLaManoError;
+
+import java.util.Vector;
 
 public class Jugador {
 	// Tal vez deberia llamarse JugadorDeTruco o crear una clase JugadorDeTruco
@@ -68,6 +68,10 @@ public class Jugador {
 		return false;
 	}
 
+	public int cantidadDeCartasJugadas() {
+		return cartasJugadas.size();
+	}
+
 	// PUNTAJE
 
 	public void sumarPuntos(int cantidadDePuntos) {
@@ -114,9 +118,5 @@ public class Jugador {
 
 	public boolean tieneFlor() {
 		return this.calculadorDeTantos.tieneFlor(cartas);
-	}
-	
-	public Boolean coincideElEquipoCon(Jugador otroJugador) {
-		return otroJugador.coincideElEquipo(this.equipo);
 	}
 }

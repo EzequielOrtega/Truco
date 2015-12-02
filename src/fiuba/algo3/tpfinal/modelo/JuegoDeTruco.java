@@ -357,7 +357,7 @@ public class JuegoDeTruco {
 
 	private Jugador obtenerJugadorNoQuieroTruco() {
 		Jugador jugadorPedido;
-		if (this.jugadorQueCantoTruco.coincideElEquipoCon(this.jugadorActual)) {
+		if (this.jugadorQueCantoTruco.estanEnElMismoEquipo(this.jugadorActual)) {
 			this.avanzarJugadorActual();
 			jugadorPedido = this.jugadorActual;
 		} else {

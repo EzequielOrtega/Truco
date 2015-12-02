@@ -51,13 +51,13 @@
       </VBox>
    </top>
    <center>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="600.0" prefWidth="1000.0" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="393.0" layoutY="217.0" prefHeight="73.0" prefWidth="242.0" text="Qué desea hacer?">
+            <Label layoutX="393.0" layoutY="217.0" prefHeight="73.0" prefWidth="242.0" styleClass="label-bordeau" text="¿Qué desea hacer?">
                <font>
                   <Font size="27.0" />
                </font></Label>
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="186.0" layoutY="108.0" text="Bienvenidos a FonTruco, el clásico juego de truco argentino,">
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="186.0" layoutY="108.0" styleClass="label-bordeau" text="Bienvenidos a FonTruco, el clásico juego de truco argentino,">
                <font>
                   <Font name="System Bold" size="22.0" />
                </font></Label>
@@ -69,7 +69,7 @@
                <font>
                   <Font name="System Bold" size="27.0" />
                </font></Button>
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="238.0" layoutY="157.0" prefHeight="28.0" prefWidth="552.0" text="disponible para 2 y 4 jugadores.">
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="238.0" layoutY="157.0" prefHeight="28.0" prefWidth="552.0" styleClass="label-bordeau" text="disponible para 2 y 4 jugadores.">
                <font>
                   <Font name="System Bold" size="22.0" />
                </font>

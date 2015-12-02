@@ -9,7 +9,7 @@ import java.util.Optional;
 public class JuegoFinalizadoControl {
 
     private Programa programa;
-    private String nombreGanador;
+    @FXML private Label labelGanador;
 
     @FXML
     private void initialize() {
@@ -18,8 +18,7 @@ public class JuegoFinalizadoControl {
 
     public void setPrograma(Programa programa, String ganador) {
         this.programa = programa;
-        this.nombreGanador = ganador;
-        // TODO: informar este nombre en el fxml
+        this.labelGanador.setText(ganador);
     }
 
     @FXML
