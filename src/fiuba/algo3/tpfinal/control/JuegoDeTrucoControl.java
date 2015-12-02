@@ -22,8 +22,8 @@ public class JuegoDeTrucoControl {
     private List<Button> botonesFlor, botonesEnvido, botonesTruco, botonesQuiero, botonesNoQuiero;
     private boolean conFlor;
 
-    @FXML private Label turno;
-    @FXML private Label puntajeEquipo1, puntajeEquipo2;
+    @FXML private Label labelTurno, labelStatus;
+    @FXML private Label labelPuntajeEquipo1, labelPuntajeEquipo2;
     @FXML private Button botonMostrarCartas;
     @FXML private Button botonCarta1, botonCarta2, botonCarta3;
     @FXML private Button botonCartaJugada1J1, botonCartaJugada2J1, botonCartaJugada3J1;
@@ -60,20 +60,19 @@ public class JuegoDeTrucoControl {
         this.juego = juego;
         this.conFlor = conFlor;
         juego.comenzarPartida(conFlor);
+
+        this.mostrarTodosLosBotones(false);
+        this.botonFlor.setVisible(conFlor);
+        this.mostrarBotones(this.botonesEnvido, true);
+        this.botonTruco.setVisible(true);
         this.mostrarPuntos();
-        this.mostrarBotones(this.botonesFlor, conFlor);
-        this.mostrarBotones(Arrays.asList(this.botonContraFlor, this.botonContraFlorAlResto), false);
-
-        this.jugadorActual = this.juego.obtenerJugadorActual();
         this.mostrarJugadorActual();
-
     }
 
     private void mostrarJugadorActual() {
-        this.mostrarTodosLosBotones();
         // mostrar estado del juego, si no esta en primera, sacar botones de envido y flor
         this.jugadorActual = juego.obtenerJugadorActual();
-        this.turno.setText(this.jugadorActual.getNombre());
+        this.labelTurno.setText(this.jugadorActual.getNombre());
         this.cartasJugadorActual = jugadorActual.mostrarCartas();
         for(Button boton : this.botonesCartasJugadorActual) {
             boton.setText("Carta dada vuelta");
@@ -81,32 +80,32 @@ public class JuegoDeTrucoControl {
         }
     }
 
-    public void mostrarBotones(List<Button> botones, boolean mostrar) {
+    private void mostrarBotones(List<Button> botones, boolean mostrar) {
         for(Node boton : botones) {
             boton.setVisible(mostrar);
         }
     }
 
-    private void mostrarTodosLosBotones() {
+    private void mostrarTodosLosBotones(Boolean mostrar) {
         this.mostrarBotones(this.botonesFlor, this.conFlor);
-        this.mostrarBotones(this.botonesEnvido, true);
-        this.mostrarBotones(this.botonesTruco, true);
-        this.mostrarBotones(this.botonesQuiero, true);
+        this.mostrarBotones(this.botonesEnvido, mostrar);
+        this.mostrarBotones(this.botonesTruco, mostrar);
+        this.mostrarBotones(this.botonesQuiero, mostrar);
     }
 
     public void mostrarPuntos() {
-        this.puntajeEquipo1.setText(Integer.toString(this.juego.puntosDeEquipo(Equipo.EQUIPO1)));
-        this.puntajeEquipo2.setText(Integer.toString(this.juego.puntosDeEquipo(Equipo.EQUIPO2)));
+        this.labelPuntajeEquipo1.setText(Integer.toString(this.juego.puntosDeEquipo(Equipo.EQUIPO1)));
+        this.labelPuntajeEquipo2.setText(Integer.toString(this.juego.puntosDeEquipo(Equipo.EQUIPO2)));
     }
 
 
-    public void activarBotones(List<Button> botones, boolean activar) {
+    public void desactivarBotones(List<Button> botones, boolean desactivar) {
         for(Button boton : botones) {
-            boton.setDisable(activar);
+            boton.setDisable(desactivar);
         }
     }
 
-    public void nuevaRonda() {
+    private void nuevaRonda() {
 
         int cantidadJugadores = 2; // Por ahora
         for(int i = 0; i < cantidadJugadores; i++) {
@@ -118,42 +117,54 @@ public class JuegoDeTrucoControl {
 
         }
 
-        this.mostrarBotones(this.botonesQuiero, false);
-        this.mostrarBotones(this.botonesTruco, false);
-        this.botonTruco.setVisible(true);
-
+        this.mostrarTodosLosBotones(false);
         this.mostrarBotones(this.botonesEnvido, true);
         this.mostrarBotones(this.botonesFlor, conFlor);
+        this.botonTruco.setVisible(true);
 
     }
 
-    public void mostrarCartaEnMesa(Carta cartaJugada) {
-        // TODO: implementar
+    private void ponerCartaEnLaMesa(Carta carta) {
+        // TODO: implementar un diccionario para que pueda decir el string de la carta
+
+
+        Integer numeroJugada = this.cantidadJugadasJugador.get(this.indiceJugador);
+        Button botonCartaJugada = this.botonesCartasJugadas.get(this.indiceJugador).get(numeroJugada);
+
+        botonCartaJugada.setVisible(true);
+
+        this.cantidadJugadasJugador.set(this.indiceJugador, numeroJugada + 1);
     }
 
     // **** Manejo de cartas ****
     @FXML
     public void jugarCarta1Handler() {
+        this.labelStatus.setText(this.jugadorActual.getNombre() + " ha jugado una carta.");
         juego.jugar(cartasJugadorActual.get(0));
-        this.mostrarCartaEnMesa(cartasJugadorActual.get(0));
+        this.ponerCartaEnLaMesa(cartasJugadorActual.get(0));
         this.mostrarJugadorActual();
         this.mostrarPuntos();
+        // TODO: chequear si se termino la ronda o el juego
     }
 
     @FXML
     public void jugarCarta2Handler() {
+        this.labelStatus.setText(this.jugadorActual.getNombre() + " ha jugado una carta.");
         juego.jugar(cartasJugadorActual.get(1));
-        this.mostrarCartaEnMesa(cartasJugadorActual.get(1));
+        this.ponerCartaEnLaMesa(cartasJugadorActual.get(1));
         this.mostrarJugadorActual();
         this.mostrarPuntos();
+        // TODO: chequear si se termino la ronda o el juego
     }
 
     @FXML
     public void jugarCarta3Handler() {
+        this.labelStatus.setText(this.jugadorActual.getNombre() + " ha jugado una carta.");
         juego.jugar(cartasJugadorActual.get(2));
-        this.mostrarCartaEnMesa(cartasJugadorActual.get(2));
+        this.ponerCartaEnLaMesa(cartasJugadorActual.get(2));
         this.mostrarJugadorActual();
         this.mostrarPuntos();
+        // TODO: chequear si se termino la ronda o el juego
     }
 
 
@@ -161,8 +172,8 @@ public class JuegoDeTrucoControl {
     @FXML
     public void florHandler() {
         try {
+            this.labelStatus.setText(this.jugadorActual.getNombre() + " cantó flor.");
             juego.flor();
-            //programa.habilitarBotonesQuieroFlor();
         } catch (SeEstaJugandoSinFlorError x1) {
             Alert jerarquiaNoValida = new Alert(AlertType.ERROR);
             jerarquiaNoValida.setTitle("Error");
@@ -200,6 +211,7 @@ public class JuegoDeTrucoControl {
     @FXML
     public void contraFlorHandler() {
         try {
+            this.labelStatus.setText(this.jugadorActual.getNombre() + " cantó contraflor.");
             juego.contraFlor();
         } catch (JugadorNoTieneFlorError x1) {
             Alert jerarquiaNoValida = new Alert(AlertType.ERROR);
@@ -226,6 +238,7 @@ public class JuegoDeTrucoControl {
     @FXML
     public void contraFlorAlRestoHandler() {
         try {
+            this.labelStatus.setText(this.jugadorActual.getNombre() + " cantó contraflor al resto.");
             juego.contraFlorAlResto();
         } catch (JugadorNoTieneFlorError x1) {
             Alert jerarquiaNoValida = new Alert(AlertType.ERROR);
@@ -252,8 +265,6 @@ public class JuegoDeTrucoControl {
     @FXML
     public void quieroFlorHandler() {
         juego.quieroFlor();
-        //programa.actualizarPuntos();
-        //programa.deshabilitarBotonesEnvidoYFlor();
         LinkedList<Object> estadosMostrarGanador = new LinkedList<Object>();
         estadosMostrarGanador.add(ContraFlor.class);
         estadosMostrarGanador.add(ContraFlorAlResto.class);
@@ -270,9 +281,8 @@ public class JuegoDeTrucoControl {
     @FXML
     public void noQuieroFlorHandler() {
         try {
+            this.labelStatus.setText(this.jugadorActual.getNombre() + " no quiso la flor.");
             juego.noQuieroFlor();
-            //programa.actualizarPuntos();
-            //programa.deshabilitarBotonesEnvidoYFlor();
         } catch (NoSePuedeRechazarFlorError x1) {
             Alert jerarquiaNoValida = new Alert(AlertType.ERROR);
             jerarquiaNoValida.setTitle("Error");
@@ -287,9 +297,8 @@ public class JuegoDeTrucoControl {
     @FXML
     public void envidoHandler() {
         try {
+            this.labelStatus.setText(this.jugadorActual.getNombre() + " cantó envido.");
             juego.envido();
-            //programa.seCanto("Envido");
-            //programa.habilitarBotonQuieroEnvido();
         } catch (SoloSePuedeCantarEnvidoEnPrimeraError x1) {
             Alert jerarquiaNoValida = new Alert(AlertType.ERROR);
             jerarquiaNoValida.setTitle("Error");
@@ -327,9 +336,8 @@ public class JuegoDeTrucoControl {
     @FXML
     public void realEnvidoHandler() {
         try {
+            this.labelStatus.setText(this.jugadorActual.getNombre() + " cantó real envido.");
             juego.realEnvido();
-            //programa.seCanto("RealEnvido");
-            //programa.habilitarBotonQuieroEnvido();
         } catch (SoloSePuedeCantarEnvidoEnPrimeraError x1) {
             Alert jerarquiaNoValida = new Alert(AlertType.ERROR);
             jerarquiaNoValida.setTitle("Error");
@@ -367,9 +375,8 @@ public class JuegoDeTrucoControl {
     @FXML
     public void faltaEnvidoHandler() {
         try {
+            this.labelStatus.setText(this.jugadorActual.getNombre() + " cantó falta envido.");
             juego.faltaEnvido();
-            //programa.seCanto("FaltaEnvido");
-            //programa.habilitarBotonQuieroEnvido();
         } catch (SoloSePuedeCantarEnvidoEnPrimeraError x1) {
             Alert jerarquiaNoValida = new Alert(AlertType.ERROR);
             jerarquiaNoValida.setTitle("Error");
@@ -400,8 +407,8 @@ public class JuegoDeTrucoControl {
 
     @FXML
     public void quieroEnvidoHandler() {
+        this.labelStatus.setText(this.jugadorActual.getNombre() + " ha aceptado el envido.");
         this.juego.quieroEnvido();
-
         Alert jerarquiaNoValida = new Alert(AlertType.INFORMATION);
         jerarquiaNoValida.setTitle("Tantos del envido");
         jerarquiaNoValida.setHeaderText("Ganador: " + juego.obtenerNombreGanadorDeEnvido());
@@ -429,8 +436,8 @@ public class JuegoDeTrucoControl {
 
     @FXML
     public void noQuieroEnvidoHandler() {
+        this.labelStatus.setText(this.jugadorActual.getNombre() + " no quiso el envido.");
         this.juego.noQuieroEnvido();
-
         if (juego.concluyoLaPartida()) {
             //programa.deshabilitarTodosLosBotones();
             Alert mensaje = new Alert(AlertType.INFORMATION);
@@ -455,9 +462,8 @@ public class JuegoDeTrucoControl {
     @FXML
     public void trucoHandler(){
         try {
+            this.labelStatus.setText(this.jugadorActual.getNombre() + " cantó truco.");
             juego.truco();
-            //programa.seCanto("Truco");
-            //programa.habilitarBotonQuieroTruco();
         } catch (NoRespetaJerarquiaDeTrucoError x1) {
             Alert jerarquiaNoValida = new Alert(AlertType.ERROR);
             jerarquiaNoValida.setTitle("Error");
@@ -483,6 +489,7 @@ public class JuegoDeTrucoControl {
     @FXML
     public void reTrucoHandler(){
         try {
+            this.labelStatus.setText(this.jugadorActual.getNombre() + " cantó quiero retruco.");
             juego.reTruco();
             //programa.seCanto("ReTruco");
             //programa.habilitarBotonQuieroTruco();
@@ -499,6 +506,7 @@ public class JuegoDeTrucoControl {
     @FXML
     public void valeCuatroHandler(){
         try {
+            this.labelStatus.setText(this.jugadorActual.getNombre() + " cantó quiero vale 4.");
             juego.valeCuatro();
             //programa.seCanto("ValeCuatro");
             //programa.habilitarBotonQuieroTruco();
@@ -514,12 +522,14 @@ public class JuegoDeTrucoControl {
 
     @FXML
     public void quieroTrucoHandler(){
+        this.labelStatus.setText(this.jugadorActual.getNombre() + " dijo quiero.");
         juego.quieroTruco();
         this.mostrarJugadorActual();
     }
 
     @FXML
     public void noQuieroTrucoHandler() {
+        this.labelStatus.setText(this.jugadorActual.getNombre() + " se fue al mazo.");
         juego.noQuieroTruco();
         if (juego.concluyoLaPartida()) {
             //programa.deshabilitarTodosLosBotones();
