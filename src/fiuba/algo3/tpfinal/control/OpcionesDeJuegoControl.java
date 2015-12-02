@@ -4,26 +4,19 @@ import fiuba.algo3.tpfinal.modelo.JuegoDeTruco;
 import fiuba.algo3.tpfinal.vista.Programa;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.TextField;
-
+import javafx.scene.control.*;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class OpcionesDeJuegoControl {
 
-    @FXML
-    private TextField textJ1E1, textJ2E1, textJ1E2, textJ2E2;
-    @FXML
-    private CheckBox conFlor;
-    @FXML
-    private Button botonComenzarJuego;
     private Programa programa;
     private List<TextField> nombresJugadores;
-    private int cantidadJugadores;
+    private int cantidadDeJugadores;
+
+    @FXML private TextField textJ1E1, textJ2E1, textJ1E2, textJ2E2;
+    @FXML private CheckBox conFlor;
+    @FXML private Button botonComenzarJuego;
 
     @FXML
     private void initialize() {
@@ -37,28 +30,28 @@ public class OpcionesDeJuegoControl {
     }
 
     @FXML
-    private void opcionDosJugadoresHandler() {
-        this.cantidadJugadores = 2;
+    public void opcionDosJugadoresHandler() {
+        this.cantidadDeJugadores = 2;
         this.visibilizar(this.nombresJugadores, false);
         this.nombresJugadores.get(0).setVisible(true);
         this.nombresJugadores.get(1).setVisible(true);
     }
 
     @FXML
-    private void opcionCuatroJugadoresHandler() {
-        this.cantidadJugadores = 4;
+    public void opcionCuatroJugadoresHandler() {
+        this.cantidadDeJugadores = 4;
         this.visibilizar(this.nombresJugadores, true);
     }
 
     @FXML
-    private void comenzarJuegoHandler() throws IOException {
+    public void comenzarJuegoHandler() throws IOException {
 
-        if(this.cantidadJugadores == 2) {
+        if(this.cantidadDeJugadores == 2) {
             JuegoDeTruco juego = new JuegoDeTruco(textJ1E1.getText(), textJ1E2.getText());
             this.programa.comenzarPartidaDosJugadores(juego, conFlor.isSelected());
         }
 
-        if(this.cantidadJugadores == 4) {
+        if(this.cantidadDeJugadores == 4) {
             JuegoDeTruco juego = new JuegoDeTruco(textJ1E1.getText(), textJ1E2.getText(), textJ2E1.getText(), textJ2E2.getText());
             this.programa.comenzarPartidaCuatroJugadores(juego, conFlor.isSelected());
         }

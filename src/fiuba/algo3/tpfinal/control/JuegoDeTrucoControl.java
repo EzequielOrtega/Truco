@@ -1,67 +1,42 @@
 package fiuba.algo3.tpfinal.control;
 
-import fiuba.algo3.tpfinal.modelo.Carta;
-import fiuba.algo3.tpfinal.modelo.Equipo;
-import fiuba.algo3.tpfinal.modelo.JuegoDeTruco;
-import fiuba.algo3.tpfinal.modelo.Jugador;
+import fiuba.algo3.tpfinal.modelo.*;
 import fiuba.algo3.tpfinal.modelo.error.*;
-import fiuba.algo3.tpfinal.modelo.flor.ContraFlor;
-import fiuba.algo3.tpfinal.modelo.flor.ContraFlorAlResto;
+import fiuba.algo3.tpfinal.modelo.flor.*;
 import fiuba.algo3.tpfinal.vista.Programa;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
+import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-
 import java.util.*;
 
 public class JuegoDeTrucoControl {
 
-    @FXML
-    protected Label turno;
-    @FXML
-    protected Label puntajeEquipo1, puntajeEquipo2;
-    @FXML
-    protected Button botonMostrarCartas;
-    @FXML
-    protected Button botonCarta1, botonCarta2, botonCarta3;
-    @FXML
-    protected Button botonCartaJugada1J1, botonCartaJugada2J1, botonCartaJugada3J1;
-    @FXML
-    protected Button botonCartaJugada1J2, botonCartaJugada2J2, botonCartaJugada3J2;
-    @FXML
-    protected List<Button> botonesCartasJugadorActual;
-    @FXML
-    protected List<Button> botonesCartasJugadasJugador1, botonesCartasJugadasJugador2;
-    @FXML
-    protected List<List<Button>> botonesCartasJugadas;
-    @FXML
-    protected Button botonFlor, botonContraFlor, botonContraFlorAlResto;
-    @FXML
-    protected Button botonEnvido, botonRealEnvido, botonFaltaEnvido;
-    @FXML
-    protected Button botonTruco, botonReTruco, botonValeCuatro;
-    @FXML
-    protected Button botonQuieroTruco, botonNoQuieroTruco, botonQuieroEnvido, botonQuieroFlor, botonNoQuieroTanto;
-
-    protected JuegoDeTruco juego;
-    protected Programa programa;
+    private JuegoDeTruco juego;
+    private Programa programa;
     private Jugador jugadorActual;
-    protected List<Carta> cartasJugadorActual;
-    protected int cantidadJugadasJugador1 = 0;
-    protected int cantidadJugadasJugador2 = 0;
-    protected List<Integer> cantidadJugadasJugador;
-    protected int indiceJugador = 0;
-    protected List<Button> botonesEnvido;
-    protected List<Button> botonesFlor;
-    protected List<Button> botonesTanto;
-    protected List<Button> botonesTruco;
-    protected List<Button> botonesQuiero;
+    private List<Carta> cartasJugadorActual;
+    private int cantidadJugadasJugador1 = 0, cantidadJugadasJugador2 = 0;
+    private List<Integer> cantidadJugadasJugador;
+    private int indiceJugador = 0;
+    private List<Button> botonesFlor, botonesEnvido, botonesTruco, botonesQuiero, botonesNoQuiero;
     private boolean conFlor;
 
+    @FXML private Label turno;
+    @FXML private Label puntajeEquipo1, puntajeEquipo2;
+    @FXML private Button botonMostrarCartas;
+    @FXML private Button botonCarta1, botonCarta2, botonCarta3;
+    @FXML private Button botonCartaJugada1J1, botonCartaJugada2J1, botonCartaJugada3J1;
+    @FXML private Button botonCartaJugada1J2, botonCartaJugada2J2, botonCartaJugada3J2;
+    @FXML private List<Button> botonesCartasJugadorActual;
+    @FXML private List<Button> botonesCartasJugadasJugador1, botonesCartasJugadasJugador2;
+    @FXML private List<List<Button>> botonesCartasJugadas;
+    @FXML private Button botonFlor, botonContraFlor, botonContraFlorAlResto;
+    @FXML private Button botonEnvido, botonRealEnvido, botonFaltaEnvido;
+    @FXML private Button botonTruco, botonReTruco, botonValeCuatro;
+    @FXML private Button botonQuieroTruco, botonNoQuieroTruco, botonQuieroEnvido, botonQuieroFlor, botonNoQuieroTanto;
+
     @FXML
-    protected void initialize() {
+    private void initialize() {
 
         this.botonesCartasJugadorActual = new ArrayList<>(Arrays.asList(this.botonCarta1, this.botonCarta2, this.botonCarta3));
         this.botonesCartasJugadasJugador1 = new ArrayList<>(Arrays.asList(this.botonCartaJugada1J1, this.botonCartaJugada2J1, this.botonCartaJugada3J1));
@@ -71,8 +46,6 @@ public class JuegoDeTrucoControl {
         //this.diccionarioCartas = new DiccionarioCartas();
         this.botonesEnvido = new ArrayList<>(Arrays.asList(this.botonEnvido, this.botonRealEnvido, this.botonFaltaEnvido));
         this.botonesFlor = new ArrayList<>(Arrays.asList(this.botonFlor, this.botonContraFlor, this.botonContraFlorAlResto));
-        this.botonesTanto = new ArrayList<>(this.botonesEnvido);
-        this.botonesTanto.addAll(this.botonesFlor);
         this.botonesTruco = new ArrayList<>(Arrays.asList(this.botonTruco, this.botonReTruco, this.botonValeCuatro));
         this.botonesQuiero = new ArrayList<>(Arrays.asList(this.botonQuieroTruco, this.botonNoQuieroTruco, this.botonQuieroEnvido, this.botonQuieroFlor, this.botonNoQuieroTanto));
 
@@ -100,26 +73,26 @@ public class JuegoDeTrucoControl {
 
     }
 
-    protected void mostrarPuntos() {
+    public void mostrarPuntos() {
         this.puntajeEquipo1.setText(Integer.toString(this.juego.puntosDeEquipo(Equipo.EQUIPO1)));
         this.puntajeEquipo2.setText(Integer.toString(this.juego.puntosDeEquipo(Equipo.EQUIPO2)));
     }
 
 
-    protected void visibilizarBotones(List<Button> botones, boolean visibilidad) {
+    public void visibilizarBotones(List<Button> botones, boolean visibilidad) {
         for(Button boton : botones) {
             boton.setVisible(visibilidad);
         }
     }
 
-    protected void desactivarBotones(List<Button> botones, boolean desactivar) {
+    public void desactivarBotones(List<Button> botones, boolean desactivar) {
         for(Button boton : botones) {
             boton.setDisable(desactivar);
         }
     }
 
     @FXML
-    private void JugarCarta1Handler() {
+    public void JugarCarta1Handler() {
         juego.jugar(cartasJugadorActual.get(0));
         this.mostrarCartaEnMesa(cartasJugadorActual.get(0));
         this.mostrarJugadorActual();
@@ -127,7 +100,7 @@ public class JuegoDeTrucoControl {
     }
 
     @FXML
-    private void JugarCarta2Handler() {
+    public void JugarCarta2Handler() {
         juego.jugar(cartasJugadorActual.get(1));
         this.mostrarCartaEnMesa(cartasJugadorActual.get(1));
         this.mostrarJugadorActual();
@@ -135,14 +108,14 @@ public class JuegoDeTrucoControl {
     }
 
     @FXML
-    private void JugarCarta3Handler() {
+    public void JugarCarta3Handler() {
         juego.jugar(cartasJugadorActual.get(2));
         this.mostrarCartaEnMesa(cartasJugadorActual.get(2));
         this.mostrarJugadorActual();
         this.mostrarPuntos();
     }
 
-    protected void nuevaRonda() {
+    public void nuevaRonda() {
 
         int cantidadJugadores = 2; // Por ahora
         for(int i = 0; i < cantidadJugadores; i++) {
@@ -158,19 +131,18 @@ public class JuegoDeTrucoControl {
         this.visibilizarBotones(Arrays.asList(this.botonReTruco, this.botonValeCuatro), false);
         this.botonTruco.setVisible(true);
 
-        this.visibilizarBotones(this.botonesTanto, true);
-
+        this.visibilizarBotones(this.botonesEnvido, true);
         this.visibilizarBotones(this.botonesFlor, conFlor);
 
     }
 
-    protected void mostrarCartaEnMesa(Carta cartaJugada) {
+    public void mostrarCartaEnMesa(Carta cartaJugada) {
         // TODO: implementar
     }
 
 
     @FXML
-    protected void trucoHandler(){
+    public void trucoHandler(){
     	try {
 			juego.truco();
 			//programa.seCanto("Truco");
@@ -198,7 +170,7 @@ public class JuegoDeTrucoControl {
     }
 
     @FXML
-    protected void reTrucoHandler(){
+    public void reTrucoHandler(){
         try {
             juego.reTruco();
             //programa.seCanto("ReTruco");
@@ -214,7 +186,7 @@ public class JuegoDeTrucoControl {
     }
 
     @FXML
-    protected void valeCuatroHandler(){
+    public void valeCuatroHandler(){
         try {
             juego.valeCuatro();
             //programa.seCanto("ValeCuatro");
@@ -230,13 +202,13 @@ public class JuegoDeTrucoControl {
     }
 
     @FXML
-    protected void quieroTrucoHandler(){
+    public void quieroTrucoHandler(){
         juego.quieroTruco();
         this.mostrarJugadorActual();
     }
 
     @FXML
-    private void noQuieroTrucoHandler() {
+    public void noQuieroTrucoHandler() {
         juego.noQuieroTruco();
         if (juego.concluyoLaPartida()) {
             //programa.deshabilitarTodosLosBotones();
@@ -255,7 +227,7 @@ public class JuegoDeTrucoControl {
     }
 
     @FXML
-    protected void cantarFlorHandler() {
+    public void cantarFlorHandler() {
         try {
             juego.flor();
             //programa.habilitarBotonesQuieroFlor();
@@ -294,7 +266,7 @@ public class JuegoDeTrucoControl {
     }
 
     @FXML
-    protected void cantarContraFlorHandler() {
+    public void cantarContraFlorHandler() {
         try {
             juego.contraFlor();
         } catch (JugadorNoTieneFlorError x1) {
@@ -320,7 +292,7 @@ public class JuegoDeTrucoControl {
     }
 
     @FXML
-    protected void cantarContraFlorAlRestoHandler() {
+    public void cantarContraFlorAlRestoHandler() {
         try {
             juego.contraFlorAlResto();
         } catch (JugadorNoTieneFlorError x1) {
@@ -377,7 +349,7 @@ public class JuegoDeTrucoControl {
         }
     }
     @FXML
-    protected void cantarEnvidoHandler() {
+    public void cantarEnvidoHandler() {
         try {
             juego.envido();
             //programa.seCanto("Envido");
@@ -417,7 +389,7 @@ public class JuegoDeTrucoControl {
     }
 
     @FXML
-    protected void cantarRealEnvidoHandler() {
+    public void cantarRealEnvidoHandler() {
         try {
             juego.realEnvido();
             //programa.seCanto("RealEnvido");
@@ -457,7 +429,7 @@ public class JuegoDeTrucoControl {
     }
 
     @FXML
-    protected void cantarFaltaEnvidoHandler() {
+    public void cantarFaltaEnvidoHandler() {
         try {
             juego.faltaEnvido();
             //programa.seCanto("FaltaEnvido");
@@ -491,7 +463,7 @@ public class JuegoDeTrucoControl {
     }
 
     @FXML
-    private void quieroEnvidoHandler() {
+    public void quieroEnvidoHandler() {
         this.juego.quieroEnvido();
 
         Alert jerarquiaNoValida = new Alert(AlertType.INFORMATION);
@@ -519,7 +491,7 @@ public class JuegoDeTrucoControl {
     }
 
     @FXML
-    private void noQuieroEnvidoHandler() {
+    public void noQuieroEnvidoHandler() {
         this.juego.noQuieroEnvido();
 
         if (juego.concluyoLaPartida()) {
@@ -542,7 +514,7 @@ public class JuegoDeTrucoControl {
     }
 
 
-    protected void mostrarJugadorActual() {
+    private void mostrarJugadorActual() {
 
         // TODO: revisar esta implementacion
         this.setearBotones();
@@ -556,7 +528,7 @@ public class JuegoDeTrucoControl {
 
 
 
-    protected void setearBotones() {
+    private void setearBotones() {
 
         // TODO: completar esto tambien
         this.visibilizarBotones(this.botonesTruco, true);
