@@ -118,10 +118,10 @@ public class JuegoDeTrucoControl {
     }
 
     private void ponerCartaEnLaMesa(Carta carta) {
-        // TODO: implementar un diccionario para que pueda decir el string de la carta
         int cantidad = this.jugadorActual.cantidadDeCartasJugadas();
         Button botonCartaAPonerEnLaMesa = botonesCartasJugadorActual.get(cantidad);
         botonCartaAPonerEnLaMesa.setVisible(true);
+        botonCartaAPonerEnLaMesa.setText(this.diccionario.Busqueda(carta));
     }
 
     public void desactivarBotones(List<Button> botones, boolean desactivar) {
@@ -200,6 +200,8 @@ public class JuegoDeTrucoControl {
     @FXML
     public void mostrarCartasHandler() {
         this.mostrarBotones(this.botonesCartasJugadorActual, true);
+        this.desactivarBotones(this.botonesCartasJugadorActual, false);
+       
         Vector<Carta> cartas = this.jugadorActual.mostrarCartas();
         for (int x = 0; x < cartas.size(); x++) {
         	this.botonesCartasJugadorActual.get(x).setText(this.diccionario.Busqueda(cartas.get(x)));
