@@ -9,7 +9,7 @@ import javafx.scene.control.ButtonType;
 import java.io.IOException;
 import java.util.Optional;
 
-public class VentanaInicialControl {
+public class VentanaPrincipalControl {
 
     private Programa programa;
 
@@ -19,13 +19,13 @@ public class VentanaInicialControl {
 
 
     @FXML
-    public void nuevoJuegoHandler() throws IOException {
+    public void opcionNuevoJuegoHandler() throws IOException {
         this.programa.elegirOpcionesDeJuego();
 
     }
 
     @FXML
-    public void cerrarHandler() {
+    public void opcionCerrarHandler() {
         Alert alert = new Alert(AlertType.CONFIRMATION);
         alert.setTitle("Confirmación");
         alert.setHeaderText(null);

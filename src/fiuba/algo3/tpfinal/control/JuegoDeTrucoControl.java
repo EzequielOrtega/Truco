@@ -71,44 +71,14 @@ public class JuegoDeTrucoControl {
 
     private void mostrarJugadorActual() {
         this.mostrarTodosLosBotones();
-        // mostrar estado del juego
+        // mostrar estado del juego, si no esta en primera, sacar botones de envido y flor
         this.jugadorActual = juego.obtenerJugadorActual();
+        this.turno.setText(this.jugadorActual.getNombre());
         this.cartasJugadorActual = jugadorActual.mostrarCartas();
         for(Button boton : this.botonesCartasJugadorActual) {
             boton.setText("Carta dada vuelta");
             boton.setDisable(true);
         }
-
-//        if(!this.jugadorPrevio.equals(this.mesa.getJugadorActual())) {
-//
-//            this.indiceJugador = (this.indiceJugador + 1) % (this.mesa.getEquipoActual().getCantidadIntegrantes() * 2);
-//
-//        }
-//
-//        try {
-//            this.mesa.getJugadorActual().flor();
-//        } catch(JugadorNoTieneFlorException jugadorNoTieneFlorException) {
-//            this.botonFlor.setVisible(false);
-//        }
-//
-//        this.jugadorPrevio = this.mesa.getJugadorActual();
-//
-//        this.turno.setText(this.jugadorPrevio.getNombre());
-//
-//        this.cartasJugadorActual = this.jugadorPrevio.obtenerCartas();
-//
-//        for(Button boton : this.botonesCartasJugadorActual) {
-//
-//            boton.setGraphic(new ImageView(DORSO_CARTA));
-//            boton.setDisable(true);
-//
-//        }
-//
-//        if(!(this.mesa.getEstadoVuelta() instanceof PrimeraVuelta)) {
-//
-//            this.visibilizarBotones(this.botonesTanto, false);
-//
-//        }
     }
 
     public void mostrarBotones(List<Button> botones, boolean mostrar) {
@@ -161,7 +131,7 @@ public class JuegoDeTrucoControl {
         // TODO: implementar
     }
 
-    // Manejo de cartas
+    // **** Manejo de cartas ****
     @FXML
     public void jugarCarta1Handler() {
         juego.jugar(cartasJugadorActual.get(0));
@@ -187,7 +157,7 @@ public class JuegoDeTrucoControl {
     }
 
 
-    // Flor
+    // **** Flor ****
     @FXML
     public void florHandler() {
         try {
@@ -313,7 +283,7 @@ public class JuegoDeTrucoControl {
         // TODO: ver si termino el juego
     }
 
-    // Envido
+    // **** Envido ****
     @FXML
     public void envidoHandler() {
         try {
@@ -481,7 +451,7 @@ public class JuegoDeTrucoControl {
         // TODO: ver si termino el juego
     }
 
-    // Truco
+    // **** Truco ****
     @FXML
     public void trucoHandler(){
         try {
