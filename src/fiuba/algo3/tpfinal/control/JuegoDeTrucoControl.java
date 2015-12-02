@@ -20,6 +20,7 @@ public class JuegoDeTrucoControl {
     private Jugador jugadorActual;
     private List<Carta> cartasJugadorActual;
     private List<Button> botonesFlor, botonesEnvido, botonesTruco, botonesQuiero;
+    private List<Button> botonesTrucoQuiero, botonesFlorQuiero, botonesEnvidoQuiero;
     private boolean conFlor;
 
     @FXML private Label labelTurno, labelStatus;
@@ -44,7 +45,10 @@ public class JuegoDeTrucoControl {
         this.botonesEnvido = new ArrayList<>(Arrays.asList(this.botonEnvido, this.botonRealEnvido, this.botonFaltaEnvido));
         this.botonesTruco = new ArrayList<>(Arrays.asList(this.botonTruco, this.botonReTruco, this.botonValeCuatro));
         this.botonesQuiero = new ArrayList<>(Arrays.asList(this.botonQuieroTruco, this.botonNoQuieroTruco, this.botonQuieroEnvido, this.botonNoQuieroEnvido, this.botonQuieroFlor, this.botonNoQuieroFlor));
-
+        this.botonesTrucoQuiero = new ArrayList<>(Arrays.asList(this.botonQuieroTruco, this.botonNoQuieroTruco));
+        this.botonesEnvidoQuiero = new ArrayList<>(Arrays.asList(this.botonQuieroEnvido, this.botonNoQuieroEnvido));
+        this.botonesFlorQuiero = new ArrayList<>(Arrays.asList(this.botonQuieroFlor, this.botonNoQuieroFlor));
+        
         this.botonesCartasJugadorActual = new ArrayList<>(Arrays.asList(this.botonCarta1, this.botonCarta2, this.botonCarta3));
         this.botonesCartasJugadasJugador1 = new ArrayList<>(Arrays.asList(this.botonCartaJugada1J1, this.botonCartaJugada2J1, this.botonCartaJugada3J1));
         this.botonesCartasJugadasJugador2 = new ArrayList<>(Arrays.asList(this.botonCartaJugada1J2, this.botonCartaJugada2J2, this.botonCartaJugada3J2));
@@ -208,6 +212,13 @@ public class JuegoDeTrucoControl {
         try {
             this.labelStatus.setText(this.jugadorActual.getNombre() + " cantó flor.");
             juego.flor();
+            this.mostrarBotones(this.botonesFlor, true);
+            this.mostrarBotones(this.botonesFlorQuiero, true);
+            this.mostrarBotones(this.botonesEnvido, false);
+            this.mostrarBotones(this.botonesEnvidoQuiero, false);
+            this.mostrarBotones(this.botonesTruco, false);
+            this.mostrarBotones(this.botonesTrucoQuiero, false);
+            this.mostrarJugadorActual();
         } catch (SeEstaJugandoSinFlorError x1) {
             Alert jerarquiaNoValida = new Alert(AlertType.ERROR);
             jerarquiaNoValida.setTitle("Error");
@@ -239,7 +250,7 @@ public class JuegoDeTrucoControl {
             jerarquiaNoValida.setContentText("No respeta la jerarquía de flor.");
             jerarquiaNoValida.showAndWait();
         }
-        this.mostrarJugadorActual();
+        
     }
 
     @FXML
@@ -247,6 +258,13 @@ public class JuegoDeTrucoControl {
         try {
             this.labelStatus.setText(this.jugadorActual.getNombre() + " cantó contraflor.");
             juego.contraFlor();
+            this.mostrarBotones(this.botonesFlor, true);
+            this.mostrarBotones(this.botonesFlorQuiero, true);
+            this.mostrarBotones(this.botonesEnvido, false);
+            this.mostrarBotones(this.botonesEnvidoQuiero, false);
+            this.mostrarBotones(this.botonesTruco, false);
+            this.mostrarBotones(this.botonesTrucoQuiero, false);
+            this.mostrarJugadorActual();
         } catch (JugadorNoTieneFlorError x1) {
             Alert jerarquiaNoValida = new Alert(AlertType.ERROR);
             jerarquiaNoValida.setTitle("Error");
@@ -266,14 +284,21 @@ public class JuegoDeTrucoControl {
             jerarquiaNoValida.setContentText("Sólo se puede cantar flor una vez por ronda.");
             jerarquiaNoValida.showAndWait();
         }
-        this.mostrarJugadorActual();
+        
     }
 
     @FXML
     public void contraFlorAlRestoHandler() {
         try {
-            this.labelStatus.setText(this.jugadorActual.getNombre() + " cantó contraflor al resto.");
+            this.labelStatus.setText(this.jugadorActual.getNombre() + " canto contraflor al resto.");
             juego.contraFlorAlResto();
+            this.mostrarBotones(this.botonesFlor, true);
+            this.mostrarBotones(this.botonesFlorQuiero, true);
+            this.mostrarBotones(this.botonesEnvido, false);
+            this.mostrarBotones(this.botonesEnvidoQuiero, false);
+            this.mostrarBotones(this.botonesTruco, false);
+            this.mostrarBotones(this.botonesTrucoQuiero, false);
+            this.mostrarJugadorActual();
         } catch (JugadorNoTieneFlorError x1) {
             Alert jerarquiaNoValida = new Alert(AlertType.ERROR);
             jerarquiaNoValida.setTitle("Error");
@@ -293,7 +318,7 @@ public class JuegoDeTrucoControl {
             jerarquiaNoValida.setContentText("Sólo se puede cantar flor una vez por ronda.");
             jerarquiaNoValida.showAndWait();
         }
-        this.mostrarJugadorActual();
+        
     }
 
     @FXML
@@ -309,9 +334,13 @@ public class JuegoDeTrucoControl {
             jerarquiaNoValida.setContentText("Puntaje del ganador: " + juego.puntosDeFlorGanador() + "\n");
             jerarquiaNoValida.showAndWait();
         }
+        this.mostrarBotones(this.botonesFlor, false);
+        this.mostrarBotones(this.botonesFlorQuiero, false);
+        this.mostrarBotones(this.botonesTruco, true);
         if (juego.concluyoLaPartida()) {
             this.setPartidaFinalizada();
         }
+        
     }
 
     @FXML
@@ -319,6 +348,12 @@ public class JuegoDeTrucoControl {
         try {
             this.labelStatus.setText(this.jugadorActual.getNombre() + " no quiso la flor.");
             juego.noQuieroFlor();
+            this.mostrarBotones(this.botonesFlor, false);
+            this.mostrarBotones(this.botonesFlorQuiero, false);
+            this.mostrarBotones(this.botonesTruco, true);
+            if (juego.concluyoLaPartida()) {
+                this.setPartidaFinalizada();
+            }            
         } catch (NoSePuedeRechazarFlorError x1) {
             Alert jerarquiaNoValida = new Alert(AlertType.ERROR);
             jerarquiaNoValida.setTitle("Error");
@@ -326,9 +361,7 @@ public class JuegoDeTrucoControl {
             jerarquiaNoValida.setContentText("No se puede rechazar la flor!");
             jerarquiaNoValida.showAndWait();
         }
-        if (juego.concluyoLaPartida()) {
-            this.setPartidaFinalizada();
-        }
+        
     }
 
     // **** Envido ****
@@ -336,7 +369,14 @@ public class JuegoDeTrucoControl {
     public void envidoHandler() {
         try {
             this.labelStatus.setText(this.jugadorActual.getNombre() + " cantó envido.");
-            juego.envido();
+            juego.envido();            
+            this.mostrarBotones(this.botonesFlor, true);
+            this.mostrarBotones(this.botonesFlorQuiero, false);
+            this.mostrarBotones(this.botonesEnvido, true);
+            this.mostrarBotones(this.botonesEnvidoQuiero, true);
+            this.mostrarBotones(this.botonesTruco, false);
+            this.mostrarBotones(this.botonesTrucoQuiero, false);
+            this.mostrarJugadorActual();
         } catch (SoloSePuedeCantarEnvidoEnPrimeraError x1) {
             Alert jerarquiaNoValida = new Alert(AlertType.ERROR);
             jerarquiaNoValida.setTitle("Error");
@@ -368,7 +408,7 @@ public class JuegoDeTrucoControl {
             jugadaNoValida.setContentText("Ya se cantó flor, no se puede cantar envido.");
             jugadaNoValida.showAndWait();
         }
-        this.mostrarJugadorActual();
+        
     }
 
     @FXML
@@ -376,6 +416,13 @@ public class JuegoDeTrucoControl {
         try {
             this.labelStatus.setText(this.jugadorActual.getNombre() + " cantó real envido.");
             juego.realEnvido();
+            this.mostrarBotones(this.botonesFlor, true);
+            this.mostrarBotones(this.botonesFlorQuiero, false);
+            this.mostrarBotones(this.botonesEnvido, true);
+            this.mostrarBotones(this.botonesEnvidoQuiero, true);
+            this.mostrarBotones(this.botonesTruco, false);
+            this.mostrarBotones(this.botonesTrucoQuiero, false);
+            this.mostrarJugadorActual();
         } catch (SoloSePuedeCantarEnvidoEnPrimeraError x1) {
             Alert jerarquiaNoValida = new Alert(AlertType.ERROR);
             jerarquiaNoValida.setTitle("Error");
@@ -407,7 +454,7 @@ public class JuegoDeTrucoControl {
             jugadaNoValida.setContentText("Ya se cantó flor, no se puede cantar real envido.");
             jugadaNoValida.showAndWait();
         }
-        this.mostrarJugadorActual();
+        
     }
 
     @FXML
@@ -415,6 +462,13 @@ public class JuegoDeTrucoControl {
         try {
             this.labelStatus.setText(this.jugadorActual.getNombre() + " cantó falta envido.");
             juego.faltaEnvido();
+            this.mostrarBotones(this.botonesFlor, true);
+            this.mostrarBotones(this.botonesFlorQuiero, false);
+            this.mostrarBotones(this.botonesEnvido, true);
+            this.mostrarBotones(this.botonesEnvidoQuiero, true);
+            this.mostrarBotones(this.botonesTruco, false);
+            this.mostrarBotones(this.botonesTrucoQuiero, false);
+            this.mostrarJugadorActual();
         } catch (SoloSePuedeCantarEnvidoEnPrimeraError x1) {
             Alert jerarquiaNoValida = new Alert(AlertType.ERROR);
             jerarquiaNoValida.setTitle("Error");
@@ -440,7 +494,7 @@ public class JuegoDeTrucoControl {
             jugadaNoValida.setContentText("Ya se cantó flor, no se puede cantar falta envido.");
             jugadaNoValida.showAndWait();
         }
-        this.mostrarJugadorActual();
+        
     }
 
     @FXML
@@ -452,15 +506,21 @@ public class JuegoDeTrucoControl {
         jerarquiaNoValida.setHeaderText("Ganador: " + juego.obtenerNombreGanadorDeEnvido());
         jerarquiaNoValida.setContentText("Puntaje del ganador: " + juego.puntosDeEnvidoGanador() + "\n");
         jerarquiaNoValida.showAndWait();
+        this.mostrarBotones(this.botonesFlor, false);
+        this.mostrarBotones(this.botonesFlorQuiero, false);
+        this.mostrarBotones(this.botonesEnvido, false);
+        this.mostrarBotones(this.botonesEnvidoQuiero, false);
+        this.mostrarBotones(this.botonesTruco, true);
+        this.mostrarBotones(this.botonesTrucoQuiero, false); 
         if (juego.concluyoLaPartida()) {
             this.setPartidaFinalizada();
-        }
-
-        this.mostrarBotones(this.botonesFlor, false);
-        this.mostrarBotones(this.botonesEnvido, false);
-        this.mostrarBotones(this.botonesQuiero, false);
-        this.mostrarBotones(Collections.singletonList(this.botonTruco), true);
-
+        }       
+        
+//        this.mostrarBotones(this.botonesFlor, false);
+//        this.mostrarBotones(this.botonesEnvido, false);
+//        this.mostrarBotones(this.botonesQuiero, false);
+//        this.mostrarBotones(Collections.singletonList(this.botonTruco), true);
+        
         this.mostrarPuntos();
         this.mostrarJugadorActual();
     }
@@ -469,14 +529,21 @@ public class JuegoDeTrucoControl {
     public void noQuieroEnvidoHandler() throws IOException {
         this.labelStatus.setText(this.jugadorActual.getNombre() + " no quiso el envido.");
         this.juego.noQuieroEnvido();
+        this.mostrarBotones(this.botonesFlor, false);
+        this.mostrarBotones(this.botonesFlorQuiero, false);
+        this.mostrarBotones(this.botonesEnvido, false);
+        this.mostrarBotones(this.botonesEnvidoQuiero, false);
+        this.mostrarBotones(this.botonesTruco, true);
+        this.mostrarBotones(this.botonesTrucoQuiero, false);
         if (juego.concluyoLaPartida()) {
             this.setPartidaFinalizada();
         }
-
-        this.mostrarBotones(this.botonesFlor, false);
-        this.mostrarBotones(this.botonesEnvido, false);
-        this.mostrarBotones(this.botonesQuiero, false);
-        this.botonTruco.setVisible(true);
+               
+        
+//        this.mostrarBotones(this.botonesFlor, false);
+//        this.mostrarBotones(this.botonesEnvido, false);
+//        this.mostrarBotones(this.botonesQuiero, false);
+//        this.botonTruco.setVisible(true);
 
         this.mostrarPuntos();
         this.mostrarJugadorActual();
@@ -488,10 +555,13 @@ public class JuegoDeTrucoControl {
         try {
             this.labelStatus.setText(this.jugadorActual.getNombre() + " cantó truco.");
             juego.truco();
-            this.botonReTruco.setVisible(true);
-            this.botonValeCuatro.setVisible(true);
-            this.botonQuieroTruco.setVisible(true);
-            this.botonNoQuieroTruco.setVisible(true);
+            this.mostrarBotones(this.botonesFlor, true);
+            this.mostrarBotones(this.botonesFlorQuiero, false);
+            this.mostrarBotones(this.botonesEnvido, true);
+            this.mostrarBotones(this.botonesEnvidoQuiero, false);
+            this.mostrarBotones(this.botonesTruco, true);
+            this.mostrarBotones(this.botonesTrucoQuiero, true);
+            this.mostrarJugadorActual();
         } catch (NoRespetaJerarquiaDeTrucoError x1) {
             Alert jerarquiaNoValida = new Alert(AlertType.ERROR);
             jerarquiaNoValida.setTitle("Error");
@@ -511,7 +581,7 @@ public class JuegoDeTrucoControl {
             jugadaNoValida.setContentText("Debe responderle al equipo contrario.");
             jugadaNoValida.showAndWait();
         }
-        this.mostrarJugadorActual();
+        
     }
 
     @FXML
@@ -519,9 +589,13 @@ public class JuegoDeTrucoControl {
         try {
             this.labelStatus.setText(this.jugadorActual.getNombre() + " cantó quiero retruco.");
             juego.reTruco();
-            this.botonValeCuatro.setVisible(true);
-            this.botonQuieroTruco.setVisible(true);
-            this.botonNoQuieroTruco.setVisible(true);
+            this.mostrarBotones(this.botonesFlor, false);
+            this.mostrarBotones(this.botonesFlorQuiero, false);
+            this.mostrarBotones(this.botonesEnvido, false);
+            this.mostrarBotones(this.botonesEnvidoQuiero, false);
+            this.mostrarBotones(this.botonesTruco, true);
+            this.mostrarBotones(this.botonesTrucoQuiero, true);
+            this.mostrarJugadorActual();
         } catch (NoRespetaJerarquiaDeTrucoError x1) {
             Alert jerarquiaNoValida = new Alert(AlertType.ERROR);
             jerarquiaNoValida.setTitle("Error");
@@ -529,7 +603,7 @@ public class JuegoDeTrucoControl {
             jerarquiaNoValida.setContentText("No respeta la jerarquía del truco.");
             jerarquiaNoValida.showAndWait();
         }
-        this.mostrarJugadorActual();
+        
     }
 
     @FXML
@@ -537,8 +611,13 @@ public class JuegoDeTrucoControl {
         try {
             this.labelStatus.setText(this.jugadorActual.getNombre() + " cantó quiero vale 4.");
             juego.valeCuatro();
-            this.botonQuieroTruco.setVisible(true);
-            this.botonNoQuieroTruco.setVisible(true);
+            this.mostrarBotones(this.botonesFlor, false);
+            this.mostrarBotones(this.botonesFlorQuiero, false);
+            this.mostrarBotones(this.botonesEnvido, false);
+            this.mostrarBotones(this.botonesEnvidoQuiero, false);
+            this.mostrarBotones(this.botonesTruco, false);
+            this.mostrarBotones(this.botonesTrucoQuiero, true);
+            this.mostrarJugadorActual();
         } catch (NoRespetaJerarquiaDeTrucoError x1) {
             Alert jerarquiaNoValida = new Alert(AlertType.ERROR);
             jerarquiaNoValida.setTitle("Error");
@@ -546,13 +625,19 @@ public class JuegoDeTrucoControl {
             jerarquiaNoValida.setContentText("No respeta la jerarquía del truco.");
             jerarquiaNoValida.showAndWait();
         }
-        this.mostrarJugadorActual();
+        
     }
 
     @FXML
     public void quieroTrucoHandler(){
         this.labelStatus.setText(this.jugadorActual.getNombre() + " dijo quiero.");
         juego.quieroTruco();
+        this.mostrarBotones(this.botonesFlor, false);
+        this.mostrarBotones(this.botonesFlorQuiero, false);
+        this.mostrarBotones(this.botonesEnvido, false);
+        this.mostrarBotones(this.botonesEnvidoQuiero, false);
+        this.mostrarBotones(this.botonesTruco, true);
+        this.mostrarBotones(this.botonesTrucoQuiero, false);
         this.mostrarJugadorActual();
     }
 

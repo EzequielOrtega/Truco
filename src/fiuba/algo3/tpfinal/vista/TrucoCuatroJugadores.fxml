@@ -65,19 +65,19 @@
                                 </AnchorPane>
                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="657.0" prefWidth="750.0">
                                     <children>
-                                        <Ellipse fill="#1d8614" layoutX="220.0" layoutY="199.0" radiusX="206.0" radiusY="185.0" stroke="BLACK" strokeType="INSIDE" />
-                                        <Button fx:id="botonCartaJugada1J1" layoutX="349.0" layoutY="565.0" mnemonicParsing="false" visible="false" />
-                                        <Button fx:id="botonCartaJugada2J1" layoutX="365.0" layoutY="540.0" mnemonicParsing="false" visible="false" />
-                                        <Button fx:id="botonCartaJugada3J1" layoutX="381.0" layoutY="515.0" mnemonicParsing="false" visible="false" />
-                                        <Button fx:id="botonCartaJugada1J2" layoutX="341.0" layoutY="58.0" mnemonicParsing="false" visible="false" />
-                                        <Button fx:id="botonCartaJugada2J2" layoutX="357.0" layoutY="83.0" mnemonicParsing="false" visible="false" />
-                                        <Button fx:id="botonCartaJugada3J2" layoutX="373.0" layoutY="108.0" mnemonicParsing="false" visible="false" />
-                                        <Button fx:id="botonCartaJugada1J3" layoutX="349.0" layoutY="565.0" mnemonicParsing="false" visible="false" />
-                                        <Button fx:id="botonCartaJugada2J3" layoutX="365.0" layoutY="540.0" mnemonicParsing="false" visible="false" />
-                                        <Button fx:id="botonCartaJugada3J3" layoutX="381.0" layoutY="515.0" mnemonicParsing="false" visible="false" />
-                                        <Button fx:id="botonCartaJugada1J4" layoutX="341.0" layoutY="58.0" mnemonicParsing="false" visible="false" />
-                                        <Button fx:id="botonCartaJugada2J4" layoutX="357.0" layoutY="83.0" mnemonicParsing="false" visible="false" />
-                                        <Button fx:id="botonCartaJugada3J4" layoutX="373.0" layoutY="108.0" mnemonicParsing="false" visible="false" />
+                                        <Ellipse fill="#1d8614" layoutX="220.0" layoutY="200.0" radiusX="206.0" radiusY="185.0" stroke="BLACK" strokeType="INSIDE" />
+                                        <Button fx:id="botonCartaJugada1J1" layoutX="198.0" layoutY="333.0" mnemonicParsing="false" visible="false" />
+                                        <Button fx:id="botonCartaJugada2J1" layoutX="212.0" layoutY="321.0" mnemonicParsing="false" visible="false" />
+                                        <Button fx:id="botonCartaJugada3J1" layoutX="232.0" layoutY="296.0" mnemonicParsing="false" visible="false" />
+                                        <Button fx:id="botonCartaJugada1J2" layoutX="305.0" layoutY="199.0" mnemonicParsing="false" visible="false" />
+                                        <Button fx:id="botonCartaJugada2J2" layoutX="272.0" layoutY="179.0" mnemonicParsing="false" visible="false" />
+                                        <Button fx:id="botonCartaJugada3J2" layoutX="264.0" layoutY="168.0" mnemonicParsing="false" visible="false" />
+                                        <Button fx:id="botonCartaJugada1J3" layoutX="190.0" layoutY="71.0" mnemonicParsing="false" visible="false" />
+                                        <Button fx:id="botonCartaJugada2J3" layoutX="224.0" layoutY="83.0" mnemonicParsing="false" visible="false" />
+                                        <Button fx:id="botonCartaJugada3J3" layoutX="248.0" layoutY="96.0" mnemonicParsing="false" visible="false" />
+                                        <Button fx:id="botonCartaJugada1J4" layoutX="118.0" layoutY="179.0" mnemonicParsing="false" visible="false" />
+                                        <Button fx:id="botonCartaJugada2J4" layoutX="152.0" layoutY="192.0" mnemonicParsing="false" visible="false" />
+                                        <Button fx:id="botonCartaJugada3J4" layoutX="182.0" layoutY="192.0" mnemonicParsing="false" visible="false" />
                                         <Label fx:id="nombreJ2" layoutX="321.0" layoutY="180.0" prefHeight="39.0" prefWidth="104.0" text="Jugador 2" textFill="#f5e1e1">
                                             <font>
                                                 <Font name="System Bold" size="21.0" />
@@ -112,8 +112,8 @@
                                     <children>
                                         <GridPane layoutX="-14.0" layoutY="41.0" prefHeight="103.0" prefWidth="154.0" stylesheets="@AlgoTruco.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                             <columnConstraints>
-                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="116.0" minWidth="10.0" prefWidth="106.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="87.0" minWidth="10.0" prefWidth="59.0" />
                                     <ColumnConstraints />
                                             </columnConstraints>
                                             <rowConstraints>
@@ -122,8 +122,8 @@
                                     <RowConstraints />
                                             </rowConstraints>
                                             <children>
-                                                <Label fx:id="labelEquipo1" styleClass="label-bordeau" text="Puntaje equipo 1: " GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
-                                                <Label fx:id="labelEquipo2" styleClass="label-bordeau" text="Puntaje equipo 2: " GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
+                                                <Label fx:id="labelEquipo1" styleClass="label-bordeau" text="Puntaje equipo 1: " GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
+                                                <Label fx:id="labelEquipo2" styleClass="label-bordeau" text="Puntaje equipo 2: " GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
                                                 <Label fx:id="labelPuntajeEquipo1" styleClass="label-bordeau" text="" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
                                                 <Label fx:id="labelPuntajeEquipo2" styleClass="label-bordeau" text="" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
                                             </children>
