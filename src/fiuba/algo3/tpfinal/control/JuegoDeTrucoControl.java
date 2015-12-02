@@ -23,7 +23,6 @@ public class JuegoDeTrucoControl {
 
     @FXML private Label labelTurno, labelStatus;
     @FXML private Label labelPuntajeEquipo1, labelPuntajeEquipo2;
-    @FXML private Button botonMostrarCartas;
     @FXML private Button botonCarta1, botonCarta2, botonCarta3;
     @FXML private Button botonCartaJugada1J1, botonCartaJugada2J1, botonCartaJugada3J1;
     @FXML private Button botonCartaJugada1J2, botonCartaJugada2J2, botonCartaJugada3J2;
@@ -32,10 +31,9 @@ public class JuegoDeTrucoControl {
     @FXML private List<Button> botonesCartasJugadorActual;
     @FXML private List<Button> botonesCartasJugadasJugador1, botonesCartasJugadasJugador2, botonesCartasJugadasJugador3, botonesCartasJugadasJugador4;
     @FXML private List<List<Button>> botonesCartasJugadas;
-    @FXML private Button botonFlor, botonContraFlor, botonContraFlorAlResto;
-    @FXML private Button botonEnvido, botonRealEnvido, botonFaltaEnvido;
-    @FXML private Button botonTruco, botonReTruco, botonValeCuatro;
-    @FXML private Button botonQuieroTruco, botonNoQuieroTruco, botonQuieroEnvido, botonQuieroFlor, botonNoQuieroTanto;
+    @FXML private Button botonFlor, botonContraFlor, botonContraFlorAlResto, botonQuieroFlor, botonNoQuieroFlor;
+    @FXML private Button botonEnvido, botonRealEnvido, botonFaltaEnvido, botonQuieroEnvido, botonNoQuieroEnvido;
+    @FXML private Button botonTruco, botonReTruco, botonValeCuatro, botonQuieroTruco, botonNoQuieroTruco;
 
     @FXML
     private void initialize() {
@@ -43,7 +41,7 @@ public class JuegoDeTrucoControl {
         this.botonesFlor = new ArrayList<>(Arrays.asList(this.botonFlor, this.botonContraFlor, this.botonContraFlorAlResto));
         this.botonesEnvido = new ArrayList<>(Arrays.asList(this.botonEnvido, this.botonRealEnvido, this.botonFaltaEnvido));
         this.botonesTruco = new ArrayList<>(Arrays.asList(this.botonTruco, this.botonReTruco, this.botonValeCuatro));
-        this.botonesQuiero = new ArrayList<>(Arrays.asList(this.botonQuieroTruco, this.botonNoQuieroTruco, this.botonQuieroEnvido, this.botonQuieroFlor, this.botonNoQuieroTanto));
+        this.botonesQuiero = new ArrayList<>(Arrays.asList(this.botonQuieroTruco, this.botonNoQuieroTruco, this.botonQuieroEnvido, this.botonNoQuieroEnvido, this.botonQuieroFlor, this.botonNoQuieroFlor));
 
         this.botonesCartasJugadorActual = new ArrayList<>(Arrays.asList(this.botonCarta1, this.botonCarta2, this.botonCarta3));
         this.botonesCartasJugadasJugador1 = new ArrayList<>(Arrays.asList(this.botonCartaJugada1J1, this.botonCartaJugada2J1, this.botonCartaJugada3J1));
@@ -68,13 +66,17 @@ public class JuegoDeTrucoControl {
     }
 
     private void mostrarJugadorActual() {
-        // mostrar estado del juego, si no esta en primera, sacar botones de envido y flor
         this.jugadorActual = juego.obtenerJugadorActual();
         this.labelTurno.setText(this.jugadorActual.getNombre());
         this.cartasJugadorActual = jugadorActual.mostrarCartas();
         for(Button boton : this.botonesCartasJugadorActual) {
             boton.setText("Carta dada vuelta");
             boton.setDisable(true);
+        }
+        this.mostrarTodosLosBotones(true);
+        if (!juego.estaEnPrimera()) {
+            this.mostrarBotones(botonesEnvido, false);
+            this.mostrarBotones(botonesFlor, false);
         }
     }
 
@@ -96,6 +98,12 @@ public class JuegoDeTrucoControl {
         this.labelPuntajeEquipo2.setText(Integer.toString(this.juego.puntosDeEquipo(Equipo.EQUIPO2)));
     }
 
+    private void ponerCartaEnLaMesa(Carta carta) {
+        // TODO: implementar un diccionario para que pueda decir el string de la carta
+        int cantidad = this.jugadorActual.cantidadDeCartasJugadas();
+        Button botonCartaAPonerEnLaMesa = botonesCartasJugadorActual.get(cantidad);
+        botonCartaAPonerEnLaMesa.setVisible(true);
+    }
 
     public void desactivarBotones(List<Button> botones, boolean desactivar) {
         for(Button boton : botones) {
@@ -117,13 +125,6 @@ public class JuegoDeTrucoControl {
         this.mostrarBotones(this.botonesFlor, conFlor);
         this.botonTruco.setVisible(true);
 
-    }
-
-    private void ponerCartaEnLaMesa(Carta carta) {
-        // TODO: implementar un diccionario para que pueda decir el string de la carta
-        int cantidad = this.jugadorActual.cantidadDeCartasJugadas();
-        Button botonCartaAPonerEnLaMesa = botonesCartasJugadorActual.get(cantidad);
-        botonCartaAPonerEnLaMesa.setVisible(true);
     }
 
     private void setPartidaFinalizada() throws IOException {

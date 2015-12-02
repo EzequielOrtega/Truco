@@ -391,6 +391,10 @@ public class JuegoDeTruco {
 		}
 		return concluyoLaPartida;
 	}
+
+    public boolean estaEnPrimera() {
+        return this.ronda.estaEnPrimera();
+    }
 	
 	private Boolean puedeCantarLosTantos() {
 		Boolean puedeCantarLosTantos = false;

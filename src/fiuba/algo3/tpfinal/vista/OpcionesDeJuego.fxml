@@ -8,14 +8,14 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" stylesheets="@AlgoTruco.css" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fiuba.algo3.tpfinal.control.OpcionesDeJuegoControl">
     <children>
-        <Label layoutX="129.0" layoutY="71.0" text="Cantidad de jugadores:">
+        <Label layoutX="129.0" layoutY="71.0" styleClass="label-bordeau" text="Cantidad de jugadores:">
          <font>
             <Font name="System Bold" size="26.0" />
          </font></Label>
         <fx:define>
             <ToggleGroup fx:id="opcionCantidad" />
         </fx:define>
-        <RadioButton fx:id="opcionDosJugadores" layoutX="174.0" layoutY="181.0" mnemonicParsing="false" onAction="#opcionDosJugadoresHandler" prefHeight="31.0" prefWidth="153.0" styleClass="label" text="2 jugadores">
+        <RadioButton fx:id="opcionDosJugadores" layoutX="174.0" layoutY="181.0" mnemonicParsing="false" onAction="#opcionDosJugadoresHandler" prefHeight="31.0" prefWidth="153.0" styleClass="label-bordeau" text="2 jugadores">
          <font>
             <Font size="20.0" />
          </font>
@@ -30,14 +30,16 @@
          <font>
             <Font name="System Bold" size="22.0" />
          </font></Button>
-        <CheckBox fx:id="conFlor" alignment="CENTER" contentDisplay="CENTER" layoutX="174.0" layoutY="476.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="122.0" styleClass="label" text="Con flor">
+        <CheckBox fx:id="conFlor" alignment="CENTER" contentDisplay="CENTER" layoutX="174.0" layoutY="476.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="122.0" styleClass="label-bordeau" text="Con flor">
          <font>
             <Font size="20.0" />
          </font></CheckBox>
-      <RadioButton fx:id="opcionCuatroJugadores" layoutX="174.0" layoutY="328.0" mnemonicParsing="false" onAction="#opcionCuatroJugadoresHandler" prefHeight="26.0" prefWidth="144.0" styleClass="label" text="4 jugadores" toggleGroup="$opcionCantidad">
+      <RadioButton fx:id="opcionCuatroJugadores" layoutX="174.0" layoutY="328.0" mnemonicParsing="false" onAction="#opcionCuatroJugadoresHandler" prefHeight="26.0" prefWidth="144.0" styleClass="label-bordeau" text="4 jugadores" toggleGroup="$opcionCantidad">
          <font>
             <Font size="20.0" />
          </font>
       </RadioButton>
+      <Label layoutX="817.0" layoutY="189.0" styleClass="label-bordeau" text="EQUIPO 1" />
+      <Label layoutX="817.0" layoutY="334.0" styleClass="label-bordeau" text="EQUIPO 2" />
     </children>
 </AnchorPane>
