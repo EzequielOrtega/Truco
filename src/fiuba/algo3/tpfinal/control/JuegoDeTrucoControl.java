@@ -8,6 +8,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.Node;
+
+import java.io.IOException;
 import java.util.*;
 
 public class JuegoDeTrucoControl {
@@ -136,35 +138,51 @@ public class JuegoDeTrucoControl {
         this.cantidadJugadasJugador.set(this.indiceJugador, numeroJugada + 1);
     }
 
+    private void setPartidaFinalizada() throws IOException {
+        Alert mensaje = new Alert(AlertType.INFORMATION);
+        mensaje.setTitle("La partida ha concluido");
+        mensaje.setHeaderText("Puntajes: ");
+        mensaje.setContentText("Puntaje equipo 1: " + juego.puntosDeEquipo(Equipo.EQUIPO1) + "\n"
+                + "Puntaje equipo 2: " + juego.puntosDeEquipo(Equipo.EQUIPO2) + "\n");
+        mensaje.showAndWait();
+        this.programa.juegoFinalizado(juego.obtenerNombreGanadorDelJuego());
+    }
+
     // **** Manejo de cartas ****
     @FXML
-    public void jugarCarta1Handler() {
+    public void jugarCarta1Handler() throws IOException {
         this.labelStatus.setText(this.jugadorActual.getNombre() + " ha jugado una carta.");
         juego.jugar(cartasJugadorActual.get(0));
         this.ponerCartaEnLaMesa(cartasJugadorActual.get(0));
         this.mostrarJugadorActual();
         this.mostrarPuntos();
-        // TODO: chequear si se termino la ronda o el juego
+        if (juego.concluyoLaPartida()) {
+            this.setPartidaFinalizada();
+        }
     }
 
     @FXML
-    public void jugarCarta2Handler() {
+    public void jugarCarta2Handler() throws IOException {
         this.labelStatus.setText(this.jugadorActual.getNombre() + " ha jugado una carta.");
         juego.jugar(cartasJugadorActual.get(1));
         this.ponerCartaEnLaMesa(cartasJugadorActual.get(1));
         this.mostrarJugadorActual();
         this.mostrarPuntos();
-        // TODO: chequear si se termino la ronda o el juego
+        if (juego.concluyoLaPartida()) {
+            this.setPartidaFinalizada();
+        }
     }
 
     @FXML
-    public void jugarCarta3Handler() {
+    public void jugarCarta3Handler() throws IOException {
         this.labelStatus.setText(this.jugadorActual.getNombre() + " ha jugado una carta.");
         juego.jugar(cartasJugadorActual.get(2));
         this.ponerCartaEnLaMesa(cartasJugadorActual.get(2));
         this.mostrarJugadorActual();
         this.mostrarPuntos();
-        // TODO: chequear si se termino la ronda o el juego
+        if (juego.concluyoLaPartida()) {
+            this.setPartidaFinalizada();
+        }
     }
 
 
@@ -263,7 +281,7 @@ public class JuegoDeTrucoControl {
     }
 
     @FXML
-    public void quieroFlorHandler() {
+    public void quieroFlorHandler() throws IOException {
         juego.quieroFlor();
         LinkedList<Object> estadosMostrarGanador = new LinkedList<Object>();
         estadosMostrarGanador.add(ContraFlor.class);
@@ -275,11 +293,13 @@ public class JuegoDeTrucoControl {
             jerarquiaNoValida.setContentText("Puntaje del ganador: " + juego.puntosDeFlorGanador() + "\n");
             jerarquiaNoValida.showAndWait();
         }
-        // TODO: ver si termino el juego
+        if (juego.concluyoLaPartida()) {
+            this.setPartidaFinalizada();
+        }
     }
 
     @FXML
-    public void noQuieroFlorHandler() {
+    public void noQuieroFlorHandler() throws IOException {
         try {
             this.labelStatus.setText(this.jugadorActual.getNombre() + " no quiso la flor.");
             juego.noQuieroFlor();
@@ -290,7 +310,9 @@ public class JuegoDeTrucoControl {
             jerarquiaNoValida.setContentText("No se puede rechazar la flor!");
             jerarquiaNoValida.showAndWait();
         }
-        // TODO: ver si termino el juego
+        if (juego.concluyoLaPartida()) {
+            this.setPartidaFinalizada();
+        }
     }
 
     // **** Envido ****
@@ -406,7 +428,7 @@ public class JuegoDeTrucoControl {
     }
 
     @FXML
-    public void quieroEnvidoHandler() {
+    public void quieroEnvidoHandler() throws IOException {
         this.labelStatus.setText(this.jugadorActual.getNombre() + " ha aceptado el envido.");
         this.juego.quieroEnvido();
         Alert jerarquiaNoValida = new Alert(AlertType.INFORMATION);
@@ -415,13 +437,7 @@ public class JuegoDeTrucoControl {
         jerarquiaNoValida.setContentText("Puntaje del ganador: " + juego.puntosDeEnvidoGanador() + "\n");
         jerarquiaNoValida.showAndWait();
         if (juego.concluyoLaPartida()) {
-            //programa.deshabilitarTodosLosBotones();
-            Alert mensaje = new Alert(AlertType.INFORMATION);
-            mensaje.setTitle("La partida ha concluido");
-            mensaje.setHeaderText("Puntajes: ");
-            mensaje.setContentText("Puntaje equipo 1: " + juego.puntosDeEquipo(Equipo.EQUIPO1) + "\n"
-                    + "Puntaje equipo 2: " + juego.puntosDeEquipo(Equipo.EQUIPO2) + "\n");
-            mensaje.showAndWait();
+            this.setPartidaFinalizada();
         }
 
         this.mostrarBotones(this.botonesFlor, false);
@@ -431,21 +447,14 @@ public class JuegoDeTrucoControl {
 
         this.mostrarPuntos();
         this.mostrarJugadorActual();
-        // TODO: ver si termino el juego
     }
 
     @FXML
-    public void noQuieroEnvidoHandler() {
+    public void noQuieroEnvidoHandler() throws IOException {
         this.labelStatus.setText(this.jugadorActual.getNombre() + " no quiso el envido.");
         this.juego.noQuieroEnvido();
         if (juego.concluyoLaPartida()) {
-            //programa.deshabilitarTodosLosBotones();
-            Alert mensaje = new Alert(AlertType.INFORMATION);
-            mensaje.setTitle("La partida ha concluido");
-            mensaje.setHeaderText("Puntajes: ");
-            mensaje.setContentText("Puntaje equipo 1: " + juego.puntosDeEquipo(Equipo.EQUIPO1) + "\n"
-                    + "Puntaje equipo 2: " + juego.puntosDeEquipo(Equipo.EQUIPO2) + "\n");
-            mensaje.showAndWait();
+            this.setPartidaFinalizada();
         }
 
         this.mostrarBotones(this.botonesFlor, false);
@@ -455,7 +464,6 @@ public class JuegoDeTrucoControl {
 
         this.mostrarPuntos();
         this.mostrarJugadorActual();
-        // TODO: ver si termino el juego
     }
 
     // **** Truco ****
@@ -464,6 +472,10 @@ public class JuegoDeTrucoControl {
         try {
             this.labelStatus.setText(this.jugadorActual.getNombre() + " cantó truco.");
             juego.truco();
+            this.botonReTruco.setVisible(true);
+            this.botonValeCuatro.setVisible(true);
+            this.botonQuieroTruco.setVisible(true);
+            this.botonNoQuieroTruco.setVisible(true);
         } catch (NoRespetaJerarquiaDeTrucoError x1) {
             Alert jerarquiaNoValida = new Alert(AlertType.ERROR);
             jerarquiaNoValida.setTitle("Error");
@@ -491,8 +503,9 @@ public class JuegoDeTrucoControl {
         try {
             this.labelStatus.setText(this.jugadorActual.getNombre() + " cantó quiero retruco.");
             juego.reTruco();
-            //programa.seCanto("ReTruco");
-            //programa.habilitarBotonQuieroTruco();
+            this.botonValeCuatro.setVisible(true);
+            this.botonQuieroTruco.setVisible(true);
+            this.botonNoQuieroTruco.setVisible(true);
         } catch (NoRespetaJerarquiaDeTrucoError x1) {
             Alert jerarquiaNoValida = new Alert(AlertType.ERROR);
             jerarquiaNoValida.setTitle("Error");
@@ -508,8 +521,8 @@ public class JuegoDeTrucoControl {
         try {
             this.labelStatus.setText(this.jugadorActual.getNombre() + " cantó quiero vale 4.");
             juego.valeCuatro();
-            //programa.seCanto("ValeCuatro");
-            //programa.habilitarBotonQuieroTruco();
+            this.botonQuieroTruco.setVisible(true);
+            this.botonNoQuieroTruco.setVisible(true);
         } catch (NoRespetaJerarquiaDeTrucoError x1) {
             Alert jerarquiaNoValida = new Alert(AlertType.ERROR);
             jerarquiaNoValida.setTitle("Error");
@@ -528,24 +541,16 @@ public class JuegoDeTrucoControl {
     }
 
     @FXML
-    public void noQuieroTrucoHandler() {
+    public void noQuieroTrucoHandler() throws IOException {
         this.labelStatus.setText(this.jugadorActual.getNombre() + " se fue al mazo.");
         juego.noQuieroTruco();
         if (juego.concluyoLaPartida()) {
-            //programa.deshabilitarTodosLosBotones();
-            Alert jerarquiaNoValida = new Alert(AlertType.INFORMATION);
-            jerarquiaNoValida.setTitle("La partida ha concluido");
-            jerarquiaNoValida.setHeaderText("Puntajes: ");
-            jerarquiaNoValida.setContentText("Puntaje equipo 1: " + juego.puntosDeEquipo(Equipo.EQUIPO1) + "\n"
-                    + "Puntaje equipo 2: " + juego.puntosDeEquipo(Equipo.EQUIPO2) + "\n");
-            jerarquiaNoValida.showAndWait();
+            this.setPartidaFinalizada();
         } else {
-            //programa.prepararProximaRonda();
+            this.nuevaRonda();
+            this.mostrarPuntos();
+            this.mostrarJugadorActual();
         }
-        this.nuevaRonda();
-        this.mostrarPuntos();
-        this.mostrarJugadorActual();
-        // TODO: ver si termino el juego
     }
 
 }

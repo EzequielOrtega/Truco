@@ -423,4 +423,14 @@ public class JuegoDeTruco {
 	public Object obtenerEstadoDeFlor() {
 		return this.estadoActualFlor;
 	}
+
+    public String obtenerNombreGanadorDelJuego() {
+        if (this.concluyoLaPartida()) {
+            if(this.puntosDeEquipo(Equipo.EQUIPO1) > this.puntosDeEquipo(Equipo.EQUIPO2))
+                return Equipo.EQUIPO1.toString();
+            else
+                return Equipo.EQUIPO2.toString();
+        }
+        else throw new NoConcluyoElJuegoError();
+    }
 }

@@ -63,14 +63,13 @@ public class Programa extends Application {
         controlador.setPrograma(this, juego, conFlor);
     }
 
-    public void juegoFinalizado(JuegoDeTruco juego, boolean conFlor) throws IOException {
-        // TODO: mandarle el ganador para que lo informe por pantalla
+    public void juegoFinalizado(String ganador) throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(Programa.class.getResource("JuegoFinalizado.fxml"));
         AnchorPane juegoFinalizado = loader.load();
         this.ventanaPrincipal.setCenter(juegoFinalizado);
         JuegoFinalizadoControl controlador = loader.getController();
-        controlador.setPrograma(this);
+        controlador.setPrograma(this, ganador);
     }
 
 
