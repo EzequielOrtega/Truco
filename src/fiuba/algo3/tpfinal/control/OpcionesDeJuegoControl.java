@@ -28,7 +28,7 @@ public class OpcionesDeJuegoControl {
     @FXML
     private void initialize() {
 
-        this.nombresJugadores = new ArrayList<>(Arrays.asList(this.textJ1E1, this.textJ1E2));
+        this.nombresJugadores = new ArrayList<>(Arrays.asList(this.textJ1E1, this.textJ1E2, this.textJ2E1, this.textJ2E2));
         this.visibilizar(this.nombresJugadores, false);
     }
 
@@ -38,38 +38,36 @@ public class OpcionesDeJuegoControl {
 
     @FXML
     private void opcionDosJugadoresHandler() {
-
         this.cantidadJugadores = 2;
         this.visibilizar(this.nombresJugadores, false);
-        for(int i = 0; i < this.cantidadJugadores; i++) {
-            this.nombresJugadores.get(i).setVisible(true);
-        }
+        this.nombresJugadores.get(0).setVisible(true);
+        this.nombresJugadores.get(1).setVisible(true);
     }
 
-//    @FXML
-//    private void opcionCuatroJugadoresHandler() {
-//        this.cantidadJugadores = 4;
-//        this.visibilizar(this.nombresJugadores, true);
-//    }
+    @FXML
+    private void opcionCuatroJugadoresHandler() {
+        this.cantidadJugadores = 4;
+        this.visibilizar(this.nombresJugadores, true);
+    }
 
     @FXML
-    private void comenzarJuegoHandler() throws IOException{
+    private void comenzarJuegoHandler() throws IOException {
 
         if(this.cantidadJugadores == 2) {
             JuegoDeTruco juego = new JuegoDeTruco(textJ1E1.getText(), textJ1E2.getText());
-            this.programa.comenzarPartidaDeDos(juego, conFlor.isSelected());
+            this.programa.comenzarPartidaDosJugadores(juego, conFlor.isSelected());
         }
 
-//        if(this.cantidadJugadores == 4) {
-//            JuegoDeTruco juego = new JuegoDeTruco(textJ1E1.getText(), textJ1E2.getText(), textJ2E1.getText(), textJ2E2.getText());
-//            this.programa.comenzarPartidaDeCuatro(juego, conFlor.isSelected());
-//        }
+        if(this.cantidadJugadores == 4) {
+            JuegoDeTruco juego = new JuegoDeTruco(textJ1E1.getText(), textJ1E2.getText(), textJ2E1.getText(), textJ2E2.getText());
+            this.programa.comenzarPartidaCuatroJugadores(juego, conFlor.isSelected());
+        }
 
     }
 
     private void visibilizar(List<TextField> elementos, boolean visibilidad) {
-        for(Node nodo : elementos) {
-            nodo.setVisible(visibilidad);
+        for(Node text : elementos) {
+            text.setVisible(visibilidad);
         }
     }
 

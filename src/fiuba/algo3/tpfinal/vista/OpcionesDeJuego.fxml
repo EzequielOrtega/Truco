@@ -17,8 +17,10 @@
          <font>
             <Font size="20.0" />
          </font></RadioButton>
-        <TextField fx:id="textJ1E1" layoutX="602.0" layoutY="127.0" promptText="Jugador 1 - Equipo 1" />
-        <TextField fx:id="textJ1E2" layoutX="602.0" layoutY="315.0" promptText="Jugador 1 - Equipo 2" />
+        <TextField fx:id="textJ1E1" layoutX="602.0" layoutY="140.0" promptText="Jugador 1 - Equipo 1" />
+        <TextField fx:id="textJ1E2" layoutX="602.0" layoutY="293.0" promptText="Jugador 1 - Equipo 2" />
+        <TextField fx:id="textJ2E1" layoutX="602.0" layoutY="212.0" promptText="Jugador 2 - Equipo 1" />
+        <TextField fx:id="textJ2E2" layoutX="602.0" layoutY="381.0" promptText="Jugador 2 - Equipo 2" />
         <Button fx:id="botonComenzarJuego" layoutX="436.0" layoutY="563.0" mnemonicParsing="false" onAction="#comenzarJuegoHandler" prefHeight="72.0" prefWidth="247.0" text="Comenzar a jugar!">
          <font>
             <Font name="System Bold" size="22.0" />
