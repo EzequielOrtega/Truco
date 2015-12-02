@@ -78,22 +78,22 @@
                                         <Button fx:id="botonCartaJugada1J4" layoutX="341.0" layoutY="58.0" mnemonicParsing="false" visible="false" />
                                         <Button fx:id="botonCartaJugada2J4" layoutX="357.0" layoutY="83.0" mnemonicParsing="false" visible="false" />
                                         <Button fx:id="botonCartaJugada3J4" layoutX="373.0" layoutY="108.0" mnemonicParsing="false" visible="false" />
-                                        <Label layoutX="599.0" layoutY="310.0" prefHeight="39.0" prefWidth="104.0" text="Jugador 2" textFill="#f5e1e1">
+                                        <Label fx:id="nombreJ2" layoutX="599.0" layoutY="310.0" prefHeight="39.0" prefWidth="104.0" text="Jugador 2" textFill="#f5e1e1">
                                             <font>
                                                 <Font name="System Bold" size="21.0" />
                                             </font>
                                         </Label>
-                                        <Label layoutX="367.0" layoutY="546.0" prefHeight="39.0" prefWidth="104.0" text="Jugador 1" textFill="#f5e1e1">
+                                        <Label fx:id="nombreJ1" layoutX="367.0" layoutY="546.0" prefHeight="39.0" prefWidth="104.0" text="Jugador 1" textFill="#f5e1e1">
                                             <font>
                                                 <Font name="System Bold" size="21.0" />
                                             </font>
                                         </Label>
-                              <Label layoutX="87.0" layoutY="309.0" prefHeight="39.0" prefWidth="104.0" text="Jugador 4" textFill="#f5e1e1">
+                              <Label fx:id="nombreJ4" layoutX="87.0" layoutY="309.0" prefHeight="39.0" prefWidth="104.0" text="Jugador 4" textFill="#f5e1e1">
                                  <font>
                                     <Font name="System Bold" size="21.0" />
                                  </font>
                               </Label>
-                              <Label layoutX="367.0" layoutY="39.0" prefHeight="39.0" prefWidth="104.0" text="Jugador 3" textFill="#f5e1e1">
+                              <Label fx:id="nombreJ3" layoutX="367.0" layoutY="39.0" prefHeight="39.0" prefWidth="104.0" text="Jugador 3" textFill="#f5e1e1">
                                  <font>
                                     <Font name="System Bold" size="21.0" />
                                  </font>
@@ -119,6 +119,7 @@
                                             <rowConstraints>
                                                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints />
                                             </rowConstraints>
                                             <children>
                                                 <Label fx:id="labelEquipo1" styleClass="label-bordeau" text="Puntaje equipo 1: " GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="1" />

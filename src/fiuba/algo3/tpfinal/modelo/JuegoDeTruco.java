@@ -437,4 +437,12 @@ public class JuegoDeTruco {
         }
         else throw new NoConcluyoElJuegoError();
     }
+
+	public LinkedList<String> obtenerNombres() {
+		LinkedList<String> nombres = new LinkedList<String>();
+		for(int x = 0; x < this.jugadores.tamanio(); x++) {
+			nombres.add(jugadores.obtenerElemento(x).getNombre());
+		}
+		return nombres;
+	}
 }

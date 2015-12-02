@@ -23,6 +23,7 @@ public class JuegoDeTrucoControl {
 
     @FXML private Label labelTurno, labelStatus;
     @FXML private Label labelPuntajeEquipo1, labelPuntajeEquipo2;
+    @FXML private Label nombreJ1, nombreJ2, nombreJ3, nombreJ4;
     @FXML private Button botonCarta1, botonCarta2, botonCarta3;
     @FXML private Button botonCartaJugada1J1, botonCartaJugada2J1, botonCartaJugada3J1;
     @FXML private Button botonCartaJugada1J2, botonCartaJugada2J2, botonCartaJugada3J2;
@@ -63,9 +64,22 @@ public class JuegoDeTrucoControl {
         this.botonFlor.setVisible(conFlor);
         this.mostrarBotones(this.botonesEnvido, true);
         this.botonTruco.setVisible(true);
+        this.ponerNombres();
     }
 
-    private void mostrarJugadorActual() {
+    private void ponerNombres() {
+		LinkedList<String> nombres = this.juego.obtenerNombres();
+    	LinkedList<Label> nombresLabels = new LinkedList<Label>();
+    	nombresLabels.add(nombreJ1);
+    	nombresLabels.add(nombreJ2);
+    	nombresLabels.add(nombreJ3);
+    	nombresLabels.add(nombreJ4);
+		for (int x = 0; x < nombres.size(); x++) {
+    		nombresLabels.get(x).setText(nombres.get(x));
+    	}		
+	}
+
+	private void mostrarJugadorActual() {
         this.jugadorActual = juego.obtenerJugadorActual();
         this.labelTurno.setText(this.jugadorActual.getNombre());
         this.cartasJugadorActual = jugadorActual.mostrarCartas();
