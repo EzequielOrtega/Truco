@@ -57,12 +57,12 @@ public class JuegoDeTrucoControl {
         this.conFlor = conFlor;
         juego.comenzarPartida(conFlor);
 
+        this.mostrarPuntos();
+        this.mostrarJugadorActual();
         this.mostrarTodosLosBotones(false);
         this.botonFlor.setVisible(conFlor);
         this.mostrarBotones(this.botonesEnvido, true);
         this.botonTruco.setVisible(true);
-        this.mostrarPuntos();
-        this.mostrarJugadorActual();
     }
 
     private void mostrarJugadorActual() {
