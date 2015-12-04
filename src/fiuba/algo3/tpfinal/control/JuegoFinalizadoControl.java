@@ -29,9 +29,9 @@ public class JuegoFinalizadoControl {
     @FXML
     public void opcionCerrarHandler() {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Confirmación");
+        alert.setTitle("Confirmacion");
         alert.setHeaderText(null);
-        alert.setContentText("Está seguro que desea cerrar?");
+        alert.setContentText("Esta seguro que desea cerrar?");
 
         Optional<ButtonType> resultado = alert.showAndWait();
         if (resultado.get() == ButtonType.OK){
