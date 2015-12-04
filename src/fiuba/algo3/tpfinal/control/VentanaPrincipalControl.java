@@ -27,9 +27,9 @@ public class VentanaPrincipalControl {
     @FXML
     public void opcionCerrarHandler() {
         Alert alert = new Alert(AlertType.CONFIRMATION);
-        alert.setTitle("Confirmación");
+        alert.setTitle("Confirmacion");
         alert.setHeaderText(null);
-        alert.setContentText("Está seguro que desea cerrar?");
+        alert.setContentText("Esta seguro que desea cerrar?");
 
         Optional<ButtonType> resultado = alert.showAndWait();
         if (resultado.get() == ButtonType.OK){
