@@ -37,7 +37,8 @@ public class JuegoDeTrucoControl {
     @FXML private Button botonFlor, botonContraFlor, botonContraFlorAlResto, botonQuieroFlor, botonNoQuieroFlor;
     @FXML private Button botonEnvido, botonRealEnvido, botonFaltaEnvido, botonQuieroEnvido, botonNoQuieroEnvido;
     @FXML private Button botonTruco, botonReTruco, botonValeCuatro, botonQuieroTruco, botonNoQuieroTruco;
-
+    @FXML private Button botonIrseAlMazo;
+    
     @FXML
     private void initialize() {
 
@@ -621,6 +622,20 @@ public class JuegoDeTrucoControl {
     public void noQuieroTrucoHandler() throws IOException {
         Jugador jugadorQueCanto = this.jugadorActual;
         juego.noQuieroTruco();
+        this.labelStatus.setText(jugadorQueCanto.getNombre() + " se fue al mazo.");
+        if (juego.concluyoLaPartida()) {
+            this.setPartidaFinalizada();
+        } else {
+            this.setNuevaRonda();
+            this.mostrarPuntos();
+            this.mostrarJugadorActual();
+        }
+    }
+    
+    @FXML
+    public void irseAlMazoHandler() throws IOException {
+    	Jugador jugadorQueCanto = this.jugadorActual;
+        juego.irseAlMazo();
         this.labelStatus.setText(jugadorQueCanto.getNombre() + " se fue al mazo.");
         if (juego.concluyoLaPartida()) {
             this.setPartidaFinalizada();
