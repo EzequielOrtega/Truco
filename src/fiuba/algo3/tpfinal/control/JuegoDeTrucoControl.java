@@ -166,7 +166,7 @@ public class JuegoDeTrucoControl {
     // **** Manejo de cartas ****
     @FXML
     public void jugarCarta1Handler() throws IOException {
-        this.labelStatus.setText(this.jugadorActual.getNombre() + " ha jugado una carta.");
+        this.labelStatus.setText(this.jugadorActual.getNombre() + " ha jugado un " + this.diccionario.Busqueda(cartasJugadorActual.get(0)));
         this.ponerCartaEnLaMesa(cartasJugadorActual.get(0));
         juego.jugar(cartasJugadorActual.get(0));
         this.mostrarJugadorActual();
@@ -180,7 +180,7 @@ public class JuegoDeTrucoControl {
 
     @FXML
     public void jugarCarta2Handler() throws IOException {
-        this.labelStatus.setText(this.jugadorActual.getNombre() + " ha jugado una carta.");
+        this.labelStatus.setText(this.jugadorActual.getNombre() + " ha jugado un " + this.diccionario.Busqueda(cartasJugadorActual.get(1)));
         this.ponerCartaEnLaMesa(cartasJugadorActual.get(1));
         juego.jugar(cartasJugadorActual.get(1));
         this.mostrarJugadorActual();
@@ -193,7 +193,7 @@ public class JuegoDeTrucoControl {
 
     @FXML
     public void jugarCarta3Handler() throws IOException {
-        this.labelStatus.setText(this.jugadorActual.getNombre() + " ha jugado una carta.");
+        this.labelStatus.setText(this.jugadorActual.getNombre() + " ha jugado un " + this.diccionario.Busqueda(cartasJugadorActual.get(2)));
         this.ponerCartaEnLaMesa(cartasJugadorActual.get(2));
         juego.jugar(cartasJugadorActual.get(2));
         this.mostrarJugadorActual();
@@ -221,7 +221,7 @@ public class JuegoDeTrucoControl {
         try {
             Jugador jugadorQueCanto = this.jugadorActual;
             juego.flor();
-            this.labelStatus.setText(jugadorQueCanto.getNombre() + " cantó flor.");
+            this.labelStatus.setText(jugadorQueCanto.getNombre() + " canto flor.");
             this.mostrarTodosLosBotones(false);
             this.botonContraFlor.setVisible(conFlor);
             this.botonContraFlorAlResto.setVisible(conFlor);
@@ -231,19 +231,19 @@ public class JuegoDeTrucoControl {
             Alert jerarquiaNoValida = new Alert(AlertType.ERROR);
             jerarquiaNoValida.setTitle("Error");
             jerarquiaNoValida.setHeaderText(null);
-            jerarquiaNoValida.setContentText("Se está jugando sin flor.");
+            jerarquiaNoValida.setContentText("Se esta jugando sin flor.");
             jerarquiaNoValida.showAndWait();
         } catch (SoloSePuedeCantarFlorEnPrimeraError x2) {
             Alert jerarquiaNoValida = new Alert(AlertType.ERROR);
             jerarquiaNoValida.setTitle("Error");
             jerarquiaNoValida.setHeaderText(null);
-            jerarquiaNoValida.setContentText("Sólo se puede cantar flor en primera.");
+            jerarquiaNoValida.setContentText("Solo se puede cantar flor en primera.");
             jerarquiaNoValida.showAndWait();
         } catch (SoloSePuedeCantarFlorUnaVezPorRondaError x3) {
             Alert jerarquiaNoValida = new Alert(AlertType.ERROR);
             jerarquiaNoValida.setTitle("Error");
             jerarquiaNoValida.setHeaderText(null);
-            jerarquiaNoValida.setContentText("Sólo se puede cantar flor una vez por ronda.");
+            jerarquiaNoValida.setContentText("Solo se puede cantar flor una vez por ronda.");
             jerarquiaNoValida.showAndWait();
         } catch (JugadorNoTieneFlorError x4) {
             Alert jerarquiaNoValida = new Alert(AlertType.ERROR);
@@ -255,7 +255,7 @@ public class JuegoDeTrucoControl {
             Alert jerarquiaNoValida = new Alert(AlertType.ERROR);
             jerarquiaNoValida.setTitle("Error");
             jerarquiaNoValida.setHeaderText(null);
-            jerarquiaNoValida.setContentText("No respeta la jerarquía de flor.");
+            jerarquiaNoValida.setContentText("No respeta la jerarquia de flor.");
             jerarquiaNoValida.showAndWait();
         }
         
@@ -266,7 +266,7 @@ public class JuegoDeTrucoControl {
         try {
             Jugador jugadorQueCanto = this.jugadorActual;
             juego.contraFlor();
-            this.labelStatus.setText(jugadorQueCanto.getNombre() + " cantó contraflor.");
+            this.labelStatus.setText(jugadorQueCanto.getNombre() + " canto contraflor.");
             this.mostrarTodosLosBotones(false);
             this.botonContraFlorAlResto.setVisible(conFlor);
             this.mostrarBotones(this.botonesFlorQuiero, true);
@@ -281,13 +281,13 @@ public class JuegoDeTrucoControl {
             Alert jerarquiaNoValida = new Alert(AlertType.ERROR);
             jerarquiaNoValida.setTitle("Error");
             jerarquiaNoValida.setHeaderText(null);
-            jerarquiaNoValida.setContentText("No respeta la jerarquía de flor.");
+            jerarquiaNoValida.setContentText("No respeta la jerarquia de flor.");
             jerarquiaNoValida.showAndWait();
         } catch (SoloSePuedeCantarFlorUnaVezPorRondaError x3) {
             Alert jerarquiaNoValida = new Alert(AlertType.ERROR);
             jerarquiaNoValida.setTitle("Error");
             jerarquiaNoValida.setHeaderText(null);
-            jerarquiaNoValida.setContentText("Sólo se puede cantar flor una vez por ronda.");
+            jerarquiaNoValida.setContentText("Solo se puede cantar flor una vez por ronda.");
             jerarquiaNoValida.showAndWait();
         }
         
@@ -312,13 +312,13 @@ public class JuegoDeTrucoControl {
             Alert jerarquiaNoValida = new Alert(AlertType.ERROR);
             jerarquiaNoValida.setTitle("Error");
             jerarquiaNoValida.setHeaderText(null);
-            jerarquiaNoValida.setContentText("No respeta la jerarquía de flor.");
+            jerarquiaNoValida.setContentText("No respeta la jerarquia de flor.");
             jerarquiaNoValida.showAndWait();
         } catch (SoloSePuedeCantarFlorUnaVezPorRondaError x3) {
             Alert jerarquiaNoValida = new Alert(AlertType.ERROR);
             jerarquiaNoValida.setTitle("Error");
             jerarquiaNoValida.setHeaderText(null);
-            jerarquiaNoValida.setContentText("Sólo se puede cantar flor una vez por ronda.");
+            jerarquiaNoValida.setContentText("Solo se puede cantar flor una vez por ronda.");
             jerarquiaNoValida.showAndWait();
         }
         
@@ -372,7 +372,7 @@ public class JuegoDeTrucoControl {
         try {
             Jugador jugadorQueCanto = this.jugadorActual;
             juego.envido();
-            this.labelStatus.setText(jugadorQueCanto.getNombre() + " cantó envido.");
+            this.labelStatus.setText(jugadorQueCanto.getNombre() + " canto envido.");
             this.mostrarTodosLosBotones(false);
             this.botonFlor.setVisible(conFlor);
             this.mostrarBotones(this.botonesEnvido, true);
@@ -382,31 +382,31 @@ public class JuegoDeTrucoControl {
             Alert jerarquiaNoValida = new Alert(AlertType.ERROR);
             jerarquiaNoValida.setTitle("Error");
             jerarquiaNoValida.setHeaderText(null);
-            jerarquiaNoValida.setContentText("El envido sólo se puede cantar en primera.");
+            jerarquiaNoValida.setContentText("El envido solo se puede cantar en primera.");
             jerarquiaNoValida.showAndWait();
         } catch (NoPuedeCantarEnvidoNoEsPieError x2) {
             Alert jugadaNoValida = new Alert(AlertType.ERROR);
             jugadaNoValida.setTitle("Error");
             jugadaNoValida.setHeaderText(null);
-            jugadaNoValida.setContentText("Sólo el jugador que es pie puede cantar envido.");
+            jugadaNoValida.setContentText("Solo el jugador que es pie puede cantar envido.");
             jugadaNoValida.showAndWait();
         } catch (NoRespetaJerarquiaDeEnvidoError x3) {
             Alert jugadaNoValida = new Alert(AlertType.ERROR);
             jugadaNoValida.setTitle("Error");
             jugadaNoValida.setHeaderText(null);
-            jugadaNoValida.setContentText("No respeta la jerarquía del envido.");
+            jugadaNoValida.setContentText("No respeta la jerarquia del envido.");
             jugadaNoValida.showAndWait();
         } catch (SoloSePuedeCantarEnvidoUnaVezPorRondaError x4) {
             Alert jugadaNoValida = new Alert(AlertType.ERROR);
             jugadaNoValida.setTitle("Error");
             jugadaNoValida.setHeaderText(null);
-            jugadaNoValida.setContentText("Sólo se puede cantar envido una vez por ronda.");
+            jugadaNoValida.setContentText("Solo se puede cantar envido una vez por ronda.");
             jugadaNoValida.showAndWait();
         } catch (NoPuedeCantarEnvidoSeCantoFlorError x5) {
             Alert jugadaNoValida = new Alert(AlertType.ERROR);
             jugadaNoValida.setTitle("Error");
             jugadaNoValida.setHeaderText(null);
-            jugadaNoValida.setContentText("Ya se cantó flor, no se puede cantar envido.");
+            jugadaNoValida.setContentText("Ya se canto flor, no se puede cantar envido.");
             jugadaNoValida.showAndWait();
         }
         
@@ -417,7 +417,7 @@ public class JuegoDeTrucoControl {
         try {
             Jugador jugadorQueCanto = this.jugadorActual;
             juego.realEnvido();
-            this.labelStatus.setText(jugadorQueCanto.getNombre() + " cantó real envido.");
+            this.labelStatus.setText(jugadorQueCanto.getNombre() + " canto real envido.");
             this.mostrarTodosLosBotones(false);
             this.botonFlor.setVisible(conFlor);
             this.mostrarBotones(this.botonesEnvido, true);
@@ -427,31 +427,31 @@ public class JuegoDeTrucoControl {
             Alert jerarquiaNoValida = new Alert(AlertType.ERROR);
             jerarquiaNoValida.setTitle("Error");
             jerarquiaNoValida.setHeaderText(null);
-            jerarquiaNoValida.setContentText("El real envido sólo se puede cantar en primera.");
+            jerarquiaNoValida.setContentText("El real envido solo se puede cantar en primera.");
             jerarquiaNoValida.showAndWait();
         } catch (NoPuedeCantarEnvidoNoEsPieError x2) {
             Alert jugadaNoValida = new Alert(AlertType.ERROR);
             jugadaNoValida.setTitle("Error");
             jugadaNoValida.setHeaderText(null);
-            jugadaNoValida.setContentText("Sólo el jugador que es pie puede cantar real envido.");
+            jugadaNoValida.setContentText("Solo el jugador que es pie puede cantar real envido.");
             jugadaNoValida.showAndWait();
         } catch (NoRespetaJerarquiaDeEnvidoError x3) {
             Alert jugadaNoValida = new Alert(AlertType.ERROR);
             jugadaNoValida.setTitle("Error");
             jugadaNoValida.setHeaderText(null);
-            jugadaNoValida.setContentText("No respeta la jerarquía del envido.");
+            jugadaNoValida.setContentText("No respeta la jerarquia del envido.");
             jugadaNoValida.showAndWait();
         } catch (SoloSePuedeCantarEnvidoUnaVezPorRondaError x4) {
             Alert jugadaNoValida = new Alert(AlertType.ERROR);
             jugadaNoValida.setTitle("Error");
             jugadaNoValida.setHeaderText(null);
-            jugadaNoValida.setContentText("Sólo se puede cantar envido una vez por ronda.");
+            jugadaNoValida.setContentText("Solo se puede cantar envido una vez por ronda.");
             jugadaNoValida.showAndWait();
         } catch (NoPuedeCantarEnvidoSeCantoFlorError x5) {
             Alert jugadaNoValida = new Alert(AlertType.ERROR);
             jugadaNoValida.setTitle("Error");
             jugadaNoValida.setHeaderText(null);
-            jugadaNoValida.setContentText("Ya se cantó flor, no se puede cantar real envido.");
+            jugadaNoValida.setContentText("Ya se canto flor, no se puede cantar real envido.");
             jugadaNoValida.showAndWait();
         }
         
@@ -462,7 +462,7 @@ public class JuegoDeTrucoControl {
         try {
             Jugador jugadorQueCanto = this.jugadorActual;
             juego.faltaEnvido();
-            this.labelStatus.setText(jugadorQueCanto.getNombre() + " cantó falta envido.");
+            this.labelStatus.setText(jugadorQueCanto.getNombre() + " canto falta envido.");
             this.mostrarTodosLosBotones(false);
             this.botonFlor.setVisible(conFlor);
             this.mostrarBotones(this.botonesEnvido, true);
@@ -472,25 +472,25 @@ public class JuegoDeTrucoControl {
             Alert jerarquiaNoValida = new Alert(AlertType.ERROR);
             jerarquiaNoValida.setTitle("Error");
             jerarquiaNoValida.setHeaderText(null);
-            jerarquiaNoValida.setContentText("El falta envido sólo se puede cantar en primera.");
+            jerarquiaNoValida.setContentText("El falta envido solo se puede cantar en primera.");
             jerarquiaNoValida.showAndWait();
         } catch (NoPuedeCantarEnvidoNoEsPieError x2) {
             Alert jugadaNoValida = new Alert(AlertType.ERROR);
             jugadaNoValida.setTitle("Error");
             jugadaNoValida.setHeaderText(null);
-            jugadaNoValida.setContentText("Sólo el jugador que es pie puede cantar falta envido.");
+            jugadaNoValida.setContentText("Solo el jugador que es pie puede cantar falta envido.");
             jugadaNoValida.showAndWait();
         } catch (SoloSePuedeCantarEnvidoUnaVezPorRondaError x3) {
             Alert jugadaNoValida = new Alert(AlertType.ERROR);
             jugadaNoValida.setTitle("Error");
             jugadaNoValida.setHeaderText(null);
-            jugadaNoValida.setContentText("Sólo se puede cantar envido una vez por ronda.");
+            jugadaNoValida.setContentText("Solo se puede cantar envido una vez por ronda.");
             jugadaNoValida.showAndWait();
         } catch (NoPuedeCantarEnvidoSeCantoFlorError x4) {
             Alert jugadaNoValida = new Alert(AlertType.ERROR);
             jugadaNoValida.setTitle("Error");
             jugadaNoValida.setHeaderText(null);
-            jugadaNoValida.setContentText("Ya se cantó flor, no se puede cantar falta envido.");
+            jugadaNoValida.setContentText("Ya se canto flor, no se puede cantar falta envido.");
             jugadaNoValida.showAndWait();
         }
         
@@ -538,7 +538,7 @@ public class JuegoDeTrucoControl {
         try {
             Jugador jugadorQueCanto = this.jugadorActual;
             juego.truco();
-            this.labelStatus.setText(jugadorQueCanto.getNombre() + " cantó truco.");
+            this.labelStatus.setText(jugadorQueCanto.getNombre() + " canto truco.");
             this.mostrarTodosLosBotones(false);
             this.botonFlor.setVisible(conFlor);
             this.mostrarBotones(this.botonesEnvido, true);
@@ -549,18 +549,18 @@ public class JuegoDeTrucoControl {
             Alert jerarquiaNoValida = new Alert(AlertType.ERROR);
             jerarquiaNoValida.setTitle("Error");
             jerarquiaNoValida.setHeaderText(null);
-            jerarquiaNoValida.setContentText("No respeta la jerarquía del truco.");
+            jerarquiaNoValida.setContentText("No respeta la jerarquia del truco.");
             jerarquiaNoValida.showAndWait();
         } catch (NoPuedeCantarTrucoSeCantoEnvidoError x2) {
             Alert jugadaNoValida = new Alert(AlertType.ERROR);
             jugadaNoValida.setTitle("Error");
-            jugadaNoValida.setHeaderText("No puede cantar truco, se cantó envido.");
+            jugadaNoValida.setHeaderText("No puede cantar truco, se canto envido.");
             jugadaNoValida.setContentText("Debe responderle al equipo contrario.");
             jugadaNoValida.showAndWait();
         } catch (NoPuedeCantarTrucoSeCantoFlorError x3) {
             Alert jugadaNoValida = new Alert(AlertType.ERROR);
             jugadaNoValida.setTitle("Error");
-            jugadaNoValida.setHeaderText("No puede cantar truco, se cantó flor.");
+            jugadaNoValida.setHeaderText("No puede cantar truco, se canto flor.");
             jugadaNoValida.setContentText("Debe responderle al equipo contrario.");
             jugadaNoValida.showAndWait();
         }
@@ -572,7 +572,7 @@ public class JuegoDeTrucoControl {
         try {
             Jugador jugadorQueCanto = this.jugadorActual;
             juego.reTruco();
-            this.labelStatus.setText(jugadorQueCanto.getNombre() + " cantó quiero retruco.");
+            this.labelStatus.setText(jugadorQueCanto.getNombre() + " canto quiero retruco.");
             this.mostrarTodosLosBotones(false);
             this.botonValeCuatro.setVisible(true);
             this.mostrarBotones(this.botonesTrucoQuiero, true);
@@ -581,7 +581,7 @@ public class JuegoDeTrucoControl {
             Alert jerarquiaNoValida = new Alert(AlertType.ERROR);
             jerarquiaNoValida.setTitle("Error");
             jerarquiaNoValida.setHeaderText(null);
-            jerarquiaNoValida.setContentText("No respeta la jerarquía del truco.");
+            jerarquiaNoValida.setContentText("No respeta la jerarquia del truco.");
             jerarquiaNoValida.showAndWait();
         }
         
@@ -592,7 +592,7 @@ public class JuegoDeTrucoControl {
         try {
             Jugador jugadorQueCanto = this.jugadorActual;
             juego.valeCuatro();
-            this.labelStatus.setText(jugadorQueCanto.getNombre() + " cantó quiero vale 4.");
+            this.labelStatus.setText(jugadorQueCanto.getNombre() + " canto quiero vale 4.");
             this.mostrarTodosLosBotones(false);
             this.mostrarBotones(this.botonesTrucoQuiero, true);
             this.mostrarJugadorActual();
@@ -600,7 +600,7 @@ public class JuegoDeTrucoControl {
             Alert jerarquiaNoValida = new Alert(AlertType.ERROR);
             jerarquiaNoValida.setTitle("Error");
             jerarquiaNoValida.setHeaderText(null);
-            jerarquiaNoValida.setContentText("No respeta la jerarquía del truco.");
+            jerarquiaNoValida.setContentText("No respeta la jerarquia del truco.");
             jerarquiaNoValida.showAndWait();
         }
         
