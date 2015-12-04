@@ -166,7 +166,7 @@ public class JuegoDeTrucoControl {
     // **** Manejo de cartas ****
     @FXML
     public void jugarCarta1Handler() throws IOException {
-        this.labelStatus.setText(this.jugadorActual.getNombre() + " ha jugado un " + this.diccionario.Busqueda(cartasJugadorActual.get(0)));
+        this.labelStatus.setText(this.jugadorActual.getNombre() + " ha jugado una carta.");
         this.ponerCartaEnLaMesa(cartasJugadorActual.get(0));
         juego.jugar(cartasJugadorActual.get(0));
         this.mostrarJugadorActual();
@@ -180,7 +180,7 @@ public class JuegoDeTrucoControl {
 
     @FXML
     public void jugarCarta2Handler() throws IOException {
-        this.labelStatus.setText(this.jugadorActual.getNombre() + " ha jugado un " + this.diccionario.Busqueda(cartasJugadorActual.get(1)));
+        this.labelStatus.setText(this.jugadorActual.getNombre() + " ha jugado una carta.");
         this.ponerCartaEnLaMesa(cartasJugadorActual.get(1));
         juego.jugar(cartasJugadorActual.get(1));
         this.mostrarJugadorActual();
@@ -193,7 +193,7 @@ public class JuegoDeTrucoControl {
 
     @FXML
     public void jugarCarta3Handler() throws IOException {
-        this.labelStatus.setText(this.jugadorActual.getNombre() + " ha jugado un " + this.diccionario.Busqueda(cartasJugadorActual.get(2)));
+        this.labelStatus.setText(this.jugadorActual.getNombre() + " ha jugado una carta.");
         this.ponerCartaEnLaMesa(cartasJugadorActual.get(2));
         juego.jugar(cartasJugadorActual.get(2));
         this.mostrarJugadorActual();
