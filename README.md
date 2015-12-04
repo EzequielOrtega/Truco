@@ -3,7 +3,7 @@ TP final algo 3
 
 Grupo 2 nico:
 
-	Ezequiel Ortega 
+	Ezequiel Martin Ortega Mateo 
 	
 	Micaela Lean Cole 
 	
