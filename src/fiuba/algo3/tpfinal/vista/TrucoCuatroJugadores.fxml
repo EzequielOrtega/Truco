@@ -67,18 +67,18 @@
                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="396.0" prefWidth="426.0">
                                     <children>
                                         <Ellipse fill="#1d8614" layoutX="193.0" layoutY="198.0" radiusX="193.0" radiusY="196.0" stroke="BLACK" strokeType="INSIDE" />
-                                        <Button fx:id="botonCartaJugada1J1" layoutX="154.0" layoutY="283.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="69.0" visible="false" />
-                                        <Button fx:id="botonCartaJugada2J1" layoutX="147.0" layoutY="316.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="83.0" visible="false" />
-                                        <Button fx:id="botonCartaJugada3J1" layoutX="150.0" layoutY="296.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="100.0" visible="false" />
-                                        <Button fx:id="botonCartaJugada1J2" layoutX="212.0" layoutY="199.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="111.0" visible="false" />
-                                        <Button fx:id="botonCartaJugada2J2" layoutX="202.0" layoutY="179.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="88.0" visible="false" />
-                                        <Button fx:id="botonCartaJugada3J2" layoutX="194.0" layoutY="168.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="88.0" visible="false" />
-                                        <Button fx:id="botonCartaJugada1J3" layoutX="120.0" layoutY="71.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="88.0" visible="false" />
-                                        <Button fx:id="botonCartaJugada2J3" layoutX="144.0" layoutY="83.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="98.0" visible="false" />
-                                        <Button fx:id="botonCartaJugada3J3" layoutX="160.0" layoutY="96.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="106.0" visible="false" />
-                                        <Button fx:id="botonCartaJugada1J4" layoutX="118.0" layoutY="179.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="98.0" visible="false" />
-                                        <Button fx:id="botonCartaJugada2J4" layoutX="152.0" layoutY="192.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="98.0" visible="false" />
-                                        <Button fx:id="botonCartaJugada3J4" layoutX="112.0" layoutY="192.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="88.0" visible="false" />
+                                        <Button fx:id="botonCartaJugada1J1" layoutX="154.0" layoutY="326.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="69.0" visible="false" />
+                                        <Button fx:id="botonCartaJugada2J1" layoutX="147.0" layoutY="296.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="83.0" visible="false" />
+                                        <Button fx:id="botonCartaJugada3J1" layoutX="139.0" layoutY="265.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="100.0" visible="false" />
+                                        <Button fx:id="botonCartaJugada1J2" layoutX="266.0" layoutY="165.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="111.0" visible="false" />
+                                        <Button fx:id="botonCartaJugada2J2" layoutX="280.0" layoutY="150.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="88.0" visible="false" />
+                                        <Button fx:id="botonCartaJugada3J2" layoutX="278.0" layoutY="121.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="88.0" visible="false" />
+                                        <Button fx:id="botonCartaJugada1J3" layoutX="146.0" layoutY="47.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="88.0" visible="false" />
+                                        <Button fx:id="botonCartaJugada2J3" layoutX="140.0" layoutY="66.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="98.0" visible="false" />
+                                        <Button fx:id="botonCartaJugada3J3" layoutX="136.0" layoutY="96.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="106.0" visible="false" />
+                                        <Button fx:id="botonCartaJugada1J4" layoutX="17.0" layoutY="223.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="98.0" visible="false" />
+                                        <Button fx:id="botonCartaJugada2J4" layoutX="17.0" layoutY="236.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="98.0" visible="false" />
+                                        <Button fx:id="botonCartaJugada3J4" layoutX="22.0" layoutY="246.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="88.0" visible="false" />
                                         <Label fx:id="nombreJ2" layoutX="272.0" layoutY="179.0" prefHeight="39.0" prefWidth="104.0" text="Jugador 2" textFill="#f5e1e1">
                                             <font>
                                                 <Font name="System Bold" size="21.0" />
