@@ -67,16 +67,16 @@
                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="397.0" prefWidth="443.0">
                                     <children>
                                         <Ellipse fill="#1d8614" layoutX="230.0" layoutY="205.0" radiusX="232.0" radiusY="205.0" stroke="BLACK" strokeType="INSIDE" />
-                                        <Button fx:id="botonCartaJugada1J1" layoutX="176.0" layoutY="227.0" mnemonicParsing="false" prefHeight="68.0" prefWidth="113.0" text="HOLA" textAlignment="CENTER" textFill="#d00c0c">
+                                        <Button fx:id="botonCartaJugada1J1" layoutX="175.0" layoutY="310.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="113.0" textAlignment="CENTER" visible="false">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </Button>
-                                        <Button fx:id="botonCartaJugada2J1" layoutX="222.0" layoutY="269.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="97.0" visible="false" />
-                                        <Button fx:id="botonCartaJugada3J1" layoutX="224.0" layoutY="295.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="91.0" visible="false" />
-                                        <Button fx:id="botonCartaJugada1J2" layoutX="341.0" layoutY="58.0" mnemonicParsing="false" visible="false" />
-                                        <Button fx:id="botonCartaJugada2J2" layoutX="357.0" layoutY="83.0" mnemonicParsing="false" visible="false" />
-                                        <Button fx:id="botonCartaJugada3J2" layoutX="373.0" layoutY="108.0" mnemonicParsing="false" visible="false" />
+                                        <Button fx:id="botonCartaJugada2J1" layoutX="182.0" layoutY="291.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="97.0" visible="false" />
+                                        <Button fx:id="botonCartaJugada3J1" layoutX="185.0" layoutY="272.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="91.0" visible="false" />
+                                        <Button fx:id="botonCartaJugada1J2" layoutX="175.0" layoutY="59.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="113.0" visible="false" />
+                                        <Button fx:id="botonCartaJugada2J2" layoutX="177.0" layoutY="86.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="113.0" visible="false" />
+                                        <Button fx:id="botonCartaJugada3J2" layoutX="179.0" layoutY="99.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="113.0" visible="false" />
                               <Label fx:id="nombreJ2" layoutX="179.0" layoutY="32.0" prefHeight="39.0" prefWidth="104.0" text="Jugador 2" textFill="#f5e1e1">
                                  <font>
                                     <Font name="System Bold" size="21.0" />
