@@ -1,7 +1,5 @@
 package fiuba.algo3.tpfinal.tests;
 
-import static org.junit.Assert.*;
-
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -126,9 +124,9 @@ public class SimulacionCuatroJugadoresTest {
 		juego.jugar(dosCopa);
 		
 		// parda la tercera, gana la primera.
+		juego.jugar(dosOro);
 		juego.valeCuatro();
 		juego.quieroTruco();
-		juego.jugar(dosOro);
 		juego.jugar(tresBasto);
 		juego.jugar(tresCopa);
 		juego.jugar(tresEspada);

@@ -164,45 +164,69 @@ public class JuegoDeTrucoControl {
     }
 
     // **** Manejo de cartas ****
-    @FXML
+    
+    private void jugarCarta(Carta carta) throws IOException {        
+        try {
+        	String nombre = this.jugadorActual.getNombre();
+        	this.ponerCartaEnLaMesa(carta);
+        	juego.jugar(carta);
+            this.labelStatus.setText(nombre + " ha jugado una carta.");
+            this.mostrarJugadorActual();
+            this.mostrarPuntos();
+            if (juego.concluyoLaPartida()) {
+                this.setPartidaFinalizada();
+            }
+            if (juego.concluyoLaRonda())
+                this.setNuevaRonda();
+        } catch(NoPuedeJugarSeCantoTrucoError x1) {
+        	Alert jerarquiaNoValida = new Alert(AlertType.ERROR);
+            jerarquiaNoValida.setTitle("Error");
+            jerarquiaNoValida.setHeaderText(null);
+            jerarquiaNoValida.setContentText("No puede jugar una carta, se canto truco.");
+            jerarquiaNoValida.showAndWait();
+        }        
+    }
+
+    @FXML 
     public void jugarCarta1Handler() throws IOException {
-        this.labelStatus.setText(this.jugadorActual.getNombre() + " ha jugado una carta.");
-        this.ponerCartaEnLaMesa(cartasJugadorActual.get(0));
-        juego.jugar(cartasJugadorActual.get(0));
-        this.mostrarJugadorActual();
-        this.mostrarPuntos();
-        if (juego.concluyoLaPartida()) {
-            this.setPartidaFinalizada();
-        }
-        if (juego.concluyoLaRonda())
-            this.setNuevaRonda();
+    	this.jugarCarta(this.cartasJugadorActual.get(0));
     }
-
-    @FXML
+    
+    @FXML 
     public void jugarCarta2Handler() throws IOException {
-        this.labelStatus.setText(this.jugadorActual.getNombre() + " ha jugado una carta.");
-        this.ponerCartaEnLaMesa(cartasJugadorActual.get(1));
-        juego.jugar(cartasJugadorActual.get(1));
-        this.mostrarJugadorActual();
-        this.mostrarPuntos();
-        if (juego.concluyoLaPartida())
-            this.setPartidaFinalizada();
-        if (juego.concluyoLaRonda())
-            this.setNuevaRonda();
+    	this.jugarCarta(this.cartasJugadorActual.get(1));
     }
-
-    @FXML
+    
+    @FXML 
     public void jugarCarta3Handler() throws IOException {
-        this.labelStatus.setText(this.jugadorActual.getNombre() + " ha jugado una carta.");
-        this.ponerCartaEnLaMesa(cartasJugadorActual.get(2));
-        juego.jugar(cartasJugadorActual.get(2));
-        this.mostrarJugadorActual();
-        this.mostrarPuntos();
-        if (juego.concluyoLaPartida())
-            this.setPartidaFinalizada();
-        if (juego.concluyoLaRonda())
-            this.setNuevaRonda();
+    	this.jugarCarta(this.cartasJugadorActual.get(2));
     }
+    
+//    @FXML
+//    public void jugarCarta2Handler() throws IOException {
+//        this.labelStatus.setText(this.jugadorActual.getNombre() + " ha jugado una carta.");
+//        this.ponerCartaEnLaMesa(cartasJugadorActual.get(1));
+//        juego.jugar(cartasJugadorActual.get(1));
+//        this.mostrarJugadorActual();
+//        this.mostrarPuntos();
+//        if (juego.concluyoLaPartida())
+//            this.setPartidaFinalizada();
+//        if (juego.concluyoLaRonda())
+//            this.setNuevaRonda();
+//    }
+//
+//    @FXML
+//    public void jugarCarta3Handler() throws IOException {
+//        this.labelStatus.setText(this.jugadorActual.getNombre() + " ha jugado una carta.");
+//        this.ponerCartaEnLaMesa(cartasJugadorActual.get(2));
+//        juego.jugar(cartasJugadorActual.get(2));
+//        this.mostrarJugadorActual();
+//        this.mostrarPuntos();
+//        if (juego.concluyoLaPartida())
+//            this.setPartidaFinalizada();
+//        if (juego.concluyoLaRonda())
+//            this.setNuevaRonda();
+//    }
 
     @FXML
     public void mostrarCartasHandler() {
@@ -342,6 +366,10 @@ public class JuegoDeTrucoControl {
         if (juego.concluyoLaPartida()) {
             this.setPartidaFinalizada();
         }
+        if (this.juego.seCantoTruco()) {
+        	this.mostrarBotones(this.botonesTruco, true);
+        	this.mostrarBotones(this.botonesTrucoQuiero, true);
+        }
         
     }
 
@@ -355,7 +383,11 @@ public class JuegoDeTrucoControl {
             this.botonTruco.setVisible(true);
             if (juego.concluyoLaPartida()) {
                 this.setPartidaFinalizada();
-            }            
+            }  
+            if (this.juego.seCantoTruco()) {
+            	this.mostrarBotones(this.botonesTruco, true);
+            	this.mostrarBotones(this.botonesTrucoQuiero, true);
+            }
         } catch (NoSePuedeRechazarFlorError x1) {
             Alert jerarquiaNoValida = new Alert(AlertType.ERROR);
             jerarquiaNoValida.setTitle("Error");
@@ -510,7 +542,11 @@ public class JuegoDeTrucoControl {
         this.botonTruco.setVisible(true);
         if (juego.concluyoLaPartida()) {
             this.setPartidaFinalizada();
-        }       
+        }   
+        if (this.juego.seCantoTruco()) {
+        	this.mostrarBotones(this.botonesTruco, true);
+        	this.mostrarBotones(this.botonesTrucoQuiero, true);
+        }
         
 //
         
@@ -530,6 +566,10 @@ public class JuegoDeTrucoControl {
         }
         this.mostrarPuntos();
         this.mostrarJugadorActual();
+        if (this.juego.seCantoTruco()) {
+        	this.mostrarBotones(this.botonesTruco, true);
+        	this.mostrarBotones(this.botonesTrucoQuiero, true);
+        }
     }
 
     // **** Truco ****
@@ -583,6 +623,12 @@ public class JuegoDeTrucoControl {
             jerarquiaNoValida.setHeaderText(null);
             jerarquiaNoValida.setContentText("No respeta la jerarquia del truco.");
             jerarquiaNoValida.showAndWait();
+        } catch (NoPuedeRedoblarTrucoSuEquipoLoCantoError x2) {
+        	Alert jerarquiaNoValida = new Alert(AlertType.ERROR);
+            jerarquiaNoValida.setTitle("Error");
+            jerarquiaNoValida.setHeaderText(null);
+            jerarquiaNoValida.setContentText("No puede redoblar el truco, su equipo lo canto.");
+            jerarquiaNoValida.showAndWait();
         }
         
     }
@@ -601,6 +647,12 @@ public class JuegoDeTrucoControl {
             jerarquiaNoValida.setTitle("Error");
             jerarquiaNoValida.setHeaderText(null);
             jerarquiaNoValida.setContentText("No respeta la jerarquia del truco.");
+            jerarquiaNoValida.showAndWait();
+        } catch (NoPuedeRedoblarTrucoSuEquipoLoCantoError x2) {
+        	Alert jerarquiaNoValida = new Alert(AlertType.ERROR);
+            jerarquiaNoValida.setTitle("Error");
+            jerarquiaNoValida.setHeaderText(null);
+            jerarquiaNoValida.setContentText("No puede redoblar el truco, su equipo lo canto.");
             jerarquiaNoValida.showAndWait();
         }
         

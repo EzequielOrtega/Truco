@@ -1,10 +1,13 @@
 package fiuba.algo3.tpfinal.control;
 
 import fiuba.algo3.tpfinal.modelo.JuegoDeTruco;
+import fiuba.algo3.tpfinal.modelo.error.NoPuedeHaberJugadoresSinNombreError;
 import fiuba.algo3.tpfinal.vista.Programa;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.*;
+import javafx.scene.control.Alert.AlertType;
+
 import java.io.IOException;
 import java.util.*;
 
@@ -45,20 +48,42 @@ public class OpcionesDeJuegoControl {
 
     @FXML
     public void comenzarJuegoHandler() throws IOException {
-
-        if(this.cantidadDeJugadores == 2) {
-            JuegoDeTruco juego = new JuegoDeTruco(textJug1E1.getText(), textJug1E2.getText());
-            this.programa.comenzarPartidaDosJugadores(juego, conFlor.isSelected());
-        }
-
-        if(this.cantidadDeJugadores == 4) {
-            JuegoDeTruco juego = new JuegoDeTruco(textJug1E1.getText(), textJug1E2.getText(), textJug2E1.getText(), textJug2E2.getText());
-            this.programa.comenzarPartidaCuatroJugadores(juego, conFlor.isSelected());
-        }
-
+    	try {
+            if ((this.cantidadDeJugadores == 2) && (!this.SeRepitenLosNombres(Arrays.asList(textJug1E1.getText(), textJug1E2.getText())))){
+                JuegoDeTruco juego = new JuegoDeTruco(textJug1E1.getText(), textJug1E2.getText());
+                this.programa.comenzarPartidaDosJugadores(juego, conFlor.isSelected());
+            } else if((this.cantidadDeJugadores == 4) && (!this.SeRepitenLosNombres(Arrays.asList(textJug1E1.getText(), textJug1E2.getText(), textJug2E1.getText(), textJug2E2.getText())))) {
+                JuegoDeTruco juego = new JuegoDeTruco(textJug1E1.getText(), textJug1E2.getText(), textJug2E1.getText(), textJug2E2.getText());
+                this.programa.comenzarPartidaCuatroJugadores(juego, conFlor.isSelected());
+            } else {
+            	Alert jerarquiaNoValida = new Alert(AlertType.ERROR);
+                jerarquiaNoValida.setTitle("Error");
+                jerarquiaNoValida.setHeaderText("No puede haber jugadores con nombres iguales.");
+                jerarquiaNoValida.setContentText("Ingrese los nombres nuevamente.");
+                jerarquiaNoValida.showAndWait();
+            }
+    	} catch (NoPuedeHaberJugadoresSinNombreError x1) {
+        	Alert jerarquiaNoValida = new Alert(AlertType.ERROR);
+            jerarquiaNoValida.setTitle("Error");
+            jerarquiaNoValida.setHeaderText("No puede haber jugadores sin nombre.");
+            jerarquiaNoValida.setContentText("Ingrese los nombres nuevamente.");
+            jerarquiaNoValida.showAndWait();
+    	}
     }
 
-    private void visibilizar(List<TextField> elementos, boolean visibilidad) {
+    private boolean SeRepitenLosNombres(List<String> nombres) {
+		Boolean seRepite = false;
+		for (int x = 0; x < nombres.size(); x++) {
+			for (int y = x + 1; y < nombres.size(); y++) {
+				if (nombres.get(x).equals(nombres.get(y))) {
+					seRepite = true;
+				}
+			}
+		}
+		return seRepite;
+	}
+
+	private void visibilizar(List<TextField> elementos, boolean visibilidad) {
         for(Node text : elementos) {
             text.setVisible(visibilidad);
         }

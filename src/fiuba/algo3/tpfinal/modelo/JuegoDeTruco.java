@@ -28,6 +28,9 @@ public class JuegoDeTruco {
 	private boolean trucoCantado = false;
 	
 	public JuegoDeTruco(String nombreJ1, String nombreJ2) {
+		if (nombreJ1.equals("") || (nombreJ2.equals(""))) {
+			throw new NoPuedeHaberJugadoresSinNombreError();
+		}
 		Jugador jugador = new Jugador(nombreJ1, Equipo.EQUIPO1);
 		jugadores.agregar(jugador);
 		jugador = new Jugador(nombreJ2, Equipo.EQUIPO2);
@@ -37,6 +40,9 @@ public class JuegoDeTruco {
 	}
 
 	public JuegoDeTruco(String nombreJ1, String nombreJ2, String nombreJ3, String nombreJ4) {
+		if (nombreJ1.equals("") || (nombreJ2.equals("")) || (nombreJ3.equals("")) || (nombreJ4.equals(""))) {
+			throw new NoPuedeHaberJugadoresSinNombreError();
+		}
 		Jugador jugador = new Jugador(nombreJ1, Equipo.EQUIPO1);
 		jugadores.agregar(jugador);
 		jugador = new Jugador(nombreJ2, Equipo.EQUIPO2);
@@ -324,18 +330,24 @@ public class JuegoDeTruco {
 		this.avanzarJugadorActual();
 	}
 
-	public void reTruco() {
+	public void reTruco() {		
 		this.estadoActualTruco = new ReTruco(estadoActualTruco);
 		if (!this.trucoCantado) {
+			if (this.jugadorQueCantoTruco.estanEnElMismoEquipo(this.jugadorActual)) {
+				throw new NoPuedeRedoblarTrucoSuEquipoLoCantoError();
+			}
 			this.trucoCantado = true;
 			this.jugadorQueCantoTruco = this.jugadorActual;
 		}
 		this.avanzarJugadorActual();
 	}
 
-	public void valeCuatro() {
+	public void valeCuatro() {		
 		this.estadoActualTruco = new ValeCuatro(estadoActualTruco);
 		if (!this.trucoCantado) {
+			if (this.jugadorQueCantoTruco.estanEnElMismoEquipo(this.jugadorActual)) {
+				throw new NoPuedeRedoblarTrucoSuEquipoLoCantoError();
+			}
 			this.trucoCantado = true;
 			this.jugadorQueCantoTruco = this.jugadorActual;
 		}
@@ -444,5 +456,9 @@ public class JuegoDeTruco {
 			nombres.add(jugadores.obtenerElemento(x).getNombre());
 		}
 		return nombres;
+	}
+	
+	public Boolean seCantoTruco() {
+		return this.trucoCantado;
 	}
 }

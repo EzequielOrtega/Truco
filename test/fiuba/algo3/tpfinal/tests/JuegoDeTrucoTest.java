@@ -18,9 +18,11 @@ import fiuba.algo3.tpfinal.modelo.error.NoPuedeCantarEnvidoNoEsPieError;
 import fiuba.algo3.tpfinal.modelo.error.NoPuedeCantarEnvidoSeCantoFlorError;
 import fiuba.algo3.tpfinal.modelo.error.NoPuedeCantarTrucoSeCantoEnvidoError;
 import fiuba.algo3.tpfinal.modelo.error.NoPuedeCantarTrucoSeCantoFlorError;
+import fiuba.algo3.tpfinal.modelo.error.NoPuedeHaberJugadoresSinNombreError;
 import fiuba.algo3.tpfinal.modelo.error.NoPuedeJugarSeCantoEnvidoError;
 import fiuba.algo3.tpfinal.modelo.error.NoPuedeJugarSeCantoFlorError;
 import fiuba.algo3.tpfinal.modelo.error.NoPuedeJugarSeCantoTrucoError;
+import fiuba.algo3.tpfinal.modelo.error.NoPuedeRedoblarTrucoSuEquipoLoCantoError;
 import fiuba.algo3.tpfinal.modelo.error.NoRespetaJerarquiaDeTrucoError;
 import fiuba.algo3.tpfinal.modelo.error.SoloSePuedeCantarEnvidoUnaVezPorRondaError;
 
@@ -386,5 +388,21 @@ public class JuegoDeTrucoTest {
 		juegoDeCuatro.quieroEnvido();
 		Assert.assertTrue((juegoDeCuatro.puntosDeEquipo(Equipo.EQUIPO1) == 2) || (juegoDeCuatro.puntosDeEquipo(Equipo.EQUIPO2) == 2));
 	}
-		
+	
+	@Test (expected = NoPuedeRedoblarTrucoSuEquipoLoCantoError.class) 
+	public void testCantarTrucoYRetrucoConELMismoEquipo() {
+		unJuego.truco();
+		unJuego.quieroTruco();
+		unJuego.reTruco();
+	}
+	
+	@Test (expected = NoPuedeHaberJugadoresSinNombreError.class)
+	public void testNoPuedoCrearJuegoDeADosSinNombreDeJugadores() {
+		unJuego = new JuegoDeTruco("","");
+	}
+	
+	@Test (expected = NoPuedeHaberJugadoresSinNombreError.class)
+	public void testNoPuedoCrearJuegoDeACuatroSinNombreDeJugadores() {
+		unJuego = new JuegoDeTruco("carlitos","pepe","juan","");
+	}
 }

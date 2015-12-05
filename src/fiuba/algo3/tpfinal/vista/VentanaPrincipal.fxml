@@ -60,7 +60,7 @@
                <font>
                   <Font name="System Bold" size="24.0" />
                </font></Button>
-            <Button fx:id="botonSalirJuego" layoutX="375.0" layoutY="415.0" mnemonicParsing="false" onAction="#opcionCerrarHandler" prefHeight="86.0" prefWidth="277.0" text="Salir">
+            <Button fx:id="botonSalirJuego" layoutX="373.0" layoutY="416.0" mnemonicParsing="false" onAction="#opcionCerrarHandler" prefHeight="87.0" prefWidth="281.0" text="Salir">
                <font>
                   <Font name="System Bold" size="27.0" />
                </font></Button>
