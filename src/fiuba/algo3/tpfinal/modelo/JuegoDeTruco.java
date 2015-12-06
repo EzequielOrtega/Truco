@@ -156,15 +156,16 @@ public class JuegoDeTruco {
 	private void setearValoresParaProximaRonda() {
 		jugadores.moverAlSiguiente();
 		jugadorActual = jugadores.obtenerElemento(0);
-		this.envidoCantado = false;
-		this.estadoActualEnvido = new EstadoInicialEnvido();
-		this.florCantada = false;
-		this.estadoActualFlor = new EstadoInicialFlor();
-		this.trucoCantado = false;
-		this.estadoActualTruco = new EstadoInicialTruco();
-		this.jugadorQueCantoEnvido = null;
+        this.florCantada = false;
         this.jugadorQueCantoFlor = null;
-		this.jugadorQueCantoTruco = null;
+        this.estadoActualFlor = new EstadoInicialFlor();
+		this.envidoCantado = false;
+        this.jugadorQueCantoEnvido = null;
+		this.estadoActualEnvido = new EstadoInicialEnvido();
+		this.trucoCantado = false;
+        this.jugadorQueCantoTruco = null;
+		this.estadoActualTruco = new EstadoInicialTruco();
+        this.ronda = new Ronda();
 		this.repartir();
 	}
 
@@ -423,7 +424,7 @@ public class JuegoDeTruco {
 
 	public String obtenerNombreGanadorDeEnvido() {
 		Jugador ganadorEnvido = this.juez.ganadorEnvido(jugadores.obtenerElementos());
-		return ganadorEnvido.getNombre();
+        return ganadorEnvido.getNombre();
 	}
 
 	public String obtenerNombreGanadorDeFlor() {
@@ -433,7 +434,7 @@ public class JuegoDeTruco {
 
 	public int puntosDeFlorGanador() {
 		Jugador ganadorFlor = this.juez.ganadorFlor(jugadores.obtenerElementos());
-		return ganadorFlor.getValorFlor(); 
+        return ganadorFlor.getValorFlor();
 	}
 
 	public Object obtenerEstadoDeFlor() {

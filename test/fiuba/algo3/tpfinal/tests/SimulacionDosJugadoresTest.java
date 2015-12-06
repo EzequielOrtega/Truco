@@ -5,7 +5,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 public class SimulacionDosJugadoresTest {
 
@@ -189,11 +188,10 @@ public class SimulacionDosJugadoresTest {
         juego.quieroEnvido();
         assertEquals(5, juego.puntosDeEquipo(Equipo.EQUIPO2));
 
-        // TODO: REVISAR LA IMPLEMENTACION DE LOS ESTADOS RONDA!! CONCLUYO LA RONDA SIGUE DANDO TRUE POR ESO SE RESETEA
-        assertTrue(juego.concluyoLaRonda());
         juego.jugar(cuatroDeBasto);
-        assertEquals(6, juego.puntosDeEquipo(Equipo.EQUIPO2));
-        assertTrue(juego.concluyoLaRonda());
+        // Chequeo que no se sumen puntos de mas
+        assertEquals(5, juego.puntosDeEquipo(Equipo.EQUIPO2));
+
 
 
     }

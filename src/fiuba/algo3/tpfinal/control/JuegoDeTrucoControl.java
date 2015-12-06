@@ -522,8 +522,6 @@ public class JuegoDeTrucoControl {
         	this.mostrarBotones(this.botonesTrucoQuiero, true);
         }
         
-//
-        
         this.mostrarPuntos();
         this.mostrarJugadorActual();
     }
