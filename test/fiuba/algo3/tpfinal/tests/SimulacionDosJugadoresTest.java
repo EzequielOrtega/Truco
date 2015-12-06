@@ -5,19 +5,16 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class SimulacionDosJugadoresTest {
 
 	private JuegoDeTruco juego;
-	private Carta unoDeEspada;
-	private Carta sieteDeEspada;
-	private Carta sotaDeEspada;
-	private Carta sotaDeBasto;
-	private Carta cincoDeEspada;
-	private Carta unoDeBasto;
-    private Carta sieteDeBasto;
+	private Carta unoDeEspada, sieteDeEspada, sotaDeEspada, sotaDeBasto, cincoDeEspada, unoDeBasto, sieteDeBasto;
+    private Carta diezDeCopa, doceDeOro, doceDeEspada, tresDeEspada, unoDeOro, cuatroDeBasto, sieteDeOro, doceDeBasto;
+    private Carta dosDeBasto, cuatroDeCopa;
 
-	@Before
+    @Before
 	public void setup() {
 		juego = new JuegoDeTruco("eze", "marcos");
 		unoDeEspada = new NoFigura(1, Palo.ESPADA);
@@ -27,7 +24,18 @@ public class SimulacionDosJugadoresTest {
 		cincoDeEspada = new NoFigura(5, Palo.ESPADA);
 		unoDeBasto = new NoFigura(1, Palo.BASTO);
         sieteDeBasto = new NoFigura(7, Palo.BASTO);
-	}
+        diezDeCopa = new Figura(10, Palo.COPA);
+        doceDeOro = new Figura(12, Palo.ORO);
+        doceDeEspada = new Figura(12, Palo.ESPADA);
+        tresDeEspada = new NoFigura(3, Palo.ESPADA);
+        unoDeOro = new NoFigura(1, Palo.ORO);
+        cuatroDeBasto = new NoFigura(4, Palo.BASTO);
+        sieteDeOro = new NoFigura(7, Palo.ORO);
+        doceDeBasto = new Figura(12, Palo.BASTO);
+        dosDeBasto = new NoFigura(2, Palo.BASTO);
+        cuatroDeCopa = new NoFigura(4, Palo.COPA);
+
+    }
 
 	@Test
 	public void testSimulacionDePartida1() {
@@ -135,4 +143,59 @@ public class SimulacionDosJugadoresTest {
         assertEquals(6, juego.puntosDeEquipo(Equipo.EQUIPO1));
         assertEquals(2, juego.puntosDeEquipo(Equipo.EQUIPO2));
     }
+
+    @Test
+    public void testSimulacionDePartida4() {
+        // Comienza la partida sin flor
+        juego.comenzarPartida(false);
+        Jugador j1 = juego.obtenerJugadorActual();
+        juego.moverAlSiguiente();
+        Jugador j2 = juego.obtenerJugadorActual();
+        juego.moverAlSiguiente();
+        j1.entregarCartas();
+        j1.agarrarCarta(diezDeCopa);
+        j1.agarrarCarta(doceDeOro);
+        j1.agarrarCarta(doceDeEspada);
+        j2.entregarCartas();
+        j2.agarrarCarta(tresDeEspada);
+        j2.agarrarCarta(unoDeOro);
+        j2.agarrarCarta(cincoDeEspada);
+
+        juego.jugar(diezDeCopa);
+        juego.realEnvido();
+        juego.noQuieroEnvido();
+        assertEquals(1, juego.puntosDeEquipo(Equipo.EQUIPO2));
+        juego.jugar(unoDeOro);
+
+        juego.truco();
+        juego.quieroTruco();
+        juego.jugar(tresDeEspada);
+        juego.jugar(doceDeOro);
+        assertEquals(0, juego.puntosDeEquipo(Equipo.EQUIPO1));
+        assertEquals(3, juego.puntosDeEquipo(Equipo.EQUIPO2));
+
+
+        // Segunda ronda
+        j1.entregarCartas();
+        j1.agarrarCarta(diezDeCopa);
+        j1.agarrarCarta(dosDeBasto);
+        j1.agarrarCarta(cuatroDeCopa);
+        j2.entregarCartas();
+        j2.agarrarCarta(cuatroDeBasto);
+        j2.agarrarCarta(sieteDeOro);
+        j2.agarrarCarta(doceDeBasto);
+
+        juego.envido();
+        juego.quieroEnvido();
+        assertEquals(5, juego.puntosDeEquipo(Equipo.EQUIPO2));
+
+        // TODO: REVISAR LA IMPLEMENTACION DE LOS ESTADOS RONDA!! CONCLUYO LA RONDA SIGUE DANDO TRUE POR ESO SE RESETEA
+        assertTrue(juego.concluyoLaRonda());
+        juego.jugar(cuatroDeBasto);
+        assertEquals(6, juego.puntosDeEquipo(Equipo.EQUIPO2));
+        assertTrue(juego.concluyoLaRonda());
+
+
+    }
+
 }

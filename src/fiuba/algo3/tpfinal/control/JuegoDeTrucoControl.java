@@ -170,7 +170,7 @@ public class JuegoDeTrucoControl {
         	String nombre = this.jugadorActual.getNombre();
         	this.ponerCartaEnLaMesa(carta);
         	juego.jugar(carta);
-            this.labelStatus.setText(nombre + " ha jugado una carta.");
+            this.labelStatus.setText(nombre + " ha jugado un " + this.diccionario.Busqueda(carta));
             this.mostrarJugadorActual();
             this.mostrarPuntos();
             if (juego.concluyoLaPartida()) {
@@ -201,32 +201,6 @@ public class JuegoDeTrucoControl {
     public void jugarCarta3Handler() throws IOException {
     	this.jugarCarta(this.cartasJugadorActual.get(2));
     }
-    
-//    @FXML
-//    public void jugarCarta2Handler() throws IOException {
-//        this.labelStatus.setText(this.jugadorActual.getNombre() + " ha jugado una carta.");
-//        this.ponerCartaEnLaMesa(cartasJugadorActual.get(1));
-//        juego.jugar(cartasJugadorActual.get(1));
-//        this.mostrarJugadorActual();
-//        this.mostrarPuntos();
-//        if (juego.concluyoLaPartida())
-//            this.setPartidaFinalizada();
-//        if (juego.concluyoLaRonda())
-//            this.setNuevaRonda();
-//    }
-//
-//    @FXML
-//    public void jugarCarta3Handler() throws IOException {
-//        this.labelStatus.setText(this.jugadorActual.getNombre() + " ha jugado una carta.");
-//        this.ponerCartaEnLaMesa(cartasJugadorActual.get(2));
-//        juego.jugar(cartasJugadorActual.get(2));
-//        this.mostrarJugadorActual();
-//        this.mostrarPuntos();
-//        if (juego.concluyoLaPartida())
-//            this.setPartidaFinalizada();
-//        if (juego.concluyoLaRonda())
-//            this.setNuevaRonda();
-//    }
 
     @FXML
     public void mostrarCartasHandler() {
@@ -376,9 +350,9 @@ public class JuegoDeTrucoControl {
     @FXML
     public void noQuieroFlorHandler() throws IOException {
         try {
-            Jugador jugadorQueCanto = this.jugadorActual;
+            Jugador jugadorQueNoQuiso = this.jugadorActual;
             juego.noQuieroFlor();
-            this.labelStatus.setText(jugadorQueCanto.getNombre() + " no quiso la flor.");
+            this.labelStatus.setText(jugadorQueNoQuiso.getNombre() + " no quiso la flor.");
             this.mostrarTodosLosBotones(false);
             this.botonTruco.setVisible(true);
             if (juego.concluyoLaPartida()) {
