@@ -2,12 +2,15 @@ package fiuba.algo3.tpfinal.control;
 
 import fiuba.algo3.tpfinal.modelo.*;
 import fiuba.algo3.tpfinal.modelo.error.*;
-import fiuba.algo3.tpfinal.modelo.flor.*;
+import fiuba.algo3.tpfinal.modelo.flor.ContraFlor;
+import fiuba.algo3.tpfinal.modelo.flor.ContraFlorAlResto;
 import fiuba.algo3.tpfinal.vista.Programa;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 
 import java.io.IOException;
 import java.util.*;
@@ -165,7 +168,7 @@ public class JuegoDeTrucoControl {
 
     // **** Manejo de cartas ****
     
-    private void jugarCarta(Carta carta) {
+    private void jugarCarta(Carta carta) throws IOException{
         try {
         	String nombre = this.jugadorActual.getNombre();
         	this.ponerCartaEnLaMesa(carta);
@@ -183,13 +186,6 @@ public class JuegoDeTrucoControl {
             jerarquiaNoValida.setTitle("Error");
             jerarquiaNoValida.setHeaderText(null);
             jerarquiaNoValida.setContentText("No puede jugar una carta, se canto truco.");
-            jerarquiaNoValida.showAndWait();
-        }
-        catch(IOException x2) {
-            Alert jerarquiaNoValida = new Alert(AlertType.ERROR);
-            jerarquiaNoValida.setTitle("Error");
-            jerarquiaNoValida.setHeaderText(null);
-            jerarquiaNoValida.setContentText("Ahi no hay nada!! Ya se jugo la carta.");
             jerarquiaNoValida.showAndWait();
         }
     }

@@ -1,10 +1,49 @@
 /*.background {
-    -fx-background-color: #008000;
+    -fx-background-color: #FFF0F5;
 }
 
-.module {
-  resize: both;
+
+.label {
+    -fx-font-family: "Segoe UI Light";
+    -fx-text-fill: #800000;
+    -fx-background-color: #FFF0F5;
 }
+
+.button {
+    -fx-border-color: #e2e2e2;
+    -fx-border-width: 2;
+    -fx-background-radius: 0;
+    -fx-background-color: #AB4642;
+    -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+    -fx-text-fill: #FFFFFF;
+    -fx-background-insets: 0 0 0 0, 0, 1, 2;
+}
+
+.button-blue {
+    -fx-background-color: #7cafc2;
+    -fx-text-fill: #FFFFFF;
+    -fx-background-radius: 4;
+}
+
+
+.menu-bar {
+    -fx-font-size: 14pt;
+    -fx-font-family: "Segoe UI Light";
+    -fx-text-fill: white;
+    -fx-opacity: 0.9;
+}
+
+.menu {
+    -fx-text-background: #000000;
+}
+.choice-box .label {
+    -fx-text-fill: #000000;
+}
+
+.text-field {
+    -fx-font-family: "Segoe UI Semibold";
+}
+
 
 .label {
     -fx-font-family: "Segoe UI Semibold";
@@ -15,13 +54,6 @@
 .label-bright {
     -fx-font-family: "Segoe UI Semibold";
     -fx-text-fill: #E8E8E8;
-    -fx-opacity: 1;
-}
-
-.label-bordeau {
-    -fx-font-family: "Segoe UI Light";
-    -fx-text-fill: #800000;
-    -fx-background-color: #FFF0F5;
     -fx-opacity: 1;
 }
 
@@ -74,42 +106,17 @@
     -fx-padding: 1 0 0 0;
 }
 
-.menu-bar {
-    -fx-background-color: derive(#1d1d1d,20%);
-}
 
 .context-menu {
     -fx-background-color: derive(#1d1d1d,50%);
 }
 
-.menu-bar .label {
-    -fx-font-size: 14pt;
-    -fx-font-family: "Segoe UI Light";
-    -fx-text-fill: white;
-    -fx-opacity: 0.9;
-}
 
 .menu .left-container {
     -fx-background-color: black;
 }
 
-.choice-box .label {
-    -fx-text-fill: #000000;
-}
 
-.text-field {
-    -fx-font-family: "Segoe UI Semibold";
-}
-
-.button {
-    -fx-border-color: #e2e2e2;
-    -fx-border-width: 2;
-    -fx-background-radius: 0;
-    -fx-background-color: #AB4642;
-    -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
-    -fx-text-fill: #FFFFFF;
-    -fx-background-insets: 0 0 0 0, 0, 1, 2;
-}
 
 .button:hover {
     -fx-background-color: #3a3a3a;
@@ -143,8 +150,4 @@
     -fx-background-color: derive(-fx-focus-color,30%);
 }
 
-.button-blue {
-    -fx-background-color: #7cafc2;
-    -fx-text-fill: #FFFFFF;
-    -fx-background-radius: 4;
-}*/
+*/
