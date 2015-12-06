@@ -26,8 +26,9 @@ public class JuegoDeTruco {
 	private boolean envidoCantado = false;
 	private EstadoTruco estadoActualTruco = new EstadoInicialTruco();
 	private boolean trucoCantado = false;
-	
-	public JuegoDeTruco(String nombreJ1, String nombreJ2) {
+    private boolean concluyoLaRonda = false;
+
+    public JuegoDeTruco(String nombreJ1, String nombreJ2) {
 		if (nombreJ1.equals("") || (nombreJ2.equals(""))) {
 			throw new NoPuedeHaberJugadoresSinNombreError();
 		}
@@ -131,11 +132,13 @@ public class JuegoDeTruco {
 			}
 			this.cartasEnLaMesa = new LinkedList<Carta>();
 		}
+        this.concluyoLaRonda = false;
 		if (this.ronda.concluyoLaRonda()) {
 			Jugador jugadorGanador = this.ronda.ganadorDeLaRonda(jugadores.obtenerElementos());
 			jugadorGanador.sumarPuntos(this.estadoActualTruco.obtenerPuntosQueridos());
 			this.setearValoresParaProximaRonda();
-		}
+            this.concluyoLaRonda = true;
+        }
 	}
 
 	private Carta obtenerCartaMasAlta(LinkedList<Carta> cartas) {
@@ -394,7 +397,7 @@ public class JuegoDeTruco {
 	}
 	
 	public Boolean concluyoLaRonda() {
-		return this.ronda.concluyoLaRonda();
+		return this.concluyoLaRonda;
 	}
 	
 	public Boolean concluyoLaPartida() {

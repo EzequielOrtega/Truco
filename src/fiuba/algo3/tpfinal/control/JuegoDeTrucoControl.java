@@ -165,7 +165,7 @@ public class JuegoDeTrucoControl {
 
     // **** Manejo de cartas ****
     
-    private void jugarCarta(Carta carta) throws IOException {        
+    private void jugarCarta(Carta carta) {
         try {
         	String nombre = this.jugadorActual.getNombre();
         	this.ponerCartaEnLaMesa(carta);
@@ -184,7 +184,14 @@ public class JuegoDeTrucoControl {
             jerarquiaNoValida.setHeaderText(null);
             jerarquiaNoValida.setContentText("No puede jugar una carta, se canto truco.");
             jerarquiaNoValida.showAndWait();
-        }        
+        }
+        catch(IOException x2) {
+            Alert jerarquiaNoValida = new Alert(AlertType.ERROR);
+            jerarquiaNoValida.setTitle("Error");
+            jerarquiaNoValida.setHeaderText(null);
+            jerarquiaNoValida.setContentText("Ahi no hay nada!! Ya se jugo la carta.");
+            jerarquiaNoValida.showAndWait();
+        }
     }
 
     @FXML 
