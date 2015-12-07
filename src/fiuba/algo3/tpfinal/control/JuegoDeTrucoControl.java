@@ -527,8 +527,13 @@ public class JuegoDeTrucoControl {
 			jugadaNoValida.setHeaderText(null);
 			jugadaNoValida.setContentText("Ya se canto flor, no se puede cantar falta envido.");
 			jugadaNoValida.showAndWait();
+		} catch (NoRespetaJerarquiaDeEnvidoError x3) {
+			Alert jugadaNoValida = new Alert(AlertType.ERROR);
+			jugadaNoValida.setTitle("Error");
+			jugadaNoValida.setHeaderText(null);
+			jugadaNoValida.setContentText("No respeta la jerarquia del envido.");
+			jugadaNoValida.showAndWait();
 		}
-
 	}
 
 	@FXML

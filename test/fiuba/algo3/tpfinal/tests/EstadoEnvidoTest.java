@@ -133,4 +133,10 @@ public class EstadoEnvidoTest {
 
 		assertEquals(7, estado.obtenerPuntosNoQueridos());
 	}
+
+	@Test(expected = NoRespetaJerarquiaDeEnvidoError.class)
+	public void testFaltaEnvidoFaltaEnvidoNoVale() {
+		estado = new FaltaEnvido(estado, estadoFlor, 30, 30);
+		estado = new FaltaEnvido(estado, estadoFlor, 30, 30);
+	}
 }

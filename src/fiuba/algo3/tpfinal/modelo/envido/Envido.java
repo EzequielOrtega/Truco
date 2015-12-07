@@ -14,14 +14,15 @@ public class Envido extends EstadoEnvido {
 	static {
 		estadosAceptados = new LinkedList<>();
 		estadosAceptados.add(EstadoInicialFlor.class);
+		estadosAceptados.add(EstadoInicialEnvido.class);
+		estadosAceptados.add(Envido.class);
 		estadosAceptados.add(EstadoFinalFlor.class);
 	}
 
 	public Envido(EstadoEnvido estadoAnterior, EstadoFlor estadoFlor) {
 		super(estadoAnterior, estadoFlor, estadosAceptados);
 		this.puntosDeEstado = 2;
-		if ((estadoAnterior.getPuntosDeEstado() > this.puntosDeEstado)
-				|| (estadoAnterior.obtenerPuntosQueridos() == 4)) {
+		if (estadoAnterior.obtenerPuntosQueridos() == 4) {
 			throw new NoRespetaJerarquiaDeEnvidoError();
 		}
 	}

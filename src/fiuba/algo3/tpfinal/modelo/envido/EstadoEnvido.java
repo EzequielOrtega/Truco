@@ -1,6 +1,7 @@
 package fiuba.algo3.tpfinal.modelo.envido;
 
 import fiuba.algo3.tpfinal.modelo.error.NoPuedeCantarEnvidoSeCantoFlorError;
+import fiuba.algo3.tpfinal.modelo.error.NoRespetaJerarquiaDeEnvidoError;
 import fiuba.algo3.tpfinal.modelo.error.SoloSePuedeCantarEnvidoUnaVezPorRondaError;
 import fiuba.algo3.tpfinal.modelo.flor.EstadoFlor;
 
@@ -23,6 +24,9 @@ public abstract class EstadoEnvido {
 		}
 		if (!estadosAceptados.contains(estadoFlor.getClass())) {
 			throw new NoPuedeCantarEnvidoSeCantoFlorError();
+		}
+		if (!estadosAceptados.contains(estadoAnterior.getClass())) {
+			throw new NoRespetaJerarquiaDeEnvidoError();
 		}
 		this.estadoAnterior = estadoAnterior;
 	}
