@@ -48,11 +48,11 @@
    <center>
       <AnchorPane prefHeight="600.0" prefWidth="1000.0" styleClass="background" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="380.0" layoutY="248.0" styleClass="label-bordeau" text="¿Qué desea hacer?">
+            <Label layoutX="380.0" layoutY="248.0" styleClass="label-bordeau" text="Que desea hacer?">
                <font>
                   <Font size="27.0" />
                </font></Label>
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="186.0" layoutY="108.0" styleClass="label-bordeau" text="Bienvenidos a FonTruco, el clásico juego de truco argentino,">
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="186.0" layoutY="108.0" styleClass="label-bordeau" text="Bienvenidos a FonTruco, el clasico juego de truco argentino,">
                <font>
                   <Font name="System Bold" size="22.0" />
                </font></Label>

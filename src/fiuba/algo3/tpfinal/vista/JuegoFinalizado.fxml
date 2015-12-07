@@ -16,7 +16,7 @@
          <font>
             <Font size="32.0" />
          </font></Label>
-      <Label layoutX="179.0" layoutY="278.0" prefHeight="44.0" prefWidth="297.0" styleClass="label-bordeau" text="¿Qué desea hacer ahora?">
+      <Label layoutX="179.0" layoutY="278.0" prefHeight="44.0" prefWidth="297.0" styleClass="label-bordeau" text="Que desea hacer ahora?">
          <font>
             <Font size="24.0" />
          </font></Label>
