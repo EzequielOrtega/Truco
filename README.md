@@ -11,7 +11,4 @@ Grupo 2 nico:
 	
 Informe:
 
-	https://docs.google.com/document/d/1YW0JrZrHsyU-FF154s8s035MsTNscq002922uvpTz64/edit?usp=sharing
-	
-Para ejecutar el programa por consola, escribir el comando: "ant ejecutar.aplicacion".
-
+	https://docs.google.com/document/d/1YW0JrZrHsyU-FF154s8s035MsTNscq002922uvpTz64/edit
