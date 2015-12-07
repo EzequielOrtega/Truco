@@ -22,8 +22,8 @@
                                                 <AnchorPane styleClass="background">
                                                     <children>
                                                         <Label layoutX="8.0" layoutY="10.0" text="Turno: " />
-                                                        <Label fx:id="labelTurno" layoutX="62.0" layoutY="11.0" prefHeight="26.0" prefWidth="113.0" text="" textFill="#da2f2f" />
-                                                        <Label fx:id="labelStatus" layoutX="13.0" layoutY="42.0" prefHeight="47.0" prefWidth="247.0" text="" textFill="#da2f2f" />
+                                                        <Label fx:id="labelTurno"   layoutX="62.0" layoutY="11.0" prefHeight="26.0" prefWidth="113.0" text="" textFill="#da2f2f" />
+                                                        <Label fx:id="labelStatus"  layoutX="13.0" layoutY="42.0" prefHeight="47.0" prefWidth="247.0" text="" textFill="#da2f2f" />
                                                     </children>
                                                 </AnchorPane>
                                                 <AnchorPane>
@@ -41,22 +41,22 @@
                                                                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                                             </rowConstraints>
                                                             <children>
-                                                                <Button fx:id="botonEnvido" mnemonicParsing="false" onAction="#envidoHandler" text="Envido" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
-                                                                <Button fx:id="botonTruco" mnemonicParsing="false" onAction="#trucoHandler" text="Truco" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
-                                                                <Button fx:id="botonFlor" mnemonicParsing="false" onAction="#florHandler" text="Flor" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-                                                                <Button fx:id="botonRealEnvido" mnemonicParsing="false" onAction="#realEnvidoHandler" text="Real envido" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
-                                                                <Button fx:id="botonReTruco" mnemonicParsing="false" onAction="#reTrucoHandler" text="Re truco" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
-                                                                <Button fx:id="botonContraFlor" mnemonicParsing="false" onAction="#contraFlorHandler" text="Contraflor" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-                                                                <Button fx:id="botonFaltaEnvido" mnemonicParsing="false" onAction="#faltaEnvidoHandler" text="Falta envido" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
-                                                                <Button fx:id="botonValeCuatro" mnemonicParsing="false" onAction="#valeCuatroHandler" text="Vale 4" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
-                                                                <Button fx:id="botonContraFlorAlResto" mnemonicParsing="false" onAction="#contraFlorAlRestoHandler" text="Contraflor al resto" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-                                                                <Button fx:id="botonQuieroEnvido" mnemonicParsing="false" onAction="#quieroEnvidoHandler" text="Quiero" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
-                                                                <Button fx:id="botonNoQuieroEnvido" mnemonicParsing="false" onAction="#noQuieroEnvidoHandler" text="No Quiero" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
-                                                                <Button fx:id="botonQuieroFlor" mnemonicParsing="false" onAction="#quieroFlorHandler" text="Quiero" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
-                                                                <Button fx:id="botonNoQuieroFlor" mnemonicParsing="false" onAction="#noQuieroFlorHandler" text="No Quiero" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
-                                                                <Button fx:id="botonNoQuieroTruco" mnemonicParsing="false" onAction="#noQuieroTrucoHandler" styleClass="button-blue" text="No Quiero" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
-                                                                <Button fx:id="botonQuieroTruco" mnemonicParsing="false" onAction="#quieroTrucoHandler" styleClass="button-blue" text="Quiero" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
-                                                <Button fx:id="botonIrseAlMazo" mnemonicParsing="false" onAction="#irseAlMazoHandler" text="Irse al mazo" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+                                                                <Button fx:id="botonEnvido"             mnemonicParsing="false" onAction="#envidoHandler"           text="Envido"               GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                                                                <Button fx:id="botonTruco"              mnemonicParsing="false" onAction="#trucoHandler"            text="Truco"                GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+                                                                <Button fx:id="botonFlor"               mnemonicParsing="false" onAction="#florHandler"             text="Flor"                 GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                                                                <Button fx:id="botonRealEnvido"         mnemonicParsing="false" onAction="#realEnvidoHandler"       text="Real envido"          GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                                                                <Button fx:id="botonReTruco"            mnemonicParsing="false" onAction="#reTrucoHandler"          text="Re truco"             GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+                                                                <Button fx:id="botonContraFlor"         mnemonicParsing="false" onAction="#contraFlorHandler"       text="Contraflor"           GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                                                                <Button fx:id="botonFaltaEnvido"        mnemonicParsing="false" onAction="#faltaEnvidoHandler"      text="Falta envido"         GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                                                                <Button fx:id="botonValeCuatro"         mnemonicParsing="false" onAction="#valeCuatroHandler"       text="Vale 4"               GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+                                                                <Button fx:id="botonContraFlorAlResto"  mnemonicParsing="false" onAction="#contraFlorAlRestoHandler" text="Contraflor al resto" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                                                                <Button fx:id="botonQuieroEnvido"       mnemonicParsing="false" onAction="#quieroEnvidoHandler"     text="Quiero"               GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+                                                                <Button fx:id="botonNoQuieroEnvido"     mnemonicParsing="false" onAction="#noQuieroEnvidoHandler"   text="No Quiero"            GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+                                                                <Button fx:id="botonQuieroFlor"         mnemonicParsing="false" onAction="#quieroFlorHandler"       text="Quiero"               GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+                                                                <Button fx:id="botonNoQuieroFlor"       mnemonicParsing="false" onAction="#noQuieroFlorHandler"     text="No Quiero"            GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+                                                                <Button fx:id="botonNoQuieroTruco"      mnemonicParsing="false" onAction="#noQuieroTrucoHandler"    text="No Quiero"            GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" styleClass="button-blue" />
+                                                                <Button fx:id="botonQuieroTruco"        mnemonicParsing="false" onAction="#quieroTrucoHandler"      text="Quiero"               GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" styleClass="button-blue" />
+                                                                <Button fx:id="botonIrseAlMazo"         mnemonicParsing="false" onAction="#irseAlMazoHandler"       text="Irse al mazo"         GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
                                                             </children>
                                                         </GridPane>
                                                     </children></AnchorPane>
@@ -67,22 +67,18 @@
                                 <AnchorPane>
                                     <children>
                                         <Ellipse fill="#1d8614" layoutX="259.0" layoutY="198.0" radiusX="217.0" radiusY="195.0" stroke="BLACK" strokeType="INSIDE" />
-                                        <Button fx:id="botonCartaJugada1J1" layoutX="207.0" layoutY="292.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="105.0" textAlignment="CENTER" visible="false">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                              </Button>
-                                        <Button fx:id="botonCartaJugada2J1" layoutX="207.0" layoutY="262.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="105.0" textAlignment="CENTER" visible="false" />
-                                        <Button fx:id="botonCartaJugada3J1" layoutX="211.0" layoutY="230.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="105.0" textAlignment="CENTER" visible="false" />
-                                        <Button fx:id="botonCartaJugada1J2" layoutX="207.0" layoutY="67.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="105.0" textAlignment="CENTER" visible="false" />
-                                        <Button fx:id="botonCartaJugada2J2" layoutX="208.0" layoutY="106.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="105.0" textAlignment="CENTER" visible="false" />
-                                        <Button fx:id="botonCartaJugada3J2" layoutX="207.0" layoutY="135.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="105.0" textAlignment="CENTER" visible="false" />
-                              <Label fx:id="nombreJ2" layoutX="208.0" layoutY="30.0" prefHeight="39.0" prefWidth="104.0" styleClass="label-tablero" stylesheets="@AlgoTruco.css" text="Jugador 2" textFill="#f5e1e1">
+                                        <Button fx:id="botonCartaJugada1J1" layoutX="207.0" layoutY="300.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="110.0" textAlignment="CENTER" visible="false" />
+                                        <Button fx:id="botonCartaJugada2J1" layoutX="207.0" layoutY="265.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="110.0" textAlignment="CENTER" visible="false" />
+                                        <Button fx:id="botonCartaJugada3J1" layoutX="207.0" layoutY="230.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="110.0" textAlignment="CENTER" visible="false" />
+                                        <Button fx:id="botonCartaJugada1J2" layoutX="207.0" layoutY="65.0"  mnemonicParsing="false" prefHeight="34.0" prefWidth="110.0" textAlignment="CENTER" visible="false" />
+                                        <Button fx:id="botonCartaJugada2J2" layoutX="207.0" layoutY="100.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="110.0" textAlignment="CENTER" visible="false" />
+                                        <Button fx:id="botonCartaJugada3J2" layoutX="207.0" layoutY="135.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="110.0" textAlignment="CENTER" visible="false" />
+                              <Label fx:id="nombreJ2" layoutX="207.0" layoutY="30.0" prefHeight="39.0" prefWidth="104.0" styleClass="label-tablero" stylesheets="@AlgoTruco.css" text="Jugador 2" textFill="#f5e1e1">
                                  <font>
                                     <Font name="System Bold" size="21.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="nombreJ1" layoutX="211.0" layoutY="330.0" prefHeight="39.0" prefWidth="104.0" styleClass="label-tablero" stylesheets="@AlgoTruco.css" text="Jugador 1" textFill="#f5e1e1">
+                              <Label fx:id="nombreJ1" layoutX="207.0" layoutY="330.0" prefHeight="39.0" prefWidth="104.0" styleClass="label-tablero" stylesheets="@AlgoTruco.css" text="Jugador 1" textFill="#f5e1e1">
                                  <font>
                                     <Font name="System Bold" size="21.0" />
                                  </font>
@@ -113,9 +109,9 @@
                                             <children>
                                                 <Label fx:id="labelEquipo1" prefHeight="15.0" prefWidth="85.0" styleClass="label-bordeau" text="Jugador 1: " GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
                                                 <Label fx:id="labelEquipo2" prefHeight="15.0" prefWidth="82.0" styleClass="label-bordeau" text="Jugador 2: " GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
-                                                <Label fx:id="labelPuntajeEquipo1" styleClass="label-bordeau" text="" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
-                                                <Label fx:id="labelPuntajeEquipo2" styleClass="label-bordeau" text="" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
-                                    <Label prefHeight="15.0" prefWidth="81.0" styleClass="label-bordeau" text="Puntaje:" />
+                                                <Label fx:id="labelPuntajeEquipo1" styleClass="label" text="" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                                                <Label fx:id="labelPuntajeEquipo2" styleClass="label" text="" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+                                    <Label prefHeight="15.0" prefWidth="81.0" styleClass="label" text="Puntaje:" />
                                             </children>
                                         </GridPane>
                                     </children>
@@ -133,10 +129,10 @@
                                                 <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
                                             </rowConstraints>
                                             <children>
-                                                <Button fx:id="botonCarta1" mnemonicParsing="false" onAction="#jugarCarta1Handler" text="Carta dada vuelta" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
-                                                <Button fx:id="botonCarta2" mnemonicParsing="false" onAction="#jugarCarta2Handler" text="Carta dada vuelta" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
-                                                <Button fx:id="botonCarta3" mnemonicParsing="false" onAction="#jugarCarta3Handler" text="Carta dada vuelta" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
-                                                <Button fx:id="botonMostrarCartas" mnemonicParsing="false" onAction="#mostrarCartasHandler" styleClass="button-blue" text="Mostrar cartas" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                                                <Button fx:id="botonCarta1"        mnemonicParsing="false" onAction="#jugarCarta1Handler" text="Carta dada vuelta" GridPane.rowIndex="1" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                                                <Button fx:id="botonCarta2"        mnemonicParsing="false" onAction="#jugarCarta2Handler" text="Carta dada vuelta" GridPane.rowIndex="1" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                                                <Button fx:id="botonCarta3"        mnemonicParsing="false" onAction="#jugarCarta3Handler" text="Carta dada vuelta" GridPane.rowIndex="1" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                                                <Button fx:id="botonMostrarCartas" mnemonicParsing="false" onAction="#mostrarCartasHandler" text="Mostrar cartas"  GridPane.rowIndex="1" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" styleClass="button-blue" />
                                             </children>
                                         </GridPane>
                                     </children>

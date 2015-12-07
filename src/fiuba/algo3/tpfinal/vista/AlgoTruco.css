@@ -23,11 +23,14 @@
 .button-blue {
     -fx-background-color: #94d9f4;
     -fx-text-fill: #FFFFFF;
+    -fx-font-weight: bold;
 }
 
 .button-tablero {
     -fx-background-color: #1D8614;
     -fx-text-fill: #000000;
+    -fx-border-color: #000000;
+    -fx-font-weight: bold;
 }
 
 /*
