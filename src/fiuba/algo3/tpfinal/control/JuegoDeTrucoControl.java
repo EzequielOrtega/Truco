@@ -178,7 +178,18 @@ public class JuegoDeTrucoControl {
 		this.mostrarBotones(this.botonesEnvido, true);
 		this.mostrarBotones(this.botonesFlor, conFlor);
 		this.botonTruco.setVisible(true);
+		this.modificarBotonesDeCartasJugadas();
 
+	}
+
+	private void modificarBotonesDeCartasJugadas() {
+		List<Button> auxiliar = this.botonesCartasJugadas.get(0);
+		this.botonesCartasJugadas.remove(auxiliar);
+		if (this.juego.obtenerNombres().size() == 2) {
+			this.botonesCartasJugadas.add(1, auxiliar);
+		} else {
+			this.botonesCartasJugadas.add(auxiliar);
+		}
 	}
 
 	private void setPartidaFinalizada() throws IOException {
