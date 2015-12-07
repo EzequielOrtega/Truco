@@ -30,8 +30,8 @@
             </MenuBar>
             <HBox styleClass="maintitle-label" VBox.vgrow="NEVER">
                <children>
-                  <Region prefHeight="89.0" prefWidth="393.0" HBox.hgrow="ALWAYS" />
-                  <Text boundsType="LOGICAL_VERTICAL_CENTER" fill="#e17878" strokeWidth="0.0" styleClass="maintitle-label" text="FonTruco" textAlignment="CENTER" textOrigin="CENTER" underline="true" HBox.hgrow="ALWAYS">
+                  <Region prefHeight="89.0" prefWidth="393.0" styleClass="background" HBox.hgrow="ALWAYS" />
+                  <Text boundsType="LOGICAL_VERTICAL_CENTER" fill="#e17878" strokeWidth="0.0" styleClass="background" text="FonTruco" textAlignment="CENTER" textOrigin="CENTER" underline="true" HBox.hgrow="ALWAYS">
                      <font>
                         <Font name="Charter Bold" size="45.0" />
                      </font>
@@ -39,14 +39,14 @@
                         <Cursor fx:constant="H_RESIZE" />
                      </cursor>
                   </Text>
-                  <Region layoutX="10.0" layoutY="10.0" prefHeight="92.0" prefWidth="393.0" HBox.hgrow="ALWAYS" />
+                  <Region layoutX="10.0" layoutY="10.0" prefHeight="92.0" prefWidth="393.0" styleClass="background" HBox.hgrow="ALWAYS" />
                </children>
             </HBox>
          </children>
       </VBox>
    </top>
    <center>
-      <AnchorPane prefHeight="600.0" prefWidth="1000.0" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="600.0" prefWidth="1000.0" styleClass="background" BorderPane.alignment="CENTER">
          <children>
             <Label layoutX="380.0" layoutY="248.0" styleClass="label-bordeau" text="¿Qué desea hacer?">
                <font>

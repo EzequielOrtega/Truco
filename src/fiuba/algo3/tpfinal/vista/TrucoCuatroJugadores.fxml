@@ -7,7 +7,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fiuba.algo3.tpfinal.control.JuegoDeTrucoControl">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="721.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fiuba.algo3.tpfinal.control.JuegoDeTrucoControl">
     <children>
         <SplitPane dividerPositions="0.8419023136246787" layoutX="307.0" layoutY="123.0" orientation="VERTICAL" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <items>
@@ -19,16 +19,16 @@
                                     <children>
                                         <SplitPane dividerPositions="0.2581143740340031" layoutX="-2.0" layoutY="14.0" orientation="VERTICAL" prefHeight="285.0" prefWidth="155.0" stylesheets="@AlgoTruco.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                             <items>
-                                                <AnchorPane prefHeight="164.0" prefWidth="296.0">
+                                                <AnchorPane prefHeight="164.0" prefWidth="296.0" styleClass="background">
                                                     <children>
                                                         <Label layoutX="19.0" layoutY="18.0" styleClass="label-bordeau" text="Turno: " />
-                                                        <Label fx:id="labelTurno" alignment="CENTER" contentDisplay="CENTER" layoutX="91.0" layoutY="16.0" prefHeight="19.0" prefWidth="62.0" styleClass="label-bordeau" text="Label" />
-                                                        <Label fx:id="labelStatus" layoutX="10.0" layoutY="56.0" prefHeight="31.0" prefWidth="204.0" styleClass="label-bordeau" />
+                                                        <Label fx:id="labelTurno" alignment="CENTER" contentDisplay="CENTER" layoutX="91.0" layoutY="16.0" prefHeight="31.0" prefWidth="109.0" />
+                                                        <Label fx:id="labelStatus" layoutX="10.0" layoutY="56.0" prefHeight="31.0" prefWidth="204.0" />
                                                     </children>
                                                 </AnchorPane>
                                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="444.0" prefWidth="339.0">
                                                     <children>
-                                                        <GridPane layoutX="23.0" layoutY="-281.0" prefHeight="291.0" prefWidth="241.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                        <GridPane layoutX="23.0" layoutY="-281.0" prefHeight="291.0" prefWidth="241.0" styleClass="background" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                                             <columnConstraints>
                                                                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="84.0" minWidth="10.0" prefWidth="55.0" />
                                                                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="129.0" minWidth="10.0" prefWidth="79.0" />
@@ -64,37 +64,37 @@
                                         </SplitPane>
                                     </children>
                                 </AnchorPane>
-                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="396.0" prefWidth="426.0">
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="396.0" prefWidth="398.0">
                                     <children>
-                                        <Ellipse fill="#1d8614" layoutX="193.0" layoutY="198.0" radiusX="193.0" radiusY="196.0" stroke="BLACK" strokeType="INSIDE" />
-                                        <Button fx:id="botonCartaJugada1J1" layoutX="154.0" layoutY="326.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="69.0" visible="false" />
-                                        <Button fx:id="botonCartaJugada2J1" layoutX="147.0" layoutY="296.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="83.0" visible="false" />
-                                        <Button fx:id="botonCartaJugada3J1" layoutX="139.0" layoutY="265.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="100.0" visible="false" />
-                                        <Button fx:id="botonCartaJugada1J2" layoutX="266.0" layoutY="165.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="111.0" visible="false" />
-                                        <Button fx:id="botonCartaJugada2J2" layoutX="280.0" layoutY="150.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="88.0" visible="false" />
-                                        <Button fx:id="botonCartaJugada3J2" layoutX="278.0" layoutY="121.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="88.0" visible="false" />
-                                        <Button fx:id="botonCartaJugada1J3" layoutX="146.0" layoutY="47.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="88.0" visible="false" />
-                                        <Button fx:id="botonCartaJugada2J3" layoutX="140.0" layoutY="66.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="98.0" visible="false" />
-                                        <Button fx:id="botonCartaJugada3J3" layoutX="136.0" layoutY="96.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="106.0" visible="false" />
-                                        <Button fx:id="botonCartaJugada1J4" layoutX="17.0" layoutY="223.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="98.0" visible="false" />
-                                        <Button fx:id="botonCartaJugada2J4" layoutX="17.0" layoutY="236.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="98.0" visible="false" />
-                                        <Button fx:id="botonCartaJugada3J4" layoutX="22.0" layoutY="246.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="88.0" visible="false" />
-                                        <Label fx:id="nombreJ2" layoutX="272.0" layoutY="179.0" prefHeight="39.0" prefWidth="104.0" text="Jugador 2" textFill="#f5e1e1">
+                                        <Ellipse fill="#1d8614" layoutX="218.0" layoutY="200.0" radiusX="219.0" radiusY="198.0" stroke="BLACK" strokeType="INSIDE" />
+                                        <Button fx:id="botonCartaJugada1J1" layoutX="179.0" layoutY="304.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="90.0" styleClass="button-tablero" stylesheets="@AlgoTruco.css" visible="false" />
+                                        <Button fx:id="botonCartaJugada2J1" layoutX="173.0" layoutY="270.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="90.0" styleClass="button-tablero" stylesheets="@AlgoTruco.css" visible="false" />
+                                        <Button fx:id="botonCartaJugada3J1" layoutX="168.0" layoutY="253.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="95.0" styleClass="button-tablero" stylesheets="@AlgoTruco.css" visible="false" />
+                                        <Button fx:id="botonCartaJugada1J2" layoutX="306.0" layoutY="198.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="95.0" styleClass="button-tablero" stylesheets="@AlgoTruco.css" visible="false" />
+                                        <Button fx:id="botonCartaJugada2J2" layoutX="306.0" layoutY="236.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="95.0" styleClass="button-tablero" stylesheets="@AlgoTruco.css" visible="false" />
+                                        <Button fx:id="botonCartaJugada3J2" layoutX="306.0" layoutY="277.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="95.0" styleClass="button-tablero" stylesheets="@AlgoTruco.css" visible="false" />
+                                        <Button fx:id="botonCartaJugada1J3" layoutX="176.0" layoutY="49.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="95.0" styleClass="button-tablero" stylesheets="@AlgoTruco.css" visible="false" />
+                                        <Button fx:id="botonCartaJugada2J3" layoutX="176.0" layoutY="79.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="95.0" styleClass="button-tablero" stylesheets="@AlgoTruco.css" visible="false" />
+                                        <Button fx:id="botonCartaJugada3J3" layoutX="176.0" layoutY="120.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="95.0" styleClass="button-tablero" stylesheets="@AlgoTruco.css" visible="false" />
+                                        <Button fx:id="botonCartaJugada1J4" layoutX="34.0" layoutY="198.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="95.0" styleClass="button-tablero" stylesheets="@AlgoTruco.css" visible="false" />
+                                        <Button fx:id="botonCartaJugada2J4" layoutX="34.0" layoutY="236.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="95.0" styleClass="button-tablero" stylesheets="@AlgoTruco.css" visible="false" />
+                                        <Button fx:id="botonCartaJugada3J4" layoutX="34.0" layoutY="270.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="95.0" styleClass="button-tablero" stylesheets="@AlgoTruco.css" visible="false" />
+                                        <Label fx:id="nombreJ2" layoutX="325.0" layoutY="160.0" prefHeight="39.0" prefWidth="104.0" styleClass="label-tablero" stylesheets="@AlgoTruco.css" text="Jugador 2" textAlignment="CENTER" textFill="#f5e1e1">
                                             <font>
                                                 <Font name="System Bold" size="21.0" />
                                             </font>
                                         </Label>
-                                        <Label fx:id="nombreJ1" layoutX="140.0" layoutY="338.0" prefHeight="39.0" prefWidth="104.0" text="Jugador 1" textFill="#f5e1e1">
+                                        <Label fx:id="nombreJ1" layoutX="171.0" layoutY="339.0" prefHeight="39.0" prefWidth="104.0" styleClass="label-tablero" stylesheets="@AlgoTruco.css" text="Jugador 1" textAlignment="CENTER" textFill="#f5e1e1">
                                             <font>
                                                 <Font name="System Bold" size="21.0" />
                                             </font>
                                         </Label>
-                              <Label fx:id="nombreJ4" layoutX="14.0" layoutY="179.0" prefHeight="39.0" prefWidth="104.0" text="Jugador 4" textFill="#f5e1e1">
+                              <Label fx:id="nombreJ4" layoutX="14.0" layoutY="160.0" prefHeight="39.0" prefWidth="104.0" styleClass="label-tablero" stylesheets="@AlgoTruco.css" text="Jugador 4" textAlignment="CENTER" textFill="#f5e1e1">
                                  <font>
                                     <Font name="System Bold" size="21.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="nombreJ3" layoutX="138.0" layoutY="27.0" prefHeight="39.0" prefWidth="104.0" text="Jugador 3" textFill="#f5e1e1">
+                              <Label fx:id="nombreJ3" layoutX="171.0" layoutY="14.0" prefHeight="39.0" prefWidth="104.0" styleClass="label-tablero" stylesheets="@AlgoTruco.css" text="Jugador 3" textAlignment="CENTER" textFill="#f5e1e1">
                                  <font>
                                     <Font name="System Bold" size="21.0" />
                                  </font>
@@ -111,7 +111,7 @@
                             <items>
                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                                     <children>
-                                        <GridPane layoutX="-14.0" layoutY="41.0" prefHeight="103.0" prefWidth="154.0" stylesheets="@AlgoTruco.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                        <GridPane layoutX="-14.0" layoutY="41.0" prefHeight="103.0" prefWidth="154.0" styleClass="background" stylesheets="@AlgoTruco.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                             <columnConstraints>
                                                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="124.20771026611328" minWidth="10.0" prefWidth="109.31049346923828" />
                                                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="87.0" minWidth="10.0" prefWidth="55.68950653076172" />
@@ -123,18 +123,18 @@
                                     <RowConstraints />
                                             </rowConstraints>
                                             <children>
-                                                <Label fx:id="labelEquipo1" prefHeight="16.0" prefWidth="123.0" styleClass="label-bordeau" text="Equipo 1: " GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
-                                                <Label fx:id="labelEquipo2" prefHeight="15.0" prefWidth="110.0" styleClass="label-bordeau" text="Equipo 2: " GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
+                                                <Label fx:id="labelEquipo1" alignment="TOP_LEFT" prefHeight="16.0" prefWidth="123.0" styleClass="label-bordeau" text="Equipo 1: " GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
+                                                <Label fx:id="labelEquipo2" alignment="TOP_LEFT" prefHeight="16.0" prefWidth="124.0" styleClass="label-bordeau" text="Equipo 2: " GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
                                                 <Label fx:id="labelPuntajeEquipo1" styleClass="label-bordeau" text="" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
                                                 <Label fx:id="labelPuntajeEquipo2" styleClass="label-bordeau" text="" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
-                                    <Label styleClass="label-bordeau" text="Puntajes:" />
+                                    <Label alignment="CENTER" contentDisplay="CENTER" styleClass="label-bordeau" text="Puntajes:" />
                                             </children>
                                         </GridPane>
                                     </children>
                                 </AnchorPane>
                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                                     <children>
-                                        <GridPane alignment="CENTER" layoutY="-2.0" prefHeight="72.0" prefWidth="464.0" stylesheets="@AlgoTruco.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-2.0">
+                                        <GridPane alignment="CENTER" layoutY="-2.0" prefHeight="72.0" prefWidth="464.0" styleClass="background" stylesheets="@AlgoTruco.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-2.0">
                                             <columnConstraints>
                                                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="145.20208740234375" minWidth="10.0" prefWidth="141.75701904296875" />
                                                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="176.69366455078125" minWidth="10.0" prefWidth="142.24298095703125" />
@@ -148,7 +148,7 @@
                                                 <Button fx:id="botonCarta1" mnemonicParsing="false" onAction="#jugarCarta1Handler" text="" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
                                                 <Button fx:id="botonCarta2" mnemonicParsing="false" onAction="#jugarCarta2Handler" text="" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
                                                 <Button fx:id="botonCarta3" mnemonicParsing="false" onAction="#jugarCarta3Handler" text="" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
-                                                <Button fx:id="botonMostrarCartas" mnemonicParsing="false" onAction="#mostrarCartasHandler" styleClass="button-blue" text="Mostrar cartas" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                                                <Button fx:id="botonMostrarCartas" mnemonicParsing="false" onAction="#mostrarCartasHandler" styleClass="button-blue" text="Mostrar cartas" textFill="#94d9f4" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
                                             </children>
                                         </GridPane>
                                     </children>
