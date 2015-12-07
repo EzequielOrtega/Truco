@@ -79,26 +79,27 @@
                                         <Button fx:id="botonCartaJugada1J4" layoutX="34.0"  layoutY="200.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="110.0" styleClass="button-tablero" stylesheets="@AlgoTruco.css" visible="false" />
                                         <Button fx:id="botonCartaJugada2J4" layoutX="34.0"  layoutY="235.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="110.0" styleClass="button-tablero" stylesheets="@AlgoTruco.css" visible="false" />
                                         <Button fx:id="botonCartaJugada3J4" layoutX="34.0"  layoutY="270.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="110.0" styleClass="button-tablero" stylesheets="@AlgoTruco.css" visible="false" />
+
                                         <Label fx:id="nombreJ2" layoutX="325.0" layoutY="160.0" prefHeight="16.0" prefWidth="104.0" styleClass="label-tablero" stylesheets="@AlgoTruco.css" text="Jugador 2" textAlignment="CENTER" textFill="#f5e1e1">
                                             <font>
-                                                <Font name="System Bold" size="21.0" />
+                                            <Font name="System Bold" size="21.0" />
                                             </font>
                                         </Label>
                                         <Label fx:id="nombreJ1" layoutX="171.0" layoutY="352.0" prefHeight="26.0" prefWidth="104.0" styleClass="label-tablero" stylesheets="@AlgoTruco.css" text="Jugador 1" textAlignment="CENTER" textFill="#f5e1e1">
                                             <font>
-                                                <Font name="System Bold" size="21.0" />
+                                            <Font name="System Bold" size="21.0" />
                                             </font>
                                         </Label>
-                              <Label fx:id="nombreJ4" layoutX="14.0" layoutY="160.0" prefHeight="16.0" prefWidth="104.0" styleClass="label-tablero" stylesheets="@AlgoTruco.css" text="Jugador 4" textAlignment="CENTER" textFill="#f5e1e1">
-                                 <font>
-                                    <Font name="System Bold" size="21.0" />
-                                 </font>
-                              </Label>
-                              <Label fx:id="nombreJ3" layoutX="171.0" layoutY="14.0" prefHeight="16.0" prefWidth="104.0" styleClass="label-tablero" stylesheets="@AlgoTruco.css" text="Jugador 3" textAlignment="CENTER" textFill="#f5e1e1">
-                                 <font>
-                                    <Font name="System Bold" size="21.0" />
-                                 </font>
-                              </Label>
+                                        <Label fx:id="nombreJ4" layoutX="14.0" layoutY="160.0" prefHeight="16.0" prefWidth="104.0" styleClass="label-tablero" stylesheets="@AlgoTruco.css" text="Jugador 4" textAlignment="CENTER" textFill="#f5e1e1">
+                                            <font>
+                                            <Font name="System Bold" size="21.0" />
+                                            </font>
+                                        </Label>
+                                        <Label fx:id="nombreJ3" layoutX="171.0" layoutY="14.0" prefHeight="16.0" prefWidth="104.0" styleClass="label-tablero" stylesheets="@AlgoTruco.css" text="Jugador 3" textAlignment="CENTER" textFill="#f5e1e1">
+                                            <font>
+                                            <Font name="System Bold" size="21.0" />
+                                            </font>
+                                        </Label>
                                     </children>
                                 </AnchorPane>
                             </items>
