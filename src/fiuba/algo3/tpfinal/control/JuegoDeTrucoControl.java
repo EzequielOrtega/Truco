@@ -171,8 +171,8 @@ public class JuegoDeTrucoControl {
     private void jugarCarta(Carta carta) throws IOException{
         try {
         	String nombre = this.jugadorActual.getNombre();
-        	this.ponerCartaEnLaMesa(carta);
         	juego.jugar(carta);
+        	this.ponerCartaEnLaMesa(carta);
             this.labelStatus.setText(nombre + " ha jugado un " + this.diccionario.Busqueda(carta));
             this.mostrarJugadorActual();
             this.mostrarPuntos();
