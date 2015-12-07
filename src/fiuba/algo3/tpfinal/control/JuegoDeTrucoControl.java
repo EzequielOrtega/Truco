@@ -144,11 +144,10 @@ public class JuegoDeTrucoControl {
 		this.labelPuntajeEquipo2.setText(Integer.toString(this.juego.puntosDeEquipo(Equipo.EQUIPO2)));
 	}
 
-	private void ponerCartaEnLaMesa(Carta carta) {
-		int cantidad = this.jugadorActual.cantidadDeCartasJugadas();
+	private void ponerCartaEnLaMesa(Carta carta, int cantidad, String nombre) {
 		int i = 0;
-		for (String nombre : juego.obtenerNombres()) {
-			if (jugadorActual.getNombre().equals(nombre)) {
+		for (String unNombre : juego.obtenerNombres()) {
+			if (nombre.equals(unNombre)) {
 				break;
 			}
 			i++;
@@ -197,8 +196,9 @@ public class JuegoDeTrucoControl {
 	private void jugarCarta(Carta carta) throws IOException {
 		try {
 			String nombre = this.jugadorActual.getNombre();
+			int cantidad = this.jugadorActual.cantidadDeCartasJugadas();
 			juego.jugar(carta);
-			this.ponerCartaEnLaMesa(carta);
+			this.ponerCartaEnLaMesa(carta, cantidad, nombre);
 			this.labelStatus.setText(nombre + " ha jugado un " + this.diccionario.Busqueda(carta));
 			this.mostrarJugadorActual();
 			this.mostrarPuntos();
