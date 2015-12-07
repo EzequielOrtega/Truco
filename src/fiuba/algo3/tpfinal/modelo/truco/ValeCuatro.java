@@ -10,7 +10,7 @@ public class ValeCuatro extends EstadoTruco {
 		estadosAceptados = new LinkedList<>();
 		estadosAceptados.add(ReTruco.class);
 	}
-	
+
 	public ValeCuatro(EstadoTruco estadoAnterior) {
 		super(estadoAnterior, estadosAceptados);
 	}

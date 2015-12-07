@@ -10,19 +10,19 @@ import java.util.LinkedList;
 
 public abstract class EstadoTruco {
 
-
 	protected LinkedList<Object> estadosAceptados = new LinkedList<>();
 
 	public EstadoTruco() {
 	}
-	
+
 	public EstadoTruco(EstadoTruco estadoAnterior, LinkedList<Object> estadosAceptados) {
 		if (!estadosAceptados.contains(estadoAnterior.getClass())) {
 			throw new NoRespetaJerarquiaDeTrucoError();
 		}
 	}
 
-	public EstadoTruco(EstadoTruco estadoAnterior, EstadoEnvido estadoEnvido, EstadoFlor estadoFlor, LinkedList<Object> estadosAceptados) {
+	public EstadoTruco(EstadoTruco estadoAnterior, EstadoEnvido estadoEnvido, EstadoFlor estadoFlor,
+			LinkedList<Object> estadosAceptados) {
 		if (!estadosAceptados.contains(estadoAnterior.getClass())) {
 			throw new NoRespetaJerarquiaDeTrucoError();
 		}

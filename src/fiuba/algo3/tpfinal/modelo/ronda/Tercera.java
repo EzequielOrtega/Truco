@@ -55,7 +55,7 @@ public class Tercera extends EstadoRonda {
 		Jugador ganador = null;
 		switch (this.obtenerGanadorParcial()) {
 		case GANADOR1: {
-			if (jugadores.get(0).coincideElEquipo(Equipo.EQUIPO1)){
+			if (jugadores.get(0).coincideElEquipo(Equipo.EQUIPO1)) {
 				ganador = jugadores.get(0);
 			} else {
 				ganador = jugadores.get(1);
@@ -63,7 +63,7 @@ public class Tercera extends EstadoRonda {
 			break;
 		}
 		case GANADOR2: {
-			if (jugadores.get(0).coincideElEquipo(Equipo.EQUIPO2)){
+			if (jugadores.get(0).coincideElEquipo(Equipo.EQUIPO2)) {
 				ganador = jugadores.get(0);
 			} else {
 				ganador = jugadores.get(1);

@@ -53,7 +53,7 @@ public class JuegoDeTrucoTest {
 		unJuego.obtenerJugadorActual().agarrarCarta(sotaDeBasto);
 		unJuego.obtenerJugadorActual().agarrarCarta(cincoDeEspada);
 		unJuego.obtenerJugadorActual().agarrarCarta(unoDeBasto);
-		
+
 		juegoDeCuatro = new JuegoDeTruco("eze", "marcos", "matu", "micaela");
 	}
 
@@ -244,7 +244,7 @@ public class JuegoDeTrucoTest {
 		unJuego.truco();
 	}
 
-	@Test (expected = JugadorNoTieneFlorError.class)
+	@Test(expected = JugadorNoTieneFlorError.class)
 	public void testFlorContraFlorSinFlor() {
 		unJuego.jugar(unoDeBasto);
 		unJuego.flor();
@@ -269,31 +269,31 @@ public class JuegoDeTrucoTest {
 		assertEquals(15, unJuego.puntosDeEquipo(Equipo.EQUIPO2));
 		assertEquals(5, unJuego.puntosDeEquipo(Equipo.EQUIPO1));
 	}
-	
-	@Test (expected = NoPuedeCantarEnvidoSeCantoFlorError.class)
+
+	@Test(expected = NoPuedeCantarEnvidoSeCantoFlorError.class)
 	public void testFlorEnvidoNoVale() {
 		unJuego.avanzarJugadorActual();
 		unJuego.flor();
 		unJuego.envido();
 	}
-	
-	@Test (expected = NoPuedeCantarEnvidoSeCantoFlorError.class)
+
+	@Test(expected = NoPuedeCantarEnvidoSeCantoFlorError.class)
 	public void testFlorRealEnvidoNoVale() {
 		unJuego.jugar(sotaDeBasto);
 		unJuego.flor();
 		unJuego.realEnvido();
 	}
-	
-	@Test (expected = NoPuedeCantarEnvidoSeCantoFlorError.class)
+
+	@Test(expected = NoPuedeCantarEnvidoSeCantoFlorError.class)
 	public void testFlorFaltaEnvidoNoVale() {
 		unJuego.jugar(sotaDeBasto);
 		unJuego.flor();
 		unJuego.faltaEnvido();
 	}
-	
+
 	@Test
 	public void testContraFlorGanaLaPartida() {
-		//entrego las cartas para que ambos tengan flor
+		// entrego las cartas para que ambos tengan flor
 		Carta cincoDeBasto = new NoFigura(5, Palo.BASTO);
 		unJuego.obtenerJugadorActual().entregarCartas();
 		unJuego.obtenerJugadorActual().agarrarCarta(sotaDeBasto);
@@ -305,30 +305,30 @@ public class JuegoDeTrucoTest {
 		unJuego.obtenerJugadorActual().agarrarCarta(sieteDeEspada);
 		unJuego.obtenerJugadorActual().agarrarCarta(sotaDeEspada);
 		unJuego.avanzarJugadorActual();
-		//comienza la ronda
+		// comienza la ronda
 		unJuego.flor();
 		unJuego.contraFlorAlResto();
 		unJuego.quieroFlor();
-		
+
 		Assert.assertTrue(30 == unJuego.puntosDeEquipo(Equipo.EQUIPO2));
 		Assert.assertTrue(0 == unJuego.puntosDeEquipo(Equipo.EQUIPO1));
 	}
-	
+
 	@Test
 	public void testIrseAlMazoEnPrimeraSonDosPuntosParaElContrario() {
 		unJuego.irseAlMazo();
 		Assert.assertEquals(2, unJuego.puntosDeEquipo(Equipo.EQUIPO2));
 	}
-	
+
 	@Test
 	public void testIrseAlMazoEnSegundaSinCantarTruco() {
 		unJuego.jugar(sotaDeBasto);
 		unJuego.jugar(sieteDeEspada);
 		unJuego.jugar(unoDeEspada);
-		unJuego.irseAlMazo();		
+		unJuego.irseAlMazo();
 		Assert.assertEquals(1, unJuego.puntosDeEquipo(Equipo.EQUIPO2));
 	}
-	
+
 	@Test
 	public void testIrseAlMazoEnSegundaConTruco() {
 		unJuego.jugar(sotaDeBasto);
@@ -336,10 +336,10 @@ public class JuegoDeTrucoTest {
 		unJuego.truco();
 		unJuego.quieroTruco();
 		unJuego.jugar(unoDeEspada);
-		unJuego.irseAlMazo();		
+		unJuego.irseAlMazo();
 		Assert.assertTrue(2 == unJuego.puntosDeEquipo(Equipo.EQUIPO2));
 	}
-	
+
 	@Test
 	public void testIrseAlMazoEnSegundaConReTruco() {
 		unJuego.jugar(sotaDeBasto);
@@ -348,10 +348,10 @@ public class JuegoDeTrucoTest {
 		unJuego.reTruco();
 		unJuego.quieroTruco();
 		unJuego.jugar(unoDeEspada);
-		unJuego.irseAlMazo();		
+		unJuego.irseAlMazo();
 		Assert.assertEquals(3, unJuego.puntosDeEquipo(Equipo.EQUIPO2));
 	}
-	
+
 	@Test
 	public void testIrseAlMazoEnSegundaConValeCuatro() {
 		unJuego.jugar(sotaDeBasto);
@@ -361,48 +361,49 @@ public class JuegoDeTrucoTest {
 		unJuego.valeCuatro();
 		unJuego.quieroTruco();
 		unJuego.jugar(unoDeEspada);
-		unJuego.irseAlMazo();		
+		unJuego.irseAlMazo();
 		Assert.assertTrue(4 == unJuego.puntosDeEquipo(Equipo.EQUIPO2));
 	}
-	
+
 	@Test
 	public void testIrseAlMazoEnSegundaConTrucoNoQuerido() {
 		unJuego.jugar(sotaDeBasto);
 		unJuego.jugar(sieteDeEspada);
 		unJuego.truco();
-		unJuego.irseAlMazo();		
+		unJuego.irseAlMazo();
 		Assert.assertEquals(1, unJuego.puntosDeEquipo(Equipo.EQUIPO2));
 	}
-	
-	@Test (expected = NoPuedeCantarEnvidoNoEsPieError.class)
+
+	@Test(expected = NoPuedeCantarEnvidoNoEsPieError.class)
 	public void testCantarEnvidoSinSerPie() {
 		juegoDeCuatro.comenzarPartida(true);
 		juegoDeCuatro.envido();
 	}
-	
+
 	@Test
 	public void testCantarEnvidoSinSerPiePorTrucoCantado() {
 		juegoDeCuatro.comenzarPartida(true);
 		juegoDeCuatro.truco();
 		juegoDeCuatro.envido();
 		juegoDeCuatro.quieroEnvido();
-		Assert.assertTrue((juegoDeCuatro.puntosDeEquipo(Equipo.EQUIPO1) == 2) || (juegoDeCuatro.puntosDeEquipo(Equipo.EQUIPO2) == 2));
+		Assert.assertTrue((juegoDeCuatro.puntosDeEquipo(Equipo.EQUIPO1) == 2)
+				|| (juegoDeCuatro.puntosDeEquipo(Equipo.EQUIPO2) == 2));
 	}
-	
-	@Test (expected = NoPuedeRedoblarTrucoSuEquipoLoCantoError.class) 
+
+	@Test(expected = NoPuedeRedoblarTrucoSuEquipoLoCantoError.class)
 	public void testCantarTrucoYRetrucoConELMismoEquipo() {
 		unJuego.truco();
 		unJuego.quieroTruco();
 		unJuego.reTruco();
 	}
-	
-	@Test (expected = NoPuedeHaberJugadoresSinNombreError.class)
+
+	@Test(expected = NoPuedeHaberJugadoresSinNombreError.class)
 	public void testNoPuedoCrearJuegoDeADosSinNombreDeJugadores() {
-		unJuego = new JuegoDeTruco("","");
+		unJuego = new JuegoDeTruco("", "");
 	}
-	
-	@Test (expected = NoPuedeHaberJugadoresSinNombreError.class)
+
+	@Test(expected = NoPuedeHaberJugadoresSinNombreError.class)
 	public void testNoPuedoCrearJuegoDeACuatroSinNombreDeJugadores() {
-		unJuego = new JuegoDeTruco("carlitos","pepe","juan","");
+		unJuego = new JuegoDeTruco("carlitos", "pepe", "juan", "");
 	}
 }

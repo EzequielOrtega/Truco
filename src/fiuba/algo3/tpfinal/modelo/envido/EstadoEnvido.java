@@ -11,7 +11,7 @@ public abstract class EstadoEnvido {
 	protected EstadoEnvido estadoAnterior;
 	protected int puntosDeEstado;
 	private static LinkedList<Object> estadoFinal;
-	
+
 	static {
 		estadoFinal = new LinkedList<Object>();
 		estadoFinal.add(EstadoFinalEnvido.class);

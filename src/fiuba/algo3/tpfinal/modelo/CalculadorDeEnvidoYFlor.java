@@ -6,32 +6,31 @@ import java.util.Vector;
 
 public class CalculadorDeEnvidoYFlor {
 
-	public boolean tieneFlor(Vector<Carta> cartas){
-		if(cartas.size()<3){
+	public boolean tieneFlor(Vector<Carta> cartas) {
+		if (cartas.size() < 3) {
 			throw new SoloSePuedeCantarEnvidoEnPrimeraError();
 		}
 		return cartas.get(0).mismoPaloQue(cartas.get(1), cartas.get(2));
 	}
 
-
-	public int obtenerTantosDeFlor(Vector<Carta> cartas){
+	public int obtenerTantosDeFlor(Vector<Carta> cartas) {
 
 		if (this.tieneFlor(cartas)) {
 			int tantosDeFlor = 20;
-			for (Carta carta: cartas) {
+			for (Carta carta : cartas) {
 				CartaParaEnvidoYFlor cartaActual = (CartaParaEnvidoYFlor) carta;
 				tantosDeFlor += cartaActual.obtenerValorParaEnvidoYFlor();
 			}
 			return tantosDeFlor;
-		}else{
-			//throw new JugadorNoTieneFlorError();
+		} else {
+			// throw new JugadorNoTieneFlorError();
 			return -1;
 		}
 	}
 
 	public int obtenerTantosDeEnvido(Vector<Carta> cartas) {
 
-		if (cartas.size()<3){
+		if (cartas.size() < 3) {
 			throw new SoloSePuedeCantarEnvidoEnPrimeraError();
 		}
 
@@ -51,15 +50,17 @@ public class CalculadorDeEnvidoYFlor {
 		CartaParaEnvidoYFlor interfazCarta2 = (CartaParaEnvidoYFlor) carta2;
 
 		if (carta1.mismoPaloQue(carta2)) {
-			valorEnvidoDeDosCartas = (20 + interfazCarta1.obtenerValorParaEnvidoYFlor() + interfazCarta2.obtenerValorParaEnvidoYFlor());
+			valorEnvidoDeDosCartas = (20 + interfazCarta1.obtenerValorParaEnvidoYFlor()
+					+ interfazCarta2.obtenerValorParaEnvidoYFlor());
 		} else {
-			valorEnvidoDeDosCartas = Math.max (interfazCarta1.obtenerValorParaEnvidoYFlor(), interfazCarta2.obtenerValorParaEnvidoYFlor());
+			valorEnvidoDeDosCartas = Math.max(interfazCarta1.obtenerValorParaEnvidoYFlor(),
+					interfazCarta2.obtenerValorParaEnvidoYFlor());
 		}
 		return valorEnvidoDeDosCartas;
 	}
 
 	private int maximo(int integer1, int integer2, int integer3) {
-		return Math.max (Math.max(integer1, integer2), integer3);
+		return Math.max(Math.max(integer1, integer2), integer3);
 	}
 
 }

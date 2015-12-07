@@ -10,7 +10,7 @@ public class ReTruco extends EstadoTruco {
 		estadosAceptados = new LinkedList<>();
 		estadosAceptados.add(Truco.class);
 	}
-	
+
 	public ReTruco(EstadoTruco estadoAnterior) {
 		super(estadoAnterior, estadosAceptados);
 	}

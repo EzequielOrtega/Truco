@@ -93,10 +93,11 @@ public class ListaCircular<T> {
 	public void moverAlAnterior() {
 		raiz = raiz.obtenerAnterior();
 	}
-	
+
 	public Boolean esPie(Jugador unJugador) {
 		Boolean esPie = false;
-		if((this.raiz.obtenerAnterior().obtenerDato() == unJugador) || (this.raiz.obtenerAnterior().obtenerAnterior().obtenerDato() == unJugador)) {
+		if ((this.raiz.obtenerAnterior().obtenerDato() == unJugador)
+				|| (this.raiz.obtenerAnterior().obtenerAnterior().obtenerDato() == unJugador)) {
 			esPie = true;
 		}
 		return esPie;

@@ -17,8 +17,8 @@ public class JuegoDeTruco {
 	private LinkedList<Carta> cartasEnLaMesa = new LinkedList<Carta>();
 	private Jugador jugadorActual;
 	private Jugador jugadorQueCantoEnvido = null;
-    private Jugador jugadorQueCantoFlor = null;
-    private Jugador jugadorQueCantoTruco = null;
+	private Jugador jugadorQueCantoFlor = null;
+	private Jugador jugadorQueCantoTruco = null;
 	private boolean conFlor = false;
 	private EstadoFlor estadoActualFlor = new EstadoInicialFlor();
 	private boolean florCantada = false;
@@ -26,9 +26,9 @@ public class JuegoDeTruco {
 	private boolean envidoCantado = false;
 	private EstadoTruco estadoActualTruco = new EstadoInicialTruco();
 	private boolean trucoCantado = false;
-    private boolean concluyoLaRonda = false;
+	private boolean concluyoLaRonda = false;
 
-    public JuegoDeTruco(String nombreJ1, String nombreJ2) {
+	public JuegoDeTruco(String nombreJ1, String nombreJ2) {
 		if (nombreJ1.equals("") || (nombreJ2.equals(""))) {
 			throw new NoPuedeHaberJugadoresSinNombreError();
 		}
@@ -120,25 +120,25 @@ public class JuegoDeTruco {
 			Resultado resultadoRonda = juez.ganadorDeLaMano(this.cartasEnLaMesa, this.jugadores.obtenerElementos());
 			ronda.insercion(resultadoRonda);
 			switch (resultadoRonda) {
-				case EMPATE: {
-					jugadorActual = jugadores.obtenerElemento(0);
-					break;
-				}
-				default: {
-					Carta cartaMasAlta = this.obtenerCartaMasAlta(cartasEnLaMesa);
-					jugadorActual = this.jugadorQuePoseeLaCarta(cartaMasAlta);
-					break;
-				}
+			case EMPATE: {
+				jugadorActual = jugadores.obtenerElemento(0);
+				break;
+			}
+			default: {
+				Carta cartaMasAlta = this.obtenerCartaMasAlta(cartasEnLaMesa);
+				jugadorActual = this.jugadorQuePoseeLaCarta(cartaMasAlta);
+				break;
+			}
 			}
 			this.cartasEnLaMesa = new LinkedList<Carta>();
 		}
-        this.concluyoLaRonda = false;
+		this.concluyoLaRonda = false;
 		if (this.ronda.concluyoLaRonda()) {
 			Jugador jugadorGanador = this.ronda.ganadorDeLaRonda(jugadores.obtenerElementos());
 			jugadorGanador.sumarPuntos(this.estadoActualTruco.obtenerPuntosQueridos());
 			this.setearValoresParaProximaRonda();
-            this.concluyoLaRonda = true;
-        }
+			this.concluyoLaRonda = true;
+		}
 	}
 
 	private Carta obtenerCartaMasAlta(LinkedList<Carta> cartas) {
@@ -159,16 +159,16 @@ public class JuegoDeTruco {
 	private void setearValoresParaProximaRonda() {
 		jugadores.moverAlSiguiente();
 		jugadorActual = jugadores.obtenerElemento(0);
-        this.florCantada = false;
-        this.jugadorQueCantoFlor = null;
-        this.estadoActualFlor = new EstadoInicialFlor();
+		this.florCantada = false;
+		this.jugadorQueCantoFlor = null;
+		this.estadoActualFlor = new EstadoInicialFlor();
 		this.envidoCantado = false;
-        this.jugadorQueCantoEnvido = null;
+		this.jugadorQueCantoEnvido = null;
 		this.estadoActualEnvido = new EstadoInicialEnvido();
 		this.trucoCantado = false;
-        this.jugadorQueCantoTruco = null;
+		this.jugadorQueCantoTruco = null;
 		this.estadoActualTruco = new EstadoInicialTruco();
-        this.ronda = new Ronda();
+		this.ronda = new Ronda();
 		this.repartir();
 	}
 
@@ -178,9 +178,9 @@ public class JuegoDeTruco {
 		if (!this.conFlor) {
 			throw new SeEstaJugandoSinFlorError();
 		}
-        if (this.ronda.estaEnPrimera()) {
-            throw new SoloSePuedeCantarFlorEnPrimeraError();
-        }
+		if (this.ronda.estaEnPrimera()) {
+			throw new SoloSePuedeCantarFlorEnPrimeraError();
+		}
 		if (this.jugadorActual.getValorFlor() == -1) {
 			throw new JugadorNoTieneFlorError();
 		}
@@ -309,7 +309,8 @@ public class JuegoDeTruco {
 		}
 		this.envidoCantado = true;
 		Jugador ganador = juez.ganadorEnvido(jugadores.obtenerElementos());
-		estadoActualEnvido = new FaltaEnvido(estadoActualEnvido, estadoActualFlor, this.puntosRestantesContrario(ganador), this.puntosRestantes(ganador));
+		estadoActualEnvido = new FaltaEnvido(estadoActualEnvido, estadoActualFlor,
+				this.puntosRestantesContrario(ganador), this.puntosRestantes(ganador));
 		if (this.jugadorQueCantoEnvido == null) {
 			this.jugadorQueCantoEnvido = jugadorActual;
 		}
@@ -334,7 +335,7 @@ public class JuegoDeTruco {
 		this.avanzarJugadorActual();
 	}
 
-	public void reTruco() {		
+	public void reTruco() {
 		this.estadoActualTruco = new ReTruco(estadoActualTruco);
 		if (!this.trucoCantado) {
 			if (this.jugadorQueCantoTruco.estanEnElMismoEquipo(this.jugadorActual)) {
@@ -346,7 +347,7 @@ public class JuegoDeTruco {
 		this.avanzarJugadorActual();
 	}
 
-	public void valeCuatro() {		
+	public void valeCuatro() {
 		this.estadoActualTruco = new ValeCuatro(estadoActualTruco);
 		if (!this.trucoCantado) {
 			if (this.jugadorQueCantoTruco.estanEnElMismoEquipo(this.jugadorActual)) {
@@ -395,11 +396,11 @@ public class JuegoDeTruco {
 		}
 		this.setearValoresParaProximaRonda();
 	}
-	
+
 	public Boolean concluyoLaRonda() {
 		return this.concluyoLaRonda;
 	}
-	
+
 	public Boolean concluyoLaPartida() {
 		Boolean concluyoLaPartida = false;
 		if ((this.puntosDeEquipo(Equipo.EQUIPO1) >= 30) || (this.puntosDeEquipo(Equipo.EQUIPO2) >= 30)) {
@@ -408,10 +409,10 @@ public class JuegoDeTruco {
 		return concluyoLaPartida;
 	}
 
-    public boolean estaEnPrimera() {
-        return this.ronda.estaEnPrimera();
-    }
-	
+	public boolean estaEnPrimera() {
+		return this.ronda.estaEnPrimera();
+	}
+
 	private Boolean puedeCantarLosTantos() {
 		Boolean puedeCantarLosTantos = false;
 		if ((jugadores.esPie(this.jugadorActual)) || (this.envidoCantado) || (this.trucoCantado)) {
@@ -422,12 +423,12 @@ public class JuegoDeTruco {
 
 	public int puntosDeEnvidoGanador() {
 		Jugador ganadorEnvido = this.juez.ganadorEnvido(jugadores.obtenerElementos());
-		return ganadorEnvido.getValorEnvido(); 
+		return ganadorEnvido.getValorEnvido();
 	}
 
 	public String obtenerNombreGanadorDeEnvido() {
 		Jugador ganadorEnvido = this.juez.ganadorEnvido(jugadores.obtenerElementos());
-        return ganadorEnvido.getNombre();
+		return ganadorEnvido.getNombre();
 	}
 
 	public String obtenerNombreGanadorDeFlor() {
@@ -437,31 +438,31 @@ public class JuegoDeTruco {
 
 	public int puntosDeFlorGanador() {
 		Jugador ganadorFlor = this.juez.ganadorFlor(jugadores.obtenerElementos());
-        return ganadorFlor.getValorFlor();
+		return ganadorFlor.getValorFlor();
 	}
 
 	public Object obtenerEstadoDeFlor() {
 		return this.estadoActualFlor;
 	}
 
-    public String obtenerNombreGanadorDelJuego() {
-        if (this.concluyoLaPartida()) {
-            if(this.puntosDeEquipo(Equipo.EQUIPO1) > this.puntosDeEquipo(Equipo.EQUIPO2))
-                return Equipo.EQUIPO1.toString();
-            else
-                return Equipo.EQUIPO2.toString();
-        }
-        else throw new NoConcluyoElJuegoError();
-    }
+	public String obtenerNombreGanadorDelJuego() {
+		if (this.concluyoLaPartida()) {
+			if (this.puntosDeEquipo(Equipo.EQUIPO1) > this.puntosDeEquipo(Equipo.EQUIPO2))
+				return Equipo.EQUIPO1.toString();
+			else
+				return Equipo.EQUIPO2.toString();
+		} else
+			throw new NoConcluyoElJuegoError();
+	}
 
 	public LinkedList<String> obtenerNombres() {
 		LinkedList<String> nombres = new LinkedList<String>();
-		for(int x = 0; x < this.jugadores.tamanio(); x++) {
+		for (int x = 0; x < this.jugadores.tamanio(); x++) {
 			nombres.add(jugadores.obtenerElemento(x).getNombre());
 		}
 		return nombres;
 	}
-	
+
 	public Boolean seCantoTruco() {
 		return this.trucoCantado;
 	}

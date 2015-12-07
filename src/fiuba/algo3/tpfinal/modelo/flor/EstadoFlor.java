@@ -10,7 +10,7 @@ public abstract class EstadoFlor {
 	protected EstadoFlor estadoAnterior;
 	protected int puntosDeEstado;
 	private static LinkedList<Object> estadoFinal;
-	
+
 	static {
 		estadoFinal = new LinkedList<Object>();
 		estadoFinal.add(EstadoFinalFlor.class);
@@ -25,7 +25,7 @@ public abstract class EstadoFlor {
 		}
 		this.estadoAnterior = estadoAnterior;
 	}
-	
+
 	public EstadoFlor() {
 		this.estadoAnterior = null;
 	}

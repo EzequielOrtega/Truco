@@ -10,18 +10,19 @@ public class FaltaEnvido extends EstadoEnvido {
 	private static LinkedList<Object> estadosAceptados;
 	private int puntosRestantesContrario;
 	private int puntosRestantes;
-	
+
 	static {
 		estadosAceptados = new LinkedList<>();
 		estadosAceptados.add(EstadoInicialFlor.class);
 	}
-	
-	public FaltaEnvido(EstadoEnvido estadoAnterior, EstadoFlor estadoFlor, int puntosRestantesContrario, int puntosRestantes) {
+
+	public FaltaEnvido(EstadoEnvido estadoAnterior, EstadoFlor estadoFlor, int puntosRestantesContrario,
+			int puntosRestantes) {
 		super(estadoAnterior, estadoFlor, estadosAceptados);
 		this.puntosRestantesContrario = puntosRestantesContrario;
 		this.puntosRestantes = puntosRestantes;
 	}
-	
+
 	public int obtenerPuntosQueridos() {
 		int puntosQueridos;
 		if (this.puntosRestantes > 15) {

@@ -13,13 +13,13 @@ import fiuba.algo3.tpfinal.modelo.NoFigura;
 import fiuba.algo3.tpfinal.modelo.Palo;
 
 public class SimulacionCuatroJugadoresTest {
-	
+
 	private JuegoDeTruco juego;
 	private Jugador j1;
 	private Jugador j2;
 	private Jugador j3;
 	private Jugador j4;
-	
+
 	private Carta anchoBasto = new NoFigura(1, Palo.BASTO);
 	private Carta dosBasto = new NoFigura(2, Palo.BASTO);
 	private Carta tresBasto = new NoFigura(3, Palo.BASTO);
@@ -30,7 +30,7 @@ public class SimulacionCuatroJugadoresTest {
 	private Carta sotaBasto = new Figura(10, Palo.BASTO);
 	private Carta caballoBasto = new Figura(11, Palo.BASTO);
 	private Carta reyBasto = new Figura(12, Palo.BASTO);
-	
+
 	private Carta anchoCopa = new NoFigura(1, Palo.COPA);
 	private Carta dosCopa = new NoFigura(2, Palo.COPA);
 	private Carta tresCopa = new NoFigura(3, Palo.COPA);
@@ -41,7 +41,7 @@ public class SimulacionCuatroJugadoresTest {
 	private Carta sotaCopa = new Figura(10, Palo.COPA);
 	private Carta caballoCopa = new Figura(11, Palo.COPA);
 	private Carta reyCopa = new Figura(12, Palo.COPA);
-	
+
 	private Carta anchoEspada = new NoFigura(1, Palo.ESPADA);
 	private Carta dosEspada = new NoFigura(2, Palo.ESPADA);
 	private Carta tresEspada = new NoFigura(3, Palo.ESPADA);
@@ -52,7 +52,7 @@ public class SimulacionCuatroJugadoresTest {
 	private Carta sotaEspada = new Figura(10, Palo.ESPADA);
 	private Carta caballoEspada = new Figura(11, Palo.ESPADA);
 	private Carta reyEspada = new Figura(12, Palo.ESPADA);
-	
+
 	private Carta anchoOro = new NoFigura(1, Palo.ORO);
 	private Carta dosOro = new NoFigura(2, Palo.ORO);
 	private Carta tresOro = new NoFigura(3, Palo.ORO);
@@ -77,42 +77,42 @@ public class SimulacionCuatroJugadoresTest {
 		j4 = this.juego.obtenerJugadorActual();
 		juego.comenzarPartida(conFlor);
 	}
-	
+
 	@Test
 	public void testPartida() {
 		j1.entregarCartas();
 		j2.entregarCartas();
 		j3.entregarCartas();
 		j4.entregarCartas();
-				
+
 		j1.agarrarCarta(anchoBasto);
 		j1.agarrarCarta(dosBasto);
 		j1.agarrarCarta(tresBasto);
-		
+
 		j2.agarrarCarta(anchoCopa);
 		j2.agarrarCarta(dosCopa);
 		j2.agarrarCarta(tresCopa);
-		
+
 		j3.agarrarCarta(anchoEspada);
 		j3.agarrarCarta(dosEspada);
 		j3.agarrarCarta(tresEspada);
-		
+
 		j4.agarrarCarta(anchoOro);
 		j4.agarrarCarta(dosOro);
 		j4.agarrarCarta(tresOro);
-		
+
 		// equipo1 gana la primera
 		juego.jugar(anchoBasto);
 		juego.flor();
 		juego.contraFlor();
-		juego.quieroFlor();	
+		juego.quieroFlor();
 		// empate de flor: gana el que es mano.
 		Assert.assertEquals(6, juego.puntosDeEquipo(Equipo.EQUIPO1));
-		Assert.assertEquals(0, juego.puntosDeEquipo(Equipo.EQUIPO2));		
+		Assert.assertEquals(0, juego.puntosDeEquipo(Equipo.EQUIPO2));
 		juego.jugar(anchoCopa);
 		juego.jugar(anchoEspada);
 		juego.jugar(anchoOro);
-		
+
 		// equipo2 gana la segunda
 		juego.truco();
 		juego.quieroTruco();
@@ -122,7 +122,7 @@ public class SimulacionCuatroJugadoresTest {
 		juego.jugar(tresOro);
 		juego.jugar(dosBasto);
 		juego.jugar(dosCopa);
-		
+
 		// parda la tercera, gana la primera.
 		juego.jugar(dosOro);
 		juego.valeCuatro();
@@ -130,7 +130,7 @@ public class SimulacionCuatroJugadoresTest {
 		juego.jugar(tresBasto);
 		juego.jugar(tresCopa);
 		juego.jugar(tresEspada);
-		
+
 		Assert.assertEquals(10, juego.puntosDeEquipo(Equipo.EQUIPO1));
 		Assert.assertEquals(0, juego.puntosDeEquipo(Equipo.EQUIPO2));
 	}

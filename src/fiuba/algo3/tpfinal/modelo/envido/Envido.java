@@ -16,6 +16,7 @@ public class Envido extends EstadoEnvido {
 		estadosAceptados.add(EstadoInicialFlor.class);
 		estadosAceptados.add(EstadoFinalFlor.class);
 	}
+
 	public Envido(EstadoEnvido estadoAnterior, EstadoFlor estadoFlor) {
 		super(estadoAnterior, estadoFlor, estadosAceptados);
 		this.puntosDeEstado = 2;

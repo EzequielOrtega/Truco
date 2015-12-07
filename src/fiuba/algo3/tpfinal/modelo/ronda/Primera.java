@@ -15,7 +15,7 @@ public class Primera extends EstadoRonda {
 		estadosAceptados = new LinkedList<>();
 		estadosAceptados.add(EstadoInicialRonda.class);
 	}
-	
+
 	public Primera(EstadoRonda estadoAnterior) {
 		super(estadoAnterior, estadosAceptados);
 		this.mano = Mano.PRIMERA;

@@ -14,11 +14,11 @@ import fiuba.algo3.tpfinal.modelo.NoFigura;
 import fiuba.algo3.tpfinal.modelo.Palo;
 
 public class SimulacionPartidaCompletaSinFlorTest {
-	
+
 	private JuegoDeTruco juego;
 	private Jugador matu;
 	private Jugador eze;
-	
+
 	private Carta anchoEspada = new NoFigura(1, Palo.ESPADA);
 	private Carta dosEspada = new NoFigura(2, Palo.ESPADA);
 	private Carta tresEspada = new NoFigura(3, Palo.ESPADA);
@@ -29,7 +29,7 @@ public class SimulacionPartidaCompletaSinFlorTest {
 	private Carta sotaEspada = new Figura(10, Palo.ESPADA);
 	private Carta caballoEspada = new Figura(11, Palo.ESPADA);
 	private Carta reyEspada = new Figura(12, Palo.ESPADA);
-	
+
 	private Carta anchoBasto = new NoFigura(1, Palo.BASTO);
 	private Carta dosBasto = new NoFigura(2, Palo.BASTO);
 	private Carta tresBasto = new NoFigura(3, Palo.BASTO);
@@ -40,7 +40,7 @@ public class SimulacionPartidaCompletaSinFlorTest {
 	private Carta sotaBasto = new Figura(10, Palo.BASTO);
 	private Carta caballoBasto = new Figura(11, Palo.BASTO);
 	private Carta reyBasto = new Figura(12, Palo.BASTO);
-	
+
 	private Carta anchoCopa = new NoFigura(1, Palo.COPA);
 	private Carta dosCopa = new NoFigura(2, Palo.COPA);
 	private Carta tresCopa = new NoFigura(3, Palo.COPA);
@@ -51,7 +51,7 @@ public class SimulacionPartidaCompletaSinFlorTest {
 	private Carta sotaCopa = new Figura(10, Palo.COPA);
 	private Carta caballoCopa = new Figura(11, Palo.COPA);
 	private Carta reyCopa = new Figura(12, Palo.COPA);
-	
+
 	private Carta anchoOro = new NoFigura(1, Palo.ORO);
 	private Carta dosOro = new NoFigura(2, Palo.ORO);
 	private Carta tresOro = new NoFigura(3, Palo.ORO);
@@ -62,7 +62,7 @@ public class SimulacionPartidaCompletaSinFlorTest {
 	private Carta sotaOro = new Figura(10, Palo.ORO);
 	private Carta caballoOro = new Figura(11, Palo.ORO);
 	private Carta reyOro = new Figura(12, Palo.ORO);
-	
+
 	@Before
 	public void setup() {
 		this.juego = new JuegoDeTruco("Matu", "Eze");
@@ -73,7 +73,7 @@ public class SimulacionPartidaCompletaSinFlorTest {
 		eze = this.juego.obtenerJugadorActual();
 		juego.avanzarJugadorActual();
 	}
-	
+
 	@Test
 	public void testRonda1() {
 		matu.entregarCartas();
@@ -96,9 +96,9 @@ public class SimulacionPartidaCompletaSinFlorTest {
 		Assert.assertEquals(2, juego.puntosDeEquipo(Equipo.EQUIPO1));
 		Assert.assertEquals(2, juego.puntosDeEquipo(Equipo.EQUIPO2));
 	}
-	
+
 	@Test
-	public void testRonda2(){
+	public void testRonda2() {
 		juego.moverAlSiguiente();
 		matu.sumarPuntos(2);
 		eze.sumarPuntos(2);
@@ -124,7 +124,7 @@ public class SimulacionPartidaCompletaSinFlorTest {
 		Assert.assertEquals(6, juego.puntosDeEquipo(Equipo.EQUIPO1));
 		Assert.assertEquals(2, juego.puntosDeEquipo(Equipo.EQUIPO2));
 	}
-	
+
 	@Test
 	public void testRonda3() {
 		matu.sumarPuntos(6);
@@ -147,7 +147,7 @@ public class SimulacionPartidaCompletaSinFlorTest {
 		Assert.assertEquals(11, juego.puntosDeEquipo(Equipo.EQUIPO1));
 		Assert.assertEquals(3, juego.puntosDeEquipo(Equipo.EQUIPO2));
 	}
-	
+
 	@Test
 	public void testRonda4() {
 		juego.moverAlSiguiente();
@@ -174,9 +174,9 @@ public class SimulacionPartidaCompletaSinFlorTest {
 		Assert.assertEquals(14, juego.puntosDeEquipo(Equipo.EQUIPO1));
 		Assert.assertEquals(3, juego.puntosDeEquipo(Equipo.EQUIPO2));
 	}
-	
+
 	@Test
-	public void testRonda5(){
+	public void testRonda5() {
 		matu.sumarPuntos(14);
 		eze.sumarPuntos(3);
 		matu.entregarCartas();
