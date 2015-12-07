@@ -168,8 +168,12 @@ public class SimulacionDosJugadoresTest {
 
         juego.truco();
         juego.quieroTruco();
-        juego.jugar(tresDeEspada);
+        juego.jugar(cincoDeEspada);
         juego.jugar(doceDeOro);
+        
+        juego.jugar(doceDeEspada);
+        juego.jugar(tresDeEspada);
+        
         assertEquals(0, juego.puntosDeEquipo(Equipo.EQUIPO1));
         assertEquals(3, juego.puntosDeEquipo(Equipo.EQUIPO2));
 
