@@ -2,16 +2,11 @@
     -fx-background-color: #FFF0F5;
 }
 
-
 .label {
     -fx-font-family: "Segoe UI Light";
     -fx-text-fill: #800000;
     -fx-background-color: #FFF0F5;
 }
-
-.label:hover {
-  font-size: 100%;
-  }
 
 .label-tablero {
     -fx-font-family: "Segoe UI Light";
