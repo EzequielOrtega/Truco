@@ -9,6 +9,10 @@
     -fx-background-color: #FFF0F5;
 }
 
+.label:hover {
+  font-size: 100%;
+  }
+
 .label-tablero {
     -fx-font-family: "Segoe UI Light";
     -fx-text-fill: #F5E1E1;
@@ -32,44 +36,3 @@
     -fx-border-color: #000000;
     -fx-font-weight: bold;
 }
-
-/*
-.menu-bar {
-    -fx-font-size: 14pt;
-    -fx-font-family: "Segoe UI Light";
-    -fx-text-fill: white;
-    -fx-opacity: 0.9;
-}
-
-.menu {
-    -fx-text-background: #000000;
-}
-.choice-box .label {
-    -fx-text-fill: #000000;
-}
-
-.text-field {
-    -fx-font-family: "Segoe UI Semibold";
-}
-
-
-.label {
-    -fx-font-family: "Segoe UI Semibold";
-    -fx-text-fill: #E8E8E8;
-    -fx-opacity: 0.6;
-}
-
-#bold-label{
-    -fx-font-weight: bold;
-}
-
-.context-menu {
-    -fx-background-color: derive(#1d1d1d,50%);
-}
-
-
-.menu .left-container {
-    -fx-background-color: black;
-}
-
-*/

@@ -70,7 +70,7 @@
                                         <Button fx:id="botonCartaJugada1J1" layoutX="207.0" layoutY="300.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="110.0" textAlignment="CENTER" visible="false" />
                                         <Button fx:id="botonCartaJugada2J1" layoutX="207.0" layoutY="265.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="110.0" textAlignment="CENTER" visible="false" />
                                         <Button fx:id="botonCartaJugada3J1" layoutX="207.0" layoutY="230.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="110.0" textAlignment="CENTER" visible="false" />
-                                        <Button fx:id="botonCartaJugada1J2" layoutX="207.0" layoutY="65.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="110.0" textAlignment="CENTER" visible="false" />
+                                        <Button fx:id="botonCartaJugada1J2" layoutX="207.0" layoutY="65.0"  mnemonicParsing="false" prefHeight="34.0" prefWidth="110.0" textAlignment="CENTER" visible="false" />
                                         <Button fx:id="botonCartaJugada2J2" layoutX="207.0" layoutY="100.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="110.0" textAlignment="CENTER" visible="false" />
                                         <Button fx:id="botonCartaJugada3J2" layoutX="207.0" layoutY="135.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="110.0" textAlignment="CENTER" visible="false" />
                               <Label fx:id="nombreJ2" layoutX="207.0" layoutY="30.0" prefHeight="39.0" prefWidth="104.0" styleClass="label-tablero" stylesheets="@AlgoTruco.css" text="Jugador 2" textFill="#f5e1e1">

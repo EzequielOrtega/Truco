@@ -11,7 +11,7 @@
 
 <BorderPane stylesheets="@AlgoTruco.css" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fiuba.algo3.tpfinal.control.VentanaPrincipalControl">
    <top>
-      <VBox prefHeight="92.0" prefWidth="1000.0" BorderPane.alignment="CENTER">
+      <VBox prefHeight="92.0" prefWidth="1045.0" BorderPane.alignment="CENTER">
          <children>
             <MenuBar>
               <menus>
@@ -30,8 +30,8 @@
             </MenuBar>
             <HBox styleClass="maintitle-label" VBox.vgrow="NEVER">
                <children>
-                  <Region prefHeight="89.0" prefWidth="393.0" styleClass="background" HBox.hgrow="ALWAYS" />
-                  <Text boundsType="LOGICAL_VERTICAL_CENTER" fill="#e17878" strokeWidth="0.0" styleClass="background" text="FonTruco" textAlignment="CENTER" textOrigin="CENTER" underline="true" HBox.hgrow="ALWAYS">
+                  <Region prefHeight="63.0" prefWidth="403.0" styleClass="background" HBox.hgrow="ALWAYS" />
+                  <Text boundsType="LOGICAL_VERTICAL_CENTER" fill="#e17878" strokeWidth="0.0" styleClass="background" text="FonTruco" textAlignment="CENTER" textOrigin="CENTER" underline="true" wrappingWidth="203.5009765625" HBox.hgrow="ALWAYS">
                      <font>
                         <Font name="Charter Bold" size="45.0" />
                      </font>
@@ -46,25 +46,25 @@
       </VBox>
    </top>
    <center>
-      <AnchorPane prefHeight="600.0" prefWidth="1000.0" styleClass="background" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="481.0" prefWidth="1045.0" styleClass="background" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="380.0" layoutY="248.0" styleClass="label-bordeau" text="Que desea hacer?">
+            <Label layoutX="395.0" layoutY="202.0" styleClass="label-bordeau" text="Que desea hacer?">
                <font>
                   <Font size="27.0" />
                </font></Label>
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="186.0" layoutY="108.0" styleClass="label-bordeau" text="Bienvenidos a FonTruco, el clasico juego de truco argentino,">
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="184.0" layoutY="80.0" styleClass="label" text="Bienvenidos a FonTruco, el clasico juego de truco argentino,">
                <font>
                   <Font name="System Bold" size="22.0" />
                </font></Label>
-            <Button fx:id="botonComenzarJuego" layoutX="360.0" layoutY="313.0" mnemonicParsing="false" onAction="#opcionNuevoJuegoHandler" prefHeight="87.0" prefWidth="281.0" text="Comenzar a jugar">
+            <Button fx:id="botonComenzarJuego" layoutX="367.0" layoutY="271.0" mnemonicParsing="false" onAction="#opcionNuevoJuegoHandler" prefHeight="87.0" prefWidth="281.0" text="Comenzar a jugar">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font></Button>
-            <Button fx:id="botonSalirJuego" layoutX="360.0" layoutY="416.0" mnemonicParsing="false" onAction="#opcionCerrarHandler" prefHeight="87.0" prefWidth="281.0" text="Salir">
+            <Button fx:id="botonSalirJuego" layoutX="367.0" layoutY="380.0" mnemonicParsing="false" onAction="#opcionCerrarHandler" prefHeight="87.0" prefWidth="281.0" text="Salir">
                <font>
                   <Font name="System Bold" size="27.0" />
                </font></Button>
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="327.0" layoutY="158.0" styleClass="label-bordeau" text="disponible para 2 y 4 jugadores.">
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="338.0" layoutY="131.0" styleClass="label" text="disponible para 2 y 4 jugadores.">
                <font>
                   <Font name="System Bold" size="22.0" />
                </font>
