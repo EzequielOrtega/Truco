@@ -131,6 +131,7 @@ public class JuegoDeTrucoControl {
 	}
 
 	private void mostrarTodosLosBotones(Boolean mostrar) {
+		this.mostrarBotones(this.botonesFlor, false);
 		if (conFlor) {
 			this.mostrarBotones(this.botonesFlor, mostrar);
 		}
