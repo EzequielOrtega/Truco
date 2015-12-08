@@ -204,8 +204,14 @@
 		</pmd>
 	</target>
 
+	<target name="empaquetar.css" depends="compilar.paquete">
+		<copydir src="src/fiuba/algo3/tpfinal/vista"
+		dest="${build}/classes/fiuba/algo3/tpfinal/vista"
+		includes="**/*.css"/>
+		<jar destfile="${build}/dist/algo3.jar" basedir="${build}/classes"/>
+	</target>
 
-	<target name="empaquetar.con.fxml" depends="compilar.paquete">
+	<target name="empaquetar.con.fxml" depends="empaquetar.css">
 		<copydir src="src/fiuba/algo3/tpfinal/vista"
 				 dest="${build}/classes/fiuba/algo3/tpfinal/vista"
 				 includes="**/*.fxml"/>
